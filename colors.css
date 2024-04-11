@@ -1,6 +1,6 @@
 :root {
-    --hoverMenuBlue: #2A3647;
-    --menuButtonDarkblue: #091031;
+    --menuButtonDarkblue: #2A3647;
+    --hoverMenuBlue: #091031;
     --lightblue: #29ABE2;
     --backgroundblue: #F5F7F8;
 
@@ -11,6 +11,7 @@
     --white: #ffffff;
     --black: #000000;
     --grey: #A8A8A8;
+    --fontGrey: #CDCDCD;
 
     --tagGreen:#1FD7C1;
     --tagtBlue:#0038FF;
@@ -22,5 +23,4 @@
     --tagDarkPurple: #462F8A;
     --tagPink:#FC71FF;
     --tagYellow:#FFBB2B;
-
 }
