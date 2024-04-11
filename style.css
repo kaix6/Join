@@ -5,14 +5,31 @@ body {
 
 .headlineSummary {
   font-size: 61px;
-  margin-left: 160px;
+  margin-left: 160px; /* soll eig. 328px sein */
+}
+
+.spacerHeadline {
+  width: 3px;
+  height: 60px;
+  background-color: var(--lightblue);
+}
+
+.containerHeadline {
+  width: 700px; /* soll eig. 625px sein */
+  height: 73px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+}
+
+.containerSummary {
+    display: flex;
 }
 
 .mainSummary {
   width: 560px;
   height: 562px;
   top: 335px;
-  margin-left: 160px;
+  margin-left: 160px; /* soll eig. 328px sein */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,6 +39,19 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.summaryText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 600px; /* war auf 385px */
+    height: 136px;
+    gap: 3px;
+    margin-top: 430px;
+    margin-left: 40px;
 }
 
 .done {
@@ -61,8 +91,8 @@ body {
 }
 
 .sizeNumbersSummary {
-    font-size: 64px;
-    font-weight: 600px; 
+  font-size: 64px;
+  font-weight: 600px;
 }
 
 .sizeTextSummary {
@@ -84,38 +114,38 @@ body {
 }
 
 .iconUrgent {
-    height: 60px;
-    width: 60px;
+  height: 60px;
+  width: 60px;
 }
 
 .d-flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .container {
-    width: 130px;
-    height: 96px;
+  width: 130px;
+  height: 96px;
 }
 
 .spacer {
-    width: 1px;
-    height: 102px;
-    background-color: var( --backgroundSpacer);
+  width: 1px;
+  height: 102px;
+  background-color: var(--backgroundSpacer);
 }
 
 .deadline {
-    width: 178px;
-    height: 57px;
-    gap: 13px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 178px;
+  height: 57px;
+  gap: 13px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .bottomCard {
-    width: 168px;
+  width: 168px;
   height: 168px;
   background-color: white;
   border-radius: 30px;
@@ -126,4 +156,3 @@ body {
   align-items: center;
   gap: 13px;
 }
-
