@@ -3,6 +3,7 @@
     --hoverMenuBlue: #091031;
     --lightblue: #29ABE2;
     --backgroundblue: #F5F7F8;
+    --backgroundSpacer: #D1D1D1;
 
     --prioUrgent:#FF3D00;
     --prioMedium: #ffa800;
@@ -23,4 +24,7 @@
     --tagDarkPurple: #462F8A;
     --tagPink:#FC71FF;
     --tagYellow:#FFBB2B;
+
+    --fontColorDarkGrey: #2A3647;
 }
+
