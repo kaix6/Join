@@ -1,10 +1,25 @@
+body{
+    background-color: #F5F5F5;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+.content{
+    padding-top: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
 h1{
     font-family: 'Open Sans';
-    width: 138px;
-    height: 73px;
-    top: 206px;
-    left: 328px;
+    margin: 0;
     gap: 30px;
     opacity: 0px;
-    
+    font-size: 50px;
+}
+
+.h1-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
