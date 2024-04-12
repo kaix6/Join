@@ -126,8 +126,7 @@ body {
 
 
 #main_container {
-/*     display: flex; */
-    height: 100vh;
+    height: calc(100vh - 96px);
 }
 
 
@@ -180,6 +179,8 @@ body {
     }
     .menu_icon_text {
         flex-direction: column;
+        padding: 15px 0px;
+        width: 76px;
         gap: 10px;
     }
     .menu_icon_image {
@@ -188,5 +189,9 @@ body {
     }
     .link_style {
         font-size: 14px;
+        font-family: 'Open Sans';
+    }
+    .link_style:hover {
+        color: var(--white);
     }
 }
