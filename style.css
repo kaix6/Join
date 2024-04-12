@@ -1,4 +1,58 @@
 
+.content{
+    padding-top: 200px;
+    padding-left: 350px;
+    padding-right: 100px;
+    padding-bottom: 100px;
+}
+
+h1{
+    margin: 0;
+    gap: 30px;
+    opacity: 0px;
+    font-size: 50px;
+}
+
+.h1-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.list{
+    display: flex;
+    box-sizing: border-box;
+}
+
+.list h2{
+    margin-top: 0;
+}
+
+.list-textbox{
+    margin-left: 45px;
+}
+
+.list-textbox p{
+    margin-top: 0;
+}
+
+.a-join{
+    color: #29ABE2;
+}
+
+.margin-0{
+    margin: 0;
+}
+
+.margin-bottom-0{
+    margin-bottom: 0;
+}
+
+
 .headlineSummary {
   font-size: 61px;
   margin-left: 160px; /* soll eig. 328px sein */
@@ -350,3 +404,4 @@ body {
         color: var(--white);
     }
 }
+
