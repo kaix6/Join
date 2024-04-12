@@ -2,16 +2,17 @@ body{
     background-color: #F5F5F5;
     margin: 0;
     scroll-behavior: smooth;
+    font-family: 'Open Sans';
 }
 
 .content{
     padding-top: 200px;
-    padding-left: 100px;
+    padding-left: 350px;
     padding-right: 100px;
+    padding-bottom: 100px;
 }
 
 h1{
-    font-family: 'Open Sans';
     margin: 0;
     gap: 30px;
     opacity: 0px;
@@ -22,4 +23,33 @@ h1{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.list{
+    display: flex;
+    box-sizing: border-box;
+}
+
+.list h2{
+    margin-top: 0;
+}
+
+h3{
+    margin: 0;
+}
+
+.list-textbox{
+    margin-left: 45px;
+}
+
+.list-textbox p{
+    margin-top: 0;
+}
+
+.a-join{
+    color: #29ABE2;
 }
