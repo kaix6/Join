@@ -4,6 +4,7 @@
     --lightblue: #29ABE2;
     --backgroundblue: #F5F7F8;
     --backgroundgrey: #F5F5F5;
+    --backgroundSpacer: #D1D1D1;
 
     --prioUrgent:#FF3D00;
     --prioMedium: #ffa800;
@@ -14,14 +15,22 @@
     --grey: #A8A8A8;
     --fontGrey: #CDCDCD;
 
-    --tagGreen:#1FD7C1;
-    --tagtBlue:#0038FF;
-    --tagTurquoise: #00BEE8;
-    --tagOrange:#FF7A00;
-    --tagDarkOrange: #FF4646;
-    --tagPurple:#9327FF;
-    --tagLightPurple:#6E52FF;
-    --tagDarkPurple: #462F8A;
-    --tagPink:#FC71FF;
-    --tagYellow:#FFBB2B;
+    --tagOrange: #FF7A00;
+    --tagPink: #FF5EB3;
+    --tagPurple: #6E52FF;
+    --tagDarkPurple: #9327FF;
+    --tagLightBlue: #00BEE8;
+    --tagTurquoise: #1FD7C1;
+    --tagApricot: #FF745E;
+    --tagLightOrange: #FFA35E;
+    --tagLightPink: #FC71FF;
+    --tagYellow: #FFC701;
+    --tagBlue: #0038FF;
+    --tagGreen: #C3FF2B;
+    --taglightYellow: #FFE62B;
+    --tagRed: #FF4646;
+    --tagMediumYellow: #FFBB2B;
+
+    --fontColorMail: #007CEE;
 }
+
