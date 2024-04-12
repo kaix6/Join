@@ -12,6 +12,7 @@
     --black: #000000;
     --grey: #A8A8A8;
     --fontGrey: #CDCDCD;
+    --verticalLine: #D1D1D1;
 
     --tagOrange: #FF7A00;
     --tagPink: #FF5EB3;
@@ -28,4 +29,6 @@
     --taglightYellow: #FFE62B;
     --tagRed: #FF4646;
     --tagMediumYellow: #FFBB2B;
+
+    --fontColorMail: #007CEE;
 }
