@@ -3,6 +3,7 @@
     --hoverMenuBlue: #091031;
     --lightblue: #29ABE2;
     --backgroundblue: #F5F7F8;
+    --backgroundSpacer: #D1D1D1;
 
     --prioUrgent:#FF3D00;
     --prioMedium: #ffa800;
@@ -13,6 +14,7 @@
     --grey: #A8A8A8;
     --fontGrey: #CDCDCD;
     --verticalLine: #D1D1D1;
+
 
     --tagOrange: #FF7A00;
     --tagPink: #FF5EB3;
@@ -32,3 +34,4 @@
 
     --fontColorMail: #007CEE;
 }
+
