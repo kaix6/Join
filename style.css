@@ -1,7 +1,6 @@
-
+/* ------ Summary start ------- */
 .headlineSummary {
   font-size: 61px;
-  /* soll eig. 328px sein */
 }
 
 .spacerHeadline {
@@ -11,7 +10,7 @@
 }
 
 .containerHeadline {
-  width: 625px; /* soll eig. 625px sein */
+  width: 625px;
   height: 73px;
   margin-top: 100px;
   margin-bottom: 60px;
@@ -25,7 +24,6 @@
   width: 560px;
   height: 562px;
   top: 335px;
-   /* soll eig. 328px sein */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -93,7 +91,8 @@
 .sizeTextSummary {
   font-size: 20px;
   font-weight: 400px;
-  color: var(--fontColorDarkGrey);
+  color: var(--menuButtonDarkblue);
+  text-align: center;
 }
 
 .doneMain {
@@ -151,6 +150,8 @@
   align-items: center;
   gap: 13px;
 }
+
+/* ------ Summary end ------- */
   
 * {
     font-family: 'Inter', sans-serif;
