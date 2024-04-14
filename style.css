@@ -68,7 +68,7 @@ h1{
     height: 100vh;
 }
 
-.display-flex{
+.container-navi-content{
     display: flex;
 }
 
@@ -358,6 +358,11 @@ body {
     height: calc(100vh - 96px);
 }
 
+.sticky {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 
 /* Responsive */
 
@@ -422,6 +427,22 @@ body {
     }
     .link_style:hover {
         color: var(--white);
+    }
+
+    .container-navi-content{
+        flex-direction: column-reverse;
+    }
+
+    .content{
+        padding-bottom: 150px;
+    }
+}
+
+@media(max-width: 500px){
+    .content{
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 40px;
     }
 }
 
