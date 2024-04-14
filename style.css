@@ -336,21 +336,72 @@ body {
 
 #main_container {
     height: calc(100vh - 96px);
-    border: 1px solid purple;
 }
 
 /* Contacts */
 
 .main_contacts {
-    border: 1px solid orange;
     background-color: var(--white);
+    overflow-y: auto;
 }
 
 .content_contacts {
-/*     border: 1px solid blue; */
     padding: 24px 14px;
     max-width: 456px;
     box-shadow: 4px 0px 6px 0px #00000014;
+    height: 100%;
+}
+
+.letter_names {
+    padding: 17px 36px;
+}
+
+.head_letters {
+    font-size: 20px;
+}
+
+.horizontal_line_content {
+    width: 352px;
+    padding: 8px 0px;
+}
+
+.horizontal_line {
+    border: 1px solid var(--backgroundSpacer);
+}
+
+.contact {
+    display: flex;
+    gap: 35px;
+    padding: 15px 24px;
+}
+
+.short_name {
+    background-color: var(--tagOrange);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+}
+
+.short_name_text {
+    font-size: 12px;
+}
+
+.name_data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact_fullName {
+    font-size: 20px;
+}
+
+.contact_mail {
+    color: var(--fontColorMail);
 }
 
 /* Responsive */
