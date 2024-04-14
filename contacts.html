@@ -25,7 +25,8 @@
 
             <section id="main_container" class="main_contacts">
                 <div id="content_contacts" class="/d_none">
-                    <div class="add_change_btn_mobile round_div">
+                    <div class="add_change_btn_mobile">
+                        <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
                     <div class="letter_content">
@@ -116,18 +117,20 @@
                     </div>
                 </div>
 
-                <div id="contact_view" class="d_none">
-                    <div class="add_change_btn_mobile round_div">
+                <div id="contact_view" class="/d_none">
+                    <div class="add_change_btn_mobile hide_desktop">
                         <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
                     </div>
                     <div class="head_overview">
                         <div class="left_part_overview">
                             <h2 class="headline_contacts">Contacts</h2>
-                            <p class="text_contacts">Better with a team</p>
-                            <div class="seperator_line_content">
+                            <div class="left_part_overview_second">
+                                <p class="text_contacts">Better with a team</p>
+                                <div class="seperator_line_content">
+                                </div>
                             </div>
                         </div>
-                        <div class="right_part_overview">
+                        <div class="right_part_overview hide_desktop">
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
@@ -136,7 +139,19 @@
                             <div class="short_name_overview round_div">
                                 <p class="short_name_text_overview">AM</p>
                             </div>
+                        <div class="name_editable_content">
                             <h3 class="name_overview">Anton Mayer</h3>
+                            <div class="editable_content">
+                                <div class="edit_content">
+                                    <img class="contact_edit_icon" src="assets/img/contacts/edit.svg" alt="edit icon">
+                                    <p>Edit</p>
+                                </div>
+                                <div class="delete_content">
+                                    <img class="contact_delete_icon" src="assets/img/contacts/delete.svg" alt="delete icon">
+                                    <p>Delete</p>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                         <p class="text_information">Contact Information</p>
                         <div class="contact_information">
