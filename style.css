@@ -412,6 +412,17 @@ body {
         flex-direction: column;
     }
 
+    /* Scrollbar */
+
+    ::-webkit-scrollbar {
+        width: 4px;
+      }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--grey);
+        border-radius: 4px;
+      }
+
     /* Header */
 
     #header {
