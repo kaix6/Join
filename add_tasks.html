@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AddTasks</title>
+
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="colors.css" />
+  </head>
+  <body class="flex_dir_c" onload="includeHTML()">
+    <div class="wrapped_maxWidth">
+      <div class="right_section flex_dir_c">
+        <!--      Section header    -->
+
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <!--      Section header    -->
+
+        <section id="main_container" class="main_contacts">
+            
+          <div class="containerHeadline d-flex">
+            <h1 class="headlineAddTasks">Add Tasks</h1>
+          </div>
+          
+          <div class="mainAddTasks">
+            <form class="addTasksLeft">
+                <div>
+                    <label for="title">Title</label>
+                    <br />
+                    <input type="text" id="title" placeholder="Enter a title" >
+                </div>
+                
+                <div>
+                    <label for="description">Description</label>
+                    <br />
+                    <input type="text" id="description" placeholder="Enter a Description ">
+                </div>
+
+                <div>
+                    <label for="assigned">Assigned to</label>
+                    <br />
+
+                    <select name="assigned" id="assignedTo">
+               
+                         <option value="contact1">Contact1</option>
+               
+                         <option value="contact2">Contact2</option>
+               
+                         <option value="contact3">Contact3</option>
+               
+                         <option value="usw">usw</option>
+               
+                    </select>
+               
+                </div>
+            </form>
+
+          </div>
+        </section>
+      </div>
+
+      <!--      Section Side Menu   -->
+
+      <div
+        class="side_menu_sticky"
+        w3-include-html="assets/templates/side_menu.html"
+      ></div>
+
+      <!--      Section Side Menu    -->
+    </div>
+  </body>
+</html>
