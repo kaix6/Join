@@ -214,6 +214,56 @@ h1{
     scroll-behavior: smooth;
 }
 
+/* Contacts - Dialog add Contact */
+
+.dialog_add_contact_bg {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+/*     align-items: center; */
+    background-color: rgba(0, 0, 0, 0.2);
+    inset: 0;
+    z-index: 1;
+}
+
+.dialog_add_contact {
+    border: 1px solid green;
+    width: 93%;
+    margin-top: 83px;
+    height: calc(100vh - 83px - 86px);
+/*     background-color: var(--menuButtonDarkblue); */
+    border-radius: 30px;
+}
+
+.top_dialog_add {
+    border: 1px solid yellow;
+    background-color: var(--menuButtonDarkblue);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+/*     height: 46%; */
+}
+
+.close_add_contact {
+    width: 32px;
+    height: 32px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+}
+
+.headline_add_contact {
+    font-size: 47px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.text_add_contact_dialog {
+    font-size: 20px;
+    color: var(--white);
+}
+
+.bottom_dialog_add {
+    background-color: var(--white);
+}
+
 .d_none {
     display: none;
 }
@@ -349,6 +399,10 @@ body {
     }
 }
 
+.activeLink {
+    background-color: red;
+}
+
 .link_style {
     color: var(--fontGrey);
 }
@@ -410,8 +464,10 @@ body {
     border-radius: 10px;
 }
 
-.add_change_btn_mobile:hover {
-    background-color: var(--lightblue);
+@media(min-width: 841px) {
+    .add_change_btn_mobile:hover {
+        background-color: var(--lightblue);
+    }
 }
 
 .text_add_contact {
@@ -448,9 +504,11 @@ body {
     cursor:pointer;
 }
 
-.contact:hover {
-    border-radius: 10px;
-    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+@media(min-width: 841px) {
+    .contact:hover {
+        border-radius: 10px;
+        background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    }
 }
 
 .short_name {
@@ -597,6 +655,7 @@ body {
     gap: 15px;
 }
 
+
 /* Responsive */
 
 @media(max-width: 840px) {
@@ -648,7 +707,8 @@ body {
         background-color: var(--menuButtonDarkblue);
         display: flex;
         justify-content: space-between;
-        padding: 16px;
+        padding: 0px 16px;
+/*         padding: 16px; */
     }
     .side_menu_sticky {
         position: sticky;
@@ -670,7 +730,7 @@ body {
     }
 
     #main_container {
-        height: calc(100vh - 195px);
+        height: calc(100vh - 163px);
     }
 
     /* Contacts */
@@ -686,8 +746,8 @@ body {
     }
     .add_change_btn_mobile {
         position: absolute;
-        bottom: 131px;
-        left: 336px;
+        bottom: 109px;
+        left: 356px;
         background-color: var(--menuButtonDarkblue);
         width: 56px;
         height: 56px;
