@@ -410,6 +410,10 @@ body {
     border-radius: 10px;
 }
 
+.add_change_btn_mobile:hover {
+    background-color: var(--lightblue);
+}
+
 .text_add_contact {
     font-size: 21px;
     color: var(--white);
@@ -441,6 +445,12 @@ body {
     display: flex;
     gap: 35px;
     padding: 15px 24px;
+    cursor:pointer;
+}
+
+.contact:hover {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 
 .short_name {
@@ -538,6 +548,10 @@ body {
     margin-top: 8px;
 }
 
+.edit_content {
+    width: 62px;
+}
+
 .edit_content,
 .delete_content {
     display: flex;
@@ -551,6 +565,21 @@ body {
     height: 24px;
     width: 24px;
 }
+
+.edit_content:hover .contact_edit_icon,
+.edit_content:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
+.delete_content:hover .contact_delete_icon,
+.delete_content:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
 
 .text_information {
     font-size: 20px;
