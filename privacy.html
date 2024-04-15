@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
+    <title>Privacy Policy | Join</title>
     <script src="script.js"></script>
+    <link rel="icon" href="./assets/img/general/logo_favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="colors.css">
 </head>
-<body>
-    <div class="content">
-        <div class="h1-container">
-            <h1>Privacy Policy</h1>
-            <a class="pointer">
-                <img src="/img/arrow-left-line.png">
-            </a>
-        </div>
-        <div>
-            <h2>Subtitle</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
-        </div>
+<body onload="includeHTML()">
 
+    <div class="container-navi-content">
+    
+        <div w3-include-html="assets/templates/side_menu.html"></div>
+    
         <div>
-            <h2>Subtitle</h2>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+    
+            <div w3-include-html="assets/templates/header.html"></div>
+    
+            <div class="content">
+                <div class="h1-container">
+                    <h1 class="margin-bottom-32px">Privacy Policy</h1>
+                    <a class="arrow-left pointer">
+                        <img src="/img/arrow-left-line.png">
+                    </a>
+                </div>
+                <div>
+                    <h2 class="margin-bottom-16px">Subtitle</h2>
+                    <p class="margin-bottom-32px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+                </div>
+
+                <div>
+                    <h2 class="margin-bottom-16px">Subtitle</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+                </div>
+            </div>
         </div>
-    </div>
 </body>
 </html>
