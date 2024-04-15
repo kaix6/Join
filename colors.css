@@ -1,6 +1,7 @@
 :root {
     --menuButtonDarkblue: #2A3647;
-    --hoverMenuBlue: #091031;
+    --activeClickMenuBlue: #091031;
+    --hoverMenuBlue: #2A3D59;
     --lightblue: #29ABE2;
     --backgroundblue: #F5F7F8;
     --backgroundgrey: #F5F5F5;
@@ -33,4 +34,3 @@
 
     --fontColorMail: #007CEE;
 }
-

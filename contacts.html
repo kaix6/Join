@@ -14,24 +14,186 @@
 
     <div class="wrapped_maxWidth">
 
+            <!--      Section Dialogbox Add Contact    -->
+
+        <div class="dialog_add_contact_bg d_none">
+            <div class="dialog_add_contact">
+            <div class="top_dialog_add">
+                <img class="close_add_contact" src="./assets/img/general/close.svg" alt="close icon">
+                <div class="head_top_dialog_add">
+                    <h3 class="headline_add_contact">Add contact</h3>
+                    <p class="text_add_contact_dialog">Tasks are better with a team</p>
+                    <div class="seperator_line_content">
+                    </div>
+                </div>
+            </div>
+            <div class="bottom_dialog_add">
+                
+            </div>
+        </div>
+        </div>
+
+            <!--      Section Dialogbox Add Contact    -->
+
         <div class="right_section flex_dir_c">
 
             <!--      Section header    -->
 
-            <div w3-include-html="assets/templates/header.html"></div>
+            <div w3-include-html="./assets/templates/header.html"></div>
 
             <!--      Section header    -->
 
 
             <section id="main_container" class="main_contacts">
+                <div id="content_contacts" class="/d_none">
+                    <div class="add_change_btn_mobile">
+                        <p class="text_add_contact">Add new contact</p>
+                        <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
+                    </div>
+                    <div class="letter_content">
+                        <div class="letter_names">
+                            <p class="head_letters">A</p>
+                        </div>
+                        <div class="horizontal_line_content">
+                            <div class="horizontal_line"></div>
+                        </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">AM</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">Anton Mayer</p>
+                                    <p class="contact_mail">antom@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">AS</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">Anja Schulz</p>
+                                    <p class="contact_mail">schulz@hotmail.com</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="letter_content">
+                        <div class="letter_names">
+                            <p class="head_letters">B</p>
+                        </div>
+                        <div class="horizontal_line_content">
+                            <div class="horizontal_line"></div>
+                        </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">BZ</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">Benedikt Ziegler</p>
+                                    <p class="contact_mail">benedikt@gmail.com</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="letter_content">
+                        <div class="letter_names">
+                            <p class="head_letters">D</p>
+                        </div>
+                        <div class="horizontal_line_content">
+                            <div class="horizontal_line"></div>
+                        </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">DE</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">David Eisenberger</p>
+                                    <p class="contact_mail">davidberg@gmail.com</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="letter_content">
+                        <div class="letter_names">
+                            <p class="head_letters">E</p>
+                        </div>
+                        <div class="horizontal_line_content">
+                            <div class="horizontal_line"></div>
+                        </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">EF</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">Eva Fischer</p>
+                                    <p class="contact_mail">eva@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact">
+                                <div class="short_name round_div">
+                                    <p class="short_name_text">EM</p>
+                                </div>
+                                <div class="name_data">
+                                    <p class="contact_fullName">Emmanuel Mauer</p>
+                                    <p class="contact_mail">emmanuelma@gmail.com</p>
+                                </div>
+                            </div>
+                    </div>
+                </div>
 
+                <div id="contact_view" class="d_none">
+                    <div class="add_change_btn_mobile hide_desktop">
+                        <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
+                    </div>
+                    <div class="head_overview">
+                        <div class="left_part_overview">
+                            <h2 class="headline_contacts">Contacts</h2>
+                            <div class="left_part_overview_second">
+                                <p class="text_contacts">Better with a team</p>
+                                <div class="seperator_line_content">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right_part_overview hide_desktop">
+                            <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
+                        </div>
+                    </div>
+                    <div class="floating_contact">
+                        <div class="head_floating_content">
+                            <div class="short_name_overview round_div">
+                                <p class="short_name_text_overview">AM</p>
+                            </div>
+                        <div class="name_editable_content">
+                            <h3 class="name_overview">Anton Mayer</h3>
+                            <div class="editable_content">
+                                <div class="edit_content">
+                                    <img class="contact_edit_icon" src="assets/img/contacts/edit.svg" alt="edit icon">
+                                    <p>Edit</p>
+                                </div>
+                                <div class="delete_content">
+                                    <img class="contact_delete_icon" src="assets/img/contacts/delete.svg" alt="delete icon">
+                                    <p>Delete</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <p class="text_information">Contact Information</p>
+                        <div class="contact_information">
+                            <div class="contact_overview_mail">
+                                <h4>Email</h4>
+                                <p class="overview_mail">antom@gmail.com</p>
+                            </div>
+                            <div class="contact_overview_phone">
+                                <h4>Phone</h4>
+                                <p>+49 1111 111 11 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
         </div>
 
         <!--      Section Side Menu   -->
 
-        <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
+        <div class="side_menu_sticky" w3-include-html="./assets/templates/side_menu.html"></div>
 
         <!--      Section Side Menu    -->
 
@@ -39,3 +201,5 @@
 
 </body>
 </html>
+
+
