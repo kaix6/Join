@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/general/logo_favicon.svg">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="colors.css">
+    <script src="script.js"></script>
+    <style>
+        body {
+            max-width: 1400px;
+            background-color: rgb(246, 247, 248)
+        }
+        
+        .d-center-space-betwen {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .display-fccc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .gap {
+            gap: 32px;
+        }
+        
+        .imglogo {
+            width: 100.03px;
+        }
+        
+        .frame153 {
+            width: 652px;
+            height: 493px;
+            top: 265.5px;
+            left: 394px;
+            padding: 48px 115px 48px 115px;
+            gap: 32px;
+            border-radius: 30px;
+            opacity: 0px;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .input-with-image {
+            background-image: url("/assets/img/logIn_SignUp/mail.svg");
+            background-size: 20px 20px;
+            /* set the size of your image */
+            background-position: 5px center;
+            /* set the position of your image */
+            background-repeat: no-repeat;
+            padding-left: 30px;
+            /* add some padding to make room for the image */
+        }
+    </style>
+</head>
+
+<body onload="includeHTML()">
+    <header class="d-center-space-betwen">
+        <img src="/assets/img/general/logo_favicon.svg" alt="" class="imglogo">
+        <div>
+            <span>Not a join user?</span>
+            <img src="/assets/img/logIn_SignUp/Frame156.svg" alt="">
+        </div>
+        <button>Sign up</button>
+        <a href="https://www.http://127.0.0.1:5500/signup.html"></a>
+    </header>
+
+
+    <div w3-include-html="login.html"></div>
+    <footer>
+        <p>Privacy policy</p>
+        <p>Legal notice</p>
+    </footer>
+
+</body>
+
+</html>
