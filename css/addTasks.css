@@ -1,13 +1,75 @@
 .headlineAddTasks {
     font-size: 61px;
     margin-left: 153px;
+    margin-top: 70px;
   }
 
   .mainAddTasks {
     margin-left: 153px;
+    display: flex;
+    margin-top: 80px;
   }
 
   .addTasksLeft {
+    display: flex;
+    flex-direction: column;
+    height: 376px;
+    width: 440px;
+  }
+
+  .addTasksRight {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+  }
+
+  .spacerAddTasks {
+    width: 1px;
+    height: 424px;
+    border: 1px solid var( --backgroundSpacer);
+  }
+
+  .fontUnderHeadlinesAddTasks {
+    font-size: 20px;
+    font-weight: 400;
+    color: var( --menuButtonDarkblue);
+  }
+
+  #title {
+    font-size: 20px;
+    width: 80%;
+    height: 48px;
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+    gap: 10px;
+    border: 1px solid var( --backgroundSpacer);
+    margin-top: 8px;
+  }
+
+  #description {
+    font-size: 20px;
+    width: 80%;
+    height: 120px;
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+    gap: 10px;
+    border: 1px solid var( --backgroundSpacer);
+    margin-top: 8px;
+  }
+
+  #assignedTo {
+    font-size: 20px;
+    width: 80%;
+    height: 48pxpx;
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;
+    gap: 10px;
+    border: 1px solid var( --backgroundSpacer);
+    margin-top: 8px;
+  }
+
+  .prio {
+    margin-top: 12px;
     display: flex;
     flex-direction: column;
   }

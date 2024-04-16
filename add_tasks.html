@@ -6,11 +6,11 @@
     <title>AddTasks</title>
 
     <script src="script.js"></script>
-    <link rel="stylesheet" href="./css/colors.css">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/template.css">
-    <link rel="stylesheet" href="./css/addTasks.css">
+    <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/template.css" />
+    <link rel="stylesheet" href="./css/addTasks.css" />
   </head>
   <body class="flex_dir_c" onload="includeHTML()">
     <div class="wrapped_maxWidth">
@@ -21,45 +21,107 @@
 
         <!--      Section header    -->
 
-        <section id="main_container" class="main_contacts">
-            
+        <section id="main_container" class="main_addTasks">
           <div class="containerHeadline d-flex">
             <h1 class="headlineAddTasks">Add Tasks</h1>
           </div>
-          
+
           <div class="mainAddTasks">
             <form class="addTasksLeft">
-                <div>
-                    <label for="title">Title</label>
-                    <br />
-                    <input type="text" id="title" placeholder="Enter a title" >
-                </div>
-                
-                <div>
-                    <label for="description">Description</label>
-                    <br />
-                    <input type="text" id="description" placeholder="Enter a Description ">
-                </div>
+              <div>
+                <label class="fontUnderHeadlinesAddTasks" for="title"
+                  >Title</label
+                >
+                <br />
+                <input type="text" id="title" placeholder="Enter a title" />
+              </div>
 
-                <div>
-                    <label for="assigned">Assigned to</label>
-                    <br />
+              <div style="margin-top: 12px">
+                <label class="fontUnderHeadlinesAddTasks" for="description"
+                  >Description</label
+                >
+                <br />
+                <textarea
+                  id="description"
+                  name="description"
+                  rows="4"
+                  cols="50"
+                  placeholder="Enter a Description"
+                ></textarea>
+              </div>
 
-                    <select name="assigned" id="assignedTo">
-               
-                         <option value="contact1">Contact1</option>
-               
-                         <option value="contact2">Contact2</option>
-               
-                         <option value="contact3">Contact3</option>
-               
-                         <option value="usw">usw</option>
-               
-                    </select>
-               
-                </div>
+              <div style="margin-top: 12px">
+                <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                  >Assigned to</label
+                >
+                <br />
+
+                <select name="assigned" id="assignedTo">
+                  <option value="contact1">Contact1</option>
+
+                  <option value="contact2">Contact2</option>
+
+                  <option value="contact3">Contact3</option>
+
+                  <option value="usw">usw</option>
+                </select>
+              </div>
             </form>
 
+            <div class="spacerAddTasks"></div>
+
+            <form class="addTasksRight">
+              <div>
+                <label class="fontUnderHeadlinesAddTasks" for="date"
+                  >Due date</label
+                >
+                <br />
+                <input type="date" id="date" placeholder="dd/mm/yyyy" />
+              </div>
+
+              <div class="prio">
+                Prio
+                <div>
+                  <button>Urgent</button>
+                  <button>Medium</button>
+                  <button>Low</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                  >Category</label
+                >
+                <br />
+
+                <select name="assigned" id="assignedTo">
+                  <option value="contact1">Contact1</option>
+
+                  <option value="contact2">Contact2</option>
+
+                  <option value="contact3">Contact3</option>
+
+                  <option value="usw">usw</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                  >Subtasks</label
+                >
+                <br />
+
+                <select name="assigned" id="assignedTo">
+                  <option value="contact1">Contact1</option>
+
+                  <option value="contact2">Contact2</option>
+
+                  <option value="contact3">Contact3</option>
+
+                  <option value="usw">usw</option>
+                </select>
+              </div>
+            </form>
           </div>
         </section>
       </div>
