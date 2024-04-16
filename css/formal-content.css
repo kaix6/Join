@@ -73,6 +73,10 @@
     display: flex;
 }
 
+#main_container {
+   overflow-y: auto;
+}
+
 /* Responsive */
 
 @media(max-width: 840px) {
