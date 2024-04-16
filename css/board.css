@@ -4,8 +4,8 @@
 
 .content-board{
     margin-top: 100px;
-    margin-left: 75px;
-    margin-right: 75px;
+    margin-left: 60px;
+    margin-right: 60px;
     margin-bottom: 100px;
     }
     
@@ -13,13 +13,61 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 200px;
-    margin-right: 64px;
+    width: 250px;
     }
     
     .d-flex-start{
         display: flex;
-        justify-content: start;
+        justify-content: space-between;
     }
-    
+
+    .board-search-add{
+        display: flex;
+        gap: 24px;
+        margin-right: 40px;
+    }
+
+    .add-task-button{
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        background-color: var(--activeClickMenuBlue);
+        padding: 16px;
+        height: 40px;
+    }
+
+    .add-task-button p{
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 600;
+        padding-right: 8px;
+    }
+
+    .add-task-button img{
+        width: 16px;
+    }
+
+    .search-field{
+        display: flex;
+        border: 1px solid var(--grey);
+        border-radius: 8px;
+        padding: 8px;
+        background-color: var(--white);
+        height: 40px;
+        width: 300px;
+    }
+
+    .search-field input{
+        border: none;
+        font-size: 16px;
+        margin-right: 16px;
+        border-right: 1px solid var(--grey);
+        width: calc(100% - 16px);
+    }
+
+    .search-field img{
+        width: 16px;
+        margin-right: 16px;
+    }
+
     /* Board - End */

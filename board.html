@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board | Join</title>
+    <script src="script.js"></script>
+    <link rel="icon" href="./assets/img/general/logo_favicon.svg">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/template.css">
+    <link rel="stylesheet" href="/css/formal-content.css">
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+
+<body class="flex_dir_c" onload="includeHTML()">
+
+        <div class="wrapped_maxWidth">
+    
+            <div class="right_section flex_dir_c">
+    
+                <!--      Section header    -->
+    
+                <div w3-include-html="assets/templates/header.html"></div>
+    
+                <!--      Section header    -->
+    
+    
+                <section id="main_container">
+                    <div class="content-board">
+                        <div class="h1-container margin-bottom-32px">
+                            <h1>Board</h1>
+                            <div class="board-search-add">
+                                <div class="search-field">
+                                    <input type="text" placeholder="Find Task">
+                                    <img src="/assets/img/board/search.svg">
+                                </div>
+                                <div class="add-task-button">
+                                    <p>Add task</p>
+                                    <img src="/assets/img/board/add_task_white.svg">
+                                </div>
+                            </div>
+                        </div>
+                        
+        
+                        <div class="d-flex-start">
+                            <div class="board-column">
+                                <p>To do</p>
+                                <img src="/assets/img/board/plus_button.svg">
+                            </div>
+        
+                            <div class="board-column">
+                                <p>In Progress</p>
+                                <img src="/assets/img/board/plus_button.svg">
+                            </div>
+        
+                            <div class="board-column">
+                                <p>Await Feedback</p>
+                                <img src="/assets/img/board/plus_button.svg">
+                            </div>
+        
+                            <div class="board-column">
+                                <p>Done</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+            </div>
+    
+            <!--      Section Side Menu   -->
+    
+            <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
+    
+            <!--      Section Side Menu    -->
+    
+        </div>
+    </body>
+</html>
