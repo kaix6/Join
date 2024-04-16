@@ -1,0 +1,25 @@
+
+
+/* Board */
+
+.content-board{
+    margin-top: 100px;
+    margin-left: 75px;
+    margin-right: 75px;
+    margin-bottom: 100px;
+    }
+    
+    .board-column{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    margin-right: 64px;
+    }
+    
+    .d-flex-start{
+        display: flex;
+        justify-content: start;
+    }
+    
+    /* Board - End */
