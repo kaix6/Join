@@ -1,0 +1,181 @@
+/* Header */
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px 20px 116px;
+    box-shadow: 0px 4px 4px 0px #0000001A;
+    align-items: center;
+    background-color: var(--white);
+}
+
+.headline {
+    font-size: 20px;
+}
+
+.profile_header_mobile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header_help_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.header_help_icon:hover {
+    transform: scale(1.2);
+}
+
+.border_profile {
+    border: 3px solid var(--menuButtonDarkblue);
+    width: 56px;
+    height: 56px;
+}
+
+@media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
+    .border_profile:hover {
+        background-color: #0C2E621F;
+     }
+}
+
+.text_profile_header {
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
+
+/* Side Menu */
+
+#side_menu_desktop {
+    background-color: var(--menuButtonDarkblue);
+    padding: 64px 0px;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    width: 232px;
+}
+
+.menu_logo {
+    width: 100.03px;
+    height: 121.97px;
+    margin-left: 53px;
+}
+
+.menu_icon_image {
+    width: 30px;
+    height: 30px;
+}
+
+.links {
+    gap: 15px;
+}
+
+.menu_icon_text {
+    display: flex;
+    align-items: center;
+    padding: 8px 53px;
+    gap: 8px;
+    transition: background-color 100ms ease-in;
+    cursor:pointer;
+}
+
+@media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
+    .menu_icon_text:hover {
+        background-color: var(--hoverMenuBlue);
+    }
+}
+
+.activeLink {
+    background-color: red;
+}
+
+.link_style {
+    color: var(--fontGrey);
+}
+
+.top_side_menu {
+    width: 100%;
+    gap:136px;
+}
+
+.bottom_side_menu {
+    width: 100%;
+    cursor:pointer;
+}
+
+.link_pad {
+    padding: 8px;
+}
+
+.hover_color {
+    padding-left: 53px;
+}
+
+.hover_color:hover {
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
+
+/* Responsive */
+
+@media(max-width: 840px) {
+    
+    /* Header */
+
+    #header {
+        padding: 20px 16px;
+    }
+          
+    .headline {
+        display: none;
+    }
+    .logo_header_mobile {
+        display: flex;
+        width: 32px;
+        height: 39.02px;
+    }
+    .header_help_icon {
+        display: none;
+    }
+    .border_profile {
+        width: 40px;
+        height: 40px;
+    }
+    .text_profile_header {
+        font-weight: 400;
+    }
+
+    /* side menu bottom */
+    #side_menu_desktop {
+        display: none;
+    }
+
+    #side_menu {
+        background-color: var(--menuButtonDarkblue);
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 16px;
+/*       padding: 16px; */
+    }
+    .side_menu_sticky {
+        position: sticky;
+        bottom: 0;
+    }
+    .menu_icon_text {
+        flex-direction: column;
+        padding: 15px 0px;
+        width: 76px;
+        gap: 10px;
+    }
+    .menu_icon_image {
+        width: 24px;
+        height: 24px;
+    }
+    .link_style {
+        font-size: 14px;
+        font-family: 'Open Sans';
+    }
+}
