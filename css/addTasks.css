@@ -1,0 +1,13 @@
+.headlineAddTasks {
+    font-size: 61px;
+    margin-left: 153px;
+  }
+
+  .mainAddTasks {
+    margin-left: 153px;
+  }
+
+  .addTasksLeft {
+    display: flex;
+    flex-direction: column;
+  }
