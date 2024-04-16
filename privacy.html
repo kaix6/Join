@@ -6,37 +6,53 @@
     <title>Privacy Policy | Join</title>
     <script src="script.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/template.css">
 </head>
-<body onload="includeHTML()">
+<body class="flex_dir_c" onload="includeHTML()">
 
-    <div class="container-navi-content">
-    
-        <div w3-include-html="assets/templates/side_menu.html"></div>
-    
-        <div>
-    
+    <div class="wrapped_maxWidth">
+
+        <div class="right_section flex_dir_c">
+
+            <!--      Section header    -->
+
             <div w3-include-html="assets/templates/header.html"></div>
-    
-            <div class="content">
-                <div class="h1-container">
-                    <h1 class="margin-bottom-32px">Privacy Policy</h1>
-                    <a class="arrow-left pointer">
-                        <img src="/img/arrow-left-line.png">
-                    </a>
-                </div>
-                <div>
-                    <h2 class="margin-bottom-16px">Subtitle</h2>
-                    <p class="margin-bottom-32px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
-                </div>
 
-                <div>
-                    <h2 class="margin-bottom-16px">Subtitle</h2>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+            <!--      Section header    -->
+
+
+            <section id="main_container">
+                <div class="content">
+                    <div class="h1-container">
+                        <h1 class="margin-bottom-32px">Privacy Policy</h1>
+                        <a class="arrow-left pointer">
+                            <img src="/assets/img/general/arrow_left_line.svg">
+                        </a>
+                    </div>
+                    <div>
+                        <h2 class="margin-bottom-16px">Subtitle</h2>
+                        <p class="margin-bottom-32px">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+                    </div>
+
+                    <div>
+                        <h2 class="margin-bottom-16px">Subtitle</h2>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo, exercitationem aliquid dicta rem eaque veritatis explicabo hic, debitis atque necessitatibus obcaecati. Voluptates sunt minima optio at ea sit ipsum quibusdam.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
+
         </div>
+
+        <!--      Section Side Menu   -->
+
+        <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
+
+        <!--      Section Side Menu    -->
+
+    </div>
+
 </body>
 </html>
