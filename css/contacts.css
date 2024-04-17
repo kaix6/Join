@@ -11,23 +11,35 @@
 }
 
 .dialog_add_contact {
-    border: 1px solid green;
+
     width: 93%;
     margin-top: 83px;
     height: calc(100vh - 83px - 86px);
-/*     background-color: var(--menuButtonDarkblue); */
     border-radius: 30px;
 }
 
 .top_dialog_add {
-    border: 1px solid yellow;
+    position: relative;
     background-color: var(--menuButtonDarkblue);
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-/*     height: 46%; */
+    height: 46%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.head_top_dialog_add {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 16px;
 }
 
 .close_add_contact {
+    position: absolute;
+    right: 18px;
+    top: 24px;
     width: 32px;
     height: 32px;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
@@ -46,6 +58,69 @@
 
 .bottom_dialog_add {
     background-color: var(--white);
+    height: 54%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.create_contact_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.create_contact_input {
+    min-width: 364px;
+    padding: 13px 21px;
+    border: 1px solid var(--backgroundSpacer);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+    background-size: 24px;
+    padding-left: 21px;
+}
+
+#fullName {
+    background-image: url(../assets/img/contacts/person.svg);
+}
+
+#mail {
+    background-image: url(../assets/img/contacts/mail.svg);
+}
+
+#telNumber {
+    background-image: url(../assets/img/contacts/call.svg);
+}
+
+.create_contact_input::placeholder {
+    font-size: 20px;
+    color: var(--backgroundSpacer);
+}
+
+.create_contact_btn {
+    margin-top: 15px;
+    display: flex;
+    gap: 4px;
+    border: none;
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+    padding: 18px 10px;
+    border-radius: 10px;
+}
+
+.text_create_contact_btn {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.img_checked_btn {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
 }
 
 /* Contacts */
@@ -64,6 +139,7 @@
     flex-direction: column;
     align-items: center; */
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .add_change_btn_mobile {

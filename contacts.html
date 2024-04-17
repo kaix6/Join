@@ -18,10 +18,10 @@
 
             <!--      Section Dialogbox Add Contact    -->
 
-        <div class="dialog_add_contact_bg d_none">
+        <div class="dialog_add_contact_bg /d_none">
             <div class="dialog_add_contact">
             <div class="top_dialog_add">
-                <img class="close_add_contact" src="./assets/img/general/close.svg" alt="close icon">
+                    <img class="close_add_contact" src="./assets/img/general/close.svg" alt="close icon">
                 <div class="head_top_dialog_add">
                     <h3 class="headline_add_contact">Add contact</h3>
                     <p class="text_add_contact_dialog">Tasks are better with a team</p>
@@ -30,7 +30,18 @@
                 </div>
             </div>
             <div class="bottom_dialog_add">
-                
+                <form onsubmit="return false;" class="create_contact_form">
+                    <label for="fullName"></label>
+                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
+                    <label for="mail"></label>
+                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
+                    <label for="telNumber"></label>
+                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <button class="create_contact_btn">
+                        <p class="text_create_contact_btn pointer">Create contact</p>
+                        <img class="img_checked_btn" src="./assets/img/contacts/check.svg" alt="checked icon">
+                    </button>
+                </form>
             </div>
         </div>
         </div>
