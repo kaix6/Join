@@ -78,7 +78,6 @@
     padding: 8px 53px;
     gap: 8px;
     transition: background-color 100ms ease-in;
-    cursor:pointer;
 }
 
 @media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
@@ -110,7 +109,6 @@
 
 .bottom_side_menu {
     width: 100%;
-    cursor:pointer;
 }
 
 .link_pad {
