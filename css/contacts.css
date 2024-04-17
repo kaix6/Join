@@ -1,32 +1,40 @@
+.img_width24 {
+    width: 24px;
+    height: 24px;
+}
+
+
 /* Contacts - Dialog add Contact */
 
 .dialog_add_contact_bg {
     position: fixed;
     display: flex;
     justify-content: center;
-/*     align-items: center; */
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
     inset: 0;
     z-index: 1;
 }
 
 .dialog_add_contact {
-
-    width: 93%;
-    margin-top: 83px;
-    height: calc(100vh - 83px - 86px);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 65%;
     border-radius: 30px;
+    background-color: var(--white);
 }
 
 .top_dialog_add {
-    position: relative;
+    padding:66px 48px;
     background-color: var(--menuButtonDarkblue);
     border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    height: 46%;
+    border-bottom-left-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+/*     width: 40%; */
 }
 
 .head_top_dialog_add {
@@ -36,45 +44,69 @@
     padding-left: 16px;
 }
 
+.img_logo {
+    width: 55.6px;
+    height: 66.48px;
+}
+
+.seperator_line_content_contact {
+    height: 3px;
+    width: 90px;
+    background-color: var(--lightblue);
+}
+
 .close_add_contact {
     position: absolute;
-    right: 18px;
-    top: 24px;
+    right: 48px;
+    top: 48px;
     width: 32px;
     height: 32px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+    filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);
 }
 
 .headline_add_contact {
-    font-size: 47px;
+    font-size: 61px;
     font-weight: 700;
     color: var(--white);
 }
 
 .text_add_contact_dialog {
-    font-size: 20px;
+    font-size: 27px;
     color: var(--white);
 }
 
+.create_contact_short_name {
+    background-color: var(--backgroundSpacer);
+    width: 120px;
+    height: 120px;
+    color: var(--white);
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border: 3px solid var(--white);
+    align-self: center; 
+}
+
+.create_contact_add_person_img {
+    width: 64px;
+    height: 64px;;
+}
+
 .bottom_dialog_add {
-    background-color: var(--white);
-    height: 54%;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    align-items: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background-color: var(--white);
+    padding:66px 48px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .create_contact_form {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 15px;
 }
 
 .create_contact_input {
-    min-width: 364px;
+    width: 422px;
     padding: 13px 21px;
     border: 1px solid var(--backgroundSpacer);
     border-radius: 10px;
@@ -82,6 +114,13 @@
     background-position: center right 21px;
     background-size: 24px;
     padding-left: 21px;
+    outline: none;
+    font-size: 20px;
+
+}
+
+.create_contact_input:focus {
+    border: 1px solid var(--lightblue);
 }
 
 #fullName {
@@ -101,15 +140,32 @@
     color: var(--backgroundSpacer);
 }
 
-.create_contact_btn {
-    margin-top: 15px;
+.contact_btn {
     display: flex;
     gap: 4px;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.container_button {
+    margin-top: 15px;
+    display: flex;
+    gap: 24px;
+}
+
+.cancel_create_contact_btn {
+    border: 1px solid var(--menuButtonDarkblue);
+    color: var(--menuButtonDarkblue);
+}
+
+.create_contact_btn {
     border: none;
     background-color: var(--menuButtonDarkblue);
     color: var(--white);
-    padding: 18px 10px;
-    border-radius: 10px;
+}
+
+.text_cancel_create_contact_btn {
+    font-size: 20px;
 }
 
 .text_create_contact_btn {
@@ -117,9 +173,12 @@
     font-weight: 700;
 }
 
+
+.img_cancel_checked_btn {
+    filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);
+}
+
 .img_checked_btn {
-    width: 24px;
-    height: 24px;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
 }
 
@@ -146,7 +205,6 @@
     background-color: var(--menuButtonDarkblue);
     width: 352px;
     padding: 12px 0px;
-    cursor:pointer;
     display: flex;
     gap: 16px;
     justify-content: center;
@@ -191,7 +249,6 @@
     display: flex;
     gap: 35px;
     padding: 15px 24px;
-    cursor:pointer;
 }
 
 @media(min-width: 841px) {
@@ -308,13 +365,6 @@
     display: flex;
     gap: 13px;
     align-items: center;
-    cursor: pointer;
-}
-
-.contact_edit_icon,
-.contact_delete_icon {
-    height: 24px;
-    width: 24px;
 }
 
 .edit_content:hover .contact_edit_icon,
@@ -352,6 +402,78 @@
 /* Responsive */
 
 @media(max-width: 840px) {
+        /* Contacts - Dialog add Contact */
+
+        .create_contact_short_name {
+            z-index: 1;
+            position: absolute;
+            top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+        }
+
+        .dialog_add_contact {
+            flex-direction: column;
+            width: 93%;
+            height: calc(100vh - 90px - 86px);
+        }
+
+        .top_dialog_add {
+            padding-left: 24px;
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: unset;
+            height: 46%;
+        }
+
+        .img_logo {
+            display: none;
+        }
+
+        .head_top_dialog_add {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-left: 16px;
+        }
+
+        .close_add_contact {
+            right: 18px;
+            top: 24px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+        }
+
+        .headline_add_contact {
+            font-size: 47px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .text_add_contact_dialog {
+            font-size: 20px;
+            color: var(--white);
+        }
+
+        .bottom_dialog_add {
+            height: 54%;
+            border-bottom-left-radius: 30px;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .create_contact_form {
+            align-items: center;
+        }
+
+        .create_contact_input {
+            max-width: 364px;
+        }
+
+        .cancel_create_contact_btn {
+            display: none;
+        }
+
+        .create_contact_btn {
+            padding: 18px 10px;
+        }
+
         /* Contacts */
 
         .main_contacts {
@@ -414,7 +536,7 @@
         display: flex;
         width: 32px;
         height: 32px;
-        cursor:pointer;
+
     }
     .seperator_line_content {
         height: 3px;
