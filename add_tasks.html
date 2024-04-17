@@ -30,13 +30,13 @@
             <form class="addTasksLeft">
               <div>
                 <label class="fontUnderHeadlinesAddTasks" for="title"
-                  >Title</label
+                  >Title<span style="color: red">*</span></label
                 >
                 <br />
                 <input type="text" id="title" placeholder="Enter a title" />
               </div>
 
-              <div style="margin-top: 12px">
+              <div style="margin-top: 16px">
                 <label class="fontUnderHeadlinesAddTasks" for="description"
                   >Description</label
                 >
@@ -50,7 +50,7 @@
                 ></textarea>
               </div>
 
-              <div style="margin-top: 12px">
+              <div style="margin-top: 16px">
                 <label class="fontUnderHeadlinesAddTasks" for="assigned"
                   >Assigned to</label
                 >
@@ -73,24 +73,24 @@
             <form class="addTasksRight">
               <div>
                 <label class="fontUnderHeadlinesAddTasks" for="date"
-                  >Due date</label
+                  >Due date<span style="color: red">*</span></label
                 >
                 <br />
                 <input type="date" id="date" placeholder="dd/mm/yyyy" />
               </div>
 
-              <div class="prio">
+              <div class="prio fontUnderHeadlinesAddTasks">
                 Prio
-                <div>
-                  <button>Urgent</button>
-                  <button>Medium</button>
-                  <button>Low</button>
+                <div style="margin-top: 8px; display: flex; justify-content: space-between;">
+                  <button class="buttonPrio">Urgent <img src="assets/img/add_task/prio_urgent.svg" alt=""></button>
+                  <button class="buttonPrio">Medium <img src="assets/img/add_task/prio_medium.svg" alt=""></button>
+                  <button class="buttonPrio">Low <img src="assets/img/add_task/prio_low.svg" alt=""></button>
                 </div>
               </div>
 
-              <div>
+              <div style="margin-top: 16px">
                 <label class="fontUnderHeadlinesAddTasks" for="assigned"
-                  >Category</label
+                  >Category<span style="color: red">*</span></label
                 >
                 <br />
 
@@ -105,7 +105,7 @@
                 </select>
               </div>
 
-              <div>
+              <div style="margin-top: 16px">
                 <label class="fontUnderHeadlinesAddTasks" for="assigned"
                   >Subtasks</label
                 >
@@ -122,6 +122,16 @@
                 </select>
               </div>
             </form>
+          </div>
+          <div class="footerAddTasks">
+            <div class="footerAddTasksContainer">
+              <p><span style="color: red">*</span>This field is required</p>
+
+              <div>
+                <button>Clear</button>
+                <button>Create Task</button>
+              </div>
+            </div>
           </div>
         </section>
       </div>
