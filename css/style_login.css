@@ -1,4 +1,5 @@
 body {
+    font-family: 'Open Sans';
     max-width: 1400px;
     margin: 0;
     background-color: rgb(246, 247, 248)
@@ -50,6 +51,8 @@ body {
 }
 
 .button-login-blue {
+    font-family: 'Open Sans';
+    font-weight: 900;
     height: 49px;
     background-color: var(--menuButtonDarkblue);
     color: var(--white);
@@ -57,6 +60,9 @@ body {
 }
 
 .button-login-white {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
     height: 49px;
     background-color: var(--white);
     color: var(--menuButtonDarkblue);
@@ -65,12 +71,14 @@ body {
 
 .input-with-image {
     background-size: 20px 20px;
-    /* set the size of your image */
     background-position: right;
-    /* set the position of your image */
     background-repeat: no-repeat;
     padding-left: 30px;
-    /* add some padding to make room for the image */
+}
+
+input {
+    font-family: 'Open Sans';
+    font-weight: 900;
 }
 
 .b-img-email {
@@ -83,4 +91,10 @@ body {
 
 .b-img-person {
     background-image: url("/assets/img/logIn_SignUp/person.svg");
+}
+
+footer {
+    position: absolute;
+    bottom: 40px;
+    width: 90%;
 }
