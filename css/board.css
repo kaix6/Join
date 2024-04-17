@@ -9,11 +9,12 @@
     margin-bottom: 100px;
     }
     
-    .board-column{
+    .board-headline{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 250px;
+    margin-bottom: 16px;
     }
     
     .d-flex-start{
@@ -34,6 +35,12 @@
         background-color: var(--activeClickMenuBlue);
         padding: 16px;
         height: 40px;
+        cursor: pointer;
+        transition: 0.1s;
+    }
+
+    .add-task-button:hover{
+        background-color: var(--lightblue);
     }
 
     .add-task-button p{
@@ -68,6 +75,22 @@
     .search-field img{
         width: 16px;
         margin-right: 16px;
+        cursor: pointer;
+    }
+
+    .search-field img:hover{
+        border-radius: 100px;
+        background-color: #f0f0f0;
+        transform: scale(1.1);
+    }
+
+    .no-task-div{
+        text-align: center;
+        padding: 8px;
+        background-color: #e2e2e2;
+        color: var(--grey);
+        border-radius: 8px;
+        border: 1px dashed var(--grey);
     }
 
     /* Board - End */
