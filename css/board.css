@@ -16,6 +16,10 @@
     width: 250px;
     margin-bottom: 16px;
     }
+
+    .board-column{
+        margin-bottom: 16px;
+    }
     
     .d-flex-start{
         display: flex;
@@ -94,3 +98,47 @@
     }
 
     /* Board - End */
+
+    /* Responsive */
+
+@media(max-width: 840px) {
+    .h1-container{
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    h1{
+        margin-bottom: 24px;
+    }
+
+    .board-search-add{
+        width: 100%;
+    }
+
+    .search-field{
+        width: 100vw;
+    }
+
+    .add-task-button{
+        display: none;
+    }
+
+    .d-flex-start{
+        flex-direction: column;
+    }
+
+    .board-headline{
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 500px){
+    .content-board{
+        margin-top: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-bottom: 8px;
+    }
+}
