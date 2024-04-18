@@ -65,17 +65,19 @@
   margin-top: 8px;
 }
 
-#assignedTo {
+#assignedTo,
+#category,
+#subtask {
   font-size: 20px;
   width: 80%;
-  height: 48pxpx;
+  height: 48px;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
   appearance: none;
-  -webkit-appearance: none; /* bekomme den fehler nicht weg, ist für Standard Selector der hässlichen background macht */
+  -webkit-appearance: none;
 }
 
 .prio {
@@ -126,6 +128,7 @@
   padding: 16px;
   gap: 4px;
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .createButtonAddTasks {
@@ -147,8 +150,24 @@
 
 select {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
-  background-image: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>'); /* Pfeil */
+  background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
   background-repeat: no-repeat;
   background-position: right 16px top 50%; /* Positionierung des Pfeils */
-  background-size: 14px auto; /* Größe des Pfeils */
+  background-size: 10px auto; /* Größe des Pfeils */
+}
+
+#subtask {
+  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+  background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
+  background-repeat: no-repeat;
+  background-position: right 16px top 50%; /* Positionierung des Pfeils */
+  background-size: 12px auto; /* Größe des Pfeils */
+}
+
+#date {
+  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+  background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
+  background-repeat: no-repeat;
+  background-position: right 16px top 50%; /* Positionierung des Pfeils */
+  background-size: 26px auto; /* Größe des Pfeils */
 }
