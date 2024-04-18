@@ -6,89 +6,104 @@
     <title>Help | Join</title>
     <script src="script.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="colors.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/template.css">
+    <link rel="stylesheet" href="/css/formal-content.css">
 </head>
 <body onload="includeHTML()">
-
-<div class="container-navi-content">
-
-    <div w3-include-html="assets/templates/side_menu.html"></div>
-
-    <div>
-
-        <div w3-include-html="assets/templates/header.html"></div>
-
-        <div class="content">
-            <div class="h1-container">
-                <h1 class="margin-bottom-32px">Help</h1>
-                <a class="arrow-left pointer">
-                    <img src="/img/arrow-left-line.png">
-                </a>
+    <body class="flex_dir_c" onload="includeHTML()">
+    
+        <div class="wrapped_maxWidth">
+    
+            <div class="right_section flex_dir_c">
+    
+                <!--      Section header    -->
+    
+                <div w3-include-html="assets/templates/header.html"></div>
+    
+                <!--      Section header    -->
+    
+    
+                <section id="main_container">
+                    <div class="content">
+                        <div class="h1-container">
+                            <h1 class="margin-bottom-32px">Help</h1>
+                            <a class="pointer">
+                                <img src="/assets/img/general/arrow_left_line.svg">
+                            </a>
+                        </div>
+                        <div>
+                            <p class="margin-bottom-24px"> Welcome to the help page for <a class="a-join">Join</a>, your guide to using our kanban project management tool. Here, we'll provide an overview of what <a class="a-join">Join</a> is, how it can benefit you, and how to use it.</p> 
+            
+                            <h2 class="margin-bottom-16px">What is Join?</h2>
+                            
+                            <p class="margin-bottom-16px"><a class="a-join">Join</a> is a kanban-based project management tool designed and built by a group of dedicated students as part of their web development bootcamp at the Developer Akademie.</p>
+            
+                            <p class="margin-bottom-16px">Kanban, a Japanese term meaning &quot;billboard&quot;, is a highly effective method to visualize work, limit work-in-progress, and maximize efficiency (or flow). <a class="a-join">Join</a> leverages the principles of kanban to help users manage their tasks and projects in an intuitive, visual interface.</p>
+            
+                            <p class="margin-bottom-24px">It is important to note that <a class="a-join">Join</a> is designed as an educational exercise and is not intended for extensive business usage. While we strive to ensure the best possible user experience, we cannot guarantee consistent availability, reliability, accuracy, or other aspects of quality regarding <a class="a-join">Join</a>.</p> 
+                                
+                            <h2 class="margin-bottom-24px">How to use it</h2>
+                            
+                            <p class="margin-bottom-16px">Here is a step-by-step guide on how to use <a class="a-join">Join</a>:</p>
+            
+                            <div>
+                                <div class="list">
+                                    <h2>1.</h2>
+                                    <div class="list-textbox">
+                                        <h3 class="margin-0">Exploring the Board</h3>
+                                        <p class="margin-bottom-16px">When you log in to <a class="a-join">Join</a>, you'll find a default board. This board represents your project and contains four default lists: "To Do", "In Progress", &ldquo;Await feedback&rdquo; and "Done".</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <h2>2.</h2>
+                                    <div class="list-textbox">
+                                        <h3 class="margin-0">Creating Contacts</h3>
+                                        <p class="margin-bottom-16px">In <a class="a-join">Join</a>, you can add contacts to collaborate on your projects. Go to the "Contacts" section, click on "New contact", and fill in the required information. Once added, these contacts can be assigned tasks and they can interact with the tasks on the board.</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <h2>3.</h2>
+                                    <div class="list-textbox">
+                                        <h3 class="margin-0">Adding Cards</h3>
+                                        <p class="margin-bottom-16px">Now that you've added your contacts, you can start adding cards. Cards represent individual tasks. Click the "+" button under the appropriate list to create a new card. Fill in the task details in the card, like task name, description, due date, assignees, etc.</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <h2>4.</h2>
+                                    <div class="list-textbox">
+                                        <h3 class="margin-0">Moving Cards</h3>
+                                        <p class="margin-bottom-16px">As the task moves from one stage to another, you can reflect that on the board by dragging and dropping the card from one list to another.</p>
+                                    </div>
+                                </div>
+                                <div class="list">
+                                    <h2>5.</h2>
+                                    <div class="list-textbox">
+                                        <h3 class="margin-0">Deleting Cards</h3>
+                                        <p class="margin-bottom-16px">Once a task is completed, you can either move it to the "Done" list or delete it. Deleting a card will permanently remove it from the board. Please exercise caution when deleting cards, as this action is irreversible.</p>
+                                    </div>
+                                </div>
+            
+                            </div>
+            
+                            <p class="margin-bottom-16px">Remember that using <a class="a-join">Join</a> effectively requires consistent updates from you and your team to ensure the board reflects the current state of your project.</p>
+            
+                            <p class="margin-bottom-16px">Have more questions about <a class="a-join">Join</a>? Feel free to contact us at [Your Contact Email]. We're here to help you!</p>
+            
+                            <p>Enjoy using <a class="a-join">Join</a>!</p>
+                        </div>
+                    </div>
+                </section>
+    
             </div>
-            <div>
-                <p class="margin-bottom-24px"> Welcome to the help page for <a class="a-join">Join</a>, your guide to using our kanban project management tool. Here, we'll provide an overview of what <a class="a-join">Join</a> is, how it can benefit you, and how to use it.</p> 
-
-                <h2 class="margin-bottom-16px">What is Join?</h2>
-                
-                <p class="margin-bottom-16px"><a class="a-join">Join</a> is a kanban-based project management tool designed and built by a group of dedicated students as part of their web development bootcamp at the Developer Akademie.</p>
-
-                <p class="margin-bottom-16px">Kanban, a Japanese term meaning &quot;billboard&quot;, is a highly effective method to visualize work, limit work-in-progress, and maximize efficiency (or flow). <a class="a-join">Join</a> leverages the principles of kanban to help users manage their tasks and projects in an intuitive, visual interface.</p>
-
-                <p class="margin-bottom-24px">It is important to note that <a class="a-join">Join</a> is designed as an educational exercise and is not intended for extensive business usage. While we strive to ensure the best possible user experience, we cannot guarantee consistent availability, reliability, accuracy, or other aspects of quality regarding <a class="a-join">Join</a>.</p> 
-                    
-                <h2 class="margin-bottom-24px">How to use it</h2>
-                
-                <p class="margin-bottom-16px">Here is a step-by-step guide on how to use <a class="a-join">Join</a>:</p>
-
-                <div>
-                    <div class="list">
-                        <h2>1.</h2>
-                        <div class="list-textbox">
-                            <h3 class="margin-0">Exploring the Board</h3>
-                            <p class="margin-bottom-16px">When you log in to <a class="a-join">Join</a>, you'll find a default board. This board represents your project and contains four default lists: "To Do", "In Progress", &ldquo;Await feedback&rdquo; and "Done".</p>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <h2>2.</h2>
-                        <div class="list-textbox">
-                            <h3 class="margin-0">Creating Contacts</h3>
-                            <p class="margin-bottom-16px">In <a class="a-join">Join</a>, you can add contacts to collaborate on your projects. Go to the "Contacts" section, click on "New contact", and fill in the required information. Once added, these contacts can be assigned tasks and they can interact with the tasks on the board.</p>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <h2>3.</h2>
-                        <div class="list-textbox">
-                            <h3 class="margin-0">Adding Cards</h3>
-                            <p class="margin-bottom-16px">Now that you've added your contacts, you can start adding cards. Cards represent individual tasks. Click the "+" button under the appropriate list to create a new card. Fill in the task details in the card, like task name, description, due date, assignees, etc.</p>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <h2>4.</h2>
-                        <div class="list-textbox">
-                            <h3 class="margin-0">Moving Cards</h3>
-                            <p class="margin-bottom-16px">As the task moves from one stage to another, you can reflect that on the board by dragging and dropping the card from one list to another.</p>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <h2>5.</h2>
-                        <div class="list-textbox">
-                            <h3 class="margin-0">Deleting Cards</h3>
-                            <p class="margin-bottom-16px">Once a task is completed, you can either move it to the "Done" list or delete it. Deleting a card will permanently remove it from the board. Please exercise caution when deleting cards, as this action is irreversible.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <p class="margin-bottom-16px">Remember that using <a class="a-join">Join</a> effectively requires consistent updates from you and your team to ensure the board reflects the current state of your project.</p>
-
-                <p class="margin-bottom-16px">Have more questions about <a class="a-join">Join</a>? Feel free to contact us at [Your Contact Email]. We're here to help you!</p>
-
-                <p>Enjoy using <a class="a-join">Join</a>!</p>
-            </div>
+    
+            <!--      Section Side Menu   -->
+    
+            <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
+    
+            <!--      Section Side Menu    -->
+    
         </div>
-    </div>
-</div>    
-</body>
-</html>
+    </html>
