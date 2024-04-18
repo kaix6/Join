@@ -1,6 +1,6 @@
 .headlineAddTasks {
   font-size: 61px;
-  margin-left: 153px;
+  margin-left: 96px;
   margin-top: 70px;
 }
 
@@ -11,9 +11,9 @@
 }
 
 .mainAddTasks {
-  margin-left: 153px;
+  margin-left: 96px;
   display: flex;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .addTasksLeft {
@@ -74,6 +74,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  appearance: none;
   -webkit-appearance: none; /* bekomme den fehler nicht weg, ist für Standard Selector der hässlichen background macht */
 }
 
@@ -100,14 +101,14 @@
 }
 
 .footerAddTasks {
-  margin-left: 153px;
+  margin-left: 96px;
   margin-bottom: 80px;
 }
 
 .footerAddTasksContainer {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: 81%;
   align-items: center;
 }
 

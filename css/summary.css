@@ -12,7 +12,7 @@
     width: 625px;
     height: 73px;
     margin-top: 70px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
   }
   
   .containerSummary {
@@ -22,7 +22,6 @@
   .mainSummary {
     width: 560px;
     height: 562px;
-    top: 335px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
