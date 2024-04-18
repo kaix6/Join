@@ -239,8 +239,6 @@ h1{
     scroll-behavior: smooth;
 }
 
-
-
 .d_none {
     display: none;
 }
@@ -275,6 +273,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: var(--backgroundblue);
+    overflow-x: hidden;
 }
 
 .wrapped_maxWidth {

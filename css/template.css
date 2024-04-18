@@ -1,5 +1,6 @@
 /* Header */
 
+
 #header {
     display: flex;
     justify-content: space-between;
@@ -45,6 +46,36 @@
     font-weight: 700;
 }
 
+/* Submenu Header */
+
+.submenu_header_style {
+    border-radius: 20px 0 20px 20px;
+    right: 10px;
+    position: absolute;
+    padding: 10px;
+    background-color: var(--menuButtonDarkblue);
+    transform: translateX(160.97px);
+}
+
+.submenu_header {
+    top: 96px;
+}
+
+.submenu_header_mobile {
+    top: 60px;
+    transition: all 100ms ease-out;
+}
+
+.submenu_header a,
+.submenu_header_mobile a {
+    margin: 0;
+    color: var(--fontGrey);
+    padding: 13px;
+}
+
+.show_submenu_header {
+    transform: translateX(0px);
+}
 
 /* Side Menu */
 
@@ -124,7 +155,6 @@
     font-weight: 700;
 }
 
-
 /* Responsive */
 
 @media(max-width: 840px) {
@@ -187,3 +217,5 @@
         border-radius: 16px;
     }
 }
+
+
