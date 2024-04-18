@@ -31,7 +31,6 @@
     .board-search-add{
         display: flex;
         gap: 24px;
-        margin-right: 40px;
     }
 
     .add-task-button{
@@ -112,6 +111,14 @@
     /* Board - End */
 
     /* Responsive */
+
+
+@media(max-width: 1000px) {
+    
+    .content-board{
+        margin-right: 30px;
+    }
+}
 
 @media(max-width: 840px) {
 
