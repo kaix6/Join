@@ -18,22 +18,22 @@
 
             <!--      Section Dialogbox Add Contact    -->
 
-        <div class="dialog_add_contact_bg d_none">
-            <div class="dialog_add_contact">
-                <img class="close_add_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
-            <div class="top_dialog_add">
-                <div class="head_top_dialog_add">
+        <div class="dialog_add_edit_contact_bg d_none">
+            <div class="dialog_add_edit_contact">
+                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+            <div class="top_dialog_add_edit">
+                <div class="head_top_dialog_add_edit">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
-                    <h3 class="headline_add_contact">Add contact</h3>
-                    <p class="text_add_contact_dialog">Tasks are better with a team</p>
+                    <h3 class="headline_add_edit_contact">Add contact</h3>
+                    <p class="text_add_edit_contact_dialog">Tasks are better with a team</p>
                     <div class="seperator_line_content_contact">
                     </div>
                 </div>
             </div>
             <div class="create_contact_short_name round_div">
-                <img class="create_contact_add_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
+                <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
             </div>
-            <div class="bottom_dialog_add">
+            <div class="bottom_dialog_add_edit">
                 <form onsubmit="return false;" class="create_contact_form">
                     <label for="fullName"></label>
                     <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
@@ -56,7 +56,47 @@
         </div>
         </div>
 
-            <!--      Section Dialogbox Add Contact    -->
+            <!--      End Section Dialogbox Add Contact    -->
+
+            <!--      Section Dialogbox Edit Contact    -->
+
+        <div class="dialog_add_edit_contact_bg /d_none">
+            <div class="dialog_add_edit_contact">
+                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+            <div class="top_dialog_add_edit">
+                <div class="head_top_dialog_add_edit">
+                    <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
+                    <h3 class="headline_add_edit_contact">Edit contact</h3>
+                    <div class="seperator_line_content_contact">
+                    </div>
+                </div>
+            </div>
+            <div class="create_contact_short_name_edit round_div">
+                <p class="short_name_text_overview_edit">AM</p>
+            </div>
+            <div class="bottom_dialog_add_edit">
+                <form onsubmit="return false;" class="create_contact_form">
+                    <label for="fullName"></label>
+                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
+                    <label for="mail"></label>
+                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
+                    <label for="telNumber"></label>
+                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <div class="container_button">
+                        <button class="cancel_create_contact_edit_btn contact_btn pointer">
+                            <p class="text_cancel_create_contact_edit_btn">Delete</p>
+                        </button>
+                        <button class="create_contact_btn contact_btn pointer">
+                            <p class="text_create_contact_btn">Save</p>
+                            <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+             <!--      End Section Dialogbox Edit Contact    -->
 
         <div class="right_section flex_dir_c">
 
@@ -64,10 +104,13 @@
 
             <div w3-include-html="./assets/templates/header.html"></div>
 
-            <!--      Section header    -->
+            <!--      End Section header    -->
 
 
             <section id="main_container" class="main_contacts">
+
+                 <!--      Section Contact    -->
+
                 <div id="content_contacts" class="/d_none">
                     <div class="add_change_btn_mobile pointer">
                         <p class="text_add_contact">Add new contact</p>
@@ -161,6 +204,10 @@
                     </div>
                 </div>
 
+                 <!--     End  Section Contact    -->
+
+                 <!--      Section Contact View   -->
+
                 <div id="contact_view" class="/d_none">
                     <div class="add_change_btn_mobile hide_desktop">
                         <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
@@ -210,6 +257,8 @@
                         </div>
                     </div>
                 </div>
+
+                 <!--      End Section Contact View   -->
             </section>
 
         </div>
@@ -218,7 +267,7 @@
 
         <div class="side_menu_sticky" w3-include-html="./assets/templates/side_menu.html"></div>
 
-        <!--      Section Side Menu    -->
+        <!--      End Section Side Menu    -->
 
     </div>
 
