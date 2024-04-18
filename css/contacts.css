@@ -4,7 +4,7 @@
 }
 
 
-/* Contacts - Dialog add Contact */
+/* Contacts - Dialog add & edit Contact */
 
 .dialog_add_edit_contact_bg {
     position: fixed;
@@ -27,14 +27,13 @@
 }
 
 .top_dialog_add_edit {
-    padding:66px 48px;
+    padding: 66px 48px;
     background-color: var(--menuButtonDarkblue);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-/*     width: 40%; */
 }
 
 .head_top_dialog_add_edit {
@@ -99,7 +98,7 @@
     align-items: center;
     display: flex;
     background-color: var(--white);
-    padding:66px 48px;
+    padding: 66px 48px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
@@ -410,7 +409,7 @@
 /* Responsive */
 
 @media(max-width: 840px) {
-        /* Contacts - Dialog add Contact */
+        /* Contacts - Dialog add & edit Contact */
 
         .create_contact_short_name_edit,
         .create_contact_short_name {
@@ -515,64 +514,64 @@
             display: none;
         }
 
-            /* Contact Overview*/
+        /* Contact Overview*/
 
-    .hide_desktop {
-        display: flex;
-    }
+        .hide_desktop {
+            display: flex;
+        }
 
-    .left_part_overview_second {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-    }
+        .left_part_overview_second {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+        }
 
-    .head_overview {
-        display: flex;
-        justify-content: space-between;
-        padding: 48px 16px;
-    }  
-    .left_part_overview {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        padding: 0px;
-    } 
-    .headline_contacts {
-        font-size: 47px;
-    }   
-    .text_contacts {
-        font-size: 20px;
-    }   
-    .right_part_overview {
-        display: flex;
-        width: 32px;
-        height: 32px;
+        .head_overview {
+            display: flex;
+            justify-content: space-between;
+            padding: 48px 16px;
+        }  
+        .left_part_overview {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 0px;
+        } 
+        .headline_contacts {
+            font-size: 47px;
+        }   
+        .text_contacts {
+            font-size: 20px;
+        }   
+        .right_part_overview {
+            display: flex;
+            width: 32px;
+            height: 32px;
 
-    }
-    .seperator_line_content {
-        height: 3px;
-        width: 90px;
-    }
-    .floating_contact {
-        padding: 0px 16px;
-    }
-    .head_floating_content {
-        gap: 20px;
-    }
-    .short_name_overview {
-        width: 80px;
-        height: 80px;
-    }
-    .short_name_text_overview {
-        font-size: 27px;
-        font-weight: 400;
-    }
-    .name_overview {
-        font-size: 36px;
-        font-weight: bold;
-    }
-    .editable_content {
-        display: none;
-    }
+        }
+        .seperator_line_content {
+            height: 3px;
+            width: 90px;
+        }
+        .floating_contact {
+            padding: 0px 16px;
+        }
+        .head_floating_content {
+            gap: 20px;
+        }
+        .short_name_overview {
+            width: 80px;
+            height: 80px;
+        }
+        .short_name_text_overview {
+            font-size: 27px;
+            font-weight: 400;
+        }
+        .name_overview {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .editable_content {
+            display: none;
+        }
 }
