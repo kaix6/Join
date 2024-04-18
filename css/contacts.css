@@ -1,0 +1,579 @@
+.img_width24 {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Contacts - Dialog add & edit Contact */
+
+.dialog_add_edit_contact_bg {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    inset: 0;
+    z-index: 1;
+}
+
+.dialog_add_edit_contact {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 65%;
+    border-radius: 30px;
+    background-color: var(--white);
+}
+
+.top_dialog_add_edit {
+    padding: 66px 48px;
+    background-color: var(--menuButtonDarkblue);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.head_top_dialog_add_edit {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-left: 16px;
+}
+
+.img_logo {
+    width: 55.6px;
+    height: 66.48px;
+}
+
+.seperator_line_content_contact {
+    height: 3px;
+    width: 90px;
+    background-color: var(--lightblue);
+}
+
+.close_add_edit_contact {
+    position: absolute;
+    right: 48px;
+    top: 48px;
+    width: 32px;
+    height: 32px;
+    filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);
+}
+
+.headline_add_edit_contact {
+    font-size: 61px;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.text_add_edit_contact_dialog {
+    font-size: 27px;
+    color: var(--white);
+}
+
+.create_contact_short_name_edit,
+.create_contact_short_name {
+    background-color: var(--backgroundSpacer);
+    width: 120px;
+    height: 120px;
+    color: var(--white);
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border: 3px solid var(--white);
+    align-self: center; 
+}
+
+.create_contact_short_name_edit {
+    background-color: var(--tagOrange);
+}
+
+.create_contact_add_edit_person_img {
+    width: 64px;
+    height: 64px;;
+}
+
+.bottom_dialog_add_edit {
+    align-items: center;
+    display: flex;
+    background-color: var(--white);
+    padding: 66px 48px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.create_contact_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create_contact_input {
+    width: 422px;
+    padding: 13px 21px;
+    border: 1px solid var(--backgroundSpacer);
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center right 21px;
+    background-size: 24px;
+    padding-left: 21px;
+    outline: none;
+    font-size: 20px;
+
+}
+
+.create_contact_input:focus {
+    border: 1px solid var(--lightblue);
+}
+
+#fullName {
+    background-image: url(../assets/img/contacts/person.svg);
+}
+
+#mail {
+    background-image: url(../assets/img/contacts/mail.svg);
+}
+
+#telNumber {
+    background-image: url(../assets/img/contacts/call.svg);
+}
+
+.create_contact_input::placeholder {
+    font-size: 20px;
+    color: var(--backgroundSpacer);
+}
+
+.contact_btn {
+    display: flex;
+    gap: 4px;
+    padding: 18px 10px;
+    border-radius: 10px;
+}
+
+.container_button {
+    margin-top: 15px;
+    display: flex;
+    gap: 24px;
+}
+
+.cancel_create_contact_edit_btn,
+.cancel_create_contact_btn {
+    border: 1px solid var(--menuButtonDarkblue);
+    color: var(--menuButtonDarkblue);
+}
+
+.create_contact_btn {
+    border: none;
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+}
+
+.text_cancel_create_contact_edit_btn,
+.text_cancel_create_contact_btn {
+    font-size: 20px;
+}
+
+.text_create_contact_btn {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+
+.img_cancel_checked_btn {
+    filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);
+}
+
+.img_checked_btn {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+}
+
+/* Contacts */
+
+.main_contacts {
+    display: flex;
+    box-shadow: 4px 0px 6px 0px #00000014;
+}
+
+#content_contacts {
+    box-shadow: 4px 0px 6px 0px #00000014;
+    background-color: var(--white);
+    padding: 32px 52px; /* zentriert content mittig */
+    width: 456px;
+/*     display: flex;
+    flex-direction: column;
+    align-items: center; */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.add_change_btn_mobile {
+    background-color: var(--menuButtonDarkblue);
+    width: 352px;
+    padding: 12px 0px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+@media(min-width: 841px) {
+    .add_change_btn_mobile:hover {
+        background-color: var(--lightblue);
+    }
+}
+
+.text_add_contact {
+    font-size: 21px;
+    color: var(--white);
+}
+
+.add_person_more_icon {
+    width: 32px;
+    height: 32px;
+}
+
+.letter_names {
+    padding: 17px 36px;
+}
+
+.head_letters {
+    font-size: 20px;
+}
+
+.horizontal_line_content {
+    width: 352px;
+    padding: 8px 0px;
+}
+
+.horizontal_line {
+    border: 1px solid var(--backgroundSpacer);
+}
+
+.contact {
+    display: flex;
+    gap: 35px;
+    padding: 15px 24px;
+}
+
+@media(min-width: 841px) {
+    .contact:hover {
+        border-radius: 10px;
+        background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    }
+}
+
+.short_name {
+    background-color: var(--tagOrange);
+    width: 42px;
+    height: 42px;
+    color: var(--white);
+}
+
+.short_name_text {
+    font-size: 12px;
+}
+
+.name_data {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact_fullName {
+    font-size: 20px;
+}
+
+.contact_mail,
+.overview_mail {
+    color: var(--fontColorMail);
+}
+
+/* Contact Overview*/
+
+.hide_desktop {
+    display: none;
+}
+
+.left_part_overview {
+    display: flex;
+    align-items: center;
+    padding-top: 110px;
+    padding-left: 55px;
+    gap: 30px;
+}
+
+.left_part_overview_second {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+    align-items: center;
+}
+
+.headline_contacts {
+    font-size: 61px;
+}  
+
+.text_contacts {
+    font-size: 27px;
+} 
+
+.seperator_line_content {
+    height: 90px;
+    width: 3px;
+    background-color: var(--lightblue);
+}
+
+.floating_contact {
+    display: flex;
+    flex-direction: column;
+    padding: 32px 55px;
+    gap: 21px;
+}
+
+.head_floating_content {
+    display: flex;
+    gap: 54px;
+    align-items: center;
+}
+
+.short_name_overview {
+    background-color: var(--tagOrange);
+    border: 3px solid var(--white);
+    width: 120px;
+    height: 120px;
+    color: var(--white);
+}
+
+.short_name_text_overview_edit,
+.short_name_text_overview {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.name_overview {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.editable_content {
+    display: flex;
+    gap: 13px;
+    margin-top: 8px;
+}
+
+.edit_content {
+    width: 62px;
+}
+
+.edit_content,
+.delete_content {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+}
+
+.edit_content:hover .contact_edit_icon,
+.edit_content:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
+.delete_content:hover .contact_delete_icon,
+.delete_content:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+    font-weight: 700;
+}
+
+
+.text_information {
+    font-size: 20px;
+    padding: 25px 0px;
+}
+.contact_information {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+.contact_overview_mail,
+.contact_overview_phone {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* Responsive */
+
+@media(max-width: 840px) {
+        /* Contacts - Dialog add & edit Contact */
+
+        .create_contact_short_name_edit,
+        .create_contact_short_name {
+            z-index: 1;
+            position: absolute;
+            top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+        }
+
+        .dialog_add_edit_contact {
+            flex-direction: column;
+            width: 93%;
+            height: calc(100vh - 90px - 86px);
+        }
+
+        .top_dialog_add_edit {
+            padding-left: 24px;
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: unset;
+            height: 46%;
+        }
+
+        .img_logo {
+            display: none;
+        }
+
+        .head_top_dialog_add_edit {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-left: 16px;
+        }
+
+        .close_add_edit_contact {
+            right: 18px;
+            top: 24px;
+            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+        }
+
+        .headline_add_edit_contact {
+            font-size: 47px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .text_add_edit_contact_dialog {
+            font-size: 20px;
+            color: var(--white);
+        }
+
+        .bottom_dialog_add_edit {
+            height: 54%;
+            border-bottom-left-radius: 30px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .create_contact_form {
+            gap: 10px;
+            align-items: center;
+        }
+
+        .create_contact_input {
+            max-width: 364px;
+            padding: 10px 21px;
+        }
+
+        .cancel_create_contact_btn {
+            display: none;
+        }
+
+        .create_contact_btn {
+            padding: 18px 10px;
+        }
+
+        /* Contacts */
+
+        .main_contacts {
+            flex-direction: column;
+        }
+        #content_contacts {
+            height: 100%;
+            width: unset;
+            max-width: 456px;
+            padding: 32px 38px; /* zentriert content mittig */
+        }
+        .add_change_btn_mobile {
+            position: absolute;
+            bottom: 109px;
+            left: 356px;
+            background-color: var(--menuButtonDarkblue);
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 4px 0px #00000040;
+        }
+        .add_person_more_icon {
+            width: 32px;
+            height: 32px;
+        }
+        .text_add_contact {
+            display: none;
+        }
+
+        /* Contact Overview*/
+
+        .hide_desktop {
+            display: flex;
+        }
+
+        .left_part_overview_second {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .head_overview {
+            display: flex;
+            justify-content: space-between;
+            padding: 48px 16px;
+        }  
+        .left_part_overview {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 0px;
+        } 
+        .headline_contacts {
+            font-size: 47px;
+        }   
+        .text_contacts {
+            font-size: 20px;
+        }   
+        .right_part_overview {
+            display: flex;
+            width: 32px;
+            height: 32px;
+
+        }
+        .seperator_line_content {
+            height: 3px;
+            width: 90px;
+        }
+        .floating_contact {
+            padding: 0px 16px;
+        }
+        .head_floating_content {
+            gap: 20px;
+        }
+        .short_name_overview {
+            width: 80px;
+            height: 80px;
+        }
+        .short_name_text_overview {
+            font-size: 27px;
+            font-weight: 400;
+        }
+        .name_overview {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .editable_content {
+            display: none;
+        }
+}
+
+

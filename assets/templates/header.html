@@ -1,11 +1,27 @@
-<!-- Desktop & Mobile Design -->
+<!-- Submenu Header -->
+
+<div class="submenu_header_style submenu_header flex_dir_c">
+    <a href="../../legal_notice.html">Legal Notice</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../login.html">Log Out</a>
+</div>
+
+
+<div class="submenu_header_style submenu_header_mobile flex_dir_c">
+    <a href="../../help.html">Help</a>
+    <a href="../../legal_notice.html">Legal Notice</a>
+    <a href="../../privacy.html">Privacy Policy</a>
+    <a href="../../login.html">Log Out</a>
+</div>
+
+<!-- End Submenu Header -->
 
 <section id="header">
     <p class="headline">Kanban Project Management Tool</p>
     <img class="logo_header_mobile d_none" src="./assets/img/general/logo_favicon.svg" alt="logo join">
     <div class="profile_header_mobile">
-        <img class="header_help_icon" src="./assets/img/general/help.svg" alt="help icon">
-        <div class="border_profile round_div">
+        <img class="header_help_icon pointer" src="./assets/img/general/help.svg" alt="help icon">
+        <div class="border_profile pointer round_div" onclick="showSubmenuHeader()">
             <p class="text_profile_header">SM</p>
         </div>
     </div>

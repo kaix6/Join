@@ -6,10 +6,12 @@
     <title>Contacts</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
     <link rel="stylesheet" href="./css/colors.css">
-    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/template.css">
+    <link rel="stylesheet" href="./css/fonts.css">
     <script defer src="script.js"></script>
+    <script defer src="js/template.js"></script>
 </head>
 <body class="flex_dir_c" onload="includeHTML()">
 
@@ -17,24 +19,85 @@
 
             <!--      Section Dialogbox Add Contact    -->
 
-        <div class="dialog_add_contact_bg d_none">
-            <div class="dialog_add_contact">
-            <div class="top_dialog_add">
-                <img class="close_add_contact" src="./assets/img/general/close.svg" alt="close icon">
-                <div class="head_top_dialog_add">
-                    <h3 class="headline_add_contact">Add contact</h3>
-                    <p class="text_add_contact_dialog">Tasks are better with a team</p>
-                    <div class="seperator_line_content">
+        <div class="dialog_add_edit_contact_bg d_none">
+            <div class="dialog_add_edit_contact">
+                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+            <div class="top_dialog_add_edit">
+                <div class="head_top_dialog_add_edit">
+                    <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
+                    <h3 class="headline_add_edit_contact">Add contact</h3>
+                    <p class="text_add_edit_contact_dialog">Tasks are better with a team</p>
+                    <div class="seperator_line_content_contact">
                     </div>
                 </div>
             </div>
-            <div class="bottom_dialog_add">
-                
+            <div class="create_contact_short_name round_div">
+                <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
+            </div>
+            <div class="bottom_dialog_add_edit">
+                <form onsubmit="return false;" class="create_contact_form">
+                    <label for="fullName"></label>
+                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
+                    <label for="mail"></label>
+                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
+                    <label for="telNumber"></label>
+                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <div class="container_button">
+                        <button class="cancel_create_contact_btn contact_btn pointer">
+                            <p class="text_cancel_create_contact_btn">Cancel</p>
+                            <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
+                        </button>
+                        <button class="create_contact_btn contact_btn pointer">
+                            <p class="text_create_contact_btn">Create contact</p>
+                            <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         </div>
 
-            <!--      Section Dialogbox Add Contact    -->
+            <!--      End Section Dialogbox Add Contact    -->
+
+            <!--      Section Dialogbox Edit Contact    -->
+
+        <div class="dialog_add_edit_contact_bg d_none">
+            <div class="dialog_add_edit_contact">
+                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+            <div class="top_dialog_add_edit">
+                <div class="head_top_dialog_add_edit">
+                    <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
+                    <h3 class="headline_add_edit_contact">Edit contact</h3>
+                    <div class="seperator_line_content_contact">
+                    </div>
+                </div>
+            </div>
+            <div class="create_contact_short_name_edit round_div">
+                <p class="short_name_text_overview_edit">AM</p>
+            </div>
+            <div class="bottom_dialog_add_edit">
+                <form onsubmit="return false;" class="create_contact_form">
+                    <label for="fullName"></label>
+                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
+                    <label for="mail"></label>
+                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
+                    <label for="telNumber"></label>
+                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <div class="container_button">
+                        <button class="cancel_create_contact_edit_btn contact_btn pointer">
+                            <p class="text_cancel_create_contact_edit_btn">Delete</p>
+                        </button>
+                        <button class="create_contact_btn contact_btn pointer">
+                            <p class="text_create_contact_btn">Save</p>
+                            <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+             <!--      End Section Dialogbox Edit Contact    -->
 
         <div class="right_section flex_dir_c">
 
@@ -42,12 +105,15 @@
 
             <div w3-include-html="./assets/templates/header.html"></div>
 
-            <!--      Section header    -->
+            <!--      End Section header    -->
 
 
             <section id="main_container" class="main_contacts">
+
+                 <!--      Section Contact    -->
+
                 <div id="content_contacts" class="/d_none">
-                    <div class="add_change_btn_mobile">
+                    <div class="add_change_btn_mobile pointer">
                         <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
@@ -58,7 +124,7 @@
                         <div class="horizontal_line_content">
                             <div class="horizontal_line"></div>
                         </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">AM</p>
                                 </div>
@@ -67,7 +133,7 @@
                                     <p class="contact_mail">antom@gmail.com</p>
                                 </div>
                             </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">AS</p>
                                 </div>
@@ -84,7 +150,7 @@
                         <div class="horizontal_line_content">
                             <div class="horizontal_line"></div>
                         </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">BZ</p>
                                 </div>
@@ -101,7 +167,7 @@
                         <div class="horizontal_line_content">
                             <div class="horizontal_line"></div>
                         </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">DE</p>
                                 </div>
@@ -118,7 +184,7 @@
                         <div class="horizontal_line_content">
                             <div class="horizontal_line"></div>
                         </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">EF</p>
                                 </div>
@@ -127,7 +193,7 @@
                                     <p class="contact_mail">eva@gmail.com</p>
                                 </div>
                             </div>
-                            <div class="contact">
+                            <div class="contact pointer">
                                 <div class="short_name round_div">
                                     <p class="short_name_text">EM</p>
                                 </div>
@@ -138,6 +204,10 @@
                             </div>
                     </div>
                 </div>
+
+                 <!--     End  Section Contact    -->
+
+                 <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
                     <div class="add_change_btn_mobile hide_desktop">
@@ -152,7 +222,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="right_part_overview hide_desktop">
+                        <div class="right_part_overview pointer hide_desktop">
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
@@ -164,12 +234,12 @@
                         <div class="name_editable_content">
                             <h3 class="name_overview">Anton Mayer</h3>
                             <div class="editable_content">
-                                <div class="edit_content">
-                                    <img class="contact_edit_icon" src="assets/img/contacts/edit.svg" alt="edit icon">
+                                <div class="edit_content pointer">
+                                    <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                                     <p>Edit</p>
                                 </div>
-                                <div class="delete_content">
-                                    <img class="contact_delete_icon" src="assets/img/contacts/delete.svg" alt="delete icon">
+                                <div class="delete_content pointer">
+                                    <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
                                     <p>Delete</p>
                                 </div>
                             </div>
@@ -188,6 +258,8 @@
                         </div>
                     </div>
                 </div>
+
+                 <!--      End Section Contact View   -->
             </section>
 
         </div>
@@ -196,7 +268,7 @@
 
         <div class="side_menu_sticky" w3-include-html="./assets/templates/side_menu.html"></div>
 
-        <!--      Section Side Menu    -->
+        <!--      End Section Side Menu    -->
 
     </div>
 

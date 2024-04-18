@@ -1,5 +1,6 @@
 /* Header */
 
+
 #header {
     display: flex;
     justify-content: space-between;
@@ -45,6 +46,36 @@
     font-weight: 700;
 }
 
+/* Submenu Header */
+
+.submenu_header_style {
+    border-radius: 20px 0 20px 20px;
+    right: 10px;
+    position: absolute;
+    padding: 10px;
+    background-color: var(--menuButtonDarkblue);
+    transform: translateX(160.97px);
+}
+
+.submenu_header {
+    top: 96px;
+}
+
+.submenu_header_mobile {
+    top: 60px;
+    transition: all 100ms ease-out;
+}
+
+.submenu_header a,
+.submenu_header_mobile a {
+    margin: 0;
+    color: var(--fontGrey);
+    padding: 13px;
+}
+
+.show_submenu_header {
+    transform: translateX(0px);
+}
 
 /* Side Menu */
 
@@ -78,7 +109,6 @@
     padding: 8px 53px;
     gap: 8px;
     transition: background-color 100ms ease-in;
-    cursor:pointer;
 }
 
 @media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
@@ -88,7 +118,15 @@
 }
 
 .activeLink {
-    background-color: red;
+    background-color: var(--activeClickMenuBlue);
+}
+
+.activeLink a{
+    color: var(--white);
+}
+
+.activeLink img{
+    filter: invert(0%) sepia(40%) saturate(0%) hue-rotate(240deg) brightness(95%) contrast(106%);
 }
 
 .link_style {
@@ -102,7 +140,6 @@
 
 .bottom_side_menu {
     width: 100%;
-    cursor:pointer;
 }
 
 .link_pad {
@@ -117,7 +154,6 @@
     color: var(--lightblue);
     font-weight: 700;
 }
-
 
 /* Responsive */
 
@@ -158,7 +194,6 @@
         display: flex;
         justify-content: space-between;
         padding: 0px 16px;
-/*       padding: 16px; */
     }
     .side_menu_sticky {
         position: sticky;
@@ -167,7 +202,7 @@
     .menu_icon_text {
         flex-direction: column;
         padding: 15px 0px;
-        width: 76px;
+        width: 80px;
         gap: 10px;
     }
     .menu_icon_image {
@@ -178,4 +213,9 @@
         font-size: 14px;
         font-family: 'Open Sans';
     }
+    .activeLink {
+        border-radius: 16px;
+    }
 }
+
+
