@@ -1,0 +1,100 @@
+body {
+    font-family: 'Open Sans';
+    max-width: 1400px;
+    margin: 0;
+    background-color: rgb(246, 247, 248)
+}
+
+.d-center-space-betwen {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.display-fccc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.display-fcc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-fsr {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.gap {
+    gap: 32px;
+}
+
+.imglogo {
+    width: 100.03px;
+}
+
+.frame153 {
+    width: 652px;
+    height: 493px;
+    top: 265.5px;
+    left: 394px;
+    padding: 48px 115px 48px 115px;
+    gap: 32px;
+    border-radius: 30px;
+    opacity: 0px;
+    background-color: rgb(255, 255, 255);
+}
+
+.button-login-blue {
+    font-family: 'Open Sans';
+    font-weight: 900;
+    height: 49px;
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+    border-radius: 10px;
+}
+
+.button-login-white {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 900;
+    height: 49px;
+    background-color: var(--white);
+    color: var(--menuButtonDarkblue);
+    border-radius: 10px;
+}
+
+.input-with-image {
+    background-size: 20px 20px;
+    background-position: right;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+
+input {
+    font-family: 'Open Sans';
+    font-weight: 900;
+}
+
+.b-img-email {
+    background-image: url("/assets/img/logIn_SignUp/mail.svg");
+}
+
+.b-img-lock {
+    background-image: url("/assets/img/logIn_SignUp/lock.svg");
+}
+
+.b-img-person {
+    background-image: url("/assets/img/logIn_SignUp/person.svg");
+}
+
+footer {
+    position: absolute;
+    bottom: 40px;
+    width: 90%;
+}
