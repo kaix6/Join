@@ -110,6 +110,96 @@
 
     /* Board - End */
 
+    /* Board Task */
+
+    .task-box-small{
+        display: flex;
+        flex-direction: column;
+        background-color: var(--white);
+        padding: 16px;
+        border-radius: 16px;
+        box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
+        width: 250px;
+    }
+
+    .task-type{
+        background-color: var(--grey);
+        text-align: center;
+        border-radius: 8px;
+        color: var(--white);
+        font-weight: lighter;
+        width: fit-content;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        margin-bottom: 8px;
+    }
+
+    .task-headline{
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .task-description{
+        color: var(--fontGrey);
+        margin-bottom: 8px;
+    }
+
+    .progress-section{
+        display: flex;
+        gap: 16px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .progress{
+        height: 8px;
+        border-radius: 8px;
+        background-color: var(--backgroundgrey);
+        width: 100%;
+    }
+
+    .progress-bar{
+        height: 8px;
+        border-radius: 8px;
+        background-color: var(--fontColorMail);
+    }
+
+    .amount-subtask{
+        font-size: 10px;
+        width: 50%;
+        text-align: end;
+    }
+
+    .member-prio-section{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .task-all-member{
+        display: flex;
+    }
+
+    .member{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--white);
+        border-radius: 100%;
+        background-color: var(--tagApricot);
+        color: var(--white);
+        font-weight: lighter;
+        margin-right: -4px;
+    }
+
+    .d-none{
+        display: none;
+    }
+
     /* Responsive */
 
 
