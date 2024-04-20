@@ -105,13 +105,14 @@
 
 .footerAddTasks {
   margin-left: 96px;
+  margin-right: 96px;
   margin-bottom: 80px;
 }
 
 .footerAddTasksContainer {
   display: flex;
   justify-content: space-between;
-  width: 81%;
+  width: 100%;
   align-items: center;
 }
 
@@ -149,7 +150,9 @@
     brightness(500%);
 }
 
-select {
+select,
+#subtask,
+#date {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
   background-repeat: no-repeat;
@@ -158,17 +161,280 @@ select {
 }
 
 #subtask {
-  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
-  background-repeat: no-repeat;
-  background-position: right 16px top 50%; /* Positionierung des Pfeils */
   background-size: 12px auto; /* Größe des Pfeils */
 }
 
 #date {
-  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
-  background-repeat: no-repeat;
-  background-position: right 16px top 50%; /* Positionierung des Pfeils */
   background-size: 26px auto; /* Größe des Pfeils */
+}
+
+.mobileAddTask,
+.mobilefooterAddTasks {
+  display: none;
+}
+
+@media (max-width: 1260px) {
+  .mainAddTasks,
+  .headlineAddTasks,
+  .footerAddTasks {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .buttonPrio {
+    font-size: 18px;
+    padding: 14px 8px 14px 8px;
+    width: 100px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mainAddTasks,
+  .headlineAddTasks,
+  .footerAddTasks {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .buttonPrio {
+    font-size: 16px;
+    padding: 12px 6px 12px 6px;
+    width: 90px;
+    height: 50px;
+    gap: 4px;
+  }
+
+  .buttonPrio img {
+    height: 16px;
+    width: 16px;
+  }
+
+  .mainAddTasks {
+    justify-content: center;
+  }
+
+  .spacerAddTasks {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  #title,
+  #date,
+  #description,
+  #assignedTo,
+  #category,
+  #subtask {
+    font-size: 18px;
+    padding: 8px 17px 8px 17px;
+  }
+
+  .fontUnderHeadlinesAddTasks {
+    font-size: 18px;
+  }
+
+  .footerAddTasks {
+    margin-left: 55px;
+    margin-right: 55px;
+  }
+
+  .createButtonAddTasks {
+    width: 163px;
+    padding: 14px;
+    gap: 4px;
+    font-size: 19px;
+  }
+
+  .clearButtonAddTasks {
+    width: 95px;
+    height: 56px;
+    padding: 14px;
+    gap: 4px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .spacerAddTasks {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .mainAddTasks {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .footerAddTasks {
+    margin-left: 33px;
+    margin-right: 33px;
+  }
+
+  .clearButtonAddTasks {
+    margin-right: 6px;
+  }
+}
+
+/* Mobil */
+
+@media (max-width: 840px) {
+  .desktopAddTask,
+  .footerAddTasks {
+    display: none;
+  }
+
+  .mobileAddTask,
+  .mobilefooterAddTasks {
+    display: block;
+  }
+
+  .headlineAddTasks {
+    font-size: 47px;
+    margin-left: 16px;
+    margin-top: 40px;
+  }
+
+  .mainAddTasks {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  .addTasksLeft {
+    display: flex;
+    flex-direction: column;
+    height: unset;
+    width: 100%;
+  }
+
+  .addTasksRight {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .spacerAddTasks {
+    display: none;
+  }
+
+  .fontUnderHeadlinesAddTasks {
+    font-size: 18px;
+  }
+
+  #title,
+  #date {
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    padding: 10px 21px 10px 21px;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  #description {
+    font-size: 16px;
+    width: 100%;
+    height: 88px;
+    padding: 18px 21px 18px 21px;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  #assignedTo,
+  #category,
+  #subtask {
+    font-size: 16px;
+    width: 100%;
+    height: 48px;
+    padding: 12px 16px 12px 16px;
+    margin-top: 8px;
+  }
+
+  .prio {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttonPrio {
+    width: 160px; /* soll 120px sein*/
+    height: 41px;
+    gap: 8px;
+    font-size: 16px;
+    padding: 18px 10px 18px 10px;
+  }
+
+  .footerAddTasks {
+    margin-left: 96px;
+    margin-right: 96px;
+    margin-bottom: 80px;
+  }
+
+  .footerAddTasksContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  .buttonPrio:hover {
+    cursor: pointer;
+    box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .clearButtonAddTasks {
+    background: unset;
+    border: 1px solid var(--backgroundSpacer);
+    width: 110px;
+    height: 56px;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  .createButtonAddTasks {
+    width: 183px;
+    height: 56px;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    background-color: var(--menuButtonDarkblue);
+    font-size: 21px;
+    color: white;
+    border: none;
+  }
+
+  .createButtonAddTasks img {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
+      brightness(500%);
+  }
+
+  select,
+  #subtask,
+  #date {
+    appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+    background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%; /* Positionierung des Pfeils */
+    background-size: 10px auto; /* Größe des Pfeils */
+  }
+
+  #subtask {
+    background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
+    background-size: 12px auto; /* Größe des Pfeils */
+  }
+
+  #date {
+    background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
+    background-size: 26px auto; /* Größe des Pfeils */
+  }
 }

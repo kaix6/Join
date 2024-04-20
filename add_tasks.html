@@ -23,7 +23,9 @@
         <!--      Section header    -->
 
         <section id="main_container" class="main_addTasks">
-          <div>
+          <!-- Desktop - Version -->
+
+          <div class="desktopAddTask">
             <div class="containerHeadline d-flex">
               <h1 class="headlineAddTasks">Add Tasks</h1>
             </div>
@@ -157,6 +159,146 @@
               </div>
             </div>
           </div>
+
+          <!-- Desktop - Version -->
+
+          <!-- Mobile - Version -->
+
+          <div class="mobileAddTask">
+            <div class="containerHeadline d-flex">
+              <h1 class="headlineAddTasks">Add Tasks</h1>
+            </div>
+
+            <div class="mainAddTasks">
+              <form class="addTasksLeft">
+                <div>
+                  <label class="fontUnderHeadlinesAddTasks" for="title"
+                    >Title<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="text" id="title" placeholder="Enter a title" />
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="description"
+                    >Description</label
+                  >
+                  <br />
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    cols="50"
+                    placeholder="Enter a Description"
+                  ></textarea>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                    >Assigned to</label
+                  >
+                  <br />
+
+                  <select name="assigned" id="assignedTo">
+                    <option disabled selected>select contacts to assign</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
+
+              <div class="spacerAddTasks"></div>
+
+              <form class="addTasksRight">
+                <div>
+                  <label class="fontUnderHeadlinesAddTasks" for="date"
+                    >Due date<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="date" id="date" placeholder="dd/mm/yyyy" />
+                </div>
+
+                <div class="prio fontUnderHeadlinesAddTasks">
+                  Prio
+                  <div
+                    style="
+                      margin-top: 8px;
+                      display: flex;
+                      justify-content: space-between;
+                    "
+                  >
+                    <button class="buttonPrio">
+                      Urgent
+                      <img src="assets/img/add_task/prio_urgent.svg" alt="" />
+                    </button>
+                    <button class="buttonPrio">
+                      Medium
+                      <img src="assets/img/add_task/prio_medium.svg" alt="" />
+                    </button>
+                    <button class="buttonPrio">
+                      Low <img src="assets/img/add_task/prio_low.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="category"
+                    >Category<span style="color: red">*</span></label
+                  >
+                  <br />
+
+                  <select name="category" id="category">
+                    <option disabled selected>select task category</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="subtask"
+                    >Subtasks</label
+                  >
+                  <br />
+
+                  <select name="subtask" id="subtask">
+                    <option disabled selected>add new subtask</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="mobilefooterAddTasks">
+            <div class="footerAddTasksContainer">
+              <p><span style="color: red">*</span>This field is required</p>
+
+              <div>
+                <button class="clearButtonAddTasks">
+                  Clear <img src="assets/img/add_task/close.svg" alt="" />
+                </button>
+                <button class="createButtonAddTasks">
+                  Create Task <img src="assets/img/add_task/check.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Mobile - Version -->
         </section>
       </div>
 
