@@ -112,7 +112,7 @@
 
     /* Board Task */
 
-    .task-box-small{
+    .task-box{
         display: flex;
         flex-direction: column;
         background-color: var(--white);
@@ -200,6 +200,133 @@
         display: none;
     }
 
+    .d-flex-center-space-btw{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .d-flex{
+        display: flex;
+    }
+
+    .task-box-big{
+        display: flex;
+        flex-direction: column;
+        background-color: var(--white);
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
+        width: 350px;
+    }
+
+    .task-box-big h2{
+        margin-top: 8px;
+        font-size: 32px;
+    }
+
+    .close-icon{
+        height: 8px;
+    }
+
+    .task-description-big{
+        margin-top: 16px;
+    }
+
+    .width-30{
+        width: 30%;
+    }
+
+    .d-flex p{
+        margin-top: 16px;
+    }
+
+    .d-flex img{
+        margin-top: 16px;
+    }
+
+    .margin-top-16px{
+        margin-top: 16px;
+    }
+
+    .d-flex-center{
+        display: flex;
+        align-items: center;
+    }
+
+    .member-big-task{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        font-size: 8px;
+        border: 1px solid var(--white);
+        border-radius: 100%;
+        background-color: var(--tagApricot);
+        color: var(--white);
+        font-weight: lighter;
+    }
+
+    .container-member-big-task{
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        gap: 16px;
+    }
+
+    .prio-icon{
+        margin-left: 8px
+    }
+
+    .container-subtasks{
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        gap: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        height: 20px;
+        width: fit-content;
+    }
+
+    .container-subtasks:hover{
+        background-color: var(--backgroundgrey);
+        border-radius: 6px;
+    }
+
+    .container-subtasks p{
+        font-size: 12px;
+    }
+    
+    .container-delete-edit{
+        display: flex;
+        justify-content: end;
+        margin-top: 24px;
+        gap: 8px;
+    }
+
+    .delete{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-right: 8px;
+        border-right: 1px solid var(--fontGrey);
+    }
+
+    .edit{
+        display: flex;
+        align-items: center;
+        gap: 8px
+    }
+
+    .delete-edit-p{
+        font-size: 12px;
+    }
+    
+    .delete-edit-icon{
+        height: 12px;
+    }
     /* Responsive */
 
 
