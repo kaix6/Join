@@ -28,3 +28,8 @@ function changeClassToActive() {
 function doNotClose(event) {
     event.stopPropagation();
 }
+
+
+function currentElementDisplayStyleFlex() {
+    return proveElementStyle(document.querySelector('#side_menu')) == "flex";
+}

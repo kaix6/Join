@@ -112,7 +112,8 @@
 }
 
 @media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
-    .menu_icon_text:hover {
+    .menu_icon_text:hover,
+    .submenu_header_style a:hover {
         background-color: var(--hoverMenuBlue);
     }
 }

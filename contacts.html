@@ -12,16 +12,19 @@
     <link rel="stylesheet" href="./css/fonts.css">
     <script defer src="script.js"></script>
     <script defer src="js/template.js"></script>
+    <script defer src="js/contacts.js"></script>
 </head>
 <body class="flex_dir_c" onload="includeHTML()">
 
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-
+    
             <!--      Section Dialogbox Add Contact    -->
 
-        <div class="dialog_add_edit_contact_bg d_none">
-            <div class="dialog_add_edit_contact">
-                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+        <div onclick="closeshowDialogAddContact()" class="dialog_add_edit_contact_bg d_none">
+            <div onclick="doNotClose(event)" class="dialog_add_edit_contact">
+                <div onclick="closeshowDialogAddContact()" class="wrapper_close_add_edit_contact round_div pointer">
+                    <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
+                </div>
             <div class="top_dialog_add_edit">
                 <div class="head_top_dialog_add_edit">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
@@ -110,10 +113,25 @@
 
             <section id="main_container" class="main_contacts">
 
+            <!--      Section Contact options   -->
+
+            <div onclick="doNotClose(event)" class="contact_options_mobile">
+                <div class="edit_content pointer">
+                    <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
+                    <p>Edit</p>
+                </div>
+                <div class="delete_content pointer">
+                    <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
+                    <p>Delete</p>
+                </div> 
+            </div>
+
+            <!--      End Section Contact options   -->
+
                  <!--      Section Contact    -->
 
-                <div id="content_contacts" class="/d_none">
-                    <div class="add_change_btn_mobile pointer">
+                <div id="content_contacts">
+                    <div onclick="showDialogAddContact()" class="add_change_btn_mobile pointer">
                         <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
@@ -124,7 +142,7 @@
                         <div class="horizontal_line_content">
                             <div class="horizontal_line"></div>
                         </div>
-                            <div class="contact pointer">
+                            <div onclick="toggleContactView()" id="contact${}" class="contact pointer"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
                                 <div class="short_name round_div">
                                     <p class="short_name_text">AM</p>
                                 </div>
@@ -210,10 +228,10 @@
                  <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
-                    <div class="add_change_btn_mobile hide_desktop">
+                    <div onclick="showContactOptions()" class="add_change_btn_mobile hide_desktop pointer">
                         <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
                     </div>
-                    <div class="head_overview">
+                    <div class="head_overview /d_none">
                         <div class="left_part_overview">
                             <h2 class="headline_contacts">Contacts</h2>
                             <div class="left_part_overview_second">
@@ -222,11 +240,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="right_part_overview pointer hide_desktop">
+                        <div onclick="toggleContactView()"  class="right_part_overview pointer hide_desktop">
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
-                    <div class="floating_contact">
+                    <div id="floating_contact${}" class="floating_contact d_none"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
                         <div class="head_floating_content">
                             <div class="short_name_overview round_div">
                                 <p class="short_name_text_overview">AM</p>

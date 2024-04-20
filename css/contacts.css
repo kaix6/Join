@@ -16,6 +16,7 @@
     z-index: 1;
 }
 
+
 .dialog_add_edit_contact {
     position: relative;
     display: flex;
@@ -24,6 +25,14 @@
     height: 65%;
     border-radius: 30px;
     background-color: var(--white);
+    /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
+    transform: translateX(100%);
+    transition: all 300ms ease-out;
+}
+
+.show_dialog_add_edit_contact {
+    /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
+    transform: translateX(0);
 }
 
 .top_dialog_add_edit {
@@ -54,13 +63,20 @@
     background-color: var(--lightblue);
 }
 
-.close_add_edit_contact {
+.wrapper_close_add_edit_contact {
     position: absolute;
     right: 48px;
     top: 48px;
     width: 32px;
     height: 32px;
+}
+
+.close_add_edit_contact {
     filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);
+}
+
+.wrapper_close_add_edit_contact:hover {
+    background-color: #EEEEEE;
 }
 
 .headline_add_edit_contact {
@@ -188,6 +204,24 @@
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
 }
 
+/* Contact options */
+.contact_options_mobile {
+    z-index: 1;
+    border-radius: 20px 20px 0px 20px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 4px 0px #00000040;
+    bottom: 100px;
+    right: 10px;
+    position: absolute;
+    padding: 10px;
+    transform: translateX(137px);
+    transition: all 300ms ease-out;
+}
+
+.show_contact_options_mobile {
+    transform: translateX(0px);
+}
+
 /* Contacts */
 
 .main_contacts {
@@ -292,6 +326,13 @@
 
 /* Contact Overview*/
 
+/* div mit id="contact_view" ist nur ab width von 841px sichtbar, sonst class="d_none" */
+@media(min-width: 841px) {
+    #contact_view {
+        display: block;
+    }
+}
+
 .hide_desktop {
     display: none;
 }
@@ -330,6 +371,12 @@
     flex-direction: column;
     padding: 32px 55px;
     gap: 21px;
+    transform: translateX(100%);
+    transition: all 100ms ease-in-out;
+}
+
+.show_floating_contact_desktop {
+    transform: translateX(0px);
 }
 
 .head_floating_content {
@@ -374,15 +421,10 @@
     align-items: center;
 }
 
+.delete_content:hover .contact_delete_icon,
+.delete_content:hover p,
 .edit_content:hover .contact_edit_icon,
 .edit_content:hover p {
-    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
-    color: var(--lightblue);
-    font-weight: 700;
-}
-
-.delete_content:hover .contact_delete_icon,
-.delete_content:hover p {
     filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
     color: var(--lightblue);
     font-weight: 700;
@@ -424,6 +466,15 @@
             height: calc(100vh - 90px - 86px);
         }
 
+        .dialog_add_edit_contact {
+            transform: translateY(calc(100% + 90px));
+            transition: all 300ms ease-out;
+        }
+        
+        .show_dialog_add_edit_contact {
+            transform: translateY(0);
+        }
+
         .top_dialog_add_edit {
             padding-left: 24px;
             border-top-right-radius: 30px;
@@ -442,10 +493,17 @@
             padding-left: 16px;
         }
 
-        .close_add_edit_contact {
+        .wrapper_close_add_edit_contact {
             right: 18px;
             top: 24px;
+        }
+
+        .close_add_edit_contact {
             filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+        }
+
+        .wrapper_close_add_edit_contact:hover {
+            background-color:initial;
         }
 
         .headline_add_edit_contact {
@@ -485,6 +543,23 @@
             padding: 18px 10px;
         }
 
+        .edit_content,
+        .delete_content {
+            gap: 8px;
+            padding: 13px;
+        }
+
+        /* Contact options */
+
+        .delete_content:hover .contact_delete_icon,
+        .delete_content:hover p,
+        .edit_content:hover .contact_edit_icon,
+        .edit_content:hover p {
+            filter: initial;
+            color:unset;
+            font-weight: 400;
+        }
+
         /* Contacts */
 
         .main_contacts {
@@ -500,7 +575,6 @@
             position: absolute;
             bottom: 109px;
             left: 356px;
-            background-color: var(--menuButtonDarkblue);
             width: 56px;
             height: 56px;
             border-radius: 50%;
@@ -555,6 +629,7 @@
         }
         .floating_contact {
             padding: 0px 16px;
+            transform: translateX(0px); /* Da hier soll der Container direkt da sein, in der Desktop Version slided es aber rein */
         }
         .head_floating_content {
             gap: 20px;

@@ -1,5 +1,5 @@
 function showSubmenuHeader() {
-    if(currentElementDisplayStyleNone()) {
+    if(currentElementDisplayStyleFlex()) {
         document.querySelector('.submenu_header_mobile').classList.toggle('show_submenu_header');
     } else {
         document.querySelector('.submenu_header').classList.toggle('show_submenu_header');
@@ -24,10 +24,6 @@ function closeSubmenuHeader(event) {
     })
 }
 
-
-function currentElementDisplayStyleNone() {
-    return proveElementStyle(document.querySelector('.header_help_icon')) == "none";
-}
 
 
 
