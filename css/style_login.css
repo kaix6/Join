@@ -5,6 +5,10 @@ body {
     background-color: var(--white);
 }
 
+.hidden {
+    display: none;
+}
+
 .d-center-space-betwen {
     display: flex;
     align-items: center;
@@ -22,6 +26,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.join-logo {
+    width: 100vh;
+    height: 100%;
+    background-color: var(--white);
+    z-index: 1;
+    position: fixed;
+}
+
+.img-animaschen {
+    height: 200px;
+    width: 200px;
+    background: url(/assets/img/logIn_SignUp/Capa\ 1.svg);
+}
+
+.animated-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: slideToLeftTop 6s forwards;
+}
+
+@keyframes slideToLeftTop {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 0;
+        left: 0;
+    }
 }
 
 .gap {
@@ -46,12 +84,12 @@ body {
     gap: 32px;
     border-radius: 30px;
     opacity: 0px;
-    background-color: var(--white);
+    background-color: --fontGrey;
 }
 
 .button-login-blue {
     font-family: 'Open Sans';
-    font-weight: 900;
+    font-weight: 800;
     height: 49px;
     background-color: var(--menuButtonDarkblue);
     color: var(--white);
@@ -59,9 +97,9 @@ body {
 }
 
 .button-login-white {
-    font-family: 'Inter';
+    font-family: 'Open Sans';
     font-style: normal;
-    font-weight: 900;
+    font-weight: 800;
     height: 49px;
     background-color: var(--white);
     color: var(--menuButtonDarkblue);
@@ -73,11 +111,14 @@ body {
     background-position: right;
     background-repeat: no-repeat;
     padding-left: 30px;
+    border-radius: 10px;
+    width: 422px;
+    height: 40px;
 }
 
 input {
     font-family: 'Open Sans';
-    font-weight: 900;
+    font-weight: 800;
 }
 
 .b-img-email {
@@ -96,4 +137,10 @@ footer {
     position: absolute;
     bottom: 40px;
     width: 90%;
+}
+
+@media (max-width: 800px) {
+    input-with-image {
+        width: 364px;
+    }
 }

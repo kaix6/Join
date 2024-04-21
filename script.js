@@ -23,3 +23,14 @@ function changeClassToActive() {
         }
     })
 }
+
+function initLogin() {
+    animationWindow();
+    includeHTML();
+}
+
+function animationWindow() {
+    setTimeout(function() {
+        document.getElementById('joinLogoAnimation').classList.add('hidden');
+    }, 2000)
+}
