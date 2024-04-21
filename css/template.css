@@ -35,7 +35,7 @@
     height: 56px;
 }
 
-@media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
+@media(min-width: 801px) { /* just the hover effect that will only trigger at 801px and up */
     .border_profile:hover {
         background-color: #0C2E621F;
      }
@@ -111,8 +111,9 @@
     transition: background-color 100ms ease-in;
 }
 
-@media(min-width: 841px) { /* just the hover effect that will only trigger at 841px and up */
-    .menu_icon_text:hover {
+@media(min-width: 801px) { /* just the hover effect that will only trigger at 801px and up */
+    .menu_icon_text:hover,
+    .submenu_header_style a:hover {
         background-color: var(--hoverMenuBlue);
     }
 }
@@ -157,7 +158,17 @@
 
 /* Responsive */
 
-@media(max-width: 840px) {
+
+@media(max-width:1110px) {
+
+    /* Header */
+
+    #header {
+        padding: 20px 40px 20px 52px;
+    }
+}
+
+@media(max-width: 800px) {
     
     /* Header */
 
