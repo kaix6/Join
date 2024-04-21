@@ -91,8 +91,80 @@
     
             <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
     
-            <!--      Section Side Menu    -->
-    
+            <!--      End Section Side Menu    -->
+
         </div>
-    </body>
+
+        <!--      Section Dialog Box Small TodoTask    -->
+        <div id="task-box-small" class="task-box d-none">
+            <p class="task-type">Task Type</p>
+            <p class="task-headline">Task Headline</p>
+            <p class="task-description">Task Description</p>
+            <div class="progress-section">
+                <div class="progress">
+                    <div class="progress-bar" style="width: 50%;"></div>
+                </div>
+                <p class="amount-subtask">1/2 Subtasks</p>
+            </div>
+            <div class="member-prio-section">
+                <div class="task-all-member">
+                    <div class="member">AM</div>
+                    <div class="member">EM</div>
+                </div>
+                <img src="/assets/img/add_task/prio_low.svg">
+            </div>
+        </div>
+        <!--      End Section Dialog Box Small TodoTask    -->
+
+
+        <!--      Section Dialog Box Big TodoTask    -->
+        <div id="task-box-big" class="task-box-big d-none">
+            <div class="d-flex-center-space-btw">
+                <p class="task-type">Task Type</p>
+                <div class="close-icon">
+                    <img src="/assets/img/add_task/close.svg">
+                </div>
+            </div>
+            <h2>Task Headline</h2>
+            <p class="task-description-big">Task Description</p>
+            <div>
+                <div class="d-flex">
+                    <p class="width-30">Due date:</p>
+                    <p>10/05/2023</p>
+                </div>
+                <div class="d-flex">
+                    <p class="width-30">Priority:</p>
+                    <p>Low</p>
+                    <img class="prio-icon" src="/assets/img/add_task/prio_low.svg">
+                </div>
+                <div>
+                    <p class="margin-top-16px">Assigned To:</p>
+                    <div class="container-member-big-task">
+                        <div class="member-big-task">AM</div>
+                        <p>Name</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="margin-top-16px">Subtasks</p>
+                    <div class="container-subtasks">
+                        <input class="subtask-checkbox" type="checkbox">
+                        <p>Subtask Name</p>
+                    </div>
+                </div>
+                <div class="container-delete-edit">
+                    <div class="delete">
+                        <img class="delete-edit-icon" src="/assets/img/board/icon+delete_black.svg">
+                    </div>
+                    <div class="edit">
+                        <img class="delete-edit-icon" src="/assets/img/board/icon+edit_black.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--      End Section Dialog Box Big TodoTask    -->
+
+
+
+
+</body>
 </html>
