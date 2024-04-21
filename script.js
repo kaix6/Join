@@ -30,6 +30,15 @@ function doNotClose(event) {
 }
 
 
-function currentElementDisplayStyleFlex() {
-    return proveElementStyle(document.querySelector('#side_menu')) == "flex";
+function proveElementStyle(element) {
+    return element.currentStyle ? element.currentStyle.display : getComputedStyle(element).display; // Wenn das currentStyle-Attribut definiert ist wird der Wert des Displays über element.currentStyle.display abgerufen und betrifft den IE, ansonsten über getComputedStyle(element).display
 }
+
+
+function proveElementWidth(element) {
+    let elementWidth = element;
+    let rect = elementWidth.getBoundingClientRect();
+    return rect.width;
+}
+
+

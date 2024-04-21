@@ -7,11 +7,6 @@ function showSubmenuHeader() {
 }
 
 
-function proveElementStyle(element) {
-    return element.currentStyle ? element.currentStyle.display : getComputedStyle(element).display; // Wenn das currentStyle-Attribut definiert ist wird der Wert des Displays über element.currentStyle.display abgerufen und betrifft den IE, ansonsten über getComputedStyle(element).display
-}
-
-
 function closeSubmenuHeader(event) {
     let submenuHeaders = document.querySelectorAll('.submenu_header_style');
 
@@ -24,6 +19,10 @@ function closeSubmenuHeader(event) {
     })
 }
 
+
+function currentElementDisplayStyleFlex() {
+    return proveElementStyle(document.querySelector('#side_menu')) == "flex";
+}
 
 
 

@@ -16,7 +16,7 @@ function closeshowDialogAddContact() {
 
 function toggleContactView() {
     // Mobile
-    if(currentElementDisplayStyleFlex()) {
+    if(currentElementWidth()) {
         document.querySelector('#content_contacts').classList.toggle('d_none');
         document.querySelector('#contact_view').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('d_none'); // ID muss hier noch angepasst werden mit '#floating_contact${}'
@@ -30,6 +30,21 @@ function toggleContactView() {
     }
 }
 
+
 function showContactOptions() {
-    document.querySelector('.contact_options_mobile').classList.toggle('show_contact_options_mobile');
+    document.querySelector('.contact_options_mobile').classList.add('show_contact_options_mobile');
 }
+
+
+function closeContactOptions(event) {
+    if(event.target.className != 'add_person_more_icon') 
+    document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
+}
+
+
+function currentElementWidth() {
+    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= 1110;
+}
+
+
+
