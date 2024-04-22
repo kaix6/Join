@@ -2,7 +2,7 @@ function showDialogAddContact() {
     document.querySelector('.dialog_add_edit_contact_bg').classList.toggle('d_none');
     setTimeout(function() {
         document.querySelector('.dialog_add_edit_contact').classList.toggle('show_dialog_add_edit_contact');
-    }, 100);
+    }, 50);
 }
 
 
@@ -10,7 +10,7 @@ function closeshowDialogAddContact() {
     document.querySelector('.dialog_add_edit_contact').classList.remove('show_dialog_add_edit_contact');
     setTimeout(function() {
         document.querySelector('.dialog_add_edit_contact_bg').classList.add('d_none');
-    }, 305);
+    }, 250);
 }
 
 

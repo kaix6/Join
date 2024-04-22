@@ -3,7 +3,6 @@
     height: 24px;
 }
 
-
 /* Contacts - Dialog add & edit Contact */
 
 .dialog_add_edit_contact_bg {
@@ -114,7 +113,8 @@
     align-items: center;
     display: flex;
     background-color: var(--white);
-    padding: 66px 48px;
+    padding: 66px 0px;
+    padding-right: 48px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
@@ -447,6 +447,94 @@
 
 /* Responsive */
 
+@media(max-width: 1280px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .create_contact_short_name_edit,
+    .create_contact_short_name {
+        z-index: 1;
+        position: absolute;
+        top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+    }
+
+    .dialog_add_edit_contact {
+        flex-direction: column;
+        width: 450px;
+    }
+
+
+    .top_dialog_add_edit {
+        padding-left: 24px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: unset;
+        height: 46%;
+    }
+
+    .img_logo {
+        display: none;
+    }
+
+    .head_top_dialog_add_edit {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-left: 16px;
+    }
+
+    .wrapper_close_add_edit_contact {
+        right: 18px;
+        top: 24px;
+    }
+    .close_add_edit_contact {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+    }
+
+    .wrapper_close_add_edit_contact:hover {
+        background-color:initial;
+    }
+
+    .headline_add_edit_contact {
+        font-size: 47px;
+        font-weight: 700;
+        color: var(--white);
+    }
+
+    .text_add_edit_contact_dialog {
+        font-size: 20px;
+        color: var(--white);
+    }
+
+    .bottom_dialog_add_edit {
+        height: 54%;
+        border-bottom-left-radius: 30px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+    .create_contact_form {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .create_contact_input {
+        padding: 10px 21px;
+    }
+
+    .cancel_create_contact_btn {
+        display: none;
+    }
+
+    .create_contact_btn {
+        padding: 18px 10px;
+    }
+
+    .edit_content,
+    .delete_content {
+        gap: 8px;
+        padding: 13px;
+    }
+}
+
 @media(max-width: 1220px) {
     .left_part_overview {
         flex-direction: column;
@@ -492,7 +580,6 @@
     .left_part_overview {
         padding-top: 0px;
     } 
-
     .add_person_more_icon {
         width: 32px;
         height: 32px;
@@ -510,167 +597,159 @@
     }
 }
 
-@media(max-width: 800px) {
-        /* Contacts - Dialog add & edit Contact */
-
-        .create_contact_short_name_edit,
-        .create_contact_short_name {
-            z-index: 1;
-            position: absolute;
-            top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
-        }
-
-        .dialog_add_edit_contact {
-            flex-direction: column;
-            width: 93%;
-            height: calc(100vh - 90px - 86px);
-        }
-
-        .dialog_add_edit_contact {
-            transform: translateY(calc(100% + 90px));
-            transition: all 300ms ease-out;
-        }
-        
-        .show_dialog_add_edit_contact {
-            transform: translateY(0);
-        }
-
-        .top_dialog_add_edit {
-            padding-left: 24px;
-            border-top-right-radius: 30px;
-            border-bottom-left-radius: unset;
-            height: 46%;
-        }
-
-        .img_logo {
-            display: none;
-        }
-
-        .head_top_dialog_add_edit {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            padding-left: 16px;
-        }
-
-        .wrapper_close_add_edit_contact {
-            right: 18px;
-            top: 24px;
-        }
-
-        .close_add_edit_contact {
-            filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
-        }
-
-        .wrapper_close_add_edit_contact:hover {
-            background-color:initial;
-        }
-
-        .headline_add_edit_contact {
-            font-size: 47px;
-            font-weight: 700;
-            color: var(--white);
-        }
-
-        .text_add_edit_contact_dialog {
-            font-size: 20px;
-            color: var(--white);
-        }
-
-        .bottom_dialog_add_edit {
-            height: 54%;
-            border-bottom-left-radius: 30px;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .create_contact_form {
-            gap: 10px;
-            align-items: center;
-        }
-
-        .create_contact_input {
-            max-width: 364px;
-            padding: 10px 21px;
-        }
-
-        .cancel_create_contact_btn {
-            display: none;
-        }
-
-        .create_contact_btn {
-            padding: 18px 10px;
-        }
-
-        .edit_content,
-        .delete_content {
-            gap: 8px;
-            padding: 13px;
-        }
-
-        /* Contact options */
-
-        .delete_content:hover .contact_delete_icon,
-        .delete_content:hover p,
-        .edit_content:hover .contact_edit_icon,
-        .edit_content:hover p {
-            filter: initial;
-            color:unset;
-            font-weight: 400;
-        }
-
-        /* Contacts */
-
-        .main_contacts {
-            flex-direction: column;
-        }
-        #content_contacts {
-            height: 100%;
-/*             width: unset;
-            max-width: 456px; */
-            padding: 32px 38px; /* zentriert content mittig */
-        }
-        .add_change_btn_mobile {
-            position: absolute;
-            bottom: 109px;
-            right: 48px;
-/*             left: 356px; */
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            box-shadow: 0px 4px 4px 0px #00000040;
-        }
-        .text_add_contact {
-            display: none;
-        }
-
-        /* Contact Overview*/
-
-        .head_overview {
-            padding: 48px 16px;
-        }
-        .hide_desktop {
-            display: flex;
-        }
-        .left_part_overview {
-            padding: 0px;
-        } 
-        .headline_contacts {
-            font-size: 47px;
-        }   
-        .text_contacts {
-            font-size: 20px;
-        }   
-        .floating_contact {
-            padding: 0px 16px;
-        }
-        .name_overview {
-            font-weight: bold;
-        }
-        .editable_content {
-            display: none;
-        }
+@media screen and (max-width: 1150px) and (min-width: 1111px){
+    .left_part_overview,
+    .floating_contact{
+        padding-left: 20px;
+    }
+    .floating_contact{
+        padding: 32px 20px;
+    }
 }
 
+/* when browser's width is between 800 and 1110px, change the width of a <div> element */
+@media screen and (max-width: 1110px) and (min-width: 800px){
+        /* Contacts */
+
+    .contact {
+        width: 352px;
+    }
+}
+
+/* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
+@media screen and (max-width: 800px) and (min-width: 460px) {
+    .letter_content {
+        padding-left: calc((100% - 352px) / 2);
+    }
+}
+
+@media(max-width: 800px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .dialog_add_edit_contact {
+        transform: translateY(calc(100% + 90px));
+        transition: all 300ms ease-out;
+    }
+    
+    .show_dialog_add_edit_contact {
+        transform: translateY(0);
+    }
+
+    /* Contact options */
+
+    .delete_content:hover .contact_delete_icon,
+    .delete_content:hover p,
+    .edit_content:hover .contact_edit_icon,
+    .edit_content:hover p {
+        filter: initial;
+        color:unset;
+        font-weight: 400;
+    }
+
+    /* Contacts */
+
+    .main_contacts {
+        flex-direction: column;
+    }
+    .add_change_btn_mobile {
+        position: absolute;
+        bottom: 109px;
+        right: 48px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+/*     .click_add_change_btn_mobile {
+        background-color: var(--lightblue);
+    } */
+    .text_add_contact {
+        display: none;
+    }
+
+    /* Contact Overview*/
+
+    .head_overview {
+        padding: 48px 16px;
+    }
+    .hide_desktop {
+        display: flex;
+    }
+    .left_part_overview {
+        padding: 0px;
+    } 
+    .headline_contacts {
+        font-size: 47px;
+    }   
+    .text_contacts {
+        font-size: 20px;
+    }   
+    .floating_contact {
+        padding: 0px 16px;
+    }
+    .name_overview {
+        font-weight: bold;
+    }
+    .editable_content {
+        display: none;
+    }
+    .create_contact_input {
+        max-width: 364px;
+    }
+}
+
+@media(max-width: 460px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .dialog_add_edit_contact {
+        flex-direction: column;
+        width: 93%;
+        height: calc(100vh - 90px - 86px);
+    }
+}
+
+@media(max-width: 450px) {
+    /* Contacts */
+
+    #content_contacts {
+        padding: 32px 16px;
+    }
+    .horizontal_line_content {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 400px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .create_contact_input {
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 370px) {
+    /* Contacts */
+    #content_contacts {
+        padding: 32px 0px;
+        align-items: unset;
+    }
+    .contact {
+        gap: 20px;
+    }
+    .add_change_btn_mobile {
+        right: 24px;
+    }
+    .contact_fullName,
+    .contact_mail {
+        word-break: break-all;
+    }
+    .letter_content {
+        padding: 0px 8px;
+    }
+    .name_overview {
+        font-size: 24px;
+    }
+}
 
