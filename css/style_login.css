@@ -2,7 +2,7 @@ body {
     font-family: 'Open Sans';
     max-width: 1400px;
     margin: 0;
-    background-color: var(--white);
+    background: rgb(246, 247, 248);
 }
 
 .hidden {
@@ -30,6 +30,7 @@ body {
 
 .join-logo {
     width: 100vh;
+    /* max-width: 1400px; */
     height: 100%;
     background-color: var(--white);
     z-index: 1;
@@ -67,8 +68,13 @@ body {
     gap: 32px;
 }
 
+.padding {
+    padding-right: 77px;
+}
+
 .imglogo {
     width: 100.03px;
+    padding: 80px 77px;
 }
 
 .logo-login {
@@ -85,7 +91,7 @@ body {
     gap: 32px;
     border-radius: 30px;
     opacity: 0px;
-    background-color: --fontGrey;
+    background-color: var(--white);
 }
 
 .button-login-blue {
