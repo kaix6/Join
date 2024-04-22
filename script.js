@@ -1,3 +1,14 @@
+function initLogin() {
+    animationWindow();
+    includeHTML();
+}
+
+function animationWindow() {
+    setTimeout(function() {
+        document.getElementById('joinLogoAnimation').classList.add('hidden');
+    }, 2000)
+}
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -22,15 +33,4 @@ function changeClassToActive() {
             link.classList.add('activeLink');
         }
     })
-}
-
-function initLogin() {
-    animationWindow();
-    includeHTML();
-}
-
-function animationWindow() {
-    setTimeout(function() {
-        document.getElementById('joinLogoAnimation').classList.add('hidden');
-    }, 2000)
 }
