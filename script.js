@@ -1,6 +1,6 @@
-function initLogin() {
+async function initLogin() {
+    await includeHTML();
     animationWindow();
-    includeHTML();
 }
 
 function animationWindow() {
