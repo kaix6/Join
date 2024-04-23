@@ -81,6 +81,13 @@
   -webkit-appearance: none;
 }
 
+#date,
+#assignedTo,
+#category,
+#subtask:hover {
+  cursor: pointer;
+}
+
 .prio {
   margin-top: 16px;
   display: flex;
@@ -148,12 +155,15 @@
 .createButtonAddTasks:hover {
   background-color: var(--lightblue);
   cursor: pointer;
+  box-shadow: -1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .clearButtonAddTasks:hover {
   border: 2px solid;
   filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
     brightness(94%) contrast(87%);
+  cursor: pointer;
+  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
 }
 
 .createButtonAddTasks img {
