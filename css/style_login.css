@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans';
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0;
     background: rgb(246, 247, 248);
 }
@@ -13,6 +13,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.display-fc {
+    display: flex;
+    flex-direction: column;
 }
 
 .display-fccc {
@@ -30,26 +35,25 @@ body {
 
 .join-logo {
     width: 100%;
-    /* max-width: 1400px; */
-    height: 100%;
+    height: 100vh;
     background-color: var(--white);
     z-index: 1;
     position: fixed;
 }
 
 .img-animaschen {
-    height: 200px;
-    width: 200px;
+    height: 334.07px;
+    width: 274px;
     background: url(/assets/img/logIn_SignUp/Capa\ 1.svg);
     background-repeat: no-repeat;
 }
 
 .animated-image {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 45%;
     transform: translate(-50%, -50%);
-    animation: slideToLeftTop 6s forwards;
+    animation: slideToLeftTop 5s forwards;
 }
 
 @keyframes slideToLeftTop {
@@ -113,6 +117,19 @@ body {
     border-radius: 10px;
 }
 
+h1 {
+    font-family: 'Inter';
+    font-weight: 700;
+    /* width: 315px; */
+    /* height: 73px; */
+}
+
+.vector_login {
+    border: 3px solid;
+    border-top: 150px;
+    border-color: var(--lightblue);
+}
+
 .input-with-image {
     background-size: 20px 20px;
     background-position: right 16px top 50%;
@@ -148,6 +165,17 @@ footer {
     position: absolute;
     bottom: 40px;
     width: 100%;
+}
+
+@media (max-width: 900px) {
+    .join-logo {
+        background-color: #2A3647;
+    }
+    .img-animaschen {
+        height: 121.97px;
+        width: 100.03px;
+        background: url(/assets/img/logIn_SignUp/Capa\ 2.svg);
+    }
 }
 
 @media (max-width: 800px) {
