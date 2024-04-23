@@ -145,6 +145,17 @@
   border: none;
 }
 
+.createButtonAddTasks:hover {
+  background-color: var(--lightblue);
+  cursor: pointer;
+}
+
+.clearButtonAddTasks:hover {
+  border: 2px solid;
+  filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
+    brightness(94%) contrast(87%);
+}
+
 .createButtonAddTasks img {
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
     brightness(500%);
@@ -430,5 +441,18 @@ select,
   #date {
     background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
     background-size: 26px auto; /* Größe des Pfeils */
+  }
+}
+
+@media (max-width: 520px) {
+  .buttonPrio {
+    width: 100px;
+    padding: 14px 8px 14px 8px;
+    gap: 4px;
+  }
+
+  .createButtonAddTasks {
+    padding: 10px;
+    width: 163px;
   }
 }
