@@ -112,6 +112,16 @@
 
     /* Board Task */
 
+    .background-big-task {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0,0,0,0.1);
+    }
+
     .task-box{
         display: flex;
         flex-direction: column;
@@ -214,6 +224,13 @@
         border-radius: 16px;
         box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
         width: 350px;
+        height: fit-content;
+        transform: translateX(100%);
+        transition: all 300ms ease-out;
+    }
+
+    .show-task-box-big {
+          transform: translateX(0);
     }
 
     .task-box-big h2{
@@ -358,13 +375,13 @@
     .edit{
         display: flex;
         align-items: center;
+        border-left: 0.1px solid var(--backgroundSpacer);
     }
 
     .edit:hover{
         content: url(/assets/img/board/icon+edit_blue.svg);
         height: 18px;
-        border-left: 0.5px solid var(--grey);
-        padding-left: 4px
+        padding-left: 4px;
     }
 
     .delete-edit-icon{
