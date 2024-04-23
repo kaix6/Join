@@ -1,15 +1,31 @@
 function showDialogAddContact() {
-    document.querySelector('.dialog_add_edit_contact_bg').classList.toggle('d_none');
+    document.querySelector('.dialog_add_contact_bg').classList.toggle('d_none');
     setTimeout(function() {
-        document.querySelector('.dialog_add_edit_contact').classList.toggle('show_dialog_add_edit_contact');
+        document.querySelector('.dialog_add_contact').classList.toggle('show_dialog_add_contact');
     }, 50);
 }
 
 
-function closeshowDialogAddContact() {
-    document.querySelector('.dialog_add_edit_contact').classList.remove('show_dialog_add_edit_contact');
+function closeDialogAddContact() {
+    document.querySelector('.dialog_add_contact').classList.remove('show_dialog_add_contact');
     setTimeout(function() {
-        document.querySelector('.dialog_add_edit_contact_bg').classList.add('d_none');
+        document.querySelector('.dialog_add_contact_bg').classList.add('d_none');
+    }, 250);
+}
+
+
+function showDialogEditContact() {
+    document.querySelector('.dialog_edit_contact_bg').classList.toggle('d_none');
+    setTimeout(function() {
+        document.querySelector('.dialog_edit_contact').classList.toggle('show_dialog_edit_contact');
+    }, 0);
+}
+
+
+function closeDialogEditContact() {
+    document.querySelector('.dialog_edit_contact').classList.remove('show_dialog_edit_contact');
+    setTimeout(function() {
+        document.querySelector('.dialog_edit_contact_bg').classList.add('d_none');
     }, 250);
 }
 

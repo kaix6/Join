@@ -20,9 +20,9 @@
     
             <!--      Section Dialogbox Add Contact    -->
 
-        <div onclick="closeshowDialogAddContact()" class="dialog_add_edit_contact_bg d_none">
-            <div onclick="doNotClose(event)" class="dialog_add_edit_contact">
-                <div onclick="closeshowDialogAddContact()" class="wrapper_close_add_edit_contact round_div pointer">
+        <div onclick="closeDialogAddContact()" class="dialog_add_contact_bg d_none">
+            <div onclick="doNotClose(event)" class="dialog_add_contact">
+                <div onclick="closeDialogAddContact()" class="wrapper_close_add_edit_contact round_div pointer">
                     <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
             <div class="top_dialog_add_edit">
@@ -64,9 +64,11 @@
 
             <!--      Section Dialogbox Edit Contact    -->
 
-        <div class="dialog_add_edit_contact_bg d_none">
-            <div class="dialog_add_edit_contact">
-                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+        <div onclick="closeDialogEditContact()" class="dialog_edit_contact_bg d_none">
+            <div onclick="doNotClose(event)" class="dialog_edit_contact">
+                <div onclick="closeDialogEditContact()" class="wrapper_close_add_edit_contact round_div pointer">
+                    <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+                </div>
             <div class="top_dialog_add_edit">
                 <div class="head_top_dialog_add_edit">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
@@ -116,7 +118,7 @@
             <!--      Section Contact options   -->
 
             <div onclick="doNotClose(event)" class="contact_options_mobile">
-                <div class="edit_content pointer">
+                <div onclick="showDialogEditContact()" class="edit_content pointer">
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                     <p>Edit</p>
                 </div>
@@ -252,7 +254,7 @@
                         <div class="name_editable_content">
                             <h3 class="name_overview">Anton Mayer</h3>
                             <div class="editable_content">
-                                <div class="edit_content pointer">
+                                <div onclick="showDialogEditContact()" class="edit_content pointer">
                                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                                     <p>Edit</p>
                                 </div>
