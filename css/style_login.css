@@ -1,11 +1,17 @@
 body {
-    max-width: 1440px;
     background: rgb(246, 247, 248);
+    align-items: center;
+    height: 100vh;
 }
 
 * {
     margin: 0;
     font-family: 'Inter', sans-serif;
+}
+
+.limitation {
+    max-width: 1440px;
+    width: 100%;
 }
 
 .hidden {
@@ -21,6 +27,11 @@ body {
 .display-fc {
     display: flex;
     flex-direction: column;
+}
+
+.display-ac {
+    display: flex;
+    align-items: center;
 }
 
 .display-fccc {
@@ -101,8 +112,13 @@ body {
     background-color: var(--white);
 }
 
+.button-p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .button-login-blue {
-    /* font-family: 'Open Sans'; */
     font-weight: 800;
     height: 49px;
     background-color: var(--menuButtonDarkblue);
@@ -111,7 +127,6 @@ body {
 }
 
 .button-login-white {
-    /* font-family: 'Open Sans'; */
     font-style: normal;
     font-weight: 800;
     height: 49px;
@@ -121,10 +136,7 @@ body {
 }
 
 h1 {
-    /* font-family: 'Inter'; */
     font-weight: 700;
-    /* width: 315px; */
-    /* height: 73px; */
 }
 
 .vector_login {
@@ -144,7 +156,6 @@ h1 {
 }
 
 input {
-    /* font-family: 'Open Sans'; */
     font-weight: 800;
 }
 
@@ -167,7 +178,6 @@ input:hover {
 footer {
     position: absolute;
     bottom: 40px;
-    width: 100%;
 }
 
 @media (max-width: 900px) {
