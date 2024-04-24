@@ -36,18 +36,22 @@
     .headline {
         display: none;
     }
+
     .logo_header_mobile {
         display: flex;
         width: 32px;
         height: 39.02px;
     }
+
     .header_help_icon {
         display: none;
     }
+
     .border_profile {
         width: 40px;
         height: 40px;
     }
+
     .text_profile_header {
         font-weight: 400;
     }
@@ -64,27 +68,401 @@
         justify-content: space-between;
         padding: 0px 16px;
     }
+
     .side_menu_sticky {
         position: sticky;
         bottom: 0;
     }
+
     .menu_icon_text {
         flex-direction: column;
         padding: 15px 0px;
         width: 80px;
         gap: 10px;
     }
+
     .menu_icon_image {
         width: 24px;
         height: 24px;
     }
+
     .link_style {
         font-size: 14px;
         font-family: 'Open Sans';
     }
+
     .activeLink {
         border-radius: 16px;
     }
 }
 
+/* Contacts - Dialog add & edit Contact */
+
+@media(min-width: 1281px) {
+
+    .cancel_create_contact_edit_btn:hover,
+    .cancel_create_contact_btn:hover {
+        box-shadow: 0px 4px 4px 0px #00000040;
+        border: 1px solid var(--lightblue);
+        color: var(--lightblue);
+    }
+
+    .cancel_create_contact_btn:hover .img_cancel_checked_btn {
+        filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    }
+
+    .create_contact_btn:hover {
+        background-color: var(--lightblue);
+    }
+}
+
 /* Contacts */
+
+@media(min-width: 801px) {
+    .add_change_btn_mobile:hover {
+        background-color: var(--lightblue);
+    }
+}
+
+@media(min-width: 801px) {
+    .contact:hover {
+        border-radius: 10px;
+        background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+    }
+}
+
+/* Contact Overview*/
+
+/* div mit id="contact_view" ist nur ab width von 1111px sichtbar, sonst class="d_none" */
+@media(min-width: 1111px) {
+    #contact_view {
+        display: block;
+    }
+}
+
+@media(max-width: 1280px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .create_contact_short_name_edit,
+    .create_contact_short_name {
+        z-index: 1;
+        position: absolute;
+        top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+    }
+
+    .dialog_add_contact,
+    .dialog_edit_contact {
+        flex-direction: column;
+        width: 450px;
+    }
+
+    .top_dialog_add_edit {
+        padding-left: 24px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: unset;
+        height: 46%;
+    }
+
+    .img_logo {
+        display: none;
+    }
+
+    .wrapper_close_add_edit_contact {
+        right: 18px;
+        top: 24px;
+    }
+    .close_add_edit_contact {
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+    }
+
+    .wrapper_close_add_edit_contact:hover {
+        background-color:initial;
+    }
+
+    .headline_add_edit_contact {
+        font-size: 47px;
+        font-weight: 700;
+        color: var(--white);
+    }
+
+    .text_add_edit_contact_dialog {
+        font-size: 20px;
+    }
+
+    .bottom_dialog_add_edit {
+        height: 54%;
+        border-bottom-left-radius: 30px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+    .create_contact_form {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .create_contact_input {
+        padding: 10px 21px;
+    }
+
+    .cancel_create_contact_btn {
+        display: none;
+    }
+
+    .create_contact_btn {
+        padding: 18px 10px;
+    }
+
+    .edit_content,
+    .delete_content {
+        gap: 8px;
+        padding: 13px;
+    }
+}
+
+@media(max-width: 1220px) {
+    .left_part_overview {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .left_part_overview_second {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+    }
+
+    .seperator_line_content {
+        height: 3px;
+        width: 90px;
+    }
+
+    .short_name_overview {
+        width: 80px;
+        height: 80px;
+    }
+
+    .name_overview {
+        font-size: 36px;
+    }
+
+    .short_name_text_overview {
+        font-size: 27px;
+        font-weight: 400;
+    }
+}
+
+@media(max-width: 1110px) {
+    #content_contacts {
+        width: 100%;
+        height: 100%;
+    }
+
+    .main_contacts {
+        display: block;
+    }
+
+    .head_overview {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 48px;
+        padding-right: 16px;
+    }
+
+    .left_part_overview {
+        padding-top: 0px;
+    } 
+
+    .add_person_more_icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .right_part_overview {
+        display: flex;
+        width: 32px;
+        height: 32px;
+    }
+
+    .floating_contact {
+        transform: translateX(0px); /* Da hier soll der Container direkt da sein, in der Desktop Version slided es aber rein */
+    }
+
+    .head_floating_content {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1150px) and (min-width: 1111px){
+    .left_part_overview,
+    .floating_contact{
+        padding-left: 20px;
+    }
+
+    .floating_contact{
+        padding: 32px 20px;
+    }
+}
+
+/* when browser's width is between 800 and 1110px, change the width of a <div> element */
+@media screen and (max-width: 1110px) and (min-width: 800px){
+    /* Contacts */
+
+    .contact {
+        width: 352px;
+    }
+}
+
+/* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
+@media screen and (max-width: 800px) and (min-width: 460px) {
+    .letter_content {
+        padding-left: calc((100% - 352px) / 2);
+    }
+}
+
+@media(max-width: 800px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .dialog_add_contact,
+    .dialog_edit_contact {
+        transform: translateY(calc(100% + 90px));
+        transition: all 300ms ease-out;
+    }
+    
+    .show_dialog_add_contact,
+    .show_dialog_edit_contact {
+        transform: translateY(0);
+    }
+
+    /* Contact options */
+
+    .delete_content:hover .contact_delete_icon,
+    .delete_content:hover p,
+    .edit_content:hover .contact_edit_icon,
+    .edit_content:hover p {
+        filter: initial;
+        color:unset;
+        font-weight: 400;
+    }
+
+    /* Contacts */
+
+    .main_contacts {
+        flex-direction: column;
+    }
+
+    .add_change_btn_mobile {
+        position: absolute;
+        bottom: 109px;
+        right: 48px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        box-shadow: 0px 4px 4px 0px #00000040;
+    }
+
+    .text_add_contact {
+        display: none;
+    }
+
+    /* Contact Overview*/
+
+    .head_overview {
+        padding: 48px 16px;
+    }
+
+    .hide_desktop {
+        display: flex;
+    }
+
+    .left_part_overview {
+        padding: 0px;
+    }
+
+    .headline_contacts {
+        font-size: 47px;
+    }
+
+    .text_contacts {
+        font-size: 20px;
+    }
+
+    .floating_contact {
+        padding: 0px 16px;
+    }
+    
+    .name_overview {
+        font-weight: bold;
+    }
+
+    .editable_content {
+        display: none;
+    }
+
+    .create_contact_input {
+        max-width: 364px;
+    }
+}
+
+@media(max-width: 460px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .dialog_add_contact,
+    .dialog_edit_contact {
+        width: 93%;
+        height: calc(100vh - 90px - 86px);
+    }
+}
+
+@media(max-width: 450px) {
+    /* Contacts */
+
+    #content_contacts {
+        padding: 32px 16px;
+    }
+
+    .horizontal_line_content {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 400px) {
+    /* Contacts - Dialog add & edit Contact */
+
+    .create_contact_input {
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 370px) {
+    /* Contacts */
+
+    #content_contacts {
+        padding: 32px 0px;
+        align-items: unset;
+    }
+
+    .contact {
+        gap: 20px;
+    }
+
+    .add_change_btn_mobile {
+        right: 24px;
+    }
+
+    .contact_fullName,
+    .contact_mail {
+        word-break: break-all;
+    }
+
+    .letter_content {
+        padding: 0px 8px;
+    }
+    
+    .name_overview {
+        font-size: 24px;
+    }
+}

@@ -43,3 +43,18 @@ function proveElementWidth(element) {
 }
 
 
+function showDialog(classDialogBg, classD_none, classDialog, showClassDialog, time) {
+    document.querySelector(`${classDialogBg}`).classList.toggle(`${classD_none}`);
+    setTimeout(function() {
+        document.querySelector(`${classDialog}`).classList.toggle(`${showClassDialog}`);
+    }, time);
+}
+
+
+function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, time) {
+    document.querySelector(`${classDialog}`).classList.remove(`${showClassDialog}`);
+    setTimeout(function() {
+        document.querySelector(`${classDialogBg}`).classList.add(`${classD_none}`);
+    }, time);
+}
+
