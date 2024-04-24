@@ -1,4 +1,32 @@
+/* Board - Dialog add Task */
 
+.dialog_addTask_bg {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    inset: 0;
+    z-index: 1;
+}
+
+.dialog_addTask {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    height: 65%;
+    border-radius: 30px;
+    background-color: var(--white);
+    /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
+    transform: translateX(120%);
+    transition: all 100ms ease-in-out;
+}
+
+.show_dialog_addTask {
+    /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
+    transform: translateX(0);
+}
 
 /* Board */
 
