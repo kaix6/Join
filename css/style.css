@@ -52,7 +52,6 @@ body {
     background-color: var(--backgroundblue);
 }
 
-
 .wrapped_maxWidth {
     max-width: 1440px;
     width: 100%;

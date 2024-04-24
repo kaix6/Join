@@ -42,14 +42,10 @@
     background-color: var(--menuButtonDarkblue);
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
 .head_top_dialog_add_edit {
-    display: flex;
-    flex-direction: column;
     gap: 16px;
     padding-left: 16px;
 }
@@ -310,8 +306,6 @@
 }
 
 .name_data {
-    display: flex;
-    flex-direction: column;
     gap: 5px;
 }
 
@@ -367,8 +361,6 @@
 }
 
 .floating_contact {
-    display: flex;
-    flex-direction: column;
     padding: 32px 55px;
     gap: 21px;
     transform: translateX(100%);
@@ -477,13 +469,6 @@
         display: none;
     }
 
-    .head_top_dialog_add_edit {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        padding-left: 16px;
-    }
-
     .wrapper_close_add_edit_contact {
         right: 18px;
         top: 24px;
@@ -504,7 +489,6 @@
 
     .text_add_edit_contact_dialog {
         font-size: 20px;
-        color: var(--white);
     }
 
     .bottom_dialog_add_edit {
@@ -708,7 +692,6 @@
 
     .dialog_add_contact,
     .dialog_edit_contact {
-        flex-direction: column;
         width: 93%;
         height: calc(100vh - 90px - 86px);
     }
