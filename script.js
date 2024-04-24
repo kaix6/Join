@@ -6,7 +6,7 @@ async function initLogin() {
 function animationWindow() {
     setTimeout(function() {
         document.getElementById('joinLogoAnimation').classList.add('hidden');
-    }, 2000)
+    }, 1500)
 }
 
 async function includeHTML() {

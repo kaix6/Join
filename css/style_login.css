@@ -1,8 +1,11 @@
 body {
-    font-family: 'Open Sans';
     max-width: 1440px;
-    margin: 0;
     background: rgb(246, 247, 248);
+}
+
+* {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 .hidden {
@@ -53,7 +56,7 @@ body {
     top: 45%;
     left: 45%;
     transform: translate(-50%, -50%);
-    animation: slideToLeftTop 5s forwards;
+    animation: slideToLeftTop 3s forwards linear;
 }
 
 @keyframes slideToLeftTop {
@@ -99,7 +102,7 @@ body {
 }
 
 .button-login-blue {
-    font-family: 'Open Sans';
+    /* font-family: 'Open Sans'; */
     font-weight: 800;
     height: 49px;
     background-color: var(--menuButtonDarkblue);
@@ -108,7 +111,7 @@ body {
 }
 
 .button-login-white {
-    font-family: 'Open Sans';
+    /* font-family: 'Open Sans'; */
     font-style: normal;
     font-weight: 800;
     height: 49px;
@@ -118,7 +121,7 @@ body {
 }
 
 h1 {
-    font-family: 'Inter';
+    /* font-family: 'Inter'; */
     font-weight: 700;
     /* width: 315px; */
     /* height: 73px; */
@@ -141,7 +144,7 @@ h1 {
 }
 
 input {
-    font-family: 'Open Sans';
+    /* font-family: 'Open Sans'; */
     font-weight: 800;
 }
 
