@@ -1,0 +1,90 @@
+/* Header */
+
+@media(min-width: 801px) { /* just the hover effect that will only trigger at 801px and up */
+    .border_profile:hover {
+        background-color: #0C2E621F;
+     }
+}
+
+
+/* Side Menu */
+
+@media(min-width: 801px) { 
+    .menu_icon_text:hover,
+    .submenu_header_style a:hover {
+        background-color: var(--hoverMenuBlue);
+    }
+}
+
+@media(max-width:1110px) {
+
+/* Header */
+
+    #header {
+        padding: 20px 40px 20px 52px;
+    }
+}
+
+@media(max-width: 800px) {
+    
+/* Header */
+
+    #header {
+        padding: 20px 16px;
+    }
+          
+    .headline {
+        display: none;
+    }
+    .logo_header_mobile {
+        display: flex;
+        width: 32px;
+        height: 39.02px;
+    }
+    .header_help_icon {
+        display: none;
+    }
+    .border_profile {
+        width: 40px;
+        height: 40px;
+    }
+    .text_profile_header {
+        font-weight: 400;
+    }
+
+/* side menu bottom */
+
+    #side_menu_desktop {
+        display: none;
+    }
+
+    #side_menu {
+        background-color: var(--menuButtonDarkblue);
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 16px;
+    }
+    .side_menu_sticky {
+        position: sticky;
+        bottom: 0;
+    }
+    .menu_icon_text {
+        flex-direction: column;
+        padding: 15px 0px;
+        width: 80px;
+        gap: 10px;
+    }
+    .menu_icon_image {
+        width: 24px;
+        height: 24px;
+    }
+    .link_style {
+        font-size: 14px;
+        font-family: 'Open Sans';
+    }
+    .activeLink {
+        border-radius: 16px;
+    }
+}
+
+/* Contacts */
