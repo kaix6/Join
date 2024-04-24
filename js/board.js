@@ -7,5 +7,5 @@ function showDialogTask(){
 
 function closeDialogTask(){
     document.querySelector('.background-big-task').classList.add('d-none');
-    document.querySelector('.task-box-big').classList.add('d-none');
+    document.querySelector('.task-box-big').classList.remove('show-task-box-big');
 }
