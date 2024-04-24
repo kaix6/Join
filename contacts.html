@@ -20,9 +20,9 @@
     
             <!--      Section Dialogbox Add Contact    -->
 
-        <div onclick="closeDialogAddContact()" class="dialog_add_contact_bg d_none">
+        <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 250)" class="dialog_add_contact_bg d_none">
             <div onclick="doNotClose(event)" class="dialog_add_contact">
-                <div onclick="closeDialogAddContact()" class="wrapper_close_add_edit_contact round_div pointer">
+                <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 250)" class="wrapper_close_add_edit_contact round_div pointer">
                     <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
             <div class="top_dialog_add_edit">
@@ -64,9 +64,9 @@
 
             <!--      Section Dialogbox Edit Contact    -->
 
-        <div onclick="closeDialogEditContact()" class="dialog_edit_contact_bg d_none">
+        <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 250)" class="dialog_edit_contact_bg d_none">
             <div onclick="doNotClose(event)" class="dialog_edit_contact">
-                <div onclick="closeDialogEditContact()" class="wrapper_close_add_edit_contact round_div pointer">
+                <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 250)" class="wrapper_close_add_edit_contact round_div pointer">
                     <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
             <div class="top_dialog_add_edit">
@@ -118,7 +118,7 @@
             <!--      Section Contact options   -->
 
             <div onclick="doNotClose(event)" class="contact_options_mobile">
-                <div onclick="showDialogEditContact()" class="edit_content pointer">
+                <div onclick="showDialog('.dialog_edit_contact_bg', '.dialog_edit_contact', 'show_dialog_edit_contact', 0)" class="edit_content pointer">
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                     <p>Edit</p>
                 </div>
@@ -133,7 +133,7 @@
                  <!--      Section Contact    -->
 
                 <div id="content_contacts">
-                    <div onclick="showDialogAddContact()" class="add_change_btn_mobile pointer">
+                    <div onclick="showDialog('.dialog_add_contact_bg', '.dialog_add_contact', 'show_dialog_add_contact', 50)" class="add_change_btn_mobile pointer">
                         <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
@@ -254,7 +254,7 @@
                         <div class="name_editable_content">
                             <h3 class="name_overview">Anton Mayer</h3>
                             <div class="editable_content">
-                                <div onclick="showDialogEditContact()" class="edit_content pointer">
+                                <div onclick="showDialog('.dialog_edit_contact_bg', '.dialog_edit_contact', 'show_dialog_edit_contact', 0)" class="edit_content pointer">
                                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                                     <p>Edit</p>
                                 </div>
