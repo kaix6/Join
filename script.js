@@ -11,6 +11,7 @@ async function includeHTML() {
         }
     }
     changeClassToActive();
+    hideHelpIcon();
 }
 
 
