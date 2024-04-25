@@ -9,13 +9,22 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .limitation {
     max-width: 1440px;
     width: 100%;
+    height: 100vh;
 }
 
 .hidden {
     display: none;
+}
+
+.display-f {
+    display: flex;
 }
 
 .d-center-space-betwen {
@@ -45,6 +54,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.display-fsecc {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.padding {
+    padding: 80px;
 }
 
 .join-logo {
@@ -103,12 +122,9 @@ body {
 .frame153 {
     width: 652px;
     height: 493px;
-    top: 265.5px;
-    left: 394px;
     padding: 48px 115px 48px 115px;
     gap: 32px;
     border-radius: 30px;
-    opacity: 0px;
     background-color: var(--white);
 }
 
@@ -124,15 +140,18 @@ body {
     background-color: var(--menuButtonDarkblue);
     color: var(--white);
     border-radius: 10px;
+    padding: 0 20px;
 }
 
 .button-login-white {
+    border-style: ridge;
     font-style: normal;
     font-weight: 800;
     height: 49px;
     background-color: var(--white);
     color: var(--menuButtonDarkblue);
     border-radius: 10px;
+    padding: 0 20px;
 }
 
 h1 {
@@ -143,6 +162,10 @@ h1 {
     border: 3px solid;
     border-top: 150px;
     border-color: var(--lightblue);
+}
+
+.link-checkbox {
+    color: var(--lightblue);
 }
 
 .input-with-image {
@@ -180,7 +203,22 @@ footer {
     bottom: 40px;
 }
 
+@media (min-width: 900px) {
+    .mobile-login {
+        display: none;
+        /* display: flex; */
+        height: 20vh;
+    }
+    .butten-mobile {
+        display: none;
+        width: 150px;
+    }
+}
+
 @media (max-width: 900px) {
+    .destop-login {
+        display: none;
+    }
     .join-logo {
         background-color: #2A3647;
     }
@@ -189,10 +227,32 @@ footer {
         width: 100.03px;
         background: url(/assets/img/logIn_SignUp/Capa\ 2.svg);
     }
+    .limitation {
+        width: 90%;
+    }
 }
 
 @media (max-width: 800px) {
     input-with-image {
         width: 364px;
+    }
+    .frame153 {
+        padding: 32px 0px 32px 0px;
+    }
+    .imglogo {
+        width: 64px;
+        padding: 37px 38px;
+    }
+}
+
+@media (max-width: 600px) {
+    .input-with-image {
+        width: 364px;
+    }
+}
+
+@media (max-width: 500px) {
+    .input-with-image {
+        padding: auto;
     }
 }
