@@ -27,6 +27,11 @@ a {
     display: flex;
 }
 
+.display-fjc {
+    display: flex;
+    justify-content: center;
+}
+
 .d-center-space-betwen {
     display: flex;
     align-items: center;
@@ -128,6 +133,15 @@ a {
     background-color: var(--white);
 }
 
+.frame153-mobile {
+    width: 652px;
+    height: 595px;
+    padding: 48px 115px 48px 115px;
+    gap: 32px;
+    border-radius: 30px;
+    background-color: var(--white);
+}
+
 .button-p {
     display: flex;
     align-items: center;
@@ -199,7 +213,7 @@ input:hover {
 }
 
 footer {
-    position: absolute;
+    /* position: absolute; */
     bottom: 40px;
 }
 
@@ -238,6 +252,7 @@ footer {
     }
     .frame153 {
         padding: 32px 0px 32px 0px;
+        height: 396px;
     }
     .imglogo {
         width: 64px;
@@ -253,6 +268,32 @@ footer {
 
 @media (max-width: 500px) {
     .input-with-image {
-        padding: auto;
+        padding: 4px;
+    }
+    .input-with-image {
+        width: 340px;
+    }
+}
+
+@media (max-width: 400px) {
+    .input-with-image {
+        width: 300px;
+        padding: 4px;
+    }
+}
+
+@media (max-width: 350px) {
+    .input-with-image {
+        width: 280px;
+    }
+    .frame153 {
+        height: 306px;
+    }
+    .imglogo {
+        width: 56px;
+        padding: 30px 30px;
+    }
+    .input-with-image {
+        height: 35px;
     }
 }
