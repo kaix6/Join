@@ -196,6 +196,28 @@ select,
   display: none;
 }
 
+.backgroundColorRed {
+  background-color: rgb(255, 61, 0) !important;
+}
+
+.backgroundColorOrange {
+  background-color: rgb(255, 168, 0) !important;
+}
+
+.backgroundColorGreen {
+  background-color: rgb(121, 226, 41) !important;
+}
+
+.fontWeightAndColor {
+  color: white;
+  font-weight: bold;
+}
+
+.imgColor {
+  filter: invert(99%) sepia(0%) saturate(7500%) hue-rotate(104deg)
+    brightness(507%) contrast(101%);
+}
+
 @media (max-width: 1260px) {
   .mainAddTasks,
   .headlineAddTasks,
