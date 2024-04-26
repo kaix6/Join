@@ -70,15 +70,9 @@ body {
     height: calc(100vh - 96px);
 }
 
-/* .sticky {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  } */
-
 /* Responsive */
 
-@media(max-width: 840px) {
+@media(max-width: 800px) {
 
     .wrapped_maxWidth {
         flex-direction: column;
