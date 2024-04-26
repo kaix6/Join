@@ -1,3 +1,14 @@
+async function initLogin() {
+    await includeHTML();
+    animationWindow();
+}
+
+function animationWindow() {
+    setTimeout(function() {
+        document.getElementById('joinLogoAnimation').classList.add('hidden');
+    }, 1500)
+}
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -11,6 +22,7 @@ async function includeHTML() {
         }
     }
     changeClassToActive();
+    hideHelpIcon();
 }
 
 
@@ -22,7 +34,10 @@ function changeClassToActive() {
             link.classList.add('activeLink');
         }
     })
+
 }
+
+
 
 
 function doNotClose(event) {
@@ -41,4 +56,20 @@ function proveElementWidth(element) {
     return rect.width;
 }
 
+
+
+function showDialog(classDialogBg, classD_none, classDialog, showClassDialog, time) {
+    document.querySelector(`${classDialogBg}`).classList.toggle(`${classD_none}`);
+    setTimeout(function() {
+        document.querySelector(`${classDialog}`).classList.toggle(`${showClassDialog}`);
+    }, time);
+}
+
+
+function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, time) {
+    document.querySelector(`${classDialog}`).classList.remove(`${showClassDialog}`);
+    setTimeout(function() {
+        document.querySelector(`${classDialogBg}`).classList.add(`${classD_none}`);
+    }, time);
+}
 

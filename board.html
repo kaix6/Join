@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="/css/template.css">
     <link rel="stylesheet" href="/css/formal-content.css">
     <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="./css/mediaQuery.css">
 </head>
 
 <body class="flex_dir_c" onload="includeHTML()">
 
         <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
+
 
         <!--      Section Dialog Box Small TodoTask    -->
         <div id="task-box-small" class="task-box d-none">
@@ -89,6 +91,15 @@
             </div>
         </div>
         <!--      End Section Dialog Box Big TodoTask    -->
+
+            <!--      Section Dialogbox Add task    -->
+
+            <div onclick="closeDialog('.dialog_addTask', 'show_dialog_addTask', '.dialog_addTask_bg', 'd-none', 250)" class="dialog_addTask_bg d-none">
+                <div onclick="doNotClose(event)" class="dialog_addTask"></div>
+            </div>
+
+            <!--      End Section Dialogbox Add task    -->
+
     
             <div class="right_section flex_dir_c">
     
@@ -111,7 +122,7 @@
                                     <input type="text" placeholder="Find Task">
                                     <img src="/assets/img/board/search.svg">
                                 </div>
-                                <div class="add-task-button">
+                                <div onclick="showDialog('.dialog_addTask_bg', 'd-none', '.dialog_addTask', 'show_dialog_addTask', 50)" class="add-task-button">
                                     <p>Add task</p>
                                     <img src="/assets/img/board/add_task_white.svg">
                                 </div>
