@@ -161,6 +161,10 @@ a {
     padding: 0 20px;
 }
 
+.button-login-blue:active {
+    background-color: var(--lightblue);
+}
+
 .button-login-white {
     border-style: ridge;
     font-style: normal;
@@ -171,6 +175,11 @@ a {
     border-radius: 10px;
     padding: 0 20px;
     border-width: 1px;
+}
+
+.button-login-white:active {
+    border-color: var(--lightblue);
+    color: var(--lightblue);
 }
 
 h1 {
