@@ -25,6 +25,15 @@ function currentElementDisplayStyleFlex() {
 }
 
 
+function hideHelpIcon() {
+    let helpIcon = document.querySelector('.header_help_icon');
+    let activePage = window.location.pathname;
+    if(activePage == '/help.html') {
+        helpIcon.classList.add('d_none');
+    } 
+}
+
+
 
 
 

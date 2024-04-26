@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/template.css">
+    <link rel="stylesheet" href="./css/mediaQuery.css">
     <link rel="stylesheet" href="./css/fonts.css">
     <script defer src="script.js"></script>
     <script defer src="js/template.js"></script>
@@ -20,13 +21,13 @@
     
             <!--      Section Dialogbox Add Contact    -->
 
-        <div onclick="closeshowDialogAddContact()" class="dialog_add_edit_contact_bg d_none">
-            <div onclick="doNotClose(event)" class="dialog_add_edit_contact">
-                <div onclick="closeshowDialogAddContact()" class="wrapper_close_add_edit_contact round_div pointer">
+        <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="dialog_add_contact_bg d_none">
+            <div onclick="doNotClose(event)" class="dialog_add_contact">
+                <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="wrapper_close_add_edit_contact round_div pointer">
                     <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
-            <div class="top_dialog_add_edit">
-                <div class="head_top_dialog_add_edit">
+            <div class="top_dialog_add_edit flex_dir_c">
+                <div class="head_top_dialog_add_edit flex_dir_c">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
                     <h3 class="headline_add_edit_contact">Add contact</h3>
                     <p class="text_add_edit_contact_dialog">Tasks are better with a team</p>
@@ -64,11 +65,13 @@
 
             <!--      Section Dialogbox Edit Contact    -->
 
-        <div class="dialog_add_edit_contact_bg d_none">
-            <div class="dialog_add_edit_contact">
-                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
-            <div class="top_dialog_add_edit">
-                <div class="head_top_dialog_add_edit">
+        <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="dialog_edit_contact_bg d_none">
+            <div onclick="doNotClose(event)" class="dialog_edit_contact">
+                <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
+                    <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+                </div>
+            <div class="top_dialog_add_edit flex_dir_c">
+                <div class="head_top_dialog_add_edit flex_dir_c">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
                     <h3 class="headline_add_edit_contact">Edit contact</h3>
                     <div class="seperator_line_content_contact">
@@ -116,7 +119,7 @@
             <!--      Section Contact options   -->
 
             <div onclick="doNotClose(event)" class="contact_options_mobile">
-                <div class="edit_content pointer">
+                <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 50)" class="edit_content pointer">
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                     <p>Edit</p>
                 </div>
@@ -131,7 +134,7 @@
                  <!--      Section Contact    -->
 
                 <div id="content_contacts">
-                    <div onclick="showDialogAddContact()" class="add_change_btn_mobile pointer">
+                    <div onclick="showDialog('.dialog_add_contact_bg', 'd_none', '.dialog_add_contact', 'show_dialog_add_contact', 50)" class="add_change_btn_mobile pointer">
                         <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
@@ -146,7 +149,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">AM</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">Anton Mayer</p>
                                     <p class="contact_mail">antom@gmail.com</p>
                                 </div>
@@ -155,7 +158,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">AS</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">Anja Schulz</p>
                                     <p class="contact_mail">schulz@hotmail.com</p>
                                 </div>
@@ -172,7 +175,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">BZ</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">Benedikt Ziegler</p>
                                     <p class="contact_mail">benedikt@gmail.com</p>
                                 </div>
@@ -189,7 +192,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">DE</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">David Eisenberger</p>
                                     <p class="contact_mail">davidberg@gmail.com</p>
                                 </div>
@@ -206,7 +209,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">EF</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">Eva Fischer</p>
                                     <p class="contact_mail">eva@gmail.com</p>
                                 </div>
@@ -215,7 +218,7 @@
                                 <div class="short_name round_div">
                                     <p class="short_name_text">EM</p>
                                 </div>
-                                <div class="name_data">
+                                <div class="name_data flex_dir_c">
                                     <p class="contact_fullName">Emmanuel Mauer</p>
                                     <p class="contact_mail">emmanuelma@gmail.com</p>
                                 </div>
@@ -228,7 +231,7 @@
                  <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
-                    <div onclick="showContactOptions()" class="add_change_btn_mobile hide_desktop pointer">
+                    <div onclick="showContactOptions()" id="test" class="add_change_btn_mobile hide_desktop pointer">
                         <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
                     </div>
                     <div class="head_overview">
@@ -244,7 +247,7 @@
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
-                    <div id="floating_contact${}" class="floating_contact d_none"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
+                    <div id="floating_contact${}" class="floating_contact flex_dir_c d_none"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
                         <div class="head_floating_content">
                             <div class="short_name_overview round_div">
                                 <p class="short_name_text_overview">AM</p>
@@ -252,7 +255,7 @@
                         <div class="name_editable_content">
                             <h3 class="name_overview">Anton Mayer</h3>
                             <div class="editable_content">
-                                <div class="edit_content pointer">
+                                <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 0)" class="edit_content pointer">
                                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                                     <p>Edit</p>
                                 </div>

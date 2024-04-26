@@ -1,22 +1,22 @@
-function showDialogAddContact() {
-    document.querySelector('.dialog_add_edit_contact_bg').classList.toggle('d_none');
+function showDialog(classDialogBg, classDialog, showClassDialog, time) {
+    document.querySelector(`${classDialogBg}`).classList.toggle('d_none');
     setTimeout(function() {
-        document.querySelector('.dialog_add_edit_contact').classList.toggle('show_dialog_add_edit_contact');
-    }, 100);
+        document.querySelector(`${classDialog}`).classList.toggle(`${showClassDialog}`);
+    }, time);
 }
 
 
-function closeshowDialogAddContact() {
-    document.querySelector('.dialog_add_edit_contact').classList.remove('show_dialog_add_edit_contact');
+function closeDialog(classDialog, showClassDialog, classDialogBg, time) {
+    document.querySelector(`${classDialog}`).classList.remove(`${showClassDialog}`);
     setTimeout(function() {
-        document.querySelector('.dialog_add_edit_contact_bg').classList.add('d_none');
-    }, 305);
+        document.querySelector(`${classDialogBg}`).classList.add('d_none');
+    }, time);
 }
 
 
 function toggleContactView() {
     // Mobile
-    if(currentElementWidth()) {
+    if(currentElementWidth(1110)) {
         document.querySelector('#content_contacts').classList.toggle('d_none');
         document.querySelector('#contact_view').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('d_none'); // ID muss hier noch angepasst werden mit '#floating_contact${}'
@@ -42,8 +42,8 @@ function closeContactOptions(event) {
 }
 
 
-function currentElementWidth() {
-    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= 1110;
+function currentElementWidth(number) {
+    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
 
 
