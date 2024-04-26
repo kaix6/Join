@@ -81,6 +81,13 @@
   -webkit-appearance: none;
 }
 
+#date,
+#assignedTo,
+#category,
+#subtask:hover {
+  cursor: pointer;
+}
+
 .prio {
   margin-top: 16px;
   display: flex;
@@ -145,6 +152,20 @@
   border: none;
 }
 
+.createButtonAddTasks:hover {
+  background-color: var(--lightblue);
+  cursor: pointer;
+  box-shadow: -1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.clearButtonAddTasks:hover {
+  border: 2px solid;
+  filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
+    brightness(94%) contrast(87%);
+  cursor: pointer;
+  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+}
+
 .createButtonAddTasks img {
   filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
     brightness(500%);
@@ -175,6 +196,28 @@ select,
   display: none;
 }
 
+.backgroundColorRed {
+  background-color: rgb(255, 61, 0) !important;
+}
+
+.backgroundColorOrange {
+  background-color: rgb(255, 168, 0) !important;
+}
+
+.backgroundColorGreen {
+  background-color: rgb(121, 226, 41) !important;
+}
+
+.fontWeightAndColor {
+  color: white;
+  font-weight: bold;
+}
+
+.imgColor {
+  filter: invert(99%) sepia(0%) saturate(7500%) hue-rotate(104deg)
+    brightness(507%) contrast(101%);
+}
+
 @media (max-width: 1260px) {
   .mainAddTasks,
   .headlineAddTasks,
@@ -195,7 +238,6 @@ select,
 
 @media (max-width: 1100px) {
   .mainAddTasks,
-  .headlineAddTasks,
   .footerAddTasks {
     margin-left: 20px;
     margin-right: 20px;
@@ -281,9 +323,9 @@ select,
 
 /* Mobil */
 
-@media (max-width: 840px) {
+@media (max-width: 950px) {
   .desktopAddTask,
-  .footerAddTasks, 
+  .footerAddTasks,
   .clearButtonAddTasks {
     display: none;
   }
@@ -291,10 +333,9 @@ select,
   .mobileAddTask,
   .mobilefooterAddTasks {
     display: block;
-      overflow-x: hidden;
-      overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  
 
   .headlineAddTasks {
     font-size: 47px;
@@ -382,7 +423,7 @@ select,
   .mobilefooterAddTasks {
     margin-left: 16px;
     margin-right: 16px;
-height: 88px;
+    height: 88px;
   }
 
   .footerAddTasksContainer {
@@ -432,5 +473,18 @@ height: 88px;
   #date {
     background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
     background-size: 26px auto; /* Größe des Pfeils */
+  }
+}
+
+@media (max-width: 520px) {
+  .buttonPrio {
+    width: 100px;
+    padding: 14px 8px 14px 8px;
+    gap: 4px;
+  }
+
+  .createButtonAddTasks {
+    padding: 10px;
+    width: 163px;
   }
 }

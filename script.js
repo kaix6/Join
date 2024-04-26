@@ -1,3 +1,14 @@
+async function initLogin() {
+    await includeHTML();
+    animationWindow();
+}
+
+function animationWindow() {
+    setTimeout(function() {
+        document.getElementById('joinLogoAnimation').classList.add('hidden');
+    }, 1500)
+}
+
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -23,7 +34,10 @@ function changeClassToActive() {
             link.classList.add('activeLink');
         }
     })
+
 }
+
+
 
 
 function doNotClose(event) {
@@ -41,6 +55,7 @@ function proveElementWidth(element) {
     let rect = elementWidth.getBoundingClientRect();
     return rect.width;
 }
+
 
 
 function showDialog(classDialogBg, classD_none, classDialog, showClassDialog, time) {
