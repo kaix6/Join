@@ -6,6 +6,7 @@
     <title>AddTasks</title>
 
     <script src="script.js"></script>
+    <script src="js/add_tasks.js"></script>
     <script defer src="js/template.js"></script>
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
@@ -93,17 +94,17 @@
                       justify-content: space-between;
                     "
                   >
-                    <button class="buttonPrio">
-                      Urgent
-                      <img src="assets/img/add_task/prio_urgent.svg" alt="" />
-                    </button>
-                    <button class="buttonPrio">
-                      Medium
-                      <img src="assets/img/add_task/prio_medium.svg" alt="" />
-                    </button>
-                    <button class="buttonPrio">
-                      Low <img src="assets/img/add_task/prio_low.svg" alt="" />
-                    </button>
+                  <button id="buttonUrgent" onclick="addPrioButtonColor('urgent', event)" class="buttonPrio">
+                    Urgent
+                    <img id="buttonImg1" src="assets/img/add_task/prio_urgent.svg" alt="" />
+                  </button>
+                  <button id="buttonMedium" onclick="addPrioButtonColor('medium', event)" class="buttonPrio">
+                    Medium
+                    <img id="buttonImg2" src="assets/img/add_task/prio_medium.svg" alt="" />
+                  </button>
+                  <button id="buttonLow" onclick="addPrioButtonColor('low', event)" class="buttonPrio">
+                    Low <img id="buttonImg3" src="assets/img/add_task/prio_low.svg" alt="" />
+                  </button>
                   </div>
                 </div>
 
@@ -150,7 +151,7 @@
               <p><span style="color: red">*</span>This field is required</p>
 
               <div>
-                <button class="clearButtonAddTasks">
+                <button onclick="reloadPage()" class="clearButtonAddTasks">
                   Clear <img src="assets/img/add_task/close.svg" alt="" />
                 </button>
                 <button class="createButtonAddTasks">
@@ -232,15 +233,15 @@
                       justify-content: space-between;
                     "
                   >
-                    <button class="buttonPrio">
+                    <button id="buttonUrgentMobil" onclick="addPrioButtonColor(urgent)" class="buttonPrio">
                       Urgent
                       <img src="assets/img/add_task/prio_urgent.svg" alt="" />
                     </button>
-                    <button class="buttonPrio">
+                    <button id="buttonMediumMobil" onclick="addPrioButtonColor(medium)" class="buttonPrio">
                       Medium
                       <img src="assets/img/add_task/prio_medium.svg" alt="" />
                     </button>
-                    <button class="buttonPrio">
+                    <button id="buttonLowMobil" onclick="addPrioButtonColor(low)" class="buttonPrio">
                       Low <img src="assets/img/add_task/prio_low.svg" alt="" />
                     </button>
                   </div>
