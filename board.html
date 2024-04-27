@@ -1,361 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board | Join</title>
     <script src="script.js"></script>
     <script defer src="/js/board.js"></script>
     <script defer src="js/template.js"></script>
-    <link rel="icon" href="./assets/img/general/logo_favicon.svg">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/colors.css">
-    <link rel="stylesheet" href="/css/template.css">
-    <link rel="stylesheet" href="/css/formal-content.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="./css/mediaQuery.css">
-    <link rel="stylesheet" href="./css/addTasks.css">
-</head>
+    <link rel="icon" href="./assets/img/general/logo_favicon.svg" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="/css/colors.css" />
+    <link rel="stylesheet" href="/css/template.css" />
+    <link rel="stylesheet" href="/css/formal-content.css" />
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="./css/mediaQuery.css" />
+    <link rel="stylesheet" href="./css/addTasks.css" />
+  </head>
 
-<body class="flex_dir_c" onload="includeHTML()">
+  <body class="flex_dir_c" onload="includeHTML()">
+    <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
+      <!--      Section Dialog Box Small TodoTask    -->
+      <div id="task-box-small" class="task-box d-none">
+        <p class="task-type">Task Type</p>
+        <p class="task-headline">Task Headline</p>
+        <p class="task-description">Task Description</p>
+        <div class="progress-section">
+          <div class="progress">
+            <div class="progress-bar" style="width: 50%"></div>
+          </div>
+          <p class="amount-subtask">1/2 Subtasks</p>
+        </div>
+        <div class="member-prio-section">
+          <div class="task-all-member">
+            <div class="member">AM</div>
+            <div class="member">EM</div>
+          </div>
+          <img src="/assets/img/add_task/prio_low.svg" />
+        </div>
+      </div>
+      <!--      End Section Dialog Box Small TodoTask    -->
 
-        <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-
-
-        <!--      Section Dialog Box Small TodoTask    -->
-        <div id="task-box-small" class="task-box d-none">
+      <!--      Section Dialog Box Big TodoTask    -->
+      <div class="background-big-task d-none" onclick="closeDialogTask()">
+        <div id="task-box-big" class="task-box-big" onclick="doNotClose(event)">
+          <div class="d-flex-center-space-btw">
             <p class="task-type">Task Type</p>
-            <p class="task-headline">Task Headline</p>
-            <p class="task-description">Task Description</p>
-            <div class="progress-section">
-                <div class="progress">
-                    <div class="progress-bar" style="width: 50%;"></div>
-                </div>
-                <p class="amount-subtask">1/2 Subtasks</p>
+            <div class="close-icon" onclick="closeDialogTask()">
+              <img src="/assets/img/add_task/close.svg" />
             </div>
-            <div class="member-prio-section">
-                <div class="task-all-member">
-                    <div class="member">AM</div>
-                    <div class="member">EM</div>
-                </div>
-                <img src="/assets/img/add_task/prio_low.svg">
+          </div>
+          <h2>Task Headline</h2>
+          <p class="task-description-big">Task Description</p>
+          <div>
+            <div class="d-flex">
+              <p class="width-30">Due date:</p>
+              <p>10/05/2023</p>
             </div>
+            <div class="d-flex">
+              <p class="width-30">Priority:</p>
+              <p>Low</p>
+              <img class="prio-icon" src="/assets/img/add_task/prio_low.svg" />
+            </div>
+            <div>
+              <p class="margin-top-16px">Assigned To:</p>
+              <div class="container-member-big-task">
+                <div class="member-big-task">AM</div>
+                <p>Name</p>
+              </div>
+            </div>
+            <div>
+              <p class="margin-top-16px">Subtasks</p>
+              <div class="container-subtasks">
+                <input class="subtask-checkbox" type="checkbox" />
+                <p>Subtask Name</p>
+              </div>
+            </div>
+            <div class="container-delete-edit">
+              <div class="delete">
+                <img
+                  class="delete-edit-icon"
+                  src="/assets/img/board/icon+delete_black.svg"
+                />
+              </div>
+              <div class="edit">
+                <img
+                  class="delete-edit-icon"
+                  src="/assets/img/board/icon+edit_black.svg"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <!--      End Section Dialog Box Small TodoTask    -->
+      </div>
+      <!--      End Section Dialog Box Big TodoTask    -->
 
+      <!--      Section Dialogbox Add task    -->
 
-        <!--      Section Dialog Box Big TodoTask    -->
-        <div class="background-big-task d-none" onclick="closeDialogTask()">
-            <div id="task-box-big" class="task-box-big" onclick="doNotClose(event)">
-                <div class="d-flex-center-space-btw">
-                    <p class="task-type">Task Type</p>
-                    <div class="close-icon" onclick="closeDialogTask()">
-                        <img src="/assets/img/add_task/close.svg">
-                    </div>
-                </div>
-                <h2>Task Headline</h2>
-                <p class="task-description-big">Task Description</p>
+      <div
+        onclick="closeDialog('.dialog_addTask', 'show_dialog_addTask', '.dialog_addTask_bg', 'd-none', 250)"
+        class="dialog_addTask_bg d-none"
+      >
+        <div onclick="doNotClose(event)" class="dialog_addTask">
+          <!-- Desktop - Version -->
+          <div class="desktopAddTask">
+            <div class="containerHeadline d-flex">
+              <h1 class="headlineAddTasks">Add Tasks</h1>
+            </div>
+
+            <div class="mainAddTasks">
+              <form class="addTasksLeft">
                 <div>
-                    <div class="d-flex">
-                        <p class="width-30">Due date:</p>
-                        <p>10/05/2023</p>
-                    </div>
-                    <div class="d-flex">
-                        <p class="width-30">Priority:</p>
-                        <p>Low</p>
-                        <img class="prio-icon" src="/assets/img/add_task/prio_low.svg">
-                    </div>
-                    <div>
-                        <p class="margin-top-16px">Assigned To:</p>
-                        <div class="container-member-big-task">
-                            <div class="member-big-task">AM</div>
-                            <p>Name</p>
-                        </div>
-                    </div>
-                    <div>
-                        <p class="margin-top-16px">Subtasks</p>
-                        <div class="container-subtasks">
-                            <input class="subtask-checkbox" type="checkbox">
-                            <p>Subtask Name</p>
-                        </div>
-                    </div>
-                    <div class="container-delete-edit">
-                        <div class="delete">
-                            <img class="delete-edit-icon" src="/assets/img/board/icon+delete_black.svg">
-                        </div>
-                        <div class="edit">
-                            <img class="delete-edit-icon" src="/assets/img/board/icon+edit_black.svg">
-                        </div>
-                    </div>
+                  <label class="fontUnderHeadlinesAddTasks" for="title"
+                    >Title<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="text" id="title" placeholder="Enter a title" />
                 </div>
-            </div>
-        </div>
-        <!--      End Section Dialog Box Big TodoTask    -->
 
-            <!--      Section Dialogbox Add task    -->
-
-            <div onclick="closeDialog('.dialog_addTask', 'show_dialog_addTask', '.dialog_addTask_bg', 'd-none', 250)" class="dialog_addTask_bg d-none">
-                <div onclick="doNotClose(event)" class="dialog_addTask">
-                    <div class="desktopAddTask">
-                        <div class="containerHeadline d-flex">
-                          <h1 class="headlineAddTasks">Add Tasks</h1>
-                        </div>
-            
-                        <div class="mainAddTasks">
-                          <form class="addTasksLeft">
-                            <div>
-                              <label class="fontUnderHeadlinesAddTasks" for="title"
-                                >Title<span style="color: red">*</span></label
-                              >
-                              <br />
-                              <input type="text" id="title" placeholder="Enter a title" />
-                            </div>
-            
-                            <div style="margin-top: 16px">
-                              <label class="fontUnderHeadlinesAddTasks" for="description"
-                                >Description</label
-                              >
-                              <br />
-                              <textarea
-                                id="description"
-                                name="description"
-                                rows="4"
-                                cols="50"
-                                placeholder="Enter a Description"
-                              ></textarea>
-                            </div>
-            
-                            <div style="margin-top: 16px">
-                              <label class="fontUnderHeadlinesAddTasks" for="assigned"
-                                >Assigned to</label
-                              >
-                              <br />
-            
-                              <select name="assigned" id="assignedTo">
-                                <option disabled selected>select contacts to assign</option>
-                                <option value="contact1">Contact1</option>
-            
-                                <option value="contact2">Contact2</option>
-            
-                                <option value="contact3">Contact3</option>
-            
-                                <option value="usw">usw</option>
-                              </select>
-                            </div>
-                          </form>
-            
-                          <div class="spacerAddTasks"></div>
-            
-                          <form class="addTasksRight">
-                            <div>
-                              <label class="fontUnderHeadlinesAddTasks" for="date"
-                                >Due date<span style="color: red">*</span></label
-                              >
-                              <br />
-                              <input type="date" id="date" placeholder="dd/mm/yyyy" />
-                            </div>
-            
-                            <div class="prio fontUnderHeadlinesAddTasks">
-                              Prio
-                              <div
-                                style="
-                                  margin-top: 8px;
-                                  display: flex;
-                                  justify-content: space-between;
-                                "
-                              >
-                                <button
-                                  id="buttonUrgent"
-                                  onclick="addPrioButtonColor('urgent', event)"
-                                  class="buttonPrio"
-                                >
-                                  Urgent
-                                  <img
-                                    id="buttonImg1"
-                                    src="assets/img/add_task/prio_urgent.svg"
-                                    alt=""
-                                  />
-                                </button>
-                                <button
-                                  id="buttonMedium"
-                                  onclick="addPrioButtonColor('medium', event)"
-                                  class="buttonPrio"
-                                >
-                                  Medium
-                                  <img
-                                    id="buttonImg2"
-                                    src="assets/img/add_task/prio_medium.svg"
-                                    alt=""
-                                  />
-                                </button>
-                                <button
-                                  id="buttonLow"
-                                  onclick="addPrioButtonColor('low', event)"
-                                  class="buttonPrio"
-                                >
-                                  Low
-                                  <img
-                                    id="buttonImg3"
-                                    src="assets/img/add_task/prio_low.svg"
-                                    alt=""
-                                  />
-                                </button>
-                              </div>
-                            </div>
-            
-                            <div style="margin-top: 16px">
-                              <label class="fontUnderHeadlinesAddTasks" for="category"
-                                >Category<span style="color: red">*</span></label
-                              >
-                              <br />
-            
-                              <select name="category" id="category">
-                                <option disabled selected>select task category</option>
-                                <option value="contact1">Contact1</option>
-            
-                                <option value="contact2">Contact2</option>
-            
-                                <option value="contact3">Contact3</option>
-            
-                                <option value="usw">usw</option>
-                              </select>
-                            </div>
-            
-                            <div style="margin-top: 16px">
-                              <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                                >Subtasks</label
-                              >
-                              <br />
-            
-                              <select name="subtask" id="subtask">
-                                <option disabled selected>add new subtask</option>
-                                <option value="contact1">Contact1</option>
-            
-                                <option value="contact2">Contact2</option>
-            
-                                <option value="contact3">Contact3</option>
-            
-                                <option value="usw">usw</option>
-                              </select>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div class="footerAddTasks">
-                        <div class="footerAddTasksContainer">
-                          <p><span style="color: red">*</span>This field is required</p>
-            
-                          <div>
-                            <button onclick="reloadPage()" class="clearButtonAddTasks">
-                              Clear <img src="assets/img/add_task/close.svg" alt="" />
-                            </button>
-                            <button class="createButtonAddTasks">
-                              Create Task <img src="assets/img/add_task/check.svg" alt="" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="description"
+                    >Description</label
+                  >
+                  <br />
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    cols="50"
+                    placeholder="Enter a Description"
+                  ></textarea>
                 </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                    >Assigned to</label
+                  >
+                  <br />
+
+                  <select name="assigned" id="assignedTo">
+                    <option disabled selected>select contacts to assign</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
+
+              <div class="spacerAddTasks"></div>
+
+              <form class="addTasksRight">
+                <div>
+                  <label class="fontUnderHeadlinesAddTasks" for="date"
+                    >Due date<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="date" id="date" placeholder="dd/mm/yyyy" />
+                </div>
+
+                <div class="prio fontUnderHeadlinesAddTasks">
+                  Prio
+                  <div
+                    style="
+                      margin-top: 8px;
+                      display: flex;
+                      justify-content: space-between;
+                    "
+                  >
+                    <button
+                      id="buttonUrgent"
+                      onclick="addPrioButtonColor('urgent', event)"
+                      class="buttonPrio"
+                    >
+                      Urgent
+                      <img
+                        id="buttonImg1"
+                        src="assets/img/add_task/prio_urgent.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonMedium"
+                      onclick="addPrioButtonColor('medium', event)"
+                      class="buttonPrio"
+                    >
+                      Medium
+                      <img
+                        id="buttonImg2"
+                        src="assets/img/add_task/prio_medium.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonLow"
+                      onclick="addPrioButtonColor('low', event)"
+                      class="buttonPrio"
+                    >
+                      Low
+                      <img
+                        id="buttonImg3"
+                        src="assets/img/add_task/prio_low.svg"
+                        alt=""
+                      />
+                    </button>
+                  </div>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="category"
+                    >Category<span style="color: red">*</span></label
+                  >
+                  <br />
+
+                  <select name="category" id="category">
+                    <option disabled selected>select task category</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="subtask"
+                    >Subtasks</label
+                  >
+                  <br />
+
+                  <select name="subtask" id="subtask">
+                    <option disabled selected>add new subtask</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="footerAddTasks">
+            <div class="footerAddTasksContainer">
+              <p><span style="color: red">*</span>This field is required</p>
+
+              <div>
+                <button onclick="reloadPage()" class="clearButtonAddTasks">
+                  Clear <img src="assets/img/add_task/close.svg" alt="" />
+                </button>
+                <button class="createButtonAddTasks">
+                  Create Task <img src="assets/img/add_task/check.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Desktop - Version -->
+          <!-- Mobile - Version -->
+
+          <div class="mobileAddTask">
+            <div class="containerHeadline d-flex">
+              <h1 class="headlineAddTasks">Add Tasks</h1>
             </div>
 
-            <!--      End Section Dialogbox Add task    -->
+            <div class="mainAddTasks">
+              <form class="addTasksLeft">
+                <div>
+                  <label class="fontUnderHeadlinesAddTasks" for="title"
+                    >Title<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="text" id="title" placeholder="Enter a title" />
+                </div>
 
-    
-            <div class="right_section flex_dir_c">
-    
-                <!--      Section header    -->
-    
-                <div w3-include-html="assets/templates/header.html"></div>
-    
-                <!--      Section header    -->
-    
-    
-                <section id="main_container">
-                    <div class="content-board">
-                        <div class="headline-container margin-bottom-32px">
-                            <div class="h1-container">
-                                <h1>Board</h1>
-                                <img class="small-add-button" src="/assets/img/board/add_task_white.svg">
-                            </div>
-                            <div class="board-search-add">
-                                <div class="search-field">
-                                    <input type="text" placeholder="Find Task">
-                                    <img src="/assets/img/board/search.svg">
-                                </div>
-                                <div onclick="showDialog('.dialog_addTask_bg', 'd-none', '.dialog_addTask', 'show_dialog_addTask', 50)" class="add-task-button">
-                                    <p>Add task</p>
-                                    <img src="/assets/img/board/add_task_white.svg">
-                                </div>
-                            </div>
-                        </div>
-                        
-        
-                        <div class="d-flex-start">
-                            <div class="board-column">
-                                <div class="board-headline">
-                                    <p>To do</p>
-                                    <img src="/assets/img/board/plus_button.svg">
-                                </div>
-                                <div class="no-task-div">
-                                    <p>No tasks To do</p>
-                                </div>
-                            </div>
-        
-                            <div class="board-column">
-                                <div class="board-headline">
-                                    <p>In progress</p>
-                                    <img src="/assets/img/board/plus_button.svg">
-                                </div>
-                                <div>
-                                    <div id="task-box-small" class="task-box" onclick="showDialogTask()">
-                                        <p class="task-type">Task Type</p>
-                                        <p class="task-headline">Task Headline</p>
-                                        <p class="task-description">Task Description</p>
-                                        <div class="progress-section">
-                                            <div class="progress">
-                                                <div class="progress-bar" style="width: 50%;"></div>
-                                            </div>
-                                            <p class="amount-subtask">1/2 Subtasks</p>
-                                        </div>
-                                        <div class="member-prio-section">
-                                            <div class="task-all-member">
-                                                <div class="member">AM</div>
-                                                <div class="member">EM</div>
-                                            </div>
-                                            <img src="/assets/img/add_task/prio_low.svg">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <div class="board-column">
-                                <div class="board-headline">
-                                    <p>Await Feedback</p>
-                                    <img src="/assets/img/board/plus_button.svg">
-                                </div>
-                                <div></div>
-                            </div>
-        
-                            <div class="board-column">
-                                <div class="board-headline">
-                                    <p>Done</p>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-    
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="description"
+                    >Description</label
+                  >
+                  <br />
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    cols="50"
+                    placeholder="Enter a Description"
+                  ></textarea>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                    >Assigned to</label
+                  >
+                  <br />
+
+                  <select name="assigned" id="assignedTo">
+                    <option disabled selected>select contacts to assign</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
+
+              <div class="spacerAddTasks"></div>
+
+              <form class="addTasksRight">
+                <div>
+                  <label class="fontUnderHeadlinesAddTasks" for="date"
+                    >Due date<span style="color: red">*</span></label
+                  >
+                  <br />
+                  <input type="date" id="date" placeholder="dd/mm/yyyy" />
+                </div>
+
+                <div class="prio fontUnderHeadlinesAddTasks">
+                  Prio
+                  <div
+                    style="
+                      margin-top: 8px;
+                      display: flex;
+                      justify-content: space-between;
+                    "
+                  >
+                    <button
+                      id="buttonUrgentMobil"
+                      onclick="addPrioButtonColor(urgent)"
+                      class="buttonPrio"
+                    >
+                      Urgent
+                      <img src="assets/img/add_task/prio_urgent.svg" alt="" />
+                    </button>
+                    <button
+                      id="buttonMediumMobil"
+                      onclick="addPrioButtonColor(medium)"
+                      class="buttonPrio"
+                    >
+                      Medium
+                      <img src="assets/img/add_task/prio_medium.svg" alt="" />
+                    </button>
+                    <button
+                      id="buttonLowMobil"
+                      onclick="addPrioButtonColor(low)"
+                      class="buttonPrio"
+                    >
+                      Low <img src="assets/img/add_task/prio_low.svg" alt="" />
+                    </button>
+                  </div>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="category"
+                    >Category<span style="color: red">*</span></label
+                  >
+                  <br />
+
+                  <select name="category" id="category">
+                    <option disabled selected>select task category</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+
+                <div style="margin-top: 16px">
+                  <label class="fontUnderHeadlinesAddTasks" for="subtask"
+                    >Subtasks</label
+                  >
+                  <br />
+
+                  <select name="subtask" id="subtask">
+                    <option disabled selected>add new subtask</option>
+                    <option value="contact1">Contact1</option>
+
+                    <option value="contact2">Contact2</option>
+
+                    <option value="contact3">Contact3</option>
+
+                    <option value="usw">usw</option>
+                  </select>
+                </div>
+              </form>
             </div>
-    
-            <!--      Section Side Menu   -->
-    
-            <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
-    
-            <!--      End Section Side Menu    -->
+          </div>
+          <div class="mobilefooterAddTasks">
+            <div class="footerAddTasksContainer">
+              <p><span style="color: red">*</span>This field is required</p>
 
+              <div>
+                <button class="clearButtonAddTasks">
+                  Clear <img src="assets/img/add_task/close.svg" alt="" />
+                </button>
+                <button class="createButtonAddTasks">
+                  Create Task <img src="assets/img/add_task/check.svg" alt="" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Mobile - Version -->
         </div>
+      </div>
 
-</body>
+      <!--      End Section Dialogbox Add task    -->
+
+      <div class="right_section flex_dir_c">
+        <!--      Section header    -->
+
+        <div w3-include-html="assets/templates/header.html"></div>
+
+        <!--      Section header    -->
+
+        <section id="main_container">
+          <div class="content-board">
+            <div class="headline-container margin-bottom-32px">
+              <div class="h1-container">
+                <h1>Board</h1>
+                <img
+                  class="small-add-button"
+                  src="/assets/img/board/add_task_white.svg"
+                />
+              </div>
+              <div class="board-search-add">
+                <div class="search-field">
+                  <input type="text" placeholder="Find Task" />
+                  <img src="/assets/img/board/search.svg" />
+                </div>
+                <div
+                  onclick="showDialog('.dialog_addTask_bg', 'd-none', '.dialog_addTask', 'show_dialog_addTask', 50)"
+                  class="add-task-button"
+                >
+                  <p>Add task</p>
+                  <img src="/assets/img/board/add_task_white.svg" />
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex-start">
+              <div class="board-column">
+                <div class="board-headline">
+                  <p>To do</p>
+                  <img src="/assets/img/board/plus_button.svg" />
+                </div>
+                <div class="no-task-div">
+                  <p>No tasks To do</p>
+                </div>
+              </div>
+
+              <div class="board-column">
+                <div class="board-headline">
+                  <p>In progress</p>
+                  <img src="/assets/img/board/plus_button.svg" />
+                </div>
+                <div>
+                  <div
+                    id="task-box-small"
+                    class="task-box"
+                    onclick="showDialogTask()"
+                  >
+                    <p class="task-type">Task Type</p>
+                    <p class="task-headline">Task Headline</p>
+                    <p class="task-description">Task Description</p>
+                    <div class="progress-section">
+                      <div class="progress">
+                        <div class="progress-bar" style="width: 50%"></div>
+                      </div>
+                      <p class="amount-subtask">1/2 Subtasks</p>
+                    </div>
+                    <div class="member-prio-section">
+                      <div class="task-all-member">
+                        <div class="member">AM</div>
+                        <div class="member">EM</div>
+                      </div>
+                      <img src="/assets/img/add_task/prio_low.svg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="board-column">
+                <div class="board-headline">
+                  <p>Await Feedback</p>
+                  <img src="/assets/img/board/plus_button.svg" />
+                </div>
+                <div></div>
+              </div>
+
+              <div class="board-column">
+                <div class="board-headline">
+                  <p>Done</p>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!--      Section Side Menu   -->
+
+      <div
+        class="side_menu_sticky"
+        w3-include-html="assets/templates/side_menu.html"
+      ></div>
+
+      <!--      End Section Side Menu    -->
+    </div>
+  </body>
 </html>
