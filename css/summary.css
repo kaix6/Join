@@ -450,3 +450,71 @@
     height: 340px;
   }
 }
+
+@media (max-height: 870px) {
+  .containerHeadline {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .mainSummary {
+    height: 505px;
+    width: 500px;
+  }
+
+  .toDo,
+  .done {
+    width: 240px;
+    height: 153px;
+  }
+
+  .bottomCard {
+    height: 158px;
+    width: 158px;
+  }
+
+  .urgent {
+    height: 158px;
+  }
+
+  .summaryText {
+    margin-top: 370px;
+  }
+}
+
+@media (max-height: 800px) {
+  .containerHeadline {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .mainSummary {
+    height: 445px;
+    width: 440px;
+  }
+
+  .toDo,
+  .done {
+    width: 217px;
+    height: 138px;
+  }
+
+  .bottomCard {
+    height: 138px;
+    width: 138px;
+    gap: 5px;
+  }
+
+  .urgent {
+    height: 138px;
+    gap: 40px;
+  }
+
+  .summaryText {
+    margin-top: 330px;
+  }
+
+  .sizeNumbersSummary {
+    font-size: 54px;
+  }
+}
