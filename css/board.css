@@ -13,9 +13,10 @@
 .dialog_addTask {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     width: 85%;
-    height: 65%;
+    height: 85%;
     border-radius: 30px;
     background-color: var(--white);
     /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
