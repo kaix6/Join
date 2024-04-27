@@ -552,7 +552,8 @@
 }
 
 @media (max-width: 900px) {
-  .spacerAddTasks {
+  .spacerAddTasks,
+  .footerAddTasks {
     margin-left: 30px;
     margin-right: 30px;
   }
@@ -560,11 +561,6 @@
   .mainAddTasks {
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .footerAddTasks {
-    margin-left: 33px;
-    margin-right: 33px;
   }
 
   .clearButtonAddTasks {
@@ -828,7 +824,8 @@
 }
 
 @media (max-width: 840px) {
-  .headlineSummary {
+  .headlineSummary,
+  .sizeNumbersSummary {
     font-size: 47px;
   }
 
@@ -858,10 +855,6 @@
   .iconSummary {
     height: 20px;
     width: 20px;
-  }
-
-  .sizeNumbersSummary {
-    font-size: 47px;
   }
 
   .sizeTextSummary,
