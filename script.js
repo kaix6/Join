@@ -38,8 +38,6 @@ function changeClassToActive() {
 }
 
 
-
-
 function doNotClose(event) {
     event.stopPropagation();
 }

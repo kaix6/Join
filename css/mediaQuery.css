@@ -1,468 +1,1046 @@
 /* Header */
 
-@media(min-width: 801px) { /* just the hover effect that will only trigger at 801px and up */
-    .border_profile:hover {
-        background-color: #0C2E621F;
-     }
+@media (min-width: 801px) {
+  /* just the hover effect that will only trigger at 801px and up */
+  .border_profile:hover {
+    background-color: #0c2e621f;
+  }
 }
-
 
 /* Side Menu */
 
-@media(min-width: 801px) { 
-    .menu_icon_text:hover,
-    .submenu_header_style a:hover {
-        background-color: var(--hoverMenuBlue);
-    }
+@media (min-width: 801px) {
+  .menu_icon_text:hover,
+  .submenu_header_style a:hover {
+    background-color: var(--hoverMenuBlue);
+  }
 }
 
-@media(max-width:1110px) {
+@media (max-width: 1110px) {
+  /* Header */
 
-/* Header */
-
-    #header {
-        padding: 20px 40px 20px 52px;
-    }
+  #header {
+    padding: 20px 40px 20px 52px;
+  }
 }
 
-@media(max-width: 800px) {
-    
-/* Header */
+@media (max-width: 800px) {
+  /* Header */
 
-    #header {
-        padding: 20px 16px;
-    }
-          
-    .headline {
-        display: none;
-    }
+  #header {
+    padding: 20px 16px;
+  }
 
-    .logo_header_mobile {
-        display: flex;
-        width: 32px;
-        height: 39.02px;
-    }
+  .headline {
+    display: none;
+  }
 
-    .header_help_icon {
-        display: none;
-    }
+  .logo_header_mobile {
+    display: flex;
+    width: 32px;
+    height: 39.02px;
+  }
 
-    .border_profile {
-        width: 40px;
-        height: 40px;
-    }
+  .header_help_icon {
+    display: none;
+  }
 
-    .text_profile_header {
-        font-weight: 400;
-    }
+  .border_profile {
+    width: 40px;
+    height: 40px;
+  }
 
-/* side menu bottom */
+  .text_profile_header {
+    font-weight: 400;
+  }
 
-    #side_menu_desktop {
-        display: none;
-    }
+  /* side menu bottom */
 
-    #side_menu {
-        background-color: var(--menuButtonDarkblue);
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 16px;
-    }
+  #side_menu_desktop {
+    display: none;
+  }
 
-    .side_menu_sticky {
-        position: sticky;
-        bottom: 0;
-    }
+  #side_menu {
+    background-color: var(--menuButtonDarkblue);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 16px;
+  }
 
-    .menu_icon_text {
-        flex-direction: column;
-        padding: 15px 0px;
-        width: 80px;
-        gap: 10px;
-    }
+  .side_menu_sticky {
+    position: sticky;
+    bottom: 0;
+  }
 
-    .menu_icon_image {
-        width: 24px;
-        height: 24px;
-    }
+  .menu_icon_text {
+    flex-direction: column;
+    padding: 15px 0px;
+    width: 80px;
+    gap: 10px;
+  }
 
-    .link_style {
-        font-size: 14px;
-        font-family: 'Open Sans';
-    }
+  .menu_icon_image {
+    width: 24px;
+    height: 24px;
+  }
 
-    .activeLink {
-        border-radius: 16px;
-    }
+  .link_style {
+    font-size: 14px;
+    font-family: "Open Sans";
+  }
+
+  .activeLink {
+    border-radius: 16px;
+  }
 }
 
 /* Contacts - Dialog add & edit Contact */
 
-@media(min-width: 1281px) {
+@media (min-width: 1281px) {
+  .cancel_create_contact_edit_btn:hover,
+  .cancel_create_contact_btn:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: 1px solid var(--lightblue);
+    color: var(--lightblue);
+  }
 
-    .cancel_create_contact_edit_btn:hover,
-    .cancel_create_contact_btn:hover {
-        box-shadow: 0px 4px 4px 0px #00000040;
-        border: 1px solid var(--lightblue);
-        color: var(--lightblue);
-    }
+  .cancel_create_contact_btn:hover .img_cancel_checked_btn {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg)
+      brightness(96%) contrast(84%);
+  }
 
-    .cancel_create_contact_btn:hover .img_cancel_checked_btn {
-        filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
-    }
-
-    .create_contact_btn:hover {
-        background-color: var(--lightblue);
-    }
+  .create_contact_btn:hover {
+    background-color: var(--lightblue);
+  }
 }
 
 /* Contacts */
 
-@media(min-width: 801px) {
-    .add_change_btn_mobile:hover {
-        background-color: var(--lightblue);
-    }
+@media (min-width: 801px) {
+  .add_change_btn_mobile:hover {
+    background-color: var(--lightblue);
+  }
 }
 
-@media(min-width: 801px) {
-    .contact:hover {
-        border-radius: 10px;
-        background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
-    }
+@media (min-width: 801px) {
+  .contact:hover {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
+  }
 }
 
 /* Contact Overview*/
 
 /* div mit id="contact_view" ist nur ab width von 1111px sichtbar, sonst class="d_none" */
-@media(min-width: 1111px) {
-    #contact_view {
-        display: block;
-    }
+@media (min-width: 1111px) {
+  #contact_view {
+    display: block;
+  }
 }
 
-@media(max-width: 1280px) {
-    /* Contacts - Dialog add & edit Contact */
+@media (max-width: 1280px) {
+  /* Contacts - Dialog add & edit Contact */
 
-    .create_contact_short_name_edit,
-    .create_contact_short_name {
-        z-index: 1;
-        position: absolute;
-        top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
-    }
+  .create_contact_short_name_edit,
+  .create_contact_short_name {
+    z-index: 1;
+    position: absolute;
+    top: calc(
+      46% - 60px
+    ); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+  }
 
-    .dialog_add_contact,
-    .dialog_edit_contact {
-        flex-direction: column;
-        width: 450px;
-    }
+  .dialog_add_contact,
+  .dialog_edit_contact {
+    flex-direction: column;
+    width: 450px;
+  }
 
-    .top_dialog_add_edit {
-        padding-left: 24px;
-        border-top-right-radius: 30px;
-        border-bottom-left-radius: unset;
-        height: 46%;
-    }
+  .top_dialog_add_edit {
+    padding-left: 24px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: unset;
+    height: 46%;
+  }
 
-    .img_logo {
-        display: none;
-    }
+  .img_logo {
+    display: none;
+  }
 
-    .wrapper_close_add_edit_contact {
-        right: 18px;
-        top: 24px;
-    }
-    .close_add_edit_contact {
-        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
-    }
+  .wrapper_close_add_edit_contact {
+    right: 18px;
+    top: 24px;
+  }
+  .close_add_edit_contact {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg)
+      brightness(105%) contrast(103%);
+  }
 
-    .wrapper_close_add_edit_contact:hover {
-        background-color:initial;
-    }
+  .wrapper_close_add_edit_contact:hover {
+    background-color: initial;
+  }
 
-    .headline_add_edit_contact {
-        font-size: 47px;
-        font-weight: 700;
-        color: var(--white);
-    }
+  .headline_add_edit_contact {
+    font-size: 47px;
+    font-weight: 700;
+    color: var(--white);
+  }
 
-    .text_add_edit_contact_dialog {
-        font-size: 20px;
-    }
+  .text_add_edit_contact_dialog {
+    font-size: 20px;
+  }
 
-    .bottom_dialog_add_edit {
-        height: 54%;
-        border-bottom-left-radius: 30px;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0;
-    }
-    .create_contact_form {
-        gap: 10px;
-        align-items: center;
-    }
+  .bottom_dialog_add_edit {
+    height: 54%;
+    border-bottom-left-radius: 30px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+  .create_contact_form {
+    gap: 10px;
+    align-items: center;
+  }
 
-    .create_contact_input {
-        padding: 10px 21px;
-    }
+  .create_contact_input {
+    padding: 10px 21px;
+  }
 
-    .cancel_create_contact_btn {
-        display: none;
-    }
+  .cancel_create_contact_btn {
+    display: none;
+  }
 
-    .create_contact_btn {
-        padding: 18px 10px;
-    }
+  .create_contact_btn {
+    padding: 18px 10px;
+  }
 
-    .edit_content,
-    .delete_content {
-        gap: 8px;
-        padding: 13px;
-    }
+  .edit_content,
+  .delete_content {
+    gap: 8px;
+    padding: 13px;
+  }
 }
 
-@media(max-width: 1220px) {
-    .left_part_overview {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-    }
+@media (max-width: 1220px) {
+  .left_part_overview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
 
-    .left_part_overview_second {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-    }
+  .left_part_overview_second {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
 
-    .seperator_line_content {
-        height: 3px;
-        width: 90px;
-    }
+  .seperator_line_content {
+    height: 3px;
+    width: 90px;
+  }
 
-    .short_name_overview {
-        width: 80px;
-        height: 80px;
-    }
+  .short_name_overview {
+    width: 80px;
+    height: 80px;
+  }
 
-    .name_overview {
-        font-size: 36px;
-    }
+  .name_overview {
+    font-size: 36px;
+  }
 
-    .short_name_text_overview {
-        font-size: 27px;
-        font-weight: 400;
-    }
+  .short_name_text_overview {
+    font-size: 27px;
+    font-weight: 400;
+  }
 }
 
-@media(max-width: 1110px) {
-    #content_contacts {
-        width: 100%;
-        height: 100%;
-    }
+@media (max-width: 1110px) {
+  #content_contacts {
+    width: 100%;
+    height: 100%;
+  }
 
-    .main_contacts {
-        display: block;
-    }
+  .main_contacts {
+    display: block;
+  }
 
-    .head_overview {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 48px;
-        padding-right: 16px;
-    }
+  .head_overview {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 48px;
+    padding-right: 16px;
+  }
 
-    .left_part_overview {
-        padding-top: 0px;
-    } 
+  .left_part_overview {
+    padding-top: 0px;
+  }
 
-    .add_person_more_icon {
-        width: 32px;
-        height: 32px;
-    }
+  .add_person_more_icon {
+    width: 32px;
+    height: 32px;
+  }
 
-    .right_part_overview {
-        display: flex;
-        width: 32px;
-        height: 32px;
-    }
+  .right_part_overview {
+    display: flex;
+    width: 32px;
+    height: 32px;
+  }
 
-    .floating_contact {
-        transform: translateX(0px); /* Da hier soll der Container direkt da sein, in der Desktop Version slided es aber rein */
-    }
+  .floating_contact {
+    transform: translateX(
+      0px
+    ); /* Da hier soll der Container direkt da sein, in der Desktop Version slided es aber rein */
+  }
 
-    .head_floating_content {
-        gap: 20px;
-    }
+  .head_floating_content {
+    gap: 20px;
+  }
 }
 
-@media screen and (max-width: 1150px) and (min-width: 1111px){
-    .left_part_overview,
-    .floating_contact{
-        padding-left: 20px;
-    }
+@media screen and (max-width: 1150px) and (min-width: 1111px) {
+  .left_part_overview,
+  .floating_contact {
+    padding-left: 20px;
+  }
 
-    .floating_contact{
-        padding: 32px 20px;
-    }
+  .floating_contact {
+    padding: 32px 20px;
+  }
 }
 
 /* when browser's width is between 800 and 1110px, change the width of a <div> element */
-@media screen and (max-width: 1110px) and (min-width: 800px){
-    /* Contacts */
+@media screen and (max-width: 1110px) and (min-width: 800px) {
+  /* Contacts */
 
-    .contact {
-        width: 352px;
-    }
+  .contact {
+    width: 352px;
+  }
 }
 
 /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
 @media screen and (max-width: 800px) and (min-width: 460px) {
-    .letter_content {
-        padding-left: calc((100% - 352px) / 2);
-    }
+  .letter_content {
+    padding-left: calc((100% - 352px) / 2);
+  }
 }
 
-@media(max-width: 800px) {
-    /* Contacts - Dialog add & edit Contact */
+@media (max-width: 800px) {
+  /* Contacts - Dialog add & edit Contact */
 
-    .dialog_add_contact,
-    .dialog_edit_contact {
-        transform: translateY(calc(100% + 90px));
-        transition: all 300ms ease-out;
-    }
-    
-    .show_dialog_add_contact,
-    .show_dialog_edit_contact {
-        transform: translateY(0);
-    }
+  .dialog_add_contact,
+  .dialog_edit_contact {
+    transform: translateY(calc(100% + 90px));
+    transition: all 300ms ease-out;
+  }
 
-    /* Contact options */
+  .show_dialog_add_contact,
+  .show_dialog_edit_contact {
+    transform: translateY(0);
+  }
 
-    .delete_content:hover .contact_delete_icon,
-    .delete_content:hover p,
-    .edit_content:hover .contact_edit_icon,
-    .edit_content:hover p {
-        filter: initial;
-        color:unset;
-        font-weight: 400;
-    }
+  /* Contact options */
 
-    /* Contacts */
+  .delete_content:hover .contact_delete_icon,
+  .delete_content:hover p,
+  .edit_content:hover .contact_edit_icon,
+  .edit_content:hover p {
+    filter: initial;
+    color: unset;
+    font-weight: 400;
+  }
 
-    .main_contacts {
-        flex-direction: column;
-    }
+  /* Contacts */
 
-    .add_change_btn_mobile {
-        position: absolute;
-        bottom: 109px;
-        right: 48px;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        box-shadow: 0px 4px 4px 0px #00000040;
-    }
+  .main_contacts {
+    flex-direction: column;
+  }
 
-    .text_add_contact {
-        display: none;
-    }
+  .add_change_btn_mobile {
+    position: absolute;
+    bottom: 109px;
+    right: 48px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 4px 0px #00000040;
+  }
 
-    /* Contact Overview*/
+  .text_add_contact {
+    display: none;
+  }
 
-    .head_overview {
-        padding: 48px 16px;
-    }
+  /* Contact Overview*/
 
-    .hide_desktop {
-        display: flex;
-    }
+  .head_overview {
+    padding: 48px 16px;
+  }
 
-    .left_part_overview {
-        padding: 0px;
-    }
+  .hide_desktop {
+    display: flex;
+  }
 
-    .headline_contacts {
-        font-size: 47px;
-    }
+  .left_part_overview {
+    padding: 0px;
+  }
 
-    .text_contacts {
-        font-size: 20px;
-    }
+  .headline_contacts {
+    font-size: 47px;
+  }
 
-    .floating_contact {
-        padding: 0px 16px;
-    }
-    
-    .name_overview {
-        font-weight: bold;
-    }
+  .text_contacts {
+    font-size: 20px;
+  }
 
-    .editable_content {
-        display: none;
-    }
+  .floating_contact {
+    padding: 0px 16px;
+  }
 
-    .create_contact_input {
-        max-width: 364px;
-    }
+  .name_overview {
+    font-weight: bold;
+  }
+
+  .editable_content {
+    display: none;
+  }
+
+  .create_contact_input {
+    max-width: 364px;
+  }
 }
 
-@media(max-width: 460px) {
-    /* Contacts - Dialog add & edit Contact */
+@media (max-width: 460px) {
+  /* Contacts - Dialog add & edit Contact */
 
-    .dialog_add_contact,
-    .dialog_edit_contact {
-        width: 93%;
-        height: calc(100vh - 90px - 86px);
-    }
+  .dialog_add_contact,
+  .dialog_edit_contact {
+    width: 93%;
+    height: calc(100vh - 90px - 86px);
+  }
 }
 
-@media(max-width: 450px) {
-    /* Contacts */
+@media (max-width: 450px) {
+  /* Contacts */
 
-    #content_contacts {
-        padding: 32px 16px;
-    }
+  #content_contacts {
+    padding: 32px 16px;
+  }
 
-    .horizontal_line_content {
-        width: 100%;
-    }
-
+  .horizontal_line_content {
+    width: 100%;
+  }
 }
 
-@media(max-width: 400px) {
-    /* Contacts - Dialog add & edit Contact */
+@media (max-width: 400px) {
+  /* Contacts - Dialog add & edit Contact */
 
-    .create_contact_input {
-        width: 100%;
-    }
+  .create_contact_input {
+    width: 100%;
+  }
 }
 
+@media (max-width: 370px) {
+  /* Contacts */
 
-@media(max-width: 370px) {
-    /* Contacts */
+  #content_contacts {
+    padding: 32px 0px;
+    align-items: unset;
+  }
 
-    #content_contacts {
-        padding: 32px 0px;
-        align-items: unset;
-    }
+  .contact {
+    gap: 20px;
+  }
 
-    .contact {
-        gap: 20px;
-    }
+  .add_change_btn_mobile {
+    right: 24px;
+  }
 
-    .add_change_btn_mobile {
-        right: 24px;
-    }
+  .contact_fullName,
+  .contact_mail {
+    word-break: break-all;
+  }
 
-    .contact_fullName,
-    .contact_mail {
-        word-break: break-all;
-    }
+  .letter_content {
+    padding: 0px 8px;
+  }
 
-    .letter_content {
-        padding: 0px 8px;
-    }
-    
-    .name_overview {
-        font-size: 24px;
-    }
+  .name_overview {
+    font-size: 24px;
+  }
 }
+
+/* AddTasks-start */
+@media (max-width: 1260px) {
+  .mainAddTasks,
+  .headlineAddTasks,
+  .footerAddTasks {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .buttonPrio {
+    font-size: 18px;
+    padding: 14px 8px 14px 8px;
+    width: 100px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .mainAddTasks,
+  .footerAddTasks {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .buttonPrio {
+    font-size: 16px;
+    padding: 12px 6px 12px 6px;
+    width: 90px;
+    height: 50px;
+    gap: 4px;
+  }
+
+  .buttonPrio img {
+    height: 16px;
+    width: 16px;
+  }
+
+  .mainAddTasks {
+    justify-content: center;
+  }
+
+  .spacerAddTasks {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  #title,
+  #date,
+  #description,
+  #assignedTo,
+  #category,
+  #subtask {
+    font-size: 18px;
+    padding: 8px 17px 8px 17px;
+  }
+
+  .fontUnderHeadlinesAddTasks {
+    font-size: 18px;
+  }
+
+  .footerAddTasks {
+    margin-left: 55px;
+    margin-right: 55px;
+  }
+
+  .createButtonAddTasks {
+    width: 163px;
+    padding: 14px;
+    gap: 4px;
+    font-size: 19px;
+  }
+
+  .clearButtonAddTasks {
+    width: 95px;
+    height: 56px;
+    padding: 13px;
+    gap: 4px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .spacerAddTasks,
+  .footerAddTasks {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .mainAddTasks {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .clearButtonAddTasks {
+    margin-right: 6px;
+  }
+}
+
+/* Mobil */
+
+@media (max-width: 950px) {
+  .desktopAddTask,
+  .footerAddTasks,
+  .clearButtonAddTasks {
+    display: none;
+  }
+
+  .mobileAddTask,
+  .mobilefooterAddTasks {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .headlineAddTasks {
+    font-size: 47px;
+    margin-left: 16px;
+    margin-top: 40px;
+  }
+
+  .mainAddTasks {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  .addTasksLeft {
+    display: flex;
+    flex-direction: column;
+    height: unset;
+    width: 100%;
+  }
+
+  .addTasksRight {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .spacerAddTasks {
+    display: none;
+  }
+
+  .fontUnderHeadlinesAddTasks {
+    font-size: 18px;
+  }
+
+  #title,
+  #date {
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    padding: 10px 21px 10px 21px;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  #description {
+    font-size: 16px;
+    width: 100%;
+    height: 88px;
+    padding: 18px 21px 18px 21px;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  #assignedTo,
+  #category,
+  #subtask {
+    font-size: 16px;
+    width: 100%;
+    height: 48px;
+    padding: 12px 16px 12px 16px;
+    margin-top: 8px;
+  }
+
+  #subtask {
+    margin-bottom: 12px;
+  }
+
+  .prio {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .buttonPrio {
+    width: 160px; /* soll 120px sein*/
+    height: 41px;
+    gap: 8px;
+    font-size: 16px;
+    padding: 18px 10px 18px 10px;
+  }
+
+  .mobilefooterAddTasks {
+    margin-left: 16px;
+    margin-right: 16px;
+    height: 88px;
+  }
+
+  .footerAddTasksContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+
+  .buttonPrio:hover {
+    cursor: pointer;
+    box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .createButtonAddTasks {
+    width: 183px;
+    height: 56px;
+    border-radius: 10px;
+    padding: 16px;
+    gap: 4px;
+    background-color: var(--menuButtonDarkblue);
+    font-size: 21px;
+    color: white;
+    border: none;
+  }
+
+  .createButtonAddTasks img {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
+      brightness(500%);
+  }
+
+  select,
+  #subtask,
+  #date {
+    appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+    background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%; /* Positionierung des Pfeils */
+    background-size: 10px auto; /* Größe des Pfeils */
+  }
+
+  #subtask {
+    background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
+    background-size: 12px auto; /* Größe des Pfeils */
+  }
+
+  #date {
+    background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
+    background-size: 26px auto; /* Größe des Pfeils */
+  }
+}
+
+@media (max-width: 520px) {
+  .buttonPrio {
+    width: 100px;
+    padding: 14px 8px 14px 8px;
+    gap: 4px;
+  }
+
+  .createButtonAddTasks {
+    padding: 10px;
+    width: 163px;
+  }
+}
+/* Mobil-end */
+/* AddTasks-end   */
+
+/* Summary - start   */
+
+@media (max-width: 1360px) {
+  .goodMorningSummary {
+    font-size: 39px;
+  }
+
+  .nameSummary {
+    font-size: 56px;
+  }
+
+  .summaryText {
+    width: 310px;
+    margin-right: 10px;
+  }
+
+  .marginSummary {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 1260px) {
+  .containerHeadline {
+    width: 580px;
+  }
+
+  .marginSummary {
+    margin-left: 70px;
+  }
+
+  .summaryText {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .summaryText {
+    display: none;
+  }
+
+  .containerHeadline {
+    width: 625px;
+  }
+
+  .containerSummary {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .containerHeadline {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 120px;
+    width: 320px;
+    margin-bottom: 40px;
+  }
+
+  .spacerHeadline {
+    display: none;
+  }
+
+  .spacerHeadlineMobil {
+    width: 90px;
+    margin-top: 10px;
+    height: 3px;
+    background-color: var(--lightblue);
+  }
+
+  .containerSummary {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .marginSummary {
+    margin-left: 0;
+  }
+
+  .mainSummary {
+    width: 535px;
+    height: 535px;
+  }
+}
+
+@media (max-width: 840px) {
+  .headlineSummary,
+  .sizeNumbersSummary {
+    font-size: 47px;
+  }
+
+  .fontSizeMobil {
+    font-size: 20px;
+  }
+
+  .mainSummary {
+    width: 396px;
+    height: 384px;
+  }
+
+  .toDo,
+  .done {
+    width: 186px;
+    height: 110px;
+    padding: 38px 19px 38px 19px;
+    gap: 10px;
+  }
+
+  .imgAndIcon,
+  .iconUrgent {
+    width: 40px;
+    height: 40px;
+  }
+
+  .iconSummary {
+    height: 20px;
+    width: 20px;
+  }
+
+  .sizeTextSummary,
+  .deadlineTextMobil {
+    font-size: 14px;
+  }
+
+  .urgent {
+    height: 110px;
+    padding: 28px 0px 28px 0px;
+    gap: 20px;
+  }
+
+  .container {
+    width: 108px;
+    height: 73px;
+  }
+
+  .spacer {
+    height: 68px;
+    width: 2px;
+  }
+
+  .deadline {
+    height: 44px;
+    gap: 8px;
+  }
+
+  .deadlineMobil {
+    font-size: 16px;
+  }
+
+  .bottomCard {
+    height: 116px;
+    width: 116px;
+    padding: 25px 0px 25px 0px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 410px) {
+  .marginSummary {
+    width: 100%;
+  }
+
+  .containerHeadline {
+    width: auto;
+    margin-bottom: 20px;
+  }
+
+  .mainSummary {
+    width: 100%;
+    height: 350px;
+  }
+
+  .toDo,
+  .done {
+    width: 170px;
+    height: 110px;
+    padding: 38px 19px 38px 19px;
+    gap: 10px;
+  }
+
+  .imgAndIcon,
+  .iconUrgent {
+    width: 35px;
+    height: 35px;
+  }
+
+  .iconSummary {
+    height: 15px;
+    width: 15px;
+  }
+
+  .sizeNumbersSummary {
+    font-size: 40px;
+  }
+
+  .sizeTextSummary,
+  .deadlineTextMobil {
+    font-size: 14px;
+  }
+
+  .urgent {
+    height: 110px;
+    padding: 28px 0px 28px 0px;
+    gap: 20px;
+  }
+
+  .container {
+    width: 108px;
+    height: 73px;
+    padding-left: 19px;
+  }
+
+  .bottomCard {
+    height: 110px;
+    width: 110px;
+    padding: 25px 0px 25px 0px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 375px) {
+  .toDo,
+  .done {
+    width: 140px;
+    height: 110px;
+  }
+
+  .bottomCard {
+    height: 90px;
+    width: 90px;
+  }
+
+  .mainSummary {
+    width: 100%;
+    height: 340px;
+  }
+}
+
+@media (max-height: 870px) {
+  .containerHeadline {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+
+  .mainSummary {
+    height: 505px;
+    width: 500px;
+  }
+
+  .toDo,
+  .done {
+    width: 240px;
+    height: 153px;
+  }
+
+  .bottomCard {
+    height: 158px;
+    width: 158px;
+  }
+
+  .urgent {
+    height: 158px;
+  }
+
+  .summaryText {
+    margin-top: 370px;
+  }
+}
+
+@media (max-height: 800px) {
+  .containerHeadline {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  .mainSummary {
+    height: 445px;
+    width: 440px;
+  }
+
+  .toDo,
+  .done {
+    width: 217px;
+    height: 138px;
+  }
+
+  .bottomCard {
+    height: 138px;
+    width: 138px;
+    gap: 5px;
+  }
+
+  .urgent {
+    height: 138px;
+    gap: 40px;
+  }
+
+  .summaryText {
+    margin-top: 330px;
+  }
+
+  .sizeNumbersSummary {
+    font-size: 54px;
+  }
+}
+/* Summary - end     */

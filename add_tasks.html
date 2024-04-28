@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/template.css" />
     <link rel="stylesheet" href="./css/addTasks.css" />
+    <link rel="stylesheet" href="./css/mediaQuery.css" />
   </head>
   <body class="flex_dir_c" onload="includeHTML()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
@@ -94,17 +95,42 @@
                       justify-content: space-between;
                     "
                   >
-                  <button id="buttonUrgent" onclick="addPrioButtonColor('urgent', event)" class="buttonPrio">
-                    Urgent
-                    <img id="buttonImg1" src="assets/img/add_task/prio_urgent.svg" alt="" />
-                  </button>
-                  <button id="buttonMedium" onclick="addPrioButtonColor('medium', event)" class="buttonPrio">
-                    Medium
-                    <img id="buttonImg2" src="assets/img/add_task/prio_medium.svg" alt="" />
-                  </button>
-                  <button id="buttonLow" onclick="addPrioButtonColor('low', event)" class="buttonPrio">
-                    Low <img id="buttonImg3" src="assets/img/add_task/prio_low.svg" alt="" />
-                  </button>
+                    <button
+                      id="buttonUrgent"
+                      onclick="addPrioButtonColor('urgent', event)"
+                      class="buttonPrio"
+                    >
+                      Urgent
+                      <img
+                        id="buttonImg1"
+                        src="assets/img/add_task/prio_urgent.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonMedium"
+                      onclick="addPrioButtonColor('medium', event)"
+                      class="buttonPrio"
+                    >
+                      Medium
+                      <img
+                        id="buttonImg2"
+                        src="assets/img/add_task/prio_medium.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonLow"
+                      onclick="addPrioButtonColor('low', event)"
+                      class="buttonPrio"
+                    >
+                      Low
+                      <img
+                        id="buttonImg3"
+                        src="assets/img/add_task/prio_low.svg"
+                        alt=""
+                      />
+                    </button>
                   </div>
                 </div>
 
@@ -233,15 +259,27 @@
                       justify-content: space-between;
                     "
                   >
-                    <button id="buttonUrgentMobil" onclick="addPrioButtonColor(urgent)" class="buttonPrio">
+                    <button
+                      id="buttonUrgentMobil"
+                      onclick="addPrioButtonColor(urgent)"
+                      class="buttonPrio"
+                    >
                       Urgent
                       <img src="assets/img/add_task/prio_urgent.svg" alt="" />
                     </button>
-                    <button id="buttonMediumMobil" onclick="addPrioButtonColor(medium)" class="buttonPrio">
+                    <button
+                      id="buttonMediumMobil"
+                      onclick="addPrioButtonColor(medium)"
+                      class="buttonPrio"
+                    >
                       Medium
                       <img src="assets/img/add_task/prio_medium.svg" alt="" />
                     </button>
-                    <button id="buttonLowMobil" onclick="addPrioButtonColor(low)" class="buttonPrio">
+                    <button
+                      id="buttonLowMobil"
+                      onclick="addPrioButtonColor(low)"
+                      class="buttonPrio"
+                    >
                       Low <img src="assets/img/add_task/prio_low.svg" alt="" />
                     </button>
                   </div>
