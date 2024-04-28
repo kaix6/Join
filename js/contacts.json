@@ -1,0 +1,65 @@
+[
+    {
+        "name": "Levi Ackermann",
+        "mail": "l.ackermann@gmail.com",
+        "phone": "+81 0033354 6789",
+        "color": "var(--tagDarkPurple)",
+        "letters": "LA"
+    },
+    {
+        "name": "Michael Scott",
+        "mail": "m.scott@dundermifflin.com",
+        "phone": "+1 570-123-4567",
+        "color": "var(--tagLightBlue)",
+        "letters": "MS"
+    },
+    {
+        "name": "Homer Simpson",
+        "mail": "homer.simpson@springfield.com",
+        "phone": "+1 555-234-5678",
+        "color": "var(--tagMediumYellow)",
+        "letters": "HS"
+    },
+    {
+        "name": "Daenerys Targaryen",
+        "mail": "danny.t666@westerosdragons.com",
+        "phone": "+1 555-345-6789",
+        "color": "var(--tagOrange)",
+        "letters": "DT"
+    },
+    {
+        "name": "Kathryn Janeway",
+        "mail": "k.janeway@starfleet.org",
+        "phone": "+1 555-456-7890",
+        "color": "var(--tagLightPink)",
+        "letters": "KJ"
+    },
+    {
+        "name": "Geralt of Rivia",
+        "mail": "geralt.rivia@kaer-morhen.com",
+        "phone": "+1 555-567-8901",
+        "color": "var(--tagTurquoise)",
+        "letters": "GR"
+    },
+    {
+        "name": "Zelda of Hyrule",
+        "mail": "z.hyrule@hyrulecastle.com",
+        "phone": "+1 555-678-9012",
+        "color": "var(--tagApricot)",
+        "letters": "ZH"
+    },
+    {
+        "name": "Ash Ketchum",
+        "mail": "a.ketchum@pokemonleague.jp",
+        "phone": "+81 80-1234-5678",
+        "color": "var(--tagRed)",
+        "letters": "AK"
+    },
+    {
+        "name": "Bulma Brief",
+        "mail": "b.brief@capsulecorp.jp",
+        "phone": "+81 90-9876-5432",
+        "color": "var(--tagBlue)",
+        "letters": "BB"
+    }
+]

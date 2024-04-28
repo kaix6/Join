@@ -1,3 +1,14 @@
+let contacts = [];
+
+
+let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
+              'var(--tagDarkPurple)', 'var(--tagLightBlue)', 'var(--tagTurquoise)',
+              'var(--tagApricot)', 'var(--tagLightOrange)', 'var(--tagLightPink)',
+              'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
+              'var(--tagLightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
+]
+
+
 function toggleContactView() {
     // Mobile
     if(currentElementWidth(1110)) {
@@ -31,4 +42,43 @@ function currentElementWidth(number) {
 }
 
 
+function getRandomItem(array) {
+    let randomIndex = Math.floor(Math.random() * array.length);
+    let item = array[randomIndex];
+    return item;
+}
+
+
+async function initJSONContacts() {
+    let response = await fetch('./js/contacts.json');
+    contacts = await response.json();
+
+    for (let i = 0; i < contacts.length; i++) {
+        const element = contacts[i];
+        let initials = getContactsInitials(element.name);
+        return initials;
+    }
+}
+
+// Evtl. auch die Anfangsbuchstaben im json array übernhemen und die unten stehende Funktion nur beim Neuanlegen oder editieren anwenden wie auch bei color : getRandomItem(colors);
+
+function getContactsInitials(name) {
+    let splitName = name.split(/(\s+)/);
+    firstInitial = splitName[0].charAt(0);
+    secondInitial = splitName[splitName.length - 1].charAt(0);
+    let mergeLetters = firstInitial + secondInitial;
+    let initialLetters = capitalize(mergeLetters);
+    return initialLetters;
+} 
+
+
+function capitalize(string) {
+    let capitalizedString = string.toUpperCase();
+    return capitalizedString;
+}
+
+
+// Add a random color to a new contact
+
+/* color : getRandomItem(colors); */
 
