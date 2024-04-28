@@ -1,15 +1,19 @@
 [
     {
-      "title": "",
-      "description": "",
-      "due date": "",
-      "prio": "",
-      "category": "",
+      "title": "Development of Product List User Interface",
+      "description": "Develop a user-friendly and visually appealing user interface for the product list of the online shop according to the specifications and designs.",
+      "due date": "21.05.2024",
+      "prio": "urgent",
+      "category": "Technical Task",
       "assigned member": [
 
       ],
       "subtask": [
-        
+        {
+          "subtaskOne": "Create HTML Markup: Create the HTML markup for the product list according to the requirements",
+          "subtaskTwo": "Styling for Product List: Develop CSS styles for the product list",
+          "subtaskThree": "Testing and Debugging: Review the user interface for functionality and errors"
+        }
       ]
     }
 ]
