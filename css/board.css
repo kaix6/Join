@@ -65,12 +65,14 @@
     .add-task-button{
         display: flex;
         align-items: center;
-        border-radius: 8px;
+        border-radius: 10px;
         background-color: var(--activeClickMenuBlue);
         padding: 16px;
-        height: 40px;
+        width: 160px;
+        height: 48px;
         cursor: pointer;
         transition: 0.1s;
+        gap: 4px;
     }
 
     .add-task-button:hover{
@@ -79,52 +81,72 @@
 
     .add-task-button p{
         color: var(--white);
-        font-size: 16px;
-        font-weight: 600;
+        font-size: 21px;
+        font-weight: 700;
         padding-right: 8px;
+        line-height: 25.2px;
     }
 
     .add-task-button img{
-        width: 16px;
+        width: 18.67px;
+        height: 18.67px;
+        top: 14.67px;
+        left: 118.67px;
     }
 
     .search-field{
         display: flex;
         border: 1px solid var(--grey);
-        border-radius: 8px;
-        padding: 8px;
         background-color: var(--white);
-        height: 40px;
-        width: 300px;
+        width: fixed(312px);
+        height: 48px;
+        padding: 8px 16px 8px 16px;
+        border-radius: 10px;
+        opacity: 0px;   
     }
 
     .search-field input{
         border: none;
-        font-size: 16px;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 400;
         margin-right: 16px;
         border-right: 1px solid var(--grey);
         width: calc(100% - 16px);
     }
 
-    .search-field img{
-        width: 16px;
-        margin-right: 16px;
+    .container-search-icon{
+        width: 32px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-search-icon img{
+        width: 17.58px;
+        height: 17.58px;
         cursor: pointer;
     }
 
-    .search-field img:hover{
+    .container-search-icon:hover{
         border-radius: 100px;
         background-color: #f0f0f0;
         transform: scale(1.1);
     }
 
     .no-task-div{
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 8px;
         background-color: #e2e2e2;
         color: var(--grey);
         border-radius: 8px;
         border: 1px dashed var(--grey);
+        width: 246px;
+        height: 48px;
+        gap: 10px;
     }
 
     .small-add-button{
@@ -156,9 +178,9 @@
         flex-direction: column;
         background-color: var(--white);
         padding: 16px;
-        border-radius: 16px;
+        border-radius: 24px;
         box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
-        width: 250px;
+        width: 252px;
     }
 
     .task-type{
@@ -177,17 +199,25 @@
 
     .task-headline{
         margin-top: 16px;
+        font-size: 16px;
+        line-height: 19.2px;
         margin-bottom: 8px;
-        font-weight: bold;
+        font-weight: 700;
     }
 
     .task-description{
         color: var(--fontGrey);
         margin-bottom: 8px;
+        font-weight: 400;
+        line-height: 19.2px;
+        color: #A8A8A8;
     }
 
     .progress-section{
         display: flex;
+        align-items: center;
+        width: 220px;
+        height: 16px;
         gap: 16px;
         margin-top: 16px;
         margin-bottom: 16px;
@@ -197,7 +227,7 @@
         height: 8px;
         border-radius: 8px;
         background-color: var(--backgroundgrey);
-        width: 100%;
+        width: 60%;
     }
 
     .progress-bar{
@@ -207,8 +237,8 @@
     }
 
     .amount-subtask{
-        font-size: 10px;
-        width: 50%;
+        font-size: 12px;
+        width: 40%;
         text-align: end;
     }
 
@@ -249,10 +279,13 @@
         display: flex;
         flex-direction: column;
         background-color: var(--white);
-        padding: 24px;
-        border-radius: 16px;
+        padding-top: 48px;
+        padding-bottom: 48px;
+        padding-left: 40px;
+        padding-right: 40px;
+        border-radius: 30px;
         box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
-        width: 350px;
+        width: 525px;
         height: fit-content;
         transform: translateX(100%);
         transition: all 300ms ease-out;
@@ -283,15 +316,24 @@
     }
 
     .task-description-big{
-        margin-top: 16px;
+        margin-top: 24px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
     }
 
     .width-30{
         width: 30%;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
     }
 
     .d-flex p{
-        margin-top: 16px;
+        margin-top: 24px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
     }
 
     .d-flex img{
@@ -299,7 +341,10 @@
     }
 
     .margin-top-16px{
-        margin-top: 16px;
+        margin-top: 24px;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24px;
     }
 
     .d-flex-center{
@@ -311,14 +356,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
-        font-size: 8px;
-        border: 1px solid var(--white);
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+        border: 2px solid var(--white);
         border-radius: 100%;
         background-color: var(--tagApricot);
         color: var(--white);
-        font-weight: lighter;
+        font-weight: 400;
     }
 
     .container-member-big-task{
@@ -326,6 +371,13 @@
         align-items: center;
         margin-top: 8px;
         gap: 16px;
+    }
+
+    .container-member-big-task p{
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 22.8px;
+        font-family: 'Open Sans';
     }
 
     .prio-icon{
@@ -380,7 +432,8 @@
     }
 
     .container-subtasks p{
-        font-size: 12px;
+        font-size: 16px;
+        line-height: 19.2px;
     }
     
     .container-delete-edit{
@@ -463,6 +516,9 @@
 
     h1{
         margin-bottom: 16px;
+        font-size: 61px;
+        font-weight: 700;
+        line-height: 73.2px;
     }
 
     .board-search-add{
@@ -481,7 +537,15 @@
     .board-headline{
         width: 100%;
     }
-    
+
+    .plus-button{
+        cursor: pointer;
+    }
+
+    .plus-button:hover{
+        src: url(/assets/img/board/plus_button_blue.svg);
+    }
+
     .content-board{
         margin-top: 32px;
         margin-left: 16px;

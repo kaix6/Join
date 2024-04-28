@@ -450,43 +450,95 @@
               </div>
             </div>
 
-            <div class="d-flex-start">
-              <div class="board-column">
-                <div class="board-headline">
-                  <p>To do</p>
-                  <img src="/assets/img/board/plus_button.svg" />
-                </div>
-                <div class="no-task-div">
-                  <p>No tasks To do</p>
-                </div>
-              </div>
 
-              <div class="board-column">
-                <div class="board-headline">
-                  <p>In progress</p>
-                  <img src="/assets/img/board/plus_button.svg" />
-                </div>
-                <div>
-                  <div
-                    id="task-box-small"
-                    class="task-box"
-                    onclick="showDialogTask()"
-                  >
-                    <p class="task-type">Task Type</p>
-                    <p class="task-headline">Task Headline</p>
-                    <p class="task-description">Task Description</p>
-                    <div class="progress-section">
-                      <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
-                      </div>
-                      <p class="amount-subtask">1/2 Subtasks</p>
-                    </div>
-                    <div class="member-prio-section">
-                      <div class="task-all-member">
-                        <div class="member">AM</div>
-                        <div class="member">EM</div>
-                      </div>
-                      <img src="/assets/img/add_task/prio_low.svg" />
+            <!--      End Section Dialogbox Add task    -->
+
+    
+            <div class="right_section flex_dir_c">
+    
+                <!--      Section header    -->
+    
+                <div w3-include-html="assets/templates/header.html"></div>
+    
+                <!--      Section header    -->
+    
+    
+                <section id="main_container">
+                    <div class="content-board">
+                        <div class="headline-container margin-bottom-32px">
+                            <div class="h1-container">
+                                <h1>Board</h1>
+                                <img class="small-add-button" src="/assets/img/board/add_task_white.svg">
+                            </div>
+                            <div class="board-search-add">
+                                <div class="search-field">
+                                    <input type="text" placeholder="Find Task">
+                                    <div class="container-search-icon">
+                                        <img src="/assets/img/board/search.svg">
+                                    </div>
+                                </div>
+                                <div onclick="showDialog('.dialog_addTask_bg', 'd-none', '.dialog_addTask', 'show_dialog_addTask', 50)" class="add-task-button">
+                                    <p>Add task</p>
+                                    <img src="/assets/img/board/add_task_white.svg">
+                                </div>
+                            </div>
+                        </div>
+                        
+        
+                        <div class="d-flex-start">
+                            <div class="board-column">
+                                <div class="board-headline">
+                                    <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">To do</span>
+                                    <img src="/assets/img/board/plus_button.svg">
+                                </div>
+                                <div class="no-task-div">
+                                    <p>No tasks To do</p>
+                                </div>
+                            </div>
+        
+                            <div class="board-column">
+                                <div class="board-headline">
+                                    <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">In progress</span>
+                                    <img src="/assets/img/board/plus_button.svg">
+                                </div>
+                                <div>
+                                    <div id="task-box-small" class="task-box" onclick="showDialogTask()">
+                                        <p class="task-type">Task Type</p>
+                                        <p class="task-headline">Task Headline</p>
+                                        <p class="task-description">Task Description</p>
+                                        <div class="progress-section">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 50%;"></div>
+                                            </div>
+                                            <p class="amount-subtask">1/2 Subtasks</p>
+                                        </div>
+                                        <div class="member-prio-section">
+                                            <div class="task-all-member">
+                                                <div class="member">AM</div>
+                                                <div class="member">EM</div>
+                                            </div>
+                                            <img src="/assets/img/add_task/prio_low.svg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="board-column">
+                                <div class="board-headline">
+                                    <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">Await Feedback</span>
+                                    <img src="/assets/img/board/plus_button.svg">
+                                </div>
+                                <div></div>
+                            </div>
+        
+                            <div class="board-column">
+                                <div class="board-headline">
+                                    <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">Done</span>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                   </div>
                 </div>
