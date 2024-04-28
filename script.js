@@ -3,6 +3,11 @@ async function initLogin() {
     animationWindow();
 }
 
+
+/* load('contacts');
+load('tasks'); */
+
+
 function animationWindow() {
     setTimeout(function() {
         document.getElementById('joinLogoAnimation').classList.add('hidden');
@@ -70,4 +75,19 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
         document.querySelector(`${classDialogBg}`).classList.add(`${classD_none}`);
     }, time);
 }
+
+
+function save(array) {
+    let arrayAsText = JSON.stringify(array);
+    localStorage.setItem('array', arrayAsText);
+}
+
+
+function load(array) {
+    let arrayAsText = localStorage.getItem('array');
+    if (arrayAsText) {
+        array = JSON.parse(arrayAsText);
+    }
+}
+
 
