@@ -1,19 +1,3 @@
-function showDialog(classDialogBg, classDialog, showClassDialog, time) {
-    document.querySelector(`${classDialogBg}`).classList.toggle('d_none');
-    setTimeout(function() {
-        document.querySelector(`${classDialog}`).classList.toggle(`${showClassDialog}`);
-    }, time);
-}
-
-
-function closeDialog(classDialog, showClassDialog, classDialogBg, time) {
-    document.querySelector(`${classDialog}`).classList.remove(`${showClassDialog}`);
-    setTimeout(function() {
-        document.querySelector(`${classDialogBg}`).classList.add('d_none');
-    }, time);
-}
-
-
 function toggleContactView() {
     // Mobile
     if(currentElementWidth(1110)) {

@@ -32,7 +32,7 @@
 }
 
 .dialog_edit_contact {
-    transition: all 200ms ease-in-out;
+    transition: all 100ms ease-in-out;
 }
 
 .show_dialog_add_contact,
