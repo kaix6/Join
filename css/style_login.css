@@ -249,7 +249,6 @@ footer {
 @media (min-width: 900px) {
     .mobile-login {
         display: none;
-        /* display: flex; */
         height: 20vh;
     }
     .butten-mobile {
