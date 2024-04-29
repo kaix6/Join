@@ -68,6 +68,10 @@
                     id="assignedTo"
                   ></select>
                 </div>
+                <div class="selectedMembers">
+                  <div class="profilbild"></div>
+                  <div class="profilbild2"></div>
+                </div>
               </form>
 
               <div class="spacerAddTasks"></div>
@@ -221,16 +225,15 @@
                   >
                   <br />
 
-                  <select name="assigned" id="assignedTo">
-                    <option disabled selected>select contacts to assign</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
-                  </select>
+                  <select
+                    onclick="renderContactsInAddTasks()"
+                    name="assigned"
+                    id="assignedToMobil"
+                  ></select>
+                </div>
+                <div class="selectedMembers">
+                  <div class="profilbild"></div>
+                  <div class="profilbild2"></div>
                 </div>
               </form>
 

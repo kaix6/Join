@@ -61,13 +61,17 @@ async function renderContactsInAddTasks() {
   let response = await fetch("./js/contacts.json");
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
+  let assignedToMobil = document.getElementById("assignedToMobil");
 
   assignedTo.innerHTML =
+    "<option disabled selected>select contacts to assign</option>";
+    assignedToMobil.innerHTML =
     "<option disabled selected>select contacts to assign</option>";
 
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     let name = contact.name;
     assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
+    assignedToMobil.innerHTML += `<option value="${name}">${name}</option>`;
   }
 }
