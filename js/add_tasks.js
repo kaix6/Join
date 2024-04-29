@@ -9,7 +9,14 @@ function addPrioButtonColor(prio, event) {
   let imgMedium = document.getElementById("buttonImg2");
   let imgLow = document.getElementById("buttonImg3");
 
-  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);
+  removeClasses(
+    buttonUrgent,
+    buttonMedium,
+    buttonLow,
+    imgUrgent,
+    imgMedium,
+    imgLow
+  );
 
   if (prio === "urgent") {
     buttonUrgent.classList.add("backgroundColorRed", "fontWeightAndColor");
@@ -25,7 +32,19 @@ function addPrioButtonColor(prio, event) {
   }
 }
 
-function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
+function initAddTasks() {
+  includeHTML();
+  renderContactsInAddTasks();
+}
+
+function removeClasses(
+  buttonUrgent,
+  buttonMedium,
+  buttonLow,
+  imgUrgent,
+  imgMedium,
+  imgLow
+) {
   buttonUrgent.classList.remove("backgroundColorRed", "fontWeightAndColor");
   buttonMedium.classList.remove("backgroundColorOrange", "fontWeightAndColor");
   buttonLow.classList.remove("backgroundColorGreen", "fontWeightAndColor");
@@ -36,4 +55,19 @@ function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedi
 
 function reloadPage() {
   location.reload();
+}
+
+async function renderContactsInAddTasks() {
+  let response = await fetch("./js/contacts.json");
+  let contacts = await response.json();
+  let assignedTo = document.getElementById("assignedTo");
+
+  assignedTo.innerHTML =
+    "<option disabled selected>select contacts to assign</option>";
+
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    let name = contact.name;
+    assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
+  }
 }

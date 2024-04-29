@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./css/addTasks.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
   </head>
-  <body class="flex_dir_c" onload="includeHTML()">
+  <body class="flex_dir_c" onload="initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
       <div class="right_section flex_dir_c">
         <!--      Section header    -->
@@ -62,16 +62,11 @@
                   >
                   <br />
 
-                  <select name="assigned" id="assignedTo">
-                    <option disabled selected>select contacts to assign</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
-                  </select>
+                  <select
+                    onclick="renderContactsInAddTasks()"
+                    name="assigned"
+                    id="assignedTo"
+                  ></select>
                 </div>
               </form>
 
