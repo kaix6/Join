@@ -240,8 +240,8 @@
   }
 
   .short_name_overview {
-    width: 80px;
-    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
   }
 
   .name_overview {
@@ -305,6 +305,10 @@
 
   .floating_contact {
     padding: 32px 20px;
+  }
+  .name_overview {
+    max-width: 240px;
+    word-break: break-all;
   }
 }
 

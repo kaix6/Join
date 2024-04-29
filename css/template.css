@@ -137,7 +137,7 @@
     padding-left: 53px;
 }
 
-.hover_color:hover {
+.hover_color:not(.activeLink):hover {
     color: var(--lightblue);
     font-weight: 700;
 }

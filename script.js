@@ -33,7 +33,7 @@ async function includeHTML() {
 
 function changeClassToActive() {
     let activePage = window.location.pathname;
-    let menuLinks = document.querySelectorAll('.menu_icon_text');
+    let menuLinks = document.querySelectorAll('.active_link');
     menuLinks.forEach(link => {
         if (link.href.includes(`${activePage}`)) {
             link.classList.add('activeLink');
