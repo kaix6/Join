@@ -28,7 +28,7 @@
           <!-- Desktop - Version -->
 
           <div class="desktopAddTask">
-            <div class="containerHeadline d-flex">
+            <div class="d-flex">
               <h1 class="headlineAddTasks">Add Tasks</h1>
             </div>
 
@@ -141,13 +141,8 @@
 
                   <select name="category" id="category">
                     <option disabled selected>select task category</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
+                    <option value="userStory">User Story</option>
+                    <option value="technicalTask">Technical Task</option>
                   </select>
                 </div>
 
@@ -157,16 +152,7 @@
                   >
                   <br />
 
-                  <select name="subtask" id="subtask">
-                    <option disabled selected>add new subtask</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
-                  </select>
+                  <input id="subtask" placeholder="add new subtask" />
                 </div>
               </form>
             </div>
@@ -191,7 +177,7 @@
           <!-- Mobile - Version -->
 
           <div class="mobileAddTask">
-            <div class="containerHeadline d-flex">
+            <div class="d-flex">
               <h1 class="headlineAddTasks">Add Tasks</h1>
             </div>
 
@@ -257,29 +243,42 @@
                       justify-content: space-between;
                     "
                   >
-                    <button
-                      id="buttonUrgentMobil"
-                      onclick="addPrioButtonColor(urgent)"
-                      class="buttonPrio"
-                    >
-                      Urgent
-                      <img src="assets/img/add_task/prio_urgent.svg" alt="" />
-                    </button>
-                    <button
-                      id="buttonMediumMobil"
-                      onclick="addPrioButtonColor(medium)"
-                      class="buttonPrio"
-                    >
-                      Medium
-                      <img src="assets/img/add_task/prio_medium.svg" alt="" />
-                    </button>
-                    <button
-                      id="buttonLowMobil"
-                      onclick="addPrioButtonColor(low)"
-                      class="buttonPrio"
-                    >
-                      Low <img src="assets/img/add_task/prio_low.svg" alt="" />
-                    </button>
+                  <button
+                  id="buttonUrgentMobil"
+                  onclick="addPrioButtonColor('urgent', event)"
+                  class="buttonPrio"
+                >
+                  Urgent
+                  <img
+                    id="buttonImg1Mobil"
+                    src="assets/img/add_task/prio_urgent.svg"
+                    alt=""
+                  />
+                </button>
+                <button
+                  id="buttonMediumMobil"
+                  onclick="addPrioButtonColor('medium', event)"
+                  class="buttonPrio"
+                >
+                  Medium
+                  <img
+                    id="buttonImg2Mobil"
+                    src="assets/img/add_task/prio_medium.svg"
+                    alt=""
+                  />
+                </button>
+                <button
+                  id="buttonLowMobil"
+                  onclick="addPrioButtonColor('low', event)"
+                  class="buttonPrio"
+                >
+                  Low
+                  <img
+                    id="buttonImg3Mobil"
+                    src="assets/img/add_task/prio_low.svg"
+                    alt=""
+                  />
+                </button>
                   </div>
                 </div>
 
@@ -291,13 +290,8 @@
 
                   <select name="category" id="category">
                     <option disabled selected>select task category</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
+                    <option value="userStory">User Story</option>
+                    <option value="technicalTask">Technical Task</option>
                   </select>
                 </div>
 
@@ -307,16 +301,7 @@
                   >
                   <br />
 
-                  <select name="subtask" id="subtask">
-                    <option disabled selected>add new subtask</option>
-                    <option value="contact1">Contact1</option>
-
-                    <option value="contact2">Contact2</option>
-
-                    <option value="contact3">Contact3</option>
-
-                    <option value="usw">usw</option>
-                  </select>
+                  <input id="subtask" placeholder="add new subtask" />
                 </div>
               </form>
             </div>
