@@ -441,8 +441,8 @@
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">To do</span>
                         <img src="/assets/img/board/plus_button.svg">
                     </div>
-                    <div class="no-task-div">
-                        <p>No tasks To do</p>
+                    <div id="openTasks">
+                        
                     </div>
                 </div>
 
@@ -451,25 +451,8 @@
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">In progress</span>
                         <img src="/assets/img/board/plus_button.svg">
                     </div>
-                    <div>
-                        <div id="task-box-small" class="task-box" onclick="showDialogTask()">
-                            <p class="task-type">Task Type</p>
-                            <p class="task-headline">Task Headline</p>
-                            <p class="task-description">Task Description</p>
-                            <div class="progress-section">
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%;"></div>
-                                </div>
-                                <p class="amount-subtask">1/2 Subtasks</p>
-                            </div>
-                            <div class="member-prio-section">
-                                <div class="task-all-member">
-                                    <div class="member">AM</div>
-                                    <div class="member">EM</div>
-                                </div>
-                                <img src="/assets/img/add_task/prio_low.svg">
-                            </div>
-                        </div>
+                    <div id="inProgressTasks">
+
                     </div>
                 </div>
 
@@ -478,13 +461,17 @@
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">Await Feedback</span>
                         <img src="/assets/img/board/plus_button.svg">
                     </div>
-                    <div></div>
+                    <div id="awaitFeedbackTasks">
+
+                    </div>
                 </div>
 
                 <div class="board-column">
                     <div class="board-headline">
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">Done</span>
-                        <div></div>
+                        <div id="doneTasks">
+    
+                        </div>
                     </div>
                 </div>
             </div>
