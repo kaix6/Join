@@ -287,8 +287,7 @@
 }
 
 .short_name {
-    background-color: var(--tagOrange);
-    width: 42px;
+    min-width: 42px;
     height: 42px;
     color: var(--white);
 }

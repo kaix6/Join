@@ -15,7 +15,7 @@
     <script defer src="js/template.js"></script>
     <script defer src="js/contacts.js"></script>
 </head>
-<body class="flex_dir_c" onload="includeHTML()">
+<body class="flex_dir_c" onload="includeHTML(); loadContacts()">
 
     <div onclick="closeSubmenuHeader(event); closeContactOptions(event)" class="wrapped_maxWidth">
     
@@ -138,91 +138,8 @@
                         <p class="text_add_contact">Add new contact</p>
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
-                    <div class="letter_content">
-                        <div class="letter_names">
-                            <p class="head_letters">A</p>
-                        </div>
-                        <div class="horizontal_line_content">
-                            <div class="horizontal_line"></div>
-                        </div>
-                            <div onclick="toggleContactView()" id="contact${}" class="contact pointer"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">AM</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">Anton Mayer</p>
-                                    <p class="contact_mail">antom@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="contact pointer">
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">AS</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">Anja Schulz</p>
-                                    <p class="contact_mail">schulz@hotmail.com</p>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="letter_content">
-                        <div class="letter_names">
-                            <p class="head_letters">B</p>
-                        </div>
-                        <div class="horizontal_line_content">
-                            <div class="horizontal_line"></div>
-                        </div>
-                            <div class="contact pointer">
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">BZ</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">Benedikt Ziegler</p>
-                                    <p class="contact_mail">benedikt@gmail.com</p>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="letter_content">
-                        <div class="letter_names">
-                            <p class="head_letters">D</p>
-                        </div>
-                        <div class="horizontal_line_content">
-                            <div class="horizontal_line"></div>
-                        </div>
-                            <div class="contact pointer">
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">DE</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">David Eisenberger</p>
-                                    <p class="contact_mail">davidberg@gmail.com</p>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="letter_content">
-                        <div class="letter_names">
-                            <p class="head_letters">E</p>
-                        </div>
-                        <div class="horizontal_line_content">
-                            <div class="horizontal_line"></div>
-                        </div>
-                            <div class="contact pointer">
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">EF</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">Eva Fischer</p>
-                                    <p class="contact_mail">eva@gmail.com</p>
-                                </div>
-                            </div>
-                            <div class="contact pointer">
-                                <div class="short_name round_div">
-                                    <p class="short_name_text">EM</p>
-                                </div>
-                                <div class="name_data flex_dir_c">
-                                    <p class="contact_fullName">Emmanuel Mauer</p>
-                                    <p class="contact_mail">emmanuelma@gmail.com</p>
-                                </div>
-                            </div>
+                    <div class="contacts">
+                <!--     render Contacts in JS    --> 
                     </div>
                 </div>
 
