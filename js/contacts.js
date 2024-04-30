@@ -111,13 +111,17 @@ function toggleContactView(i) {
         document.querySelector('.floating_contact').classList.toggle('d_none'); // ID muss hier noch angepasst werden mit '#floating_contact${}'
     } else {
     // Desktop
-        document.querySelector('.floating_contact').classList.toggle('d_none');
+        document.querySelector('.floating_contact').classList.add('d_none');
         setTimeout(function() {
-            document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop'); 
+            document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop'); 
         }, 0);
     }
-    renderFloatingContact(i);
-    changeColorContact('#short_name_overview', i, sortedCcontacts[i].color);
+    // Check if i is defined - Code is just executed if i is definded
+    if (typeof i !== 'undefined') {
+        renderFloatingContact(i);
+        changeColorContact('#short_name_overview', i, sortedCcontacts[i].color);
+    }
+
 }
 
 

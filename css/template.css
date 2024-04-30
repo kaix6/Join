@@ -137,6 +137,7 @@
     padding-left: 53px;
 }
 
+/* the :not(selector) sets property for all classes with .hover_color that have not the class .activeLink */
 .hover_color:not(.activeLink):hover {
     color: var(--lightblue);
     font-weight: 700;

@@ -10,8 +10,8 @@
 /* Side Menu */
 
 @media (min-width: 801px) {
-  .menu_icon_text:hover,
-  .submenu_header_style a:hover {
+  .menu_icon_text:not(.activeLink):hover,
+  .submenu_header_style a:not(.activeLink):hover {
     background-color: var(--hoverMenuBlue);
   }
 }
