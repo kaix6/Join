@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/colors.css">
     <link rel="stylesheet" href="/css/style_login.css">
     <link rel="stylesheet" href="/css/fonts.css">
+    <script src="/js/register.js"></script>
+    <script src="/js/users.json"></script>
 </head>
 
 <body class="display-fc">
@@ -31,22 +33,24 @@
                         <div class="vector_login"></div>
                     </div>
                 </div>
-                <div>
-                    <form class="display-fccc gap">
-                        <input id="#" placeholder="Name" type="text" class="input-with-image b-img-person">
-                        <input id="#" placeholder="Email" type="email" class="input-with-image b-img-email">
-                        <input id="#" placeholder="Password" type="password" class="input-with-image b-img-lock">
-                        <input id="#" placeholder="Confirm Password" type="password" class="input-with-image b-img-lock">
-                        <div>
-                            <input type="checkbox" id=""> <span class="gray"> I accept</span><span class="link-checkbox">Privacy policy</span>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <a href="/summary.html">
-                        <p class="button-login-blue button-p">Sign up</p>
-                    </a>
-                </div>
+                <!-- <div> -->
+                <form onsubmit="addUser(); return false;" class="display-fccc gap" return false;>
+                    <!-- <input id="" placeholder="Name" type="text" class="input-with-image b-img-person"> -->
+                    <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email">
+                    <input id="password" placeholder="Password" type="password" class="input-with-image b-img-lock">
+                    <!-- <input id="#" placeholder="Confirm Password" type="password" class="input-with-image b-img-lock"> -->
+                    <div>
+                        <input type="checkbox" id=""> <span class="gray"> I accept</span><span class="link-checkbox">Privacy policy</span>
+                    </div>
+
+                    <!-- </div> -->
+                    <div>
+                        <a href="/summary.html">
+                            <p class="button-login-blue button-p">Sign up</p>
+                        </a>
+
+                    </div>
+                </form>
             </div>
         </div>
         <span class="button-login-blue hidden">You Signed Up successfully</span>
