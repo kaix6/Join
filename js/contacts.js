@@ -9,6 +9,7 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
               'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
               'var(--tagLightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
 ]
+loadContacts();
 
 
 async function initJSONContacts() {
@@ -17,17 +18,16 @@ async function initJSONContacts() {
 }
 
 
-
-async function loadContacts(filter) {
-    await initJSONContacts();
+async function renderContacts(filter) {
+/*     if(contacts == []) { */
+/*         await initJSONContacts(); */
+/*     } */
     let contentContacts = document.querySelector('.contacts');
     sortedCcontacts = sortArray(contacts);
     contentContacts.innerHTML = '';
 
-
     for (let i = 0; i < sortedCcontacts.length; i++) {
         const contact = sortedCcontacts[i];
-
 
 /*         let firstLetter = contact['name'].charAt(0); */
 
@@ -40,7 +40,6 @@ async function loadContacts(filter) {
         }
         renderLetters(i); */
     }
-
 }
 
 
@@ -144,7 +143,7 @@ function generateFloatingContactInnerHTML(i) {
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                     <p>Edit</p>
                 </div>
-                <div class="delete_content pointer">
+                <div onclick="deleteContact(${i})" class="delete_content pointer">
                     <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
                     <p>Delete</p>
                 </div>
@@ -206,7 +205,38 @@ function capitalize(string) {
 }
 
 
-// Add a random color to a new contact
+// Add new Contact
 
-/* color : getRandomItem(colors); */
+
+function addContact() {
+    let fullName = document.querySelector('#fullName');
+    let mail = document.querySelector('#mail');
+    let telNumber = document.querySelector('#telNumber');
+    let colorAllocation = getRandomItem(colors);
+    let firstLetters = getContactsInitials(fullName.value);
+    contacts.push({name: fullName.value, mail: mail.value, phone: '+' + telNumber.value, color: colorAllocation, letters: firstLetters});
+    closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
+    toggleContactView(contacts.length -1);
+    showCreateContactDoneShort();
+    saveContacts();
+    renderContacts();
+}
+
+
+function showCreateContactDoneShort() {
+        document.querySelector('.create_contact_done').classList.add('show_create_contact_done');
+        setTimeout(function() {
+            document.querySelector('.create_contact_done').classList.remove('show_create_contact_done');
+         }, 800); 
+}
+
+
+// Delete Contact
+
+
+/* function deleteContact(index) {
+    contacts.splice(index, 1);
+    renderContacts();
+} */
+
 

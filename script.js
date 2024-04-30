@@ -4,8 +4,8 @@ async function initLogin() {
 }
 
 
-/* load('contacts');
-load('tasks'); */
+/* loadContacts(); */
+/* load('tasks'); */
 
 
 function animationWindow() {
@@ -77,16 +77,16 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
 }
 
 
-function save(array) {
-    let arrayAsText = JSON.stringify(array);
-    localStorage.setItem('array', arrayAsText);
+function saveContacts() {
+    let contactsAsText = JSON.stringify(contacts);
+    localStorage.setItem('contacts', contactsAsText);
 }
 
 
-function load(array) {
-    let arrayAsText = localStorage.getItem('array');
-    if (arrayAsText) {
-        array = JSON.parse(arrayAsText);
+function loadContacts() {
+    let contactsAsText = localStorage.getItem('contacts');
+    if (contactsAsText) {
+        contacts = JSON.parse(contactsAsText);
     }
 }
 

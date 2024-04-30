@@ -226,6 +226,28 @@
     transform: translateX(0px);
 }
 
+/* Contact created */
+
+.create_contact_done {
+    position: absolute;
+    bottom: 250px;
+    left: 743px;
+    background-color: var(--menuButtonDarkblue);
+    border-radius: 20px;
+    padding: 20px;
+    transform: translateX(1000px);
+    transition: all 300ms ease-out;
+}
+
+.show_create_contact_done {
+    transform: translateX(0px);
+  }
+
+.text_create_contact_done {
+    color: var(--white);
+    font-size: 20px;
+}
+
 /* Contacts */
 
 .main_contacts {

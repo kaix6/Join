@@ -15,7 +15,7 @@
     <script defer src="js/template.js"></script>
     <script defer src="js/contacts.js"></script>
 </head>
-<body class="flex_dir_c" onload="includeHTML(); loadContacts()">
+<body class="flex_dir_c" onload="includeHTML(); renderContacts()">
 
     <div onclick="closeSubmenuHeader(event); closeContactOptions(event)" class="wrapped_maxWidth">
     
@@ -51,7 +51,7 @@
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>
-                        <button class="create_contact_btn contact_btn pointer">
+                        <button onclick ="addContact()" class="create_contact_btn contact_btn pointer">
                             <p class="text_create_contact_btn">Create contact</p>
                             <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
                         </button>
@@ -83,12 +83,12 @@
             </div>
             <div class="bottom_dialog_add_edit">
                 <form onsubmit="return false;" class="create_contact_form">
-                    <label for="fullName"></label>
-                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
-                    <label for="mail"></label>
-                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
-                    <label for="telNumber"></label>
-                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <label for="fullName_edit"></label>
+                    <input class="create_contact_input" type="text" id="fullName_edit" placeholder="Name" required>
+                    <label for="mail_edit"></label>
+                    <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
+                    <label for="telNumber_edit"></label>
+                    <input class="create_contact_input" type="tel" id="telNumber_edit" placeholder="Phone" required>
                     <div class="container_button">
                         <button class="cancel_create_contact_edit_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_edit_btn">Delete</p>
@@ -130,6 +130,14 @@
             </div>
 
             <!--      End Section Contact options   -->
+
+             <!--      Section Contact created   -->
+
+            <div class="create_contact_done">
+                <p class="text_create_contact_done">Contact successfully created</p>
+            </div>
+
+            <!--      Section Contact created   -->
 
                  <!--      Section Contact    -->
 
