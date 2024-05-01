@@ -1,3 +1,6 @@
+let selectUsers = [];
+let selectUsersColor = [];
+
 function addPrioButtonColor(prio, event) {
   event.preventDefault(); // Verhindert das Standardverhalten des Buttons
 
@@ -74,24 +77,36 @@ function removeClasses(
   imgMediumMobil,
   imgLowMobil
 ) {
-  buttonUrgent.classList.remove("backgroundColorRed", "fontWeightAndColor");
-  buttonMedium.classList.remove("backgroundColorOrange", "fontWeightAndColor");
-  buttonLow.classList.remove("backgroundColorGreen", "fontWeightAndColor");
-  imgUrgent.classList.remove("imgColor");
-  imgMedium.classList.remove("imgColor");
-  imgLow.classList.remove("imgColor");
-  buttonUrgentMobil.classList.remove(
+  const classesToRemove = [
     "backgroundColorRed",
-    "fontWeightAndColor"
-  );
-  buttonMediumMobil.classList.remove(
+    "fontWeightAndColor",
     "backgroundColorOrange",
-    "fontWeightAndColor"
-  );
-  buttonLowMobil.classList.remove("backgroundColorGreen", "fontWeightAndColor");
-  imgUrgentMobil.classList.remove("imgColor");
-  imgMediumMobil.classList.remove("imgColor");
-  imgLowMobil.classList.remove("imgColor");
+    "backgroundColorGreen",
+    "imgColor",
+  ];
+
+  const elements = [
+    buttonUrgent,
+    buttonMedium,
+    buttonLow,
+    imgUrgent,
+    imgMedium,
+    imgLow,
+    buttonUrgentMobil,
+    buttonMediumMobil,
+    buttonLowMobil,
+    imgUrgentMobil,
+    imgMediumMobil,
+    imgLowMobil,
+  ];
+
+  elements.forEach(function (element) {
+    // Muss ich mir noch genauer anschauen
+    classesToRemove.forEach(function (className) {
+      // Muss ich mir noch genauer anschauen
+      element.classList.remove(className); // Muss ich mir noch genauer anschauen
+    });
+  });
 }
 
 function reloadPage() {
@@ -112,7 +127,40 @@ async function renderContactsInAddTasks() {
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     let name = contact.name;
-    assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
-    assignedToMobil.innerHTML += `<option value="${name}">${name}</option>`;
+    let letters = contact.letters;
+    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(
+      contact
+    )})" value="${letters}">${name}</option>`;
+
+    assignedToMobil.innerHTML += `<option value="${letters}">${name}</option>`;
+  }
+
+  assignedTo.onchange = function () {
+    let selectedName = assignedTo.value;
+    let selectedContact = contacts.find(
+      (contact) => contact.letters === selectedName
+    );
+    pushMembers(selectedContact);
+  };
+}
+
+function pushMembers(contact) {
+  let name = contact.letters;
+  let color = contact.color;
+  selectUsers.push(name);
+  selectUsersColor.push(color);
+  renderPushedMembers();
+  console.log("Selected Users:", selectUsers);
+}
+
+function renderPushedMembers() {
+  selectMembersArea = document.getElementById("selectedMembers");
+  selectMembersArea.innerHTML = "";
+
+  for (let i = 0; i < selectUsers.length; i++) {
+    const element = selectUsers[i];
+    const color = selectUsersColor[i];
+    selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
+    document.getElementById(`${element}`).style.backgroundColor = `${color}`;
   }
 }
