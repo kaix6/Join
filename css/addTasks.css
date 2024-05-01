@@ -219,7 +219,7 @@ select,
     brightness(507%) contrast(101%);
 }
 
-#selectedMembers {
+#selectedMembers, #selectedMembersMobil {
   width: 100%;
   height: 50px;
   display: flex;

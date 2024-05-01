@@ -132,7 +132,9 @@ async function renderContactsInAddTasks() {
       contact
     )})" value="${letters}">${name}</option>`;
 
-    assignedToMobil.innerHTML += `<option value="${letters}">${name}</option>`;
+    assignedToMobil.innerHTML += `<option onchange="pushMembers(${JSON.stringify(
+      contact
+    )})" value="${letters}">${name}</option>`;
   }
 
   assignedTo.onchange = function () {
@@ -147,20 +149,34 @@ async function renderContactsInAddTasks() {
 function pushMembers(contact) {
   let name = contact.letters;
   let color = contact.color;
+  let fullName = contact.name;
+  
+  // Überprüfe, ob das Element bereits in selectUsers enthalten ist
+  if (selectUsers.includes(name)) {
+    // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
+    alert(`${fullName} wurde bereits eingeteilt.`);
+    return;
+  }
+
+  // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
   selectUsers.push(name);
   selectUsersColor.push(color);
+
+  // Aktualisiere die Anzeige der ausgewählten Mitglieder
   renderPushedMembers();
-  console.log("Selected Users:", selectUsers);
 }
 
 function renderPushedMembers() {
   selectMembersArea = document.getElementById("selectedMembers");
   selectMembersArea.innerHTML = "";
+  selectMembersAreaMobil = document.getElementById("selectedMembersMobil");
+  selectMembersAreaMobil.innerHTML = "";
 
   for (let i = 0; i < selectUsers.length; i++) {
     const element = selectUsers[i];
     const color = selectUsersColor[i];
     selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
+    selectMembersAreaMobil.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
     document.getElementById(`${element}`).style.backgroundColor = `${color}`;
   }
 }
