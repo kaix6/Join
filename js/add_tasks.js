@@ -100,13 +100,13 @@ function removeClasses(
     imgLowMobil,
   ];
 
-  elements.forEach(function (element) {
-    // Muss ich mir noch genauer anschauen
-    classesToRemove.forEach(function (className) {
-      // Muss ich mir noch genauer anschauen
-      element.classList.remove(className); // Muss ich mir noch genauer anschauen
-    });
-  });
+  for (let i = 0; i < elements.length; i++) {
+    let element = elements[i];
+    for (let j = 0; j < classesToRemove.length; j++) {
+      let className = classesToRemove[j];
+      element.classList.remove(className);
+    }
+  }
 }
 
 function reloadPage() {
@@ -150,7 +150,7 @@ function pushMembers(contact) {
   let name = contact.letters;
   let color = contact.color;
   let fullName = contact.name;
-  
+
   // Überprüfe, ob das Element bereits in selectUsers enthalten ist
   if (selectUsers.includes(name)) {
     // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
@@ -176,7 +176,36 @@ function renderPushedMembers() {
     const element = selectUsers[i];
     const color = selectUsersColor[i];
     selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
-    selectMembersAreaMobil.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
+    selectMembersAreaMobil.innerHTML += `<div id="${element}2" class="profilbild">${element}</div>`;
     document.getElementById(`${element}`).style.backgroundColor = `${color}`;
+    document.getElementById(`${element}2`).style.backgroundColor = `${color}`;
   }
+}
+
+renderContactsInAddTasksMobile();
+
+async function renderContactsInAddTasksMobile() {
+  let response = await fetch("./js/contacts.json");
+  let contacts = await response.json();
+  let assignedToMobil = document.getElementById("assignedToMobil");
+
+  assignedToMobil.innerHTML =
+    "<option disabled selected>select contacts to assign</option>";
+
+  for (let i = 0; i < contacts.length; i++) {
+    let contact = contacts[i];
+    let name = contact.name;
+    let letters = contact.letters;
+    assignedToMobil.innerHTML += `<option onchange="pushMembers(${JSON.stringify(
+      contact
+    )})" value="${letters}">${name}</option>`;
+  }
+
+  assignedToMobil.onchange = function () {
+    let selectedName = assignedToMobil.value;
+    let selectedContact = contacts.find(
+      (contact) => contact.letters === selectedName
+    );
+    pushMembers(selectedContact);
+  };
 }
