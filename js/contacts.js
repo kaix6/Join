@@ -1,5 +1,5 @@
 let contacts = [];
-let sortedCcontacts = [];
+let sortedContacts = [];
 let letters = [];
 
 
@@ -7,7 +7,7 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
               'var(--tagDarkPurple)', 'var(--tagLightBlue)', 'var(--tagTurquoise)',
               'var(--tagApricot)', 'var(--tagLightOrange)', 'var(--tagLightPink)',
               'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
-              'var(--tagLightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
+              'var(--taglightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
 ]
 loadContacts();
 
@@ -19,27 +19,29 @@ async function initJSONContacts() {
 
 
 async function renderContacts(filter) {
-/*     if(contacts == []) { */
-/*         await initJSONContacts(); */
-/*     } */
+// die initial contact soll nur einmal initial geladen werden
+    if(contacts.length <= 1) {
+        await initJSONContacts();
+    }
     let contentContacts = document.querySelector('.contacts');
-    sortedCcontacts = sortArray(contacts);
+    sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
 
-    for (let i = 0; i < sortedCcontacts.length; i++) {
-        const contact = sortedCcontacts[i];
+    for (let i = 0; i < sortedContacts.length; i++) {
+        const contact = sortedContacts[i];
 
-/*         let firstLetter = contact['name'].charAt(0); */
+        let firstLetter = contact['name'].charAt(0);
 
-/*         if(!filter || filter == firstLetter) { */
+        if(!filter || filter == firstLetter) {
             contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
             changeColorContact('#short_name', i, contact.color);
-/*         }
+        }
         if(!letters.includes(firstLetter)) {
             letters.push(firstLetter);
         }
-        renderLetters(i); */
+/*         renderLetters(i); */
     }
+/*     console.log(letters); */
 }
 
 
@@ -72,7 +74,8 @@ function changeColorContact(id, i, color) {
 
 
 function sortArray(array) {
-    let sortedArray = array.sort((a, b) => {
+    // Mit slice() wird eine Kopie von contacts erstellt und auch nicht überschrieben, somit bleibt die Reihenfolge von contacts unberührt
+    let sortedArray = array.slice().sort((a, b) => {
         if(a.name < b.name) {
             return -1;
         }
@@ -91,7 +94,7 @@ function renderLetters(i) {
         for (let j = 0; j < letters.length; j++) {
             const letter = letters[j];
             letterNames.innerHTML += generateLettersInnerHTML(letter);   
-            console.log(letter);
+/*             console.log(letter); */
         }
 }
 
@@ -107,7 +110,7 @@ function toggleContactView(i) {
     if(currentElementWidth(1110)) {
         document.querySelector('#content_contacts').classList.toggle('d_none');
         document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none'); // ID muss hier noch angepasst werden mit '#floating_contact${}'
+        document.querySelector('.floating_contact').classList.toggle('d_none'); 
     } else {
     // Desktop
         document.querySelector('.floating_contact').classList.add('d_none');
@@ -118,7 +121,7 @@ function toggleContactView(i) {
     // Check if i is defined - Code is just executed if i is definded
     if (typeof i !== 'undefined') {
         renderFloatingContact(i);
-        changeColorContact('#short_name_overview', i, sortedCcontacts[i].color);
+        changeColorContact('#short_name_overview', i, sortedContacts[i].color);
     }
 
 }
@@ -132,12 +135,15 @@ function renderFloatingContact(i) {
 
 function generateFloatingContactInnerHTML(i) {
     return /* HTML */ `
+        <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
+            <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
+        </div>
         <div class="head_floating_content">
             <div id="short_name_overview${i}" class="short_name_overview round_div">
-                <p class="short_name_text_overview">${sortedCcontacts[i].letters}</p>
+                <p class="short_name_text_overview">${sortedContacts[i].letters}</p>
             </div>
         <div class="name_editable_content">
-            <h3 class="name_overview">${sortedCcontacts[i].name}</h3>
+            <h3 class="name_overview">${sortedContacts[i].name}</h3>
             <div class="editable_content">
                 <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 0)" class="edit_content pointer">
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
@@ -154,18 +160,34 @@ function generateFloatingContactInnerHTML(i) {
         <div class="contact_information">
             <div class="contact_overview_mail">
                 <h4>Email</h4>
-                <p class="overview_mail">${sortedCcontacts[i].mail}</p>
+                <p class="overview_mail">${sortedContacts[i].mail}</p>
             </div>
             <div class="contact_overview_phone">
                 <h4>Phone</h4>
-                <p>${sortedCcontacts[i].phone}</p>
+                <p>${sortedContacts[i].phone}</p>
             </div>
         </div>`;
 }
 
 
-function showContactOptions() {
+function showContactOptions(i) {
+    let contactOptionsMobile = document.querySelector('.contact_options_mobile');
+    contactOptionsMobile.innerHTML = generateContactOptionsInnerHTML(i);
     document.querySelector('.contact_options_mobile').classList.add('show_contact_options_mobile');
+
+}
+
+
+function generateContactOptionsInnerHTML(i) {
+    return /*HTML*/ `
+        <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 50); closeContactOptions(event)" class="edit_content pointer">
+            <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
+            <p>Edit</p>
+        </div>
+        <div onclick="deleteContact(${i})" class="delete_content pointer">
+            <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
+            <p>Delete</p>
+        </div> `;
 }
 
 
@@ -215,11 +237,16 @@ function addContact() {
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
     contacts.push({name: fullName.value, mail: mail.value, phone: '+' + telNumber.value, color: colorAllocation, letters: firstLetters});
+    renderContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
-    toggleContactView(contacts.length -1);
+    // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
+    toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
     showCreateContactDoneShort();
     saveContacts();
-    renderContacts();
+
+    document.querySelector('#fullName').value = '';
+    mail = document.querySelector('#mail').value = '';
+    telNumber = document.querySelector('#telNumber').value = '';
 }
 
 
@@ -234,9 +261,21 @@ function showCreateContactDoneShort() {
 // Delete Contact
 
 
-/* function deleteContact(index) {
-    contacts.splice(index, 1);
+function deleteContact(index) {
+    contacts.splice(contacts.findIndex(contact => contact === sortedContacts[index]), 1);
     renderContacts();
-} */
+    saveContacts();
+    // Mobile
+    if(currentElementWidth(1110)) {
+        document.querySelector('#content_contacts').classList.toggle('d_none');
+        document.querySelector('#contact_view').classList.toggle('d_none');
+        document.querySelector('.floating_contact').classList.toggle('d_none'); 
+        closeContactOptions(event);
+    } else {
+    // Desktop
+        document.querySelector('.floating_contact').classList.toggle('d_none'); 
+        document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop'); 
+    }
+}
 
 

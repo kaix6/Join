@@ -37,6 +37,7 @@
 
 .show_dialog_add_contact,
 .show_dialog_edit_contact {
+
     /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
     transform: translateX(0);
 }

@@ -119,14 +119,7 @@
             <!--      Section Contact options   -->
 
             <div onclick="doNotClose(event)" class="contact_options_mobile">
-                <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 50)" class="edit_content pointer">
-                    <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
-                    <p>Edit</p>
-                </div>
-                <div class="delete_content pointer">
-                    <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
-                    <p>Delete</p>
-                </div> 
+                <!--     render Contacts in JS    --> 
             </div>
 
             <!--      End Section Contact options   -->
@@ -156,9 +149,6 @@
                  <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
-                    <div onclick="showContactOptions()" id="test" class="add_change_btn_mobile hide_desktop pointer">
-                        <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
-                    </div>
                     <div class="head_overview">
                         <div class="left_part_overview">
                             <h2 class="headline_contacts">Contacts</h2>
@@ -172,7 +162,7 @@
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
-                    <div id="floating_contact${}" class="floating_contact flex_dir_c d_none"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
+                    <div class="floating_contact flex_dir_c d_none"> 
                 <!--     render Contacts in JS    --> 
                     </div>
                 </div>

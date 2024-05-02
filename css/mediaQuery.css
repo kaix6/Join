@@ -329,6 +329,12 @@
   .contact {
     width: 352px;
   }
+
+    /* Contact created */
+
+  .create_contact_done {
+    left: 287px;
+  }
 }
 
 /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
@@ -392,6 +398,10 @@
     box-shadow: 0px 4px 4px 0px #00000040;
   }
 
+#contact_view {
+  height: calc(100vh - 80px - 83px);
+}
+
   .text_add_contact {
     display: none;
   }
@@ -420,6 +430,7 @@
 
   .floating_contact {
     padding: 0px 16px;
+    height: calc(100% - 132px);
   }
 
   .name_overview {
