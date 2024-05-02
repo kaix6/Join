@@ -39,19 +39,19 @@
                 <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
             </div>
             <div class="bottom_dialog_add_edit">
-                <form onsubmit="return false;" class="create_contact_form">
+                <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
                     <label for="fullName"></label>
-                    <input class="create_contact_input" type="text" id="fullName" placeholder="Name" required>
+                    <input class="create_contact_input" minlength="2" type="text" id="fullName" placeholder="Name" required>
                     <label for="mail"></label>
                     <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
                     <label for="telNumber"></label>
-                    <input class="create_contact_input" type="tel" id="telNumber" placeholder="Phone" required>
+                    <input class="create_contact_input" type="tel" id="telNumber" pattern="\d*" placeholder="Phone" required>
                     <div class="container_button">
                         <button class="cancel_create_contact_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>
-                        <button onclick ="addContact()" class="create_contact_btn contact_btn pointer">
+                        <button class="create_contact_btn add_contact_btn contact_btn pointer" type="submit">
                             <p class="text_create_contact_btn">Create contact</p>
                             <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
                         </button>
@@ -84,7 +84,7 @@
             <div class="bottom_dialog_add_edit">
                 <form onsubmit="return false;" class="create_contact_form">
                     <label for="fullName_edit"></label>
-                    <input class="create_contact_input" type="text" id="fullName_edit" placeholder="Name" required>
+                    <input class="create_contact_input" min="2" type="text" id="fullName_edit" placeholder="Name" required>
                     <label for="mail_edit"></label>
                     <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                     <label for="telNumber_edit"></label>

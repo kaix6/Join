@@ -236,7 +236,7 @@ function addContact() {
     let telNumber = document.querySelector('#telNumber');
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
-    contacts.push({name: fullName.value, mail: mail.value, phone: '+' + telNumber.value, color: colorAllocation, letters: firstLetters});
+    contacts.push({name: fullName.value, mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters});
     renderContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
@@ -244,9 +244,9 @@ function addContact() {
     showCreateContactDoneShort();
     saveContacts();
 
-    document.querySelector('#fullName').value = '';
-    mail = document.querySelector('#mail').value = '';
-    telNumber = document.querySelector('#telNumber').value = '';
+    fullName.value = '';
+    mail.value = '';
+    telNumber.value = '';
 }
 
 
@@ -256,6 +256,13 @@ function showCreateContactDoneShort() {
             document.querySelector('.create_contact_done').classList.remove('show_create_contact_done');
          }, 800); 
 }
+
+
+/* let btnAddContact = document.querySelector('.add_contact_btn');
+btnAddContact.addEventListener('click', (event) => {
+    event.preventDefault();
+    addContact();
+}); */
 
 
 // Delete Contact
