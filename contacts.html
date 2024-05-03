@@ -66,41 +66,7 @@
             <!--      Section Dialogbox Edit Contact    -->
 
         <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="dialog_edit_contact_bg d_none">
-            <div onclick="doNotClose(event)" class="dialog_edit_contact">
-                <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
-                    <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
-                </div>
-            <div class="top_dialog_add_edit flex_dir_c">
-                <div class="head_top_dialog_add_edit flex_dir_c">
-                    <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
-                    <h3 class="headline_add_edit_contact">Edit contact</h3>
-                    <div class="seperator_line_content_contact">
-                    </div>
-                </div>
-            </div>
-            <div class="create_contact_short_name_edit round_div">
-                <p class="short_name_text_overview_edit">AM</p>
-            </div>
-            <div class="bottom_dialog_add_edit">
-                <form onsubmit="return false;" class="create_contact_form">
-                    <label for="fullName_edit"></label>
-                    <input class="create_contact_input" min="2" type="text" id="fullName_edit" placeholder="Name" required>
-                    <label for="mail_edit"></label>
-                    <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
-                    <label for="telNumber_edit"></label>
-                    <input class="create_contact_input" type="tel" id="telNumber_edit" placeholder="Phone" required>
-                    <div class="container_button">
-                        <button class="cancel_create_contact_edit_btn contact_btn pointer">
-                            <p class="text_cancel_create_contact_edit_btn">Delete</p>
-                        </button>
-                        <button class="create_contact_btn contact_btn pointer">
-                            <p class="text_create_contact_btn">Save</p>
-                            <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+            <!--     render Contacts in JS    --> 
         </div>
 
              <!--      End Section Dialogbox Edit Contact    -->
@@ -132,7 +98,7 @@
 
             <!--      Section Contact created   -->
 
-                 <!--      Section Contact    -->
+            <!--      Section Contact    -->
 
                 <div id="content_contacts">
                     <div onclick="showDialog('.dialog_add_contact_bg', 'd_none', '.dialog_add_contact', 'show_dialog_add_contact', 50)" class="add_change_btn_mobile pointer">
@@ -140,13 +106,13 @@
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
                     <div class="contacts">
-                <!--     render Contacts in JS    --> 
+            <!--     render Contacts in JS    --> 
                     </div>
                 </div>
 
-                 <!--     End  Section Contact    -->
+            <!--     End  Section Contact    -->
 
-                 <!--      Section Contact View   -->
+            <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
                     <div class="head_overview">
@@ -163,20 +129,20 @@
                         </div>
                     </div>
                     <div class="floating_contact flex_dir_c d_none"> 
-                <!--     render Contacts in JS    --> 
+            <!--     render Contacts in JS    --> 
                     </div>
                 </div>
 
-                 <!--      End Section Contact View   -->
+            <!--      End Section Contact View   -->
             </section>
 
         </div>
 
-        <!--      Section Side Menu   -->
+            <!--      Section Side Menu   -->
 
         <div class="side_menu_sticky" w3-include-html="./assets/templates/side_menu.html"></div>
 
-        <!--      End Section Side Menu    -->
+            <!--      End Section Side Menu    -->
 
     </div>
 

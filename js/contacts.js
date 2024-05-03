@@ -4,10 +4,10 @@ let letters = [];
 
 
 let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
-              'var(--tagDarkPurple)', 'var(--tagLightBlue)', 'var(--tagTurquoise)',
-              'var(--tagApricot)', 'var(--tagLightOrange)', 'var(--tagLightPink)',
-              'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
-              'var(--taglightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
+    'var(--tagDarkPurple)', 'var(--tagLightBlue)', 'var(--tagTurquoise)',
+    'var(--tagApricot)', 'var(--tagLightOrange)', 'var(--tagLightPink)',
+    'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
+    'var(--taglightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
 ]
 loadContacts();
 
@@ -19,8 +19,8 @@ async function initJSONContacts() {
 
 
 async function renderContacts(filter) {
-// die initial contact soll nur einmal initial geladen werden
-    if(contacts.length <= 1) {
+    // die initial contact soll nur einmal initial geladen werden
+    if (contacts.length <= 1) {
         await initJSONContacts();
     }
     let contentContacts = document.querySelector('.contacts');
@@ -30,18 +30,18 @@ async function renderContacts(filter) {
     for (let i = 0; i < sortedContacts.length; i++) {
         const contact = sortedContacts[i];
 
-/*         let firstLetter = contact['name'].charAt(0); */
+        /*         let firstLetter = contact['name'].charAt(0); */
 
-/*         if(!filter || filter == firstLetter) { */
-            contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
-            changeColorContact('#short_name', i, contact.color);
-/*         }
-        if(!letters.includes(firstLetter)) {
-            letters.push(firstLetter);
-        } */
-/*         renderLetters(i); */
+        /*         if(!filter || filter == firstLetter) { */
+        contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
+        changeColorContact('#short_name', i, contact.color);
+        /*         }
+                if(!letters.includes(firstLetter)) {
+                    letters.push(firstLetter);
+                } */
+        /*         renderLetters(i); */
     }
-/*     console.log(letters); */
+    /*     console.log(letters); */
 }
 
 
@@ -76,10 +76,10 @@ function changeColorContact(id, i, color) {
 function sortArray(array) {
     // Mit slice() wird eine Kopie von contacts erstellt und auch nicht überschrieben, somit bleibt die Reihenfolge von contacts unberührt
     let sortedArray = array.slice().sort((a, b) => {
-        if(a.name < b.name) {
+        if (a.name < b.name) {
             return -1;
         }
-        if(a.name > b.name) {
+        if (a.name > b.name) {
             return 1;
         }
         return 0; // Wenn die Namen gleich sind
@@ -89,13 +89,13 @@ function sortArray(array) {
 
 
 function renderLetters(i) {
-        let letterNames = document.querySelector(`#letter_names${i}`);
-        letterNames.innerHTML = '';
-        for (let j = 0; j < letters.length; j++) {
-            const letter = letters[j];
-            letterNames.innerHTML += generateLettersInnerHTML(letter);   
-/*             console.log(letter); */
-        }
+    let letterNames = document.querySelector(`#letter_names${i}`);
+    letterNames.innerHTML = '';
+    for (let j = 0; j < letters.length; j++) {
+        const letter = letters[j];
+        letterNames.innerHTML += generateLettersInnerHTML(letter);
+        /*             console.log(letter); */
+    }
 }
 
 
@@ -107,15 +107,15 @@ function generateLettersInnerHTML(letter) {
 
 function toggleContactView(i) {
     // Mobile
-    if(currentElementWidth(1110)) {
+    if (currentElementWidth(1110)) {
         document.querySelector('#content_contacts').classList.toggle('d_none');
         document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none'); 
+        document.querySelector('.floating_contact').classList.toggle('d_none');
     } else {
-    // Desktop
+        // Desktop
         document.querySelector('.floating_contact').classList.add('d_none');
-        setTimeout(function() {
-            document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop'); 
+        setTimeout(function () {
+            document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
         }, 0);
     }
     // Check if i is defined - Code is just executed if i is definded
@@ -160,7 +160,7 @@ function generateFloatingContactInnerHTML(i) {
         <div class="name_editable_content">
             <h3 class="name_overview">${sortedContacts[i].name}</h3>
             <div class="editable_content">
-                <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 0)" class="edit_content pointer">
+                <div onclick="editContact(event, ${i})" class="edit_content pointer">
                     <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
                     <p>Edit</p>
                 </div>
@@ -195,7 +195,7 @@ function showContactOptions(i) {
 
 function generateContactOptionsInnerHTML(i) {
     return /*HTML*/ `
-        <div onclick="showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 50); closeContactOptions(event)" class="edit_content pointer">
+        <div onclick="editContact(event, ${i})" class="edit_content pointer">
             <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
             <p>Edit</p>
         </div>
@@ -207,8 +207,8 @@ function generateContactOptionsInnerHTML(i) {
 
 
 function closeContactOptions(event) {
-    if(event.target.className != 'add_person_more_icon') 
-    document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
+    if (event.target.className != 'add_person_more_icon')
+        document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
 }
 
 
@@ -229,7 +229,7 @@ function getRandomItem(array) {
 function getContactsInitials(name) {
     let splitName = name.split(/(\s+)/);
     firstInitial = splitName[0].charAt(0);
-    if(splitName.length > 2) {
+    if (splitName.length > 2) {
         secondInitial = splitName[splitName.length - 1].charAt(0);
         let mergeLetters = firstInitial + secondInitial;
         let initialLetters = capitalize(mergeLetters);
@@ -237,7 +237,7 @@ function getContactsInitials(name) {
     }
     let initialLetters = capitalize(firstInitial);
     return initialLetters;
-} 
+}
 
 
 function capitalize(string) {
@@ -255,7 +255,7 @@ function addContact() {
     let telNumber = document.querySelector('#telNumber');
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
-    contacts.push({name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters});
+    contacts.push({ name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters });
     renderContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
@@ -270,15 +270,95 @@ function addContact() {
 
 
 function showCreateContactDoneShort() {
-        document.querySelector('.create_contact_done').classList.add('show_create_contact_done');
-        setTimeout(function() {
-            document.querySelector('.create_contact_done').classList.remove('show_create_contact_done');
-         }, 800); 
+    document.querySelector('.create_contact_done').classList.add('show_create_contact_done');
+    setTimeout(function () {
+        document.querySelector('.create_contact_done').classList.remove('show_create_contact_done');
+    }, 800);
 }
 
 
 function capitalizeFirstLetters(name) {
     return name.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+}
+
+
+// Edit Contact
+
+
+function editContact(event, index) {
+    if (currentElementWidth(1110)) {
+        showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 50);
+        closeContactOptions(event);
+    } else {
+        showDialog('.dialog_edit_contact_bg', 'd_none', '.dialog_edit_contact', 'show_dialog_edit_contact', 0);
+    }
+    let dialogEditContact = document.querySelector('.dialog_edit_contact_bg');
+    dialogEditContact.innerHTML = generateDialoEditInnerHTML(index);
+    changeColorContact('#create_contact_short_name_edit', index, sortedContacts[index].color);
+    showSavedData(index);
+}
+
+
+function showSavedData(index) {
+    document.querySelector('#fullName_edit').value = `${sortedContacts[index].name}`;
+    document.querySelector('#mail_edit').value = `${sortedContacts[index].mail}`;
+    document.querySelector('#telNumber_edit').value = `${sortedContacts[index].phone}`;
+}
+
+
+function saveNewData(index) {
+    let newName = document.querySelector('#fullName_edit');
+    let newMail = document.querySelector('#mail_edit');
+    let newTelNumber = document.querySelector('#telNumber_edit');
+    let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
+
+    contacts[currentIndex].name = newName.value;
+    contacts[currentIndex].mail = newMail.value;
+    contacts[currentIndex].phone = newTelNumber.value;
+    saveContacts();
+    renderContacts();
+    console.log(contacts);
+    toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
+}
+
+
+function generateDialoEditInnerHTML(index) {
+    return /* HTML */`
+        <div onclick="doNotClose(event)" class="dialog_edit_contact">
+            <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
+                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
+            </div>
+        <div class="top_dialog_add_edit flex_dir_c">
+            <div class="head_top_dialog_add_edit flex_dir_c">
+                <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
+                <h3 class="headline_add_edit_contact">Edit contact</h3>
+                <div class="seperator_line_content_contact">
+                </div>
+            </div>
+        </div>
+        <div id="create_contact_short_name_edit${index}" class="create_contact_short_name_edit round_div">
+            <p class="short_name_text_overview_edit">${sortedContacts[index].letters}</p>
+        </div>
+        <div class="bottom_dialog_add_edit">
+            <form onsubmit="return false;" class="create_contact_form">
+                <label for="fullName_edit"></label>
+                <input class="create_contact_input" min="2" type="text" id="fullName_edit" placeholder="Name" required>
+                <label for="mail_edit"></label>
+                <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
+                <label for="telNumber_edit"></label>
+                <input class="create_contact_input" type="tel" id="telNumber_edit" placeholder="Phone" required>
+                <div class="container_button">
+                    <button onclick="saveNewData(${index})" class="cancel_create_contact_edit_btn contact_btn pointer">
+                        <p class="text_cancel_create_contact_edit_btn">Delete</p>
+                    </button>
+                    <button class="create_contact_btn contact_btn pointer">
+                        <p class="text_create_contact_btn">Save</p>
+                        <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
+                    </button>
+                </div>
+            </form>
+        </div>
+        </div>`;
 }
 
 
@@ -297,15 +377,15 @@ function deleteContact(index) {
     renderContacts();
     saveContacts();
     // Mobile
-    if(currentElementWidth(1110)) {
+    if (currentElementWidth(1110)) {
         document.querySelector('#content_contacts').classList.toggle('d_none');
         document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none'); 
+        document.querySelector('.floating_contact').classList.toggle('d_none');
         closeContactOptions(event);
     } else {
-    // Desktop
-        document.querySelector('.floating_contact').classList.toggle('d_none'); 
-        document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop'); 
+        // Desktop
+        document.querySelector('.floating_contact').classList.toggle('d_none');
+        document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop');
     }
 }
 
