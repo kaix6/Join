@@ -1,7 +1,7 @@
 [{
-        "name": "Mustermann",
-        "mail": "musterman@web.de",
-        "password": "muster123"
+        "name": "test",
+        "mail": "test@web.de",
+        "password": "test123"
     },
     {
         "name": "Levi Ackermann",
