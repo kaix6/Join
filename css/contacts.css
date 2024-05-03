@@ -313,6 +313,7 @@
     min-width: 42px;
     height: 42px;
     color: var(--white);
+    border: 2px solid var(--white);
 }
 
 .short_name_text {
@@ -335,6 +336,12 @@
 }
 
 /* Contact Overview*/
+
+.active_contact {
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+    border-radius: 10px;
+}
 
 .hide_desktop {
     display: none;

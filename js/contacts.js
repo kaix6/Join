@@ -123,7 +123,22 @@ function toggleContactView(i) {
         renderFloatingContact(i);
         changeColorContact('#short_name_overview', i, sortedContacts[i].color);
     }
+    showActiveContact();
 
+}
+
+
+function showActiveContact() {
+    let activeContact = document.querySelector('.name_overview').textContent;
+    let contacts = document.querySelectorAll('.contact_fullName');
+
+    contacts.forEach(contact => {
+        let parentElement = contact.closest('.contact'); // closest() gibt das nahegelegenste übergeordnete Element zurück
+        parentElement.classList.remove('active_contact');
+        if (contact.textContent.includes(`${activeContact}`)) {
+            parentElement.classList.add('active_contact');
+        }
+    })
 }
 
 
