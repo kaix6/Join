@@ -30,15 +30,15 @@ async function renderContacts(filter) {
     for (let i = 0; i < sortedContacts.length; i++) {
         const contact = sortedContacts[i];
 
-        let firstLetter = contact['name'].charAt(0);
+/*         let firstLetter = contact['name'].charAt(0); */
 
-        if(!filter || filter == firstLetter) {
+/*         if(!filter || filter == firstLetter) { */
             contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
             changeColorContact('#short_name', i, contact.color);
-        }
+/*         }
         if(!letters.includes(firstLetter)) {
             letters.push(firstLetter);
-        }
+        } */
 /*         renderLetters(i); */
     }
 /*     console.log(letters); */
@@ -209,14 +209,18 @@ function getRandomItem(array) {
 }
 
 
-// Evtl. auch die Anfangsbuchstaben im json array übernhemen und die unten stehende Funktion nur beim Neuanlegen oder editieren anwenden wie auch bei color : getRandomItem(colors);
+// Evtl. auch die Anfangsbuchstaben im json array übernehmen und die unten stehende Funktion nur beim Neuanlegen oder editieren anwenden wie auch bei color : getRandomItem(colors);
 
 function getContactsInitials(name) {
     let splitName = name.split(/(\s+)/);
     firstInitial = splitName[0].charAt(0);
-    secondInitial = splitName[splitName.length - 1].charAt(0);
-    let mergeLetters = firstInitial + secondInitial;
-    let initialLetters = capitalize(mergeLetters);
+    if(splitName.length > 2) {
+        secondInitial = splitName[splitName.length - 1].charAt(0);
+        let mergeLetters = firstInitial + secondInitial;
+        let initialLetters = capitalize(mergeLetters);
+        return initialLetters;
+    }
+    let initialLetters = capitalize(firstInitial);
     return initialLetters;
 } 
 
@@ -236,7 +240,7 @@ function addContact() {
     let telNumber = document.querySelector('#telNumber');
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
-    contacts.push({name: fullName.value, mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters});
+    contacts.push({name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters});
     renderContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
@@ -255,6 +259,11 @@ function showCreateContactDoneShort() {
         setTimeout(function() {
             document.querySelector('.create_contact_done').classList.remove('show_create_contact_done');
          }, 800); 
+}
+
+
+function capitalizeFirstLetters(name) {
+    return name.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 }
 
 
