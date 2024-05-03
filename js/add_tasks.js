@@ -209,3 +209,64 @@ async function renderContactsInAddTasksMobile() {
     pushMembers(selectedContact);
   };
 }
+
+function renderAddTasksFormAsJson(tasks) {
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("description").value;
+  let assignedTo = selectUsers;
+  let date = document.getElementById("date").value;
+  let prio = "";
+  let category = document.getElementById("category").value;
+  let subtasks = document.getElementById("subtask").value;
+  let task = tasks;
+
+  saveTaskToJson(title, description, date, category, assignedTo, subtasks);
+
+  console.log(title, description, assignedTo, date, category, subtasks);
+  console.log(task);
+} // abklären zwecks in JSON laden
+
+async function renderAddTaskinJson() {
+  let response = await fetch("./js/addTasks.json");
+  let tasks = await response.json();
+
+  renderAddTasksFormAsJson(tasks);
+}
+
+async function saveTaskToJson(
+  title,
+  description,
+  date,
+  category,
+  assignedTo,
+  subtasks
+) {
+  let response = await fetch("./js/addTasks.json");
+  let tasks = await response.json();
+
+  // Neuen Task erstellen
+  let newTask = {
+    title: title,
+    description: description,
+    "due date": date,
+    prio: "",
+    category: category,
+    "assigned member": assignedTo,
+    subtask: subtasks,
+  };
+
+  // Task zur Liste hinzufügen
+  tasks.push(newTask);
+
+  // JSON-Datei aktualisieren
+  await fetch("./js/addTasks.json", {
+    method: "PUT", // oder 'POST'
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tasks),
+  });
+
+  console.log("Task erfolgreich hinzugefügt.");
+  console.log(tasks);
+}
