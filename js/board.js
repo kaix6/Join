@@ -151,6 +151,7 @@ function setTaskCategory(task){
     };
 }
 
+// Diese Funktion prüft, ob Subtaks vorhanden sind und fügt die HTML-Section anschließend hinzu
 function getAllSubtasks(task){
     let subtasks = task['subtask']
     let subtasksSection = document.getElementById(`subtasks${task['id']}`);
