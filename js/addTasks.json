@@ -9,11 +9,13 @@
       "status": "open",
       "assigned member": [
         {
+            "id": 0,
             "name": "Levi Ackermann",
             "color": "var(--tagDarkPurple)",
             "letters": "LA"
         },
         {
+            "id": 1,
             "name": "Michael Scott",
             "color": "var(--tagLightBlue)",
             "letters": "MS"
@@ -44,6 +46,7 @@
       "status": "in progress",
       "assigned member": [
         {
+            "id": 0,
             "name": "Homer Simpson",
             "color": "var(--tagMediumYellow)",
             "letters": "HS"
@@ -63,16 +66,19 @@
       "status": "await feedback",
       "assigned member": [
         {
+            "id": 0,
             "name": "Daenerys Targaryen",
             "color": "var(--tagOrange)",
             "letters": "DT"
         },
         {
+            "id": 1,
             "name": "Kathryn Janeway",
             "color": "var(--tagLightPink)",
             "letters": "KJ"
         },
         {
+            "id": 2,
             "name": "Geralt of Rivia",
             "color": "var(--tagTurquoise)",
             "letters": "GR"
@@ -88,25 +94,29 @@
       "description": "Create a document outlining all functional and non-functional requirements of the system based on the gathered requirements.",
       "due date": "20.04.2024",
       "prio": "low",
-      "category": "User Sory",
+      "category": "User Story",
       "status": "done",
       "assigned member": [
       {
+          "id": 0,
           "name": "Geralt of Rivia",
           "color": "var(--tagTurquoise)",
           "letters": "GR"
       },
       {
+          "id": 1,
           "name": "Zelda of Hyrule",
           "color": "var(--tagApricot)",
           "letters": "ZH"
       },
       {
+          "id": 2,
           "name": "Ash Ketchum",
           "color": "var(--tagRed)",
           "letters": "AK"
       },
       {
+          "id": 3,
           "name": "Bulma Brief",
           "color": "var(--tagBlue)",
           "letters": "BB"
@@ -121,7 +131,6 @@
           "id": 1,
           "description": "Review the document for completeness and accuracy, making revisions as necessary based on feedback"
         }
-        
       ]
     }
 ]

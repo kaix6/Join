@@ -27,8 +27,8 @@ function closeDialogTask(){
 // }
 
 // Diese Funktion rendert alle Tasks je Spalte auf dem Board
-function updateTasksHTML(){
-    let tasks = getTasksJson();
+async function updateTasksHTML(){
+    let tasks = await getTasksJson();
     updateOpenTasks(tasks);
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
@@ -52,10 +52,14 @@ function updateOpenTasks(tasks){
         for (let i = 0; i < open.length; i++) {
             const openTask = open[i];
             boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
+            getAllMembers(openTask);
+            setPriority(openTask);
+            setTaskCategory(openTask);
+            getAllSubtasks(openTask);
         };
     } else {
         boardOpenTasks.innerHTML = '';
-        boardOpenTasks.innerHTML = noTasksBox();
+        boardOpenTasks.innerHTML = generateNoTaskBox;
     };
 }
 
@@ -67,6 +71,10 @@ function updateInProgressTasks(tasks){
     for (let i = 0; i < inProgress.length; i++) {
         const inProgressTask = inProgress[i];
         boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
+        getAllMembers(inProgressTask);
+        setPriority(inProgressTask);
+        setTaskCategory(inProgressTask);
+        getAllSubtasks(inProgressTask);
     };
 }
 
@@ -78,6 +86,10 @@ function updateAwaitFeedbackTasks(tasks){
     for (let i = 0; i < awaitFeedback.length; i++) {
         const awaitFeedbackTask = awaitFeedback[i];
         boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
+        getAllMembers(awaitFeedbackTask);
+        setPriority(awaitFeedbackTask);
+        setTaskCategory(awaitFeedbackTask);
+        getAllSubtasks(awaitFeedbackTask);
     };
 }
 
@@ -89,6 +101,60 @@ function updateDoneTasks(tasks){
     for (let i = 0; i < done.length; i++) {
         const doneTask = done[i];
         boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
+        getAllMembers(doneTask);
+        setPriority(doneTask);
+        setTaskCategory(doneTask);
+        getAllSubtasks(doneTask);
     };
 }
 
+// Diese Funktion rendert die Member je Task
+function getAllMembers(task){
+    for (let j = 0; j < task['assigned member'].length; j++) {
+        const member = task['assigned member'][j]['letters'];
+        let taskId = task['id'];
+        let memberId = taskId+member;
+        document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
+        setColorMember(task, j, memberId);
+    };
+}
+
+// Diese Funktion vergibt die passende Hintergrundfarbe je Member
+function setColorMember(task, j, memberId){
+    let colorMember = task['assigned member'][j]['color'];
+    let memberContainer = document.getElementById(memberId);
+    memberContainer.style.backgroundColor = colorMember;
+}
+
+// Diese Funktion ändert die img Src je nach Task Priorität, damit das entsprechende Icon angezeigt wird 
+function setPriority(task){
+    let taskPrio = task['prio'];
+    if (taskPrio == 'low') {
+        document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_low.svg';
+    } else {
+        if (taskPrio == 'medium') {
+            document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_medium.svg';  
+        } else {
+            document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_urgent.svg';
+        }
+    };
+}
+
+// Diese Funktion ändert die Hintergrundfarbe je nach Task-Category (User Story oder Technical Task)
+function setTaskCategory(task){
+    let taskCategory = task['category'];
+    let taskCategoryContainer = document.getElementById(`task-category${task['id']}`);
+    if (taskCategory == 'User Story') {
+        taskCategoryContainer.style.backgroundColor = '#0038FF';
+    } else {
+        taskCategoryContainer.style.backgroundColor = '#1FD7C1';
+    };
+}
+
+function getAllSubtasks(task){
+    let subtasks = task['subtask']
+    let subtasksSection = document.getElementById(`subtasks${task['id']}`);
+    if(subtasks.length > 0){
+        subtasksSection.innerHTML += generateSubtasksSection();
+    };
+}
