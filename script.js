@@ -4,8 +4,8 @@ async function initLogin() {
 }
 
 
-/* load('contacts');
-load('tasks'); */
+/* loadContacts(); */
+/* load('tasks'); */
 
 
 function animationWindow() {
@@ -34,7 +34,7 @@ async function includeHTML() {
 
 function changeClassToActive() {
     let activePage = window.location.pathname;
-    let menuLinks = document.querySelectorAll('.menu_icon_text');
+    let menuLinks = document.querySelectorAll('.active_link');
     menuLinks.forEach(link => {
         if (link.href.includes(`${activePage}`)) {
             link.classList.add('activeLink');
@@ -78,16 +78,16 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
 }
 
 
-function save(array) {
-    let arrayAsText = JSON.stringify(array);
-    localStorage.setItem('array', arrayAsText);
+function saveContacts() {
+    let contactsAsText = JSON.stringify(contacts);
+    localStorage.setItem('contacts', contactsAsText);
 }
 
 
-function load(array) {
-    let arrayAsText = localStorage.getItem('array');
-    if (arrayAsText) {
-        array = JSON.parse(arrayAsText);
+function loadContacts() {
+    let contactsAsText = localStorage.getItem('contacts');
+    if (contactsAsText) {
+        contacts = JSON.parse(contactsAsText);
     }
 }
 

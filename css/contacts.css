@@ -37,6 +37,7 @@
 
 .show_dialog_add_contact,
 .show_dialog_edit_contact {
+
     /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
     transform: translateX(0);
 }
@@ -226,6 +227,28 @@
     transform: translateX(0px);
 }
 
+/* Contact created */
+
+.create_contact_done {
+    position: absolute;
+    bottom: 250px;
+    left: 743px;
+    background-color: var(--menuButtonDarkblue);
+    border-radius: 20px;
+    padding: 20px;
+    transform: translateX(1000px);
+    transition: all 300ms ease-out;
+}
+
+.show_create_contact_done {
+    transform: translateX(0px);
+  }
+
+.text_create_contact_done {
+    color: var(--white);
+    font-size: 20px;
+}
+
 /* Contacts */
 
 .main_contacts {
@@ -287,10 +310,10 @@
 }
 
 .short_name {
-    background-color: var(--tagOrange);
-    width: 42px;
+    min-width: 42px;
     height: 42px;
     color: var(--white);
+    border: 2px solid var(--white);
 }
 
 .short_name_text {
@@ -303,14 +326,22 @@
 
 .contact_fullName {
     font-size: 20px;
+    word-break: break-all;
 }
 
 .contact_mail,
 .overview_mail {
     color: var(--fontColorMail);
+    word-break: break-all;
 }
 
 /* Contact Overview*/
+
+.active_contact {
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+    border-radius: 10px;
+}
 
 .hide_desktop {
     display: none;
@@ -363,10 +394,9 @@
 }
 
 .short_name_overview {
-    background-color: var(--tagOrange);
     border: 3px solid var(--white);
-    width: 120px;
-    height: 120px;
+    min-width: 120px;
+    min-height: 120px;
     color: var(--white);
 }
 
