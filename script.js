@@ -90,5 +90,3 @@ function loadContacts() {
         contacts = JSON.parse(contactsAsText);
     }
 }
-
-
