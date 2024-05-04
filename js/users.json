@@ -1,7 +1,51 @@
-[
+[{
+        "name": "test",
+        "mail": "test@web.de",
+        "password": "test123"
+    },
     {
-        "name": "",
-        "mail": "",
-        "password": ""
+        "name": "Levi Ackermann",
+        "mail": "l.ackermann@gmail.com",
+        "password": "levi9&3a"
+    },
+    {
+        "name": "Michael Scott",
+        "mail": "m.scott@dundermifflin.com",
+        "password": "micha&72!"
+    },
+    {
+        "name": "Homer Simpson",
+        "mail": "homer.simpson@springfield.com",
+        "password": "duffbier"
+    },
+    {
+        "name": "Daenerys Targaryen",
+        "mail": "danny.t666@westerosdragons.com",
+        "password": "dragen1.0"
+    },
+    {
+        "name": "Kathryn Janeway",
+        "mail": "k.janeway@starfleet.org",
+        "password": "kathryn6"
+    },
+    {
+        "name": "Geralt of Rivia",
+        "mail": "geralt.rivia@kaer-morhen.com",
+        "password": "Tr!ckyTr3@"
+    },
+    {
+        "name": "Zelda of Hyrule",
+        "mail": "z.hyrule@hyrulecastle.com",
+        "password": "zelda&hop"
+    },
+    {
+        "name": "Ash Ketchum",
+        "mail": "a.ketchum@pokemonleague.jp",
+        "password": "pommes7"
+    },
+    {
+        "name": "Bulma Brief",
+        "mail": "b.brief@capsulecorp.jp",
+        "password": "leter8"
     }
 ]

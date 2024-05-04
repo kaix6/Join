@@ -1,44 +1,84 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
-    <link rel="stylesheet" href="./css/colors.css">
-    <link rel="stylesheet" href="./css/fonts.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/template.css">
-    <script defer src="script.js"></script>
-    <script defer src="./js/template.js"></script>
+    <title>Join</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/general/logo_favicon.svg">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/colors.css">
+    <link rel="stylesheet" href="/css/style_login.css">
+    <script src="script.js"></script>
+    <script src="/js/template.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/users.json"></script>
+
 </head>
-<body class="flex_dir_c" onload="includeHTML()">
 
-    <div class="wrapped_maxWidth">
+<body onload="initLogin()" class="display-fc">
+    <div class="limitation">
+        <div id="joinLogoAnimation" class="join-logo">
+            <div class="display-fccc">
+                <div class="img-animaschen animated-image"></div>
+            </div>
+        </div>
+        <header class="d-center-space-betwen">
 
-        <div class="right_section flex_dir_c">
+            <img src="/assets/img/logIn_SignUp/Capa 1.svg" alt="" class="imglogo">
+            <div class="destop-login display-ac  gap padding">
+                <div class=" display-ac">
+                    <span>Not a join user?</span>
 
-            <!--      Section header    -->
+                    <a href="/signup.html">
+                        <p class="button-login-blue button-p">Singn up</p>
+                    </a>
+                </div>
+            </div>
+        </header>
 
-<div w3-include-html="assets/templates/header.html"></div>
+        <div class="display-fcc">
+            <div class="frame153 display-fccc">
+                <div>
+                    <h1>Log in</h1>
 
-<!--      Section header    -->
+                    <div class="vector_login"></div>
+                </div>
+                <div>
+                    <form onsubmit="login(); return false;" class="display-fccc gap">
+                        <input placeholder="Email" type="email" class="input-with-image b-img-email" required>
+                        <input placeholder="Password" type="password" class="input-with-image b-img-lock" required>
+                        <div>
+                            <input type="checkbox" id="">
+                            <label for="rememberMe">Remember me</label>
+                        </div>
 
 
-<section id="main_container">
+                        <div class="d-center-space-betwen gap">
 
-</section>
 
-</div>
+                            <button class="button-login-blue button-p">Log in</button>
+                            <a href="/summary.html">
+                                <p class="button-login-white button-p">Guest Log in</p>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
-<!--      Section Side Menu   -->
+        </div>
+        <div class="mobile-login display-fcc gap padding">
+            <span>Not a join user?</span>
 
-<div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
-
-<!--      Section Side Menu    -->
-
-</div>
-
+            <a href="/signup.html">
+                <p class="button-login-blue butten-mobile button-p">Singn up</p>
+            </a>
+        </div>
+        <footer class="display-fjc gap gray">
+            <p class="pointer-coler">Privacy policy</p>
+            <p class="pointer-coler">Legal notice</p>
+        </footer>
+    </div>
 </body>
 
-</html> -->
+</html>
