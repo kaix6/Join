@@ -130,12 +130,12 @@ function setColorMember(task, j, memberId){
 function setPriority(task){
     let taskPrio = task['prio'];
     if (taskPrio == 'low') {
-        document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_low.svg';
+        document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_low.svg';
     } else {
         if (taskPrio == 'medium') {
-            document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_medium.svg';  
+            document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
         } else {
-            document.getElementById(`taskPrio${task['id']}`).src ='/assets/img/add_task/prio_urgent.svg';
+            document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
         }
     };
 }

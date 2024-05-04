@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board | Join</title>
     <script defer src="script.js"></script>
-    <script defer src="/js/board.js"></script>
+    <script defer src="js/board.js"></script>
     <script defer src="js/template.js"></script>
     <script defer src="js/add_tasks.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/fonts.css" />
-    <link rel="stylesheet" href="/css/colors.css" />
-    <link rel="stylesheet" href="/css/template.css" />
-    <link rel="stylesheet" href="/css/formal-content.css" />
-    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/fonts.css" />
+    <link rel="stylesheet" href="./css/colors.css" />
+    <link rel="stylesheet" href="./css/template.css" />
+    <link rel="stylesheet" href="./css/formal-content.css" />
+    <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
     <link rel="stylesheet" href="./css/addTasks.css" />
   </head>
@@ -37,7 +37,7 @@
             <div class="member">AM</div>
             <div class="member">EM</div>
           </div>
-          <img src="/assets/img/add_task/prio_low.svg" />
+          <img src="./assets/img/add_task/prio_low.svg" />
         </div>
       </div>
       <!--      End Section Dialog Box Small TodoTask    -->
@@ -48,7 +48,7 @@
           <div class="d-flex-center-space-btw">
             <p class="task-type">Task Type</p>
             <div class="close-icon" onclick="closeDialogTask()">
-              <img src="/assets/img/add_task/close.svg" />
+              <img src="./assets/img/add_task/close.svg" />
             </div>
           </div>
           <h2>Task Headline</h2>
@@ -61,7 +61,7 @@
             <div class="d-flex">
               <p class="width-30">Priority:</p>
               <p>Low</p>
-              <img class="prio-icon" src="/assets/img/add_task/prio_low.svg" />
+              <img class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
             </div>
             <div>
               <p class="margin-top-16px">Assigned To:</p>
@@ -81,13 +81,13 @@
               <div class="delete">
                 <img
                   class="delete-edit-icon"
-                  src="/assets/img/board/icon+delete_black.svg"
+                  src="./assets/img/board/icon+delete_black.svg"
                 />
               </div>
               <div class="edit">
                 <img
                   class="delete-edit-icon"
-                  src="/assets/img/board/icon+edit_black.svg"
+                  src="./assets/img/board/icon+edit_black.svg"
                 />
               </div>
             </div>
@@ -168,7 +168,7 @@
                       Urgent
                       <img
                         id="buttonImg1"
-                        src="assets/img/add_task/prio_urgent.svg"
+                        src="./assets/img/add_task/prio_urgent.svg"
                         alt=""
                       />
                     </button>
@@ -179,7 +179,7 @@
                       Medium
                       <img
                         id="buttonImg2"
-                        src="assets/img/add_task/prio_medium.svg"
+                        src="./assets/img/add_task/prio_medium.svg"
                         alt=""
                       />
                     </button>
@@ -191,7 +191,7 @@
                       Low
                       <img
                         id="buttonImg3"
-                        src="assets/img/add_task/prio_low.svg"
+                        src="./assets/img/add_task/prio_low.svg"
                         alt=""
                       />
                     </button>
@@ -239,10 +239,10 @@
 
               <div>
                 <button onclick="reloadPage()" class="clearButtonAddTasks">
-                  Clear <img src="assets/img/add_task/close.svg" alt="" />
+                  Clear <img src="./assets/img/add_task/close.svg" alt="" />
                 </button>
                 <button class="createButtonAddTasks">
-                  Create Task <img src="assets/img/add_task/check.svg" alt="" />
+                  Create Task <img src="./assets/img/add_task/check.svg" alt="" />
                 </button>
               </div>
             </div>
@@ -324,7 +324,7 @@
                       class="buttonPrio"
                     >
                       Urgent
-                      <img src="assets/img/add_task/prio_urgent.svg" alt="" />
+                      <img src="./assets/img/add_task/prio_urgent.svg" alt="" />
                     </button>
                     <button
                       id="buttonMediumMobil"
@@ -332,14 +332,14 @@
                       class="buttonPrio"
                     >
                       Medium
-                      <img src="assets/img/add_task/prio_medium.svg" alt="" />
+                      <img src="./assets/img/add_task/prio_medium.svg" alt="" />
                     </button>
                     <button
                       id="buttonLowMobil"
                       onclick="addPrioButtonColor(low)"
                       class="buttonPrio"
                     >
-                      Low <img src="assets/img/add_task/prio_low.svg" alt="" />
+                      Low <img src="./assets/img/add_task/prio_low.svg" alt="" />
                     </button>
                   </div>
                 </div>
@@ -416,20 +416,20 @@
                 <h1>Board</h1>
                 <img
                   class="small-add-button"
-                  src="/assets/img/board/add_task_white.svg"
+                  src="./assets/img/board/add_task_white.svg"
                 />
               </div>
               <div class="board-search-add">
                 <div class="search-field">
                   <input type="text" placeholder="Find Task" />
-                  <img src="/assets/img/board/search.svg" />
+                  <img src="./assets/img/board/search.svg" />
                 </div>
                 <div
                   onclick="showDialog('.dialog_addTask_bg', 'd-none', '.dialog_addTask', 'show_dialog_addTask', 50)"
                   class="add-task-button"
                 >
                   <p>Add task</p>
-                  <img src="/assets/img/board/add_task_white.svg" />
+                  <img src="./assets/img/board/add_task_white.svg" />
                 </div>
               </div>
             </div>
@@ -439,7 +439,7 @@
                 <div class="board-column">
                     <div class="board-headline">
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">To do</span>
-                        <img src="/assets/img/board/plus_button.svg">
+                        <img src="./assets/img/board/plus_button.svg">
                     </div>
                     <div id="openTasks">
 
@@ -449,7 +449,7 @@
                 <div class="board-column">
                     <div class="board-headline">
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">In progress</span>
-                        <img src="/assets/img/board/plus_button.svg">
+                        <img src="./assets/img/board/plus_button.svg">
                     </div>
                     <div id="inProgressTasks">
 
@@ -459,7 +459,7 @@
                 <div class="board-column">
                     <div class="board-headline">
                         <span style="font-size: 20px; font-weight: 700; line-height: 24px; text-align: left;">Await Feedback</span>
-                        <img src="/assets/img/board/plus_button.svg">
+                        <img src="./assets/img/board/plus_button.svg">
                     </div>
                     <div id="awaitFeedbackTasks">
 

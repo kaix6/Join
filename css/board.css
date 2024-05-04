@@ -415,7 +415,7 @@
         width: 18px;
         height: 19px;
         margin: 2px;
-        background-image: url(/assets/img/board/check_button.svg);
+        background-image: url(./assets/img/board/check_button.svg);
         display: block;
         content: "";
         float: left;
