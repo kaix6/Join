@@ -1,15 +1,136 @@
 [
     {
-      "title": "",
-      "description": "",
-      "due date": "",
-      "prio": "",
-      "category": "",
+      "id": 0,
+      "title": "Development of Product List User Interface",
+      "description": "Develop a user-friendly and visually appealing user interface for the product list of the online shop according to the specifications and designs.",
+      "due date": "21.05.2024",
+      "prio": "medium",
+      "category": "User Story",
+      "status": "open",
       "assigned member": [
-
+        {
+            "id": 0,
+            "name": "Levi Ackermann",
+            "color": "var(--tagDarkPurple)",
+            "letters": "LA"
+        },
+        {
+            "id": 1,
+            "name": "Michael Scott",
+            "color": "var(--tagLightBlue)",
+            "letters": "MS"
+        }
+      ],
+      "subtask": [
+        {
+          "id": 0,
+          "description": "Create the HTML markup for the product list according to the requirements"
+        },
+        {
+          "id": 1,
+          "description": "Develop CSS styles for the product list"
+        },
+        {
+          "id": 2,
+          "description": "Review the user interface for functionality and errors"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Backend Development for Online Shop Core Functionalities - Database Setup",
+      "description": "Set up the database schema for storing product information, user data, and order details.",
+      "due date": "31.05.2024",
+      "prio": "urgent",
+      "category": "Technical Task",
+      "status": "in progress",
+      "assigned member": [
+        {
+            "id": 0,
+            "name": "Homer Simpson",
+            "color": "var(--tagMediumYellow)",
+            "letters": "HS"
+        }
       ],
       "subtask": [
         
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Design Review for Product List",
+      "description": "Review the provided designs for the product list and clarify any ambiguities with the design team.",
+      "due date": "29.04.2024",
+      "prio": "urgent",
+      "category": "Technical Task",
+      "status": "await feedback",
+      "assigned member": [
+        {
+            "id": 0,
+            "name": "Daenerys Targaryen",
+            "color": "var(--tagOrange)",
+            "letters": "DT"
+        },
+        {
+            "id": 1,
+            "name": "Kathryn Janeway",
+            "color": "var(--tagLightPink)",
+            "letters": "KJ"
+        },
+        {
+            "id": 2,
+            "name": "Geralt of Rivia",
+            "color": "var(--tagTurquoise)",
+            "letters": "GR"
+        }
+      ],
+      "subtask": [
+        
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Creation of Requirements Specification Document",
+      "description": "Create a document outlining all functional and non-functional requirements of the system based on the gathered requirements.",
+      "due date": "20.04.2024",
+      "prio": "low",
+      "category": "User Story",
+      "status": "done",
+      "assigned member": [
+      {
+          "id": 0,
+          "name": "Geralt of Rivia",
+          "color": "var(--tagTurquoise)",
+          "letters": "GR"
+      },
+      {
+          "id": 1,
+          "name": "Zelda of Hyrule",
+          "color": "var(--tagApricot)",
+          "letters": "ZH"
+      },
+      {
+          "id": 2,
+          "name": "Ash Ketchum",
+          "color": "var(--tagRed)",
+          "letters": "AK"
+      },
+      {
+          "id": 3,
+          "name": "Bulma Brief",
+          "color": "var(--tagBlue)",
+          "letters": "BB"
+      }
+      ],
+      "subtask": [
+        {
+          "id": 0,
+          "description": "Organize the requirements into structured sections for clarity and easy reference"
+        },
+        {
+          "id": 1,
+          "description": "Review the document for completeness and accuracy, making revisions as necessary based on feedback"
+        }
       ]
     }
 ]
