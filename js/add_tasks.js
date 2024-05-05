@@ -1,6 +1,7 @@
 let selectUsers = [];
 let selectUsersColor = [];
 
+// Funktion für einfärben der Prio-Buttons
 function addPrioButtonColor(prio, event) {
   event.preventDefault(); // Verhindert das Standardverhalten des Buttons
 
@@ -20,37 +21,19 @@ function addPrioButtonColor(prio, event) {
   let imgMediumMobil = document.getElementById("buttonImg2Mobil");
   let imgLowMobil = document.getElementById("buttonImg3Mobil");
 
-  removeClasses(
-    buttonUrgent,
-    buttonMedium,
-    buttonLow,
-    imgUrgent,
-    imgMedium,
-    imgLow,
-    buttonUrgentMobil,
-    buttonMediumMobil,
-    buttonLowMobil,
-    imgUrgentMobil,
-    imgMediumMobil,
-    imgLowMobil
-  );
+  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow, buttonUrgentMobil, buttonMediumMobil, buttonLowMobil, imgUrgentMobil, imgMediumMobil, imgLowMobil);
 
   if (prio === "urgent") {
     buttonUrgent.classList.add("backgroundColorRed", "fontWeightAndColor");
     imgUrgent.classList.add("imgColor");
     buttonUrgentMobil.classList.add("backgroundColorRed", "fontWeightAndColor");
     imgUrgentMobil.classList.add("imgColor");
-  }
-  if (prio === "medium") {
+  } else if (prio === "medium") {
     buttonMedium.classList.add("backgroundColorOrange", "fontWeightAndColor");
     imgMedium.classList.add("imgColor");
-    buttonMediumMobil.classList.add(
-      "backgroundColorOrange",
-      "fontWeightAndColor"
-    );
+    buttonMediumMobil.classList.add("backgroundColorOrange", "fontWeightAndColor");
     imgMediumMobil.classList.add("imgColor");
-  }
-  if (prio === "low") {
+  } else if (prio === "low") {
     buttonLow.classList.add("backgroundColorGreen", "fontWeightAndColor");
     imgLow.classList.add("imgColor");
     buttonLowMobil.classList.add("backgroundColorGreen", "fontWeightAndColor");
@@ -58,25 +41,13 @@ function addPrioButtonColor(prio, event) {
   }
 }
 
+// Funktion fürs initiieren 
 function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
 }
-
-function removeClasses(
-  buttonUrgent,
-  buttonMedium,
-  buttonLow,
-  imgUrgent,
-  imgMedium,
-  imgLow,
-  buttonUrgentMobil,
-  buttonMediumMobil,
-  buttonLowMobil,
-  imgUrgentMobil,
-  imgMediumMobil,
-  imgLowMobil
-) {
+// Funktion für entfernen der Farbe für die Prio-Buttons
+function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow, buttonUrgentMobil, buttonMediumMobil, buttonLowMobil, imgUrgentMobil, imgMediumMobil, imgLowMobil) {
   const classesToRemove = [
     "backgroundColorRed",
     "fontWeightAndColor",
@@ -85,20 +56,7 @@ function removeClasses(
     "imgColor",
   ];
 
-  const elements = [
-    buttonUrgent,
-    buttonMedium,
-    buttonLow,
-    imgUrgent,
-    imgMedium,
-    imgLow,
-    buttonUrgentMobil,
-    buttonMediumMobil,
-    buttonLowMobil,
-    imgUrgentMobil,
-    imgMediumMobil,
-    imgLowMobil,
-  ];
+  const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow, buttonUrgentMobil, buttonMediumMobil, buttonLowMobil, imgUrgentMobil, imgMediumMobil, imgLowMobil];
 
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
@@ -109,10 +67,12 @@ function removeClasses(
   }
 }
 
+// Funktion für neu laden der Seite (zum Clearen)
 function reloadPage() {
   location.reload();
 }
 
+// Funktion zum rendern von Kontakten in das Feld "Assigned To"
 async function renderContactsInAddTasks() {
   let response = await fetch("./js/contacts.json");
   let contacts = await response.json();
@@ -146,6 +106,7 @@ async function renderContactsInAddTasks() {
   };
 }
 
+// Funktion zum hinzufügen der ausgewählten Users (anzeigen von Profilbildern) unter "Assigned To"
 function pushMembers(contact) {
   let name = contact.letters;
   let color = contact.color;
@@ -166,6 +127,7 @@ function pushMembers(contact) {
   renderPushedMembers();
 }
 
+// Funktion zum rendern der ausgewählten Users unterhalb "Assigned To"
 function renderPushedMembers() {
   selectMembersArea = document.getElementById("selectedMembers");
   selectMembersArea.innerHTML = "";
@@ -184,6 +146,7 @@ function renderPushedMembers() {
 
 renderContactsInAddTasksMobile();
 
+// Funktion zum rendern von Kontakten in das Feld "Assigned To" in der mobilen Version
 async function renderContactsInAddTasksMobile() {
   let response = await fetch("./js/contacts.json");
   let contacts = await response.json();
@@ -210,6 +173,7 @@ async function renderContactsInAddTasksMobile() {
   };
 }
 
+// Funktion zum rendern der Elemente für das addTasks.json
 function renderAddTasksFormAsJson(tasks) {
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
@@ -224,8 +188,9 @@ function renderAddTasksFormAsJson(tasks) {
 
   console.log(title, description, assignedTo, date, category, subtasks);
   console.log(task);
-} // abklären zwecks in JSON laden
+}
 
+// Funktion zum rendern von addTasks.json
 async function renderAddTaskinJson() {
   let response = await fetch("./js/addTasks.json");
   let tasks = await response.json();
@@ -233,14 +198,8 @@ async function renderAddTaskinJson() {
   renderAddTasksFormAsJson(tasks);
 }
 
-async function saveTaskToJson(
-  title,
-  description,
-  date,
-  category,
-  assignedTo,
-  subtasks
-) {
+// Funktion zum rendern in das addTasks.json
+async function saveTaskToJson(title, description, date, category, assignedTo, subtasks) {
   let response = await fetch("./js/addTasks.json");
   let tasks = await response.json();
 
@@ -271,10 +230,11 @@ async function saveTaskToJson(
   console.log(tasks);
 }
 
+// Funktion für hinzufügen neuer Subtasks
 function addNewSubtask() {
-  subtask = document.getElementById('subtask').value;
-  subtaskArea = document.getElementById('subtaskArea');
+  subtask = document.getElementById("subtask").value;
+  subtaskArea = document.getElementById("subtaskArea");
 
   subtaskArea.innerHTML += `<p class="fontSubtask">- ${subtask}</p>`;
-  console.log('Neue Aufgabe hinzugefügt!');
+  console.log("Neue Aufgabe hinzugefügt!");
 }
