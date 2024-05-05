@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: scroll;
 }
 
 .mainAddTasks {
@@ -173,8 +174,7 @@
 }
 
 select,
-#subtask,
-#date {
+#date, #subtask {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
   background-repeat: no-repeat;
@@ -182,14 +182,14 @@ select,
   background-size: 10px auto; /* Größe des Pfeils */
 }
 
-#subtask {
-  background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
-  background-size: 12px auto; /* Größe des Pfeils */
-}
-
 #date {
   background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
   background-size: 26px auto; /* Größe des Pfeils */
+}
+
+#subtask {
+  background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
+  background-size: 12px; /* Größe des Pfeils */
 }
 
 .mobileAddTask,
@@ -245,4 +245,19 @@ select,
   border-radius: 90px;
   background-color: orange;
   margin-left: -10px;
+}
+
+#subtaskArea {
+  height: 80px;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.fontSubtask {
+  font-size: 12px;
+  font-weight: bold;
 }

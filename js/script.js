@@ -28,7 +28,7 @@ async function includeHTML() {
     }
     changeClassToActive();
     hideHelpIcon();
-    updateTasksHTML()
+    updateTasksHTML();
 }
 
 

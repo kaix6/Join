@@ -8,6 +8,10 @@
   background-color: var(--lightblue);
 }
 
+.main_summary {
+  overflow: scroll;
+}
+
 .containerHeadline {
   width: 625px;
   height: 73px;

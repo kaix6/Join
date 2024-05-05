@@ -270,3 +270,11 @@ async function saveTaskToJson(
   console.log("Task erfolgreich hinzugefügt.");
   console.log(tasks);
 }
+
+function addNewSubtask() {
+  subtask = document.getElementById('subtask').value;
+  subtaskArea = document.getElementById('subtaskArea');
+
+  subtaskArea.innerHTML += `<p class="fontSubtask">- ${subtask}</p>`;
+  console.log('Neue Aufgabe hinzugefügt!');
+}

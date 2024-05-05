@@ -39,7 +39,7 @@
                     >Title<span style="color: red">*</span></label
                   >
                   <br />
-                  <input type="text" id="title" placeholder="Enter a title" />
+                  <input type="text" id="title" placeholder="Enter a title" required/>
                 </div>
 
                 <div style="margin-top: 16px">
@@ -81,7 +81,7 @@
                     >Due date<span style="color: red">*</span></label
                   >
                   <br />
-                  <input type="date" id="date" placeholder="dd/mm/yyyy" />
+                  <input type="date" id="date" placeholder="dd/mm/yyyy" required/>
                 </div>
 
                 <div class="prio fontUnderHeadlinesAddTasks">
@@ -138,7 +138,7 @@
                   >
                   <br />
 
-                  <select name="category" id="category">
+                  <select name="category" id="category" required>
                     <option disabled selected>select task category</option>
                     <option value="userStory">User Story</option>
                     <option value="technicalTask">Technical Task</option>
@@ -146,13 +146,11 @@
                 </div>
 
                 <div style="margin-top: 16px">
-                  <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                    >Subtasks</label
-                  >
-                  <br />
-
-                  <input id="subtask" placeholder="add new subtask" />
+                  <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks</label><br />
+                  <input id="subtask" type="text" placeholder="add new subtask">
+                  
                 </div>
+                <div id="subtaskArea"></div>
               </form>
             </div>
           </div>
@@ -300,6 +298,7 @@
 
                   <input id="subtask" placeholder="add new subtask" />
                 </div>
+                
               </form>
             </div>
           </div>
