@@ -29,6 +29,7 @@ async function includeHTML() {
     if(window.location.pathname == '/board.html') {
         updateTasksHTML();
     }  
+
 }
 
 
