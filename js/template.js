@@ -11,12 +11,21 @@ function closeSubmenuHeader(event) {
     let submenuHeaders = document.querySelectorAll('.submenu_header_style');
 
     submenuHeaders.forEach((submenuHeader) => {
-        if(submenuHeader.classList.contains('show_submenu_header')) {
-            if(event.target.className != 'text_profile_header') { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
+        if(classContainsShowSubmenuHeader(submenuHeader)) {
+            if(classIsNotTextProfileHeader(event)) { 
                 submenuHeader.classList.remove('show_submenu_header');
             }
         }  
     })
+}
+
+
+function hideHelpIcon() {
+    let helpIcon = document.querySelector('.header_help_icon');
+    let activePage = window.location.pathname;
+    if(specificPageIsActive(activePage)) {
+        helpIcon.classList.add('d_none');
+    } 
 }
 
 
@@ -25,12 +34,18 @@ function currentElementDisplayStyleFlex() {
 }
 
 
-function hideHelpIcon() {
-    let helpIcon = document.querySelector('.header_help_icon');
-    let activePage = window.location.pathname;
-    if(activePage == '/help.html') {
-        helpIcon.classList.add('d_none');
-    } 
+function classContainsShowSubmenuHeader(test) {
+    return test.classList.contains('show_submenu_header');
+}
+
+
+function classIsNotTextProfileHeader(event) { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
+    return event.target.className != 'text_profile_header';
+}
+
+
+function specificPageIsActive(page) {
+    return page == '/help.html';
 }
 
 

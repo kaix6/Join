@@ -41,7 +41,6 @@ async function renderContacts(filter) {
                 } */
         /*         renderLetters(i); */
     }
-    /*     console.log(letters); */
 }
 
 
@@ -95,8 +94,9 @@ function toggleContactView(i) {
         renderFloatingContact(i);
         changeColorContact('#short_name_overview', i, sortedContacts[i].color);
     }
-    showActiveContact();
-
+    if (!currentElementWidth(1110)) {
+        showActiveContact();
+    } 
 }
 
 
@@ -237,9 +237,10 @@ function saveNewData(index) {
     contacts[currentIndex].name = newName.value;
     contacts[currentIndex].mail = newMail.value;
     contacts[currentIndex].phone = newTelNumber.value;
+    contacts[currentIndex].letters = getContactsInitials(newName.value);
     saveContacts();
     renderContacts();
-    console.log(contacts);
+    closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
 }
 
