@@ -1,3 +1,8 @@
+/**
+ * This function is for the input to password and save the password
+ */
+
+
 function addUser() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
