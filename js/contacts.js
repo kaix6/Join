@@ -1,6 +1,5 @@
 let contacts = [];
 let sortedContacts = [];
-let letters = [];
 
 
 let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
@@ -27,21 +26,23 @@ async function renderContacts(filter) {
     sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
 
+    let prevLetter = null;
+
     for (let i = 0; i < sortedContacts.length; i++) {
         const contact = sortedContacts[i];
+        let firstLetter = contact['name'].charAt(0);
 
-        /*         let firstLetter = contact['name'].charAt(0); */
-
-        /*         if(!filter || filter == firstLetter) { */
-        contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
-        changeColorContact('#short_name', i, contact.color);
-        /*         }
-                if(!letters.includes(firstLetter)) {
-                    letters.push(firstLetter);
-                } */
-        /*         renderLetters(i); */
+        if(!filter || filter == firstLetter) {
+            if(firstLetter !== prevLetter) {
+                contentContacts.innerHTML += generateLettersInnerHTML(i, firstLetter);
+                prevLetter = firstLetter;
+            }
+            contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
+            changeColorContact('#short_name', i, contact.color);
+        }
     }
 }
+
 
 
 function changeColorContact(id, i, color) {
@@ -53,26 +54,15 @@ function changeColorContact(id, i, color) {
 function sortArray(array) {
     // Mit slice() wird eine Kopie von contacts erstellt und auch nicht überschrieben, somit bleibt die Reihenfolge von contacts unberührt
     let sortedArray = array.slice().sort((a, b) => {
-        if (a.name < b.name) {
+        if (nameIsGreaterThan(a, b)) {
             return -1;
         }
-        if (a.name > b.name) {
+        if (nameIsLessThan(a, b)) {
             return 1;
         }
         return 0; // Wenn die Namen gleich sind
     })
     return sortedArray;
-}
-
-
-function renderLetters(i) {
-    let letterNames = document.querySelector(`#letter_names${i}`);
-    letterNames.innerHTML = '';
-    for (let j = 0; j < letters.length; j++) {
-        const letter = letters[j];
-        letterNames.innerHTML += generateLettersInnerHTML(letter);
-        /*             console.log(letter); */
-    }
 }
 
 
@@ -245,13 +235,6 @@ function saveNewData(index) {
 }
 
 
-/* let btnAddContact = document.querySelector('.add_contact_btn');
-btnAddContact.addEventListener('click', (event) => {
-    event.preventDefault();
-    addContact();
-}); */
-
-
 // Delete Contact
 
 
@@ -273,3 +256,11 @@ function deleteContact(index) {
 }
 
 
+function nameIsGreaterThan(a, b) {
+    return a.name < b.name;
+}
+
+
+function nameIsLessThan(a, b) {
+    return a.name > b.name;
+}

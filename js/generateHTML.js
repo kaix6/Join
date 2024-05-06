@@ -45,12 +45,6 @@ function generateNoTaskBox(){
 function generateContactsInnerHTML(contact, i) {
     return /* HTML */ `
         <div class="letter_content">
-            <div id="letter_names${i}" class="letter_names">
-<!--                 <p class="head_letters">A</p> -->
-            </div>
-            <div class="horizontal_line_content">
-                <div class="horizontal_line"></div>
-            </div>
                 <div onclick="toggleContactView(${i})" id="contact${i}" class="contact pointer"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
                     <div id="short_name${i}" class="short_name round_div">
                         <p class="short_name_text">${contact.letters}</p>
@@ -64,9 +58,14 @@ function generateContactsInnerHTML(contact, i) {
 }
 
 
-function generateLettersInnerHTML(letter) {
+function generateLettersInnerHTML(i, letter) {
     return /* HTML */ `
-        <p class="head_letters">${letter}</p>`;
+    <div id="letter_names${i}" class="letter_names">
+        <p class="head_letters">${letter}</p>
+    </div>
+    <div class="horizontal_line_content">
+        <div class="horizontal_line"></div>
+    </div>`;
 }
 
 

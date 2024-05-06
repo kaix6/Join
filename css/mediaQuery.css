@@ -117,17 +117,20 @@
 /* Contacts */
 
 @media (min-width: 801px) {
+  .add_change_btn_mobile {
+    margin-bottom: 16px;
+}
+
   .add_change_btn_mobile:hover {
     background-color: var(--lightblue);
   }
-}
 
-@media (min-width: 801px) {
   .contact:not(.active_contact):hover {
     border-radius: 10px;
     background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
   }
 }
+
 
 /* Contact Overview*/
 
@@ -136,6 +139,7 @@
   #contact_view {
     display: block;
   }
+
   #content_contacts {
     min-width: 456px;
     max-width: 456px;
