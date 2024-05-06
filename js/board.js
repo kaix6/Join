@@ -1,6 +1,7 @@
 let currentDraggedTask;
 
 function showDialogTask(){
+    let bigTaskBox = document.getElementById('task-box-big');
     document.querySelector('.background-big-task').classList.toggle('d-none');
     setTimeout(function() {
         document.querySelector('.task-box-big').classList.toggle('show-task-box-big');
@@ -62,11 +63,12 @@ function updateOpenTasks(tasks){
         boardOpenTasks.innerHTML = '';
         for (let i = 0; i < open.length; i++) {
             const openTask = open[i];
-            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
+            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask, i);
             getAllMembers(openTask);
             setPriority(openTask);
             setTaskCategory(openTask);
             getAllSubtasks(openTask);
+            truncateText(openTask);
         };
     } else {
         boardOpenTasks.innerHTML = '';
@@ -90,6 +92,7 @@ function updateInProgressTasks(tasks){
         setPriority(inProgressTask);
         setTaskCategory(inProgressTask);
         getAllSubtasks(inProgressTask);
+        truncateText(inProgressTask);
     };
 }
 
@@ -109,6 +112,7 @@ function updateAwaitFeedbackTasks(tasks){
         setPriority(awaitFeedbackTask);
         setTaskCategory(awaitFeedbackTask);
         getAllSubtasks(awaitFeedbackTask);
+        truncateText(awaitFeedbackTask);
     };
 }
 
@@ -128,6 +132,7 @@ function updateDoneTasks(tasks){
         setPriority(doneTask);
         setTaskCategory(doneTask);
         getAllSubtasks(doneTask);
+        truncateText(doneTask);
     };
 }
 
@@ -199,8 +204,19 @@ function setTaskCategory(task){
  */
 function getAllSubtasks(task){
     let subtasks = task['subtask']
-    let subtasksSection = document.getElementById(`subtasks${task['id']}`);
+    let subtasksSection = document.getElementById(`task${task['id']}`);
     if(subtasks.length > 0){
         subtasksSection.innerHTML += generateSubtasksSection();
     };
 }
+
+/**
+ * This function cuts the description text after 50 characters and sets three dots (...)
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
+function truncateText(task) {
+    var description = document.getElementById(`task-description${task['id']}`).innerHTML;
+    var truncated = description.substring(0, 50) + "...";
+    document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
+  }
