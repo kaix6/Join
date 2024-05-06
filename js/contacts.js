@@ -32,8 +32,8 @@ async function renderContacts(filter) {
         const contact = sortedContacts[i];
         let firstLetter = contact['name'].charAt(0);
 
-        if(!filter || filter == firstLetter) {
-            if(firstLetter !== prevLetter) {
+        if (!filter || filter == firstLetter) {
+            if (firstLetter !== prevLetter) {
                 contentContacts.innerHTML += generateLettersInnerHTML(i, firstLetter);
                 prevLetter = firstLetter;
             }
@@ -42,7 +42,6 @@ async function renderContacts(filter) {
         }
     }
 }
-
 
 
 function changeColorContact(id, i, color) {
@@ -67,37 +66,31 @@ function sortArray(array) {
 
 
 function toggleContactView(i) {
-    // Mobile
     if (currentElementWidth(1110)) {
-        document.querySelector('#content_contacts').classList.toggle('d_none');
-        document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none');
+        showContactMobile();
     } else {
-        // Desktop
-        document.querySelector('.floating_contact').classList.add('d_none');
-        setTimeout(function () {
-            document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
-        }, 0);
+        showContactDesktop();
     }
-    // Check if i is defined - Code is just executed if i is definded
-    if (typeof i !== 'undefined') {
+    if (typeIsDefined(i)) {
         renderFloatingContact(i);
         changeColorContact('#short_name_overview', i, sortedContacts[i].color);
     }
     if (!currentElementWidth(1110)) {
         showActiveContact();
-    } 
+    }
 }
+
+
+
 
 
 function showActiveContact() {
     let activeContact = document.querySelector('.name_overview').textContent;
     let contacts = document.querySelectorAll('.contact_fullName');
-
     contacts.forEach(contact => {
         let parentElement = contact.closest('.contact'); // closest() gibt das nahegelegenste übergeordnete Element zurück
         parentElement.classList.remove('active_contact');
-        if (contact.textContent.includes(`${activeContact}`)) {
+        if (elementContainsActiveContact(contact, activeContact)) {
             parentElement.classList.add('active_contact');
         }
     })
@@ -114,18 +107,12 @@ function showContactOptions(i) {
     let contactOptionsMobile = document.querySelector('.contact_options_mobile');
     contactOptionsMobile.innerHTML = generateContactOptionsInnerHTML(i);
     document.querySelector('.contact_options_mobile').classList.add('show_contact_options_mobile');
-
 }
 
 
 function closeContactOptions(event) {
-    if (event.target.className != 'add_person_more_icon')
+    if (classIsNotAddPersonMoreIcon(event))
         document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
-}
-
-
-function currentElementWidth(number) {
-    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
 
 
@@ -136,12 +123,10 @@ function getRandomItem(array) {
 }
 
 
-// Evtl. auch die Anfangsbuchstaben im json array übernehmen und die unten stehende Funktion nur beim Neuanlegen oder editieren anwenden wie auch bei color : getRandomItem(colors);
-
 function getContactsInitials(name) {
     let splitName = name.split(/(\s+)/);
     firstInitial = splitName[0].charAt(0);
-    if (splitName.length > 2) {
+    if (stringIsLongEnough(splitName)) {
         secondInitial = splitName[splitName.length - 1].charAt(0);
         let mergeLetters = firstInitial + secondInitial;
         let initialLetters = capitalize(mergeLetters);
@@ -152,6 +137,7 @@ function getContactsInitials(name) {
 }
 
 
+
 function capitalize(string) {
     let capitalizedString = string.toUpperCase();
     return capitalizedString;
@@ -159,7 +145,6 @@ function capitalize(string) {
 
 
 // Add new Contact
-
 
 function addContact() {
     let fullName = document.querySelector('#fullName');
@@ -174,7 +159,6 @@ function addContact() {
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
     showCreateContactDoneShort();
     saveContacts();
-
     fullName.value = '';
     mail.value = '';
     telNumber.value = '';
@@ -195,7 +179,6 @@ function capitalizeFirstLetters(name) {
 
 
 // Edit Contact
-
 
 function editContact(event, index) {
     if (currentElementWidth(1110)) {
@@ -237,22 +220,33 @@ function saveNewData(index) {
 
 // Delete Contact
 
-
 function deleteContact(index) {
     contacts.splice(contacts.findIndex(contact => contact === sortedContacts[index]), 1);
     renderContacts();
     saveContacts();
-    // Mobile
     if (currentElementWidth(1110)) {
-        document.querySelector('#content_contacts').classList.toggle('d_none');
-        document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none');
+        showContactMobile();
         closeContactOptions(event);
     } else {
         // Desktop
         document.querySelector('.floating_contact').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop');
     }
+}
+
+
+function showContactMobile() {
+    document.querySelector('#content_contacts').classList.toggle('d_none');
+    document.querySelector('#contact_view').classList.toggle('d_none');
+    document.querySelector('.floating_contact').classList.toggle('d_none');
+}
+
+
+function showContactDesktop() {
+    document.querySelector('.floating_contact').classList.add('d_none');
+    setTimeout(function () {
+        document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
+    }, 0);
 }
 
 
@@ -263,4 +257,29 @@ function nameIsGreaterThan(a, b) {
 
 function nameIsLessThan(a, b) {
     return a.name > b.name;
+}
+
+
+function typeIsDefined(i) {
+    return typeof i !== 'undefined'; // Check if i is defined - Code is just executed if i is definded
+}
+
+
+function elementContainsActiveContact(contact, activeContact) {
+    return contact.textContent.includes(`${activeContact}`);
+}
+
+
+function classIsNotAddPersonMoreIcon(event) {
+    return event.target.className != 'add_person_more_icon';
+}
+
+
+function currentElementWidth(number) {
+    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
+}
+
+
+function stringIsLongEnough(string) {
+    return string.length > 2;
 }
