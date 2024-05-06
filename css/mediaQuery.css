@@ -343,7 +343,7 @@
 
 /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
 @media screen and (max-width: 800px) and (min-width: 460px) {
-  .letter_content {
+  .contacts {
     padding-left: calc((100% - 352px) / 2);
   }
 }
