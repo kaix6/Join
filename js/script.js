@@ -25,7 +25,10 @@ async function includeHTML() {
     }
     changeClassToActive();
     hideHelpIcon();
-    updateTasksHTML()
+    // function updateTasksHTML() wird nur ausgeführt, wenn die html 'board.html' geöffnet ist
+    if(window.location.pathname == '/board.html') {
+        updateTasksHTML();
+    }  
 }
 
 

@@ -1,6 +1,5 @@
 let contacts = [];
 let sortedContacts = [];
-let letters = [];
 
 
 let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
@@ -27,43 +26,21 @@ async function renderContacts(filter) {
     sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
 
+    let prevLetter = null;
+
     for (let i = 0; i < sortedContacts.length; i++) {
         const contact = sortedContacts[i];
+        let firstLetter = contact['name'].charAt(0);
 
-        /*         let firstLetter = contact['name'].charAt(0); */
-
-        /*         if(!filter || filter == firstLetter) { */
-        contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
-        changeColorContact('#short_name', i, contact.color);
-        /*         }
-                if(!letters.includes(firstLetter)) {
-                    letters.push(firstLetter);
-                } */
-        /*         renderLetters(i); */
+        if (!filter || filter == firstLetter) {
+            if (firstLetter !== prevLetter) {
+                contentContacts.innerHTML += generateLettersInnerHTML(i, firstLetter);
+                prevLetter = firstLetter;
+            }
+            contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
+            changeColorContact('#short_name', i, contact.color);
+        }
     }
-    /*     console.log(letters); */
-}
-
-
-function generateContactsInnerHTML(contact, i) {
-    return /* HTML */ `
-        <div class="letter_content">
-            <div id="letter_names${i}" class="letter_names">
-<!--                 <p class="head_letters">A</p> -->
-            </div>
-            <div class="horizontal_line_content">
-                <div class="horizontal_line"></div>
-            </div>
-                <div onclick="toggleContactView(${i})" id="contact${i}" class="contact pointer"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
-                    <div id="short_name${i}" class="short_name round_div">
-                        <p class="short_name_text">${contact.letters}</p>
-                    </div>
-                    <div class="name_data flex_dir_c">
-                        <p class="contact_fullName">${contact.name}</p>
-                        <p class="contact_mail">${contact.mail}</p>
-                    </div>
-                </div>
-        </div>`;
 }
 
 
@@ -76,10 +53,10 @@ function changeColorContact(id, i, color) {
 function sortArray(array) {
     // Mit slice() wird eine Kopie von contacts erstellt und auch nicht überschrieben, somit bleibt die Reihenfolge von contacts unberührt
     let sortedArray = array.slice().sort((a, b) => {
-        if (a.name < b.name) {
+        if (nameIsGreaterThan(a, b)) {
             return -1;
         }
-        if (a.name > b.name) {
+        if (nameIsLessThan(a, b)) {
             return 1;
         }
         return 0; // Wenn die Namen gleich sind
@@ -88,54 +65,32 @@ function sortArray(array) {
 }
 
 
-function renderLetters(i) {
-    let letterNames = document.querySelector(`#letter_names${i}`);
-    letterNames.innerHTML = '';
-    for (let j = 0; j < letters.length; j++) {
-        const letter = letters[j];
-        letterNames.innerHTML += generateLettersInnerHTML(letter);
-        /*             console.log(letter); */
-    }
-}
-
-
-function generateLettersInnerHTML(letter) {
-    return /* HTML */ `
-        <p class="head_letters">${letter}</p>`;
-}
-
-
 function toggleContactView(i) {
-    // Mobile
     if (currentElementWidth(1110)) {
-        document.querySelector('#content_contacts').classList.toggle('d_none');
-        document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none');
+        showContactMobile();
     } else {
-        // Desktop
-        document.querySelector('.floating_contact').classList.add('d_none');
-        setTimeout(function () {
-            document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
-        }, 0);
+        showContactDesktop();
     }
-    // Check if i is defined - Code is just executed if i is definded
-    if (typeof i !== 'undefined') {
+    if (typeIsDefined(i)) {
         renderFloatingContact(i);
         changeColorContact('#short_name_overview', i, sortedContacts[i].color);
     }
-    showActiveContact();
-
+    if (!currentElementWidth(1110)) {
+        showActiveContact();
+    }
 }
+
+
+
 
 
 function showActiveContact() {
     let activeContact = document.querySelector('.name_overview').textContent;
     let contacts = document.querySelectorAll('.contact_fullName');
-
     contacts.forEach(contact => {
         let parentElement = contact.closest('.contact'); // closest() gibt das nahegelegenste übergeordnete Element zurück
         parentElement.classList.remove('active_contact');
-        if (contact.textContent.includes(`${activeContact}`)) {
+        if (elementContainsActiveContact(contact, activeContact)) {
             parentElement.classList.add('active_contact');
         }
     })
@@ -148,72 +103,16 @@ function renderFloatingContact(i) {
 }
 
 
-function generateFloatingContactInnerHTML(i) {
-    return /* HTML */ `
-        <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
-            <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
-        </div>
-        <div class="head_floating_content">
-            <div id="short_name_overview${i}" class="short_name_overview round_div">
-                <p class="short_name_text_overview">${sortedContacts[i].letters}</p>
-            </div>
-        <div class="name_editable_content">
-            <h3 class="name_overview">${sortedContacts[i].name}</h3>
-            <div class="editable_content">
-                <div onclick="editContact(event, ${i})" class="edit_content pointer">
-                    <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
-                    <p>Edit</p>
-                </div>
-                <div onclick="deleteContact(${i})" class="delete_content pointer">
-                    <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
-                    <p>Delete</p>
-                </div>
-            </div>
-        </div>
-        </div>
-        <p class="text_information">Contact Information</p>
-        <div class="contact_information">
-            <div class="contact_overview_mail">
-                <h4>Email</h4>
-                <p class="overview_mail">${sortedContacts[i].mail}</p>
-            </div>
-            <div class="contact_overview_phone">
-                <h4>Phone</h4>
-                <p>${sortedContacts[i].phone}</p>
-            </div>
-        </div>`;
-}
-
-
 function showContactOptions(i) {
     let contactOptionsMobile = document.querySelector('.contact_options_mobile');
     contactOptionsMobile.innerHTML = generateContactOptionsInnerHTML(i);
     document.querySelector('.contact_options_mobile').classList.add('show_contact_options_mobile');
-
-}
-
-
-function generateContactOptionsInnerHTML(i) {
-    return /*HTML*/ `
-        <div onclick="editContact(event, ${i})" class="edit_content pointer">
-            <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
-            <p>Edit</p>
-        </div>
-        <div onclick="deleteContact(${i})" class="delete_content pointer">
-            <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
-            <p>Delete</p>
-        </div> `;
 }
 
 
 function closeContactOptions(event) {
-    if (event.target.className != 'add_person_more_icon')
+    if (classIsNotAddPersonMoreIcon(event))
         document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
-}
-
-
-function currentElementWidth(number) {
-    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
 
 
@@ -224,12 +123,10 @@ function getRandomItem(array) {
 }
 
 
-// Evtl. auch die Anfangsbuchstaben im json array übernehmen und die unten stehende Funktion nur beim Neuanlegen oder editieren anwenden wie auch bei color : getRandomItem(colors);
-
 function getContactsInitials(name) {
     let splitName = name.split(/(\s+)/);
     firstInitial = splitName[0].charAt(0);
-    if (splitName.length > 2) {
+    if (stringIsLongEnough(splitName)) {
         secondInitial = splitName[splitName.length - 1].charAt(0);
         let mergeLetters = firstInitial + secondInitial;
         let initialLetters = capitalize(mergeLetters);
@@ -240,6 +137,7 @@ function getContactsInitials(name) {
 }
 
 
+
 function capitalize(string) {
     let capitalizedString = string.toUpperCase();
     return capitalizedString;
@@ -247,7 +145,6 @@ function capitalize(string) {
 
 
 // Add new Contact
-
 
 function addContact() {
     let fullName = document.querySelector('#fullName');
@@ -262,7 +159,6 @@ function addContact() {
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
     showCreateContactDoneShort();
     saveContacts();
-
     fullName.value = '';
     mail.value = '';
     telNumber.value = '';
@@ -283,7 +179,6 @@ function capitalizeFirstLetters(name) {
 
 
 // Edit Contact
-
 
 function editContact(event, index) {
     if (currentElementWidth(1110)) {
@@ -315,72 +210,22 @@ function saveNewData(index) {
     contacts[currentIndex].name = newName.value;
     contacts[currentIndex].mail = newMail.value;
     contacts[currentIndex].phone = newTelNumber.value;
+    contacts[currentIndex].letters = getContactsInitials(newName.value);
     saveContacts();
     renderContacts();
-    console.log(contacts);
+    closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
 }
 
 
-function generateDialoEditInnerHTML(index) {
-    return /* HTML */`
-        <div onclick="doNotClose(event)" class="dialog_edit_contact">
-            <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
-                <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
-            </div>
-        <div class="top_dialog_add_edit flex_dir_c">
-            <div class="head_top_dialog_add_edit flex_dir_c">
-                <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
-                <h3 class="headline_add_edit_contact">Edit contact</h3>
-                <div class="seperator_line_content_contact">
-                </div>
-            </div>
-        </div>
-        <div id="create_contact_short_name_edit${index}" class="create_contact_short_name_edit round_div">
-            <p class="short_name_text_overview_edit">${sortedContacts[index].letters}</p>
-        </div>
-        <div class="bottom_dialog_add_edit">
-            <form onsubmit="return false;" class="create_contact_form">
-                <label for="fullName_edit"></label>
-                <input class="create_contact_input" min="2" type="text" id="fullName_edit" placeholder="Name" required>
-                <label for="mail_edit"></label>
-                <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
-                <label for="telNumber_edit"></label>
-                <input class="create_contact_input" type="tel" id="telNumber_edit" placeholder="Phone" required>
-                <div class="container_button">
-                    <button onclick="saveNewData(${index})" class="cancel_create_contact_edit_btn contact_btn pointer">
-                        <p class="text_cancel_create_contact_edit_btn">Delete</p>
-                    </button>
-                    <button class="create_contact_btn contact_btn pointer">
-                        <p class="text_create_contact_btn">Save</p>
-                        <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
-                    </button>
-                </div>
-            </form>
-        </div>
-        </div>`;
-}
-
-
-/* let btnAddContact = document.querySelector('.add_contact_btn');
-btnAddContact.addEventListener('click', (event) => {
-    event.preventDefault();
-    addContact();
-}); */
-
-
 // Delete Contact
-
 
 function deleteContact(index) {
     contacts.splice(contacts.findIndex(contact => contact === sortedContacts[index]), 1);
     renderContacts();
     saveContacts();
-    // Mobile
     if (currentElementWidth(1110)) {
-        document.querySelector('#content_contacts').classList.toggle('d_none');
-        document.querySelector('#contact_view').classList.toggle('d_none');
-        document.querySelector('.floating_contact').classList.toggle('d_none');
+        showContactMobile();
         closeContactOptions(event);
     } else {
         // Desktop
@@ -390,3 +235,51 @@ function deleteContact(index) {
 }
 
 
+function showContactMobile() {
+    document.querySelector('#content_contacts').classList.toggle('d_none');
+    document.querySelector('#contact_view').classList.toggle('d_none');
+    document.querySelector('.floating_contact').classList.toggle('d_none');
+}
+
+
+function showContactDesktop() {
+    document.querySelector('.floating_contact').classList.add('d_none');
+    setTimeout(function () {
+        document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
+    }, 0);
+}
+
+
+function nameIsGreaterThan(a, b) {
+    return a.name < b.name;
+}
+
+
+function nameIsLessThan(a, b) {
+    return a.name > b.name;
+}
+
+
+function typeIsDefined(i) {
+    return typeof i !== 'undefined'; // Check if i is defined - Code is just executed if i is definded
+}
+
+
+function elementContainsActiveContact(contact, activeContact) {
+    return contact.textContent.includes(`${activeContact}`);
+}
+
+
+function classIsNotAddPersonMoreIcon(event) {
+    return event.target.className != 'add_person_more_icon';
+}
+
+
+function currentElementWidth(number) {
+    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
+}
+
+
+function stringIsLongEnough(string) {
+    return string.length > 2;
+}
