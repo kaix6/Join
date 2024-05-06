@@ -1,5 +1,5 @@
 function showSubmenuHeader() {
-    if(currentElementDisplayStyleFlex()) {
+    if (currentElementDisplayStyleFlex()) {
         document.querySelector('.submenu_header_mobile').classList.toggle('show_submenu_header');
     } else {
         document.querySelector('.submenu_header').classList.toggle('show_submenu_header');
@@ -11,11 +11,13 @@ function closeSubmenuHeader(event) {
     let submenuHeaders = document.querySelectorAll('.submenu_header_style');
 
     submenuHeaders.forEach((submenuHeader) => {
+
         if(classContainsShowSubmenuHeader(submenuHeader)) {
             if(classIsNotTextProfileHeader(event)) { 
+
                 submenuHeader.classList.remove('show_submenu_header');
             }
-        }  
+        }
     })
 }
 
@@ -47,6 +49,7 @@ function classIsNotTextProfileHeader(event) { //event.target.className gibt die 
 function specificPageIsActive(page) {
     return page == '/help.html';
 }
+
 
 
 

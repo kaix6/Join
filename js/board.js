@@ -1,6 +1,7 @@
 let currentDraggedTask;
 
 function showDialogTask(){
+    let bigTaskBox = document.getElementById('task-box-big');
     document.querySelector('.background-big-task').classList.toggle('d-none');
     setTimeout(function() {
         document.querySelector('.task-box-big').classList.toggle('show-task-box-big');
@@ -26,7 +27,10 @@ function closeDialogTask(){
 // function getItem(){
 // }
 
-// Diese Funktion rendert alle Tasks je Spalte auf dem Board
+/**
+ * This function renders all tasks per column on the board
+ * 
+ */
 async function updateTasksHTML(){
     let tasks = await getTasksJson();
     updateOpenTasks(tasks);
@@ -35,14 +39,22 @@ async function updateTasksHTML(){
     updateDoneTasks(tasks);
 }
 
-// Diese Funktion holt das JSON Array mit den Tasks und gibt es an die update-Funktionen weiter
+/**
+ * This function fetches the JSON array with the tasks and return it to the function updateTasksHTML()
+ * 
+ * @returns tasks - This is the JSON Array, which is returned to function updateTasksHTML()
+ */
 async function getTasksJson(){
     let response = await fetch('./js/addTasks.json');
     tasks = await response.json();
     return tasks;
 }
 
-// Diese Funktion rendert die Tasks mit dem Status "open"
+/**
+ * This function renders the tasks with the status “open”
+ * 
+ * @param {string} tasks - This is the JSON array with all tasks
+ */
 function updateOpenTasks(tasks){
     let open = tasks.filter(t => t['status'] == 'open')
     let boardOpenTasks = document.getElementById('openTasks');
@@ -51,11 +63,12 @@ function updateOpenTasks(tasks){
         boardOpenTasks.innerHTML = '';
         for (let i = 0; i < open.length; i++) {
             const openTask = open[i];
-            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
+            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask, i);
             getAllMembers(openTask);
             setPriority(openTask);
             setTaskCategory(openTask);
             getAllSubtasks(openTask);
+            truncateText(openTask);
         };
     } else {
         boardOpenTasks.innerHTML = '';
@@ -63,7 +76,11 @@ function updateOpenTasks(tasks){
     };
 }
 
-// Diese Funktion rendert die Tasks mit dem Status "in Progress"
+/**
+ * This function renders the tasks with the status "in Progress"
+ * 
+ * @param {string} tasks - This is the JSON array with all tasks
+ */
 function updateInProgressTasks(tasks){
     let inProgress = tasks.filter(t => t['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
@@ -75,10 +92,15 @@ function updateInProgressTasks(tasks){
         setPriority(inProgressTask);
         setTaskCategory(inProgressTask);
         getAllSubtasks(inProgressTask);
+        truncateText(inProgressTask);
     };
 }
 
-// Diese Funktion rendert die Tasks mit dem Status "await Feedback"
+/**
+ * This function renders the tasks with the status "await Feedback"
+ * 
+ * @param {string} tasks - This is the JSON array with all tasks
+ */
 function updateAwaitFeedbackTasks(tasks){
     let awaitFeedback = tasks.filter(t => t['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
@@ -90,10 +112,15 @@ function updateAwaitFeedbackTasks(tasks){
         setPriority(awaitFeedbackTask);
         setTaskCategory(awaitFeedbackTask);
         getAllSubtasks(awaitFeedbackTask);
+        truncateText(awaitFeedbackTask);
     };
 }
 
-// Diese Funktion rendert die Tasks mit dem Status "done"
+/**
+ * This function renders the tasks with the status "done"
+ * 
+ * @param {string} tasks - This is the JSON array with all tasks
+ */
 function updateDoneTasks(tasks){
     let done = tasks.filter(t => t['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
@@ -105,10 +132,15 @@ function updateDoneTasks(tasks){
         setPriority(doneTask);
         setTaskCategory(doneTask);
         getAllSubtasks(doneTask);
+        truncateText(doneTask);
     };
 }
 
-// Diese Funktion rendert die Member je Task
+/**
+ * This function renders the members of each task
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
 function getAllMembers(task){
     for (let j = 0; j < task['assigned member'].length; j++) {
         const member = task['assigned member'][j]['letters'];
@@ -119,14 +151,24 @@ function getAllMembers(task){
     };
 }
 
-// Diese Funktion vergibt die passende Hintergrundfarbe je Member
+/**
+ * This function sets the background color for each member
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ * @param {number} j - This is the index of the member
+ * @param {string} memberId - This is the id of the member consisting of the task ID and the letters of the member (e.g. 0AM)
+ */
 function setColorMember(task, j, memberId){
     let colorMember = task['assigned member'][j]['color'];
     let memberContainer = document.getElementById(memberId);
     memberContainer.style.backgroundColor = colorMember;
 }
 
-// Diese Funktion ändert die img Src je nach Task Priorität, damit das entsprechende Icon angezeigt wird 
+/**
+ * This functions changes the img src depending of the task priority (low, middle, urgent)
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
 function setPriority(task){
     let taskPrio = task['prio'];
     if (taskPrio == 'low') {
@@ -140,7 +182,11 @@ function setPriority(task){
     };
 }
 
-// Diese Funktion ändert die Hintergrundfarbe je nach Task-Category (User Story oder Technical Task)
+/**
+ * This function changes the background color depending of the task category (User Story/Technical Task)
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
 function setTaskCategory(task){
     let taskCategory = task['category'];
     let taskCategoryContainer = document.getElementById(`task-category${task['id']}`);
@@ -151,11 +197,26 @@ function setTaskCategory(task){
     };
 }
 
-// Diese Funktion prüft, ob Subtaks vorhanden sind und fügt die HTML-Section anschließend hinzu
+/**
+ * This function checks if there are subtaks and includes the subtaks html-section to the div container
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
 function getAllSubtasks(task){
     let subtasks = task['subtask']
-    let subtasksSection = document.getElementById(`subtasks${task['id']}`);
+    let subtasksSection = document.getElementById(`task${task['id']}`);
     if(subtasks.length > 0){
         subtasksSection.innerHTML += generateSubtasksSection();
     };
 }
+
+/**
+ * This function cuts the description text after 50 characters and sets three dots (...)
+ * 
+ * @param {string} task - This is the JSON array with all tasks
+ */
+function truncateText(task) {
+    var description = document.getElementById(`task-description${task['id']}`).innerHTML;
+    var truncated = description.substring(0, 50) + "...";
+    document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
+  }

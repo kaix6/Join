@@ -1,3 +1,8 @@
+/**
+ * This function is for the input to password and save the password
+ */
+
+
 function addUser() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
@@ -9,6 +14,6 @@ function addUser() {
     let allUserAsString = JSON.stringify(users);
     localStorage.setItem('users', allUserAsString);
 
-    window.location.href = '/index.html';
+    window.location.href = './index.html';
 
 }
