@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Summary</title>
@@ -13,15 +14,17 @@
     <link rel="stylesheet" href="./css/template.css" />
     <link rel="stylesheet" href="./css/summary.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
-  </head>
-  <body class="flex_dir_c" onload="includeHTML()">
+</head>
+
+<body class="flex_dir_c" onload="includeHTML()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-      <div class="right_section flex_dir_c">
-        <!--      Section header    -->
+        <div class="right_section flex_dir_c">
+            <!--      Section header    -->
 
-        <div w3-include-html="assets/templates/header.html"></div>
+            <div w3-include-html="assets/templates/header.html"></div>
 
-        <!--      Section header    -->
+            <!--      Section header    -->
+
 
         <section id="main_container" class="main_summary">
           <div class="containerSummary">
@@ -62,33 +65,28 @@
                   </div>
                 </div>
 
-                <div class="urgent summaryCardHover">
-                  <div class="d-flex container">
-                    <img
-                      class="iconUrgent"
-                      src="assets/img/summary/circle-urgent.svg"
-                      alt=""
-                    />
-                    <div class="doneMain">
-                      <span class="sizeNumbersSummary" id="urgentNumber"
-                        >1</span
+
+                            <div class="urgent summaryCardHover">
+                                <div class="d-flex container">
+                                    <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
+                                    <div class="doneMain">
+                                        <span class="sizeNumbersSummary" id="urgentNumber">1</span
                       >
                       <span class="sizeTextSummary">Urgent</span>
-                    </div>
-                  </div>
-                  <div class="spacer"></div>
+                                    </div>
+                                </div>
+                                <div class="spacer"></div>
 
-                  <div class="deadline">
-                    <span class="deadlineMobil">Day Month, Year</span>
-                    <span class="deadlineTextMobil">Upcoming Deadline</span>
-                  </div>
-                </div>
+                                <div class="deadline">
+                                    <span class="deadlineMobil">Day Month, Year</span>
+                                    <span class="deadlineTextMobil">Upcoming Deadline</span>
+                                </div>
+                            </div>
 
-                <div class="bottomSummary d-flex">
-                  <div class="bottomCard summaryCardHover">
-                    <span class="sizeNumbersSummary" id="boardNumber">1</span>
-                    <span class="sizeTextSummary"
-                      >Tasks in <br />
+                            <div class="bottomSummary d-flex">
+                                <div class="bottomCard summaryCardHover">
+                                    <span class="sizeNumbersSummary" id="boardNumber">1</span>
+                                    <span class="sizeTextSummary">Tasks in <br />
                       Board</span
                     >
                   </div>
@@ -115,20 +113,18 @@
             </div>
             <div class="summaryText">
               <span class="goodMorningSummary">Good morning, </span>
-              <span class="nameSummary">Vorname Nachname </span>
+                                    <span class="nameSummary">Vorname Nachname </span>
+                                </div>
+                            </div>
+            </section>
             </div>
-          </div>
-        </section>
-      </div>
 
-      <!--      Section Side Menu   -->
+            <!--      Section Side Menu   -->
 
-      <div
-        class="side_menu_sticky"
-        w3-include-html="assets/templates/side_menu.html"
-      ></div>
+            <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
 
-      <!--      Section Side Menu    -->
-    </div>
-  </body>
+            <!--      Section Side Menu    -->
+            </div>
+</body>
+
 </html>

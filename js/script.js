@@ -1,3 +1,4 @@
+// Braucht die jemand war hautzächlich für die an imation 
 async function initLogin() {
     await includeHTML();
     animationWindow();
@@ -8,11 +9,7 @@ async function initLogin() {
 /* load('tasks'); */
 
 
-function animationWindow() {
-    setTimeout(function() {
-        document.getElementById('joinLogoAnimation').classList.add('hidden');
-    }, 1500)
-}
+
 
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -28,7 +25,11 @@ async function includeHTML() {
     }
     changeClassToActive();
     hideHelpIcon();
-    updateTasksHTML();
+    // function updateTasksHTML() wird nur ausgeführt, wenn die html 'board.html' geöffnet ist
+    if(window.location.pathname == '/board.html') {
+        updateTasksHTML();
+    }  
+
 }
 
 
