@@ -14,6 +14,6 @@ function addUser() {
     let allUserAsString = JSON.stringify(users);
     localStorage.setItem('users', allUserAsString);
 
-    window.location.href = '/index.html';
+    window.location.href = './index.html';
 
 }

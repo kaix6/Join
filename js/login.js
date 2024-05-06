@@ -26,5 +26,5 @@ async function login() {
     if (user) {
         console.log('user gefunden')
     }
-    window.location.href = '/summary.html?';
+    window.location.href = './summary.html';
 }
