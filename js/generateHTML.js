@@ -213,7 +213,7 @@ function generateDialoEditInnerHTML(index) {
                 </div>
             </form>
         </div>
-        </div>`;
+        </div>
     </div>
     `;
 }
