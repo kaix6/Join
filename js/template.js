@@ -1,5 +1,5 @@
 function showSubmenuHeader() {
-    if(currentElementDisplayStyleFlex()) {
+    if (currentElementDisplayStyleFlex()) {
         document.querySelector('.submenu_header_mobile').classList.toggle('show_submenu_header');
     } else {
         document.querySelector('.submenu_header').classList.toggle('show_submenu_header');
@@ -11,11 +11,11 @@ function closeSubmenuHeader(event) {
     let submenuHeaders = document.querySelectorAll('.submenu_header_style');
 
     submenuHeaders.forEach((submenuHeader) => {
-        if(submenuHeader.classList.contains('show_submenu_header')) {
-            if(event.target.className != 'text_profile_header') { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
+        if (submenuHeader.classList.contains('show_submenu_header')) {
+            if (event.target.className != 'text_profile_header') { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
                 submenuHeader.classList.remove('show_submenu_header');
             }
-        }  
+        }
     })
 }
 
@@ -28,14 +28,7 @@ function currentElementDisplayStyleFlex() {
 function hideHelpIcon() {
     let helpIcon = document.querySelector('.header_help_icon');
     let activePage = window.location.pathname;
-    if(activePage == '/help.html') {
+    if (activePage == '/help.html') {
         helpIcon.classList.add('d_none');
-    } 
+    }
 }
-
-
-
-
-
-
-
