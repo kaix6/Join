@@ -1,5 +1,6 @@
 let selectUsers = [];
 let selectUsersColor = [];
+let selectedPrio;
 
 // Funktion für einfärben der Prio-Buttons
 function addPrioButtonColor(prio, event) {
@@ -28,16 +29,19 @@ function addPrioButtonColor(prio, event) {
     imgUrgent.classList.add("imgColor");
     buttonUrgentMobil.classList.add("backgroundColorRed", "fontWeightAndColor");
     imgUrgentMobil.classList.add("imgColor");
+    selectedPrio = "urgent";
   } else if (prio === "medium") {
     buttonMedium.classList.add("backgroundColorOrange", "fontWeightAndColor");
     imgMedium.classList.add("imgColor");
     buttonMediumMobil.classList.add("backgroundColorOrange", "fontWeightAndColor");
     imgMediumMobil.classList.add("imgColor");
+    selectedPrio = "medium";
   } else if (prio === "low") {
     buttonLow.classList.add("backgroundColorGreen", "fontWeightAndColor");
     imgLow.classList.add("imgColor");
     buttonLowMobil.classList.add("backgroundColorGreen", "fontWeightAndColor");
     imgLowMobil.classList.add("imgColor");
+    selectedPrio = "low";
   }
 }
 
@@ -48,14 +52,7 @@ function initAddTasks() {
 }
 // Funktion für entfernen der Farbe für die Prio-Buttons
 function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow, buttonUrgentMobil, buttonMediumMobil, buttonLowMobil, imgUrgentMobil, imgMediumMobil, imgLowMobil) {
-  const classesToRemove = [
-    "backgroundColorRed",
-    "fontWeightAndColor",
-    "backgroundColorOrange",
-    "backgroundColorGreen",
-    "imgColor",
-  ];
-
+  const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor"];
   const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow, buttonUrgentMobil, buttonMediumMobil, buttonLowMobil, imgUrgentMobil, imgMediumMobil, imgLowMobil];
 
   for (let i = 0; i < elements.length; i++) {
@@ -112,18 +109,13 @@ function pushMembers(contact) {
   let color = contact.color;
   let fullName = contact.name;
 
-  // Überprüfe, ob das Element bereits in selectUsers enthalten ist
-  if (selectUsers.includes(name)) {
-    // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
-    alert(`${fullName} wurde bereits eingeteilt.`);
+  if (selectUsers.includes(name)) { // Überprüfe, ob das Element bereits in selectUsers enthalten ist
+    alert(`${fullName} wurde bereits eingeteilt.`); // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
     return;
   }
-
-  // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
+ // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
   selectUsers.push(name);
   selectUsersColor.push(color);
-
-  // Aktualisiere die Anzeige der ausgewählten Mitglieder
   renderPushedMembers();
 }
 
@@ -179,14 +171,14 @@ function renderAddTasksFormAsJson(tasks) {
   let description = document.getElementById("description").value;
   let assignedTo = selectUsers;
   let date = document.getElementById("date").value;
-  let prio = "";
+  let prio = selectedPrio;
   let category = document.getElementById("category").value;
   let subtasks = document.getElementById("subtask").value;
   let task = tasks;
 
-  saveTaskToJson(title, description, date, category, assignedTo, subtasks);
+  saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks);
 
-  console.log(title, description, assignedTo, date, category, subtasks);
+  console.log(title, description, assignedTo, date, prio, category, subtasks);
   console.log(task);
 }
 
@@ -199,27 +191,26 @@ async function renderAddTaskinJson() {
 }
 
 // Funktion zum rendern in das addTasks.json
-async function saveTaskToJson(title, description, date, category, assignedTo, subtasks) {
+async function saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks) {
   let response = await fetch("./js/addTasks.json");
   let tasks = await response.json();
 
   // Neuen Task erstellen
   let newTask = {
-    title: title,
-    description: description,
+    "title": title,
+    "description": description,
     "due date": date,
-    prio: "",
-    category: category,
+    "prio": prio,
+    "category": category,
     "assigned member": assignedTo,
-    subtask: subtasks,
+    "subtask": subtasks,
   };
 
-  // Task zur Liste hinzufügen
   tasks.push(newTask);
 
   // JSON-Datei aktualisieren
   await fetch("./js/addTasks.json", {
-    method: "PUT", // oder 'POST'
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -237,4 +228,18 @@ function addNewSubtask() {
 
   subtaskArea.innerHTML += `<p class="fontSubtask">- ${subtask}</p>`;
   console.log("Neue Aufgabe hinzugefügt!");
+}
+
+function validateForm() {
+  const title = document.getElementById('title').value.trim();
+  const date = document.getElementById('date').value.trim();
+  const category = document.getElementById('category').value.trim();
+  console.log(title, date, category);
+
+  if (title === '' || date === '' || category === '') {
+    console.log('bitte noch ausfüllen')
+  } else {
+    console.log("passt");
+    renderAddTaskinJson();
+  }
 }

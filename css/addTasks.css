@@ -13,7 +13,7 @@
 
 .mainAddTasks {
   margin-left: 96px;
-  display: flex;
+display: flex;
   margin-top: 50px;
   margin-right: 96px;
   justify-content: space-between;
@@ -21,21 +21,26 @@
 
 .addTasksLeft {
   display: flex;
-  flex-direction: column;
   height: 400px;
-  width: 40%;
+  width: 100%;
 }
 
 .addTasksRight {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
+}
+
+.widthHalf {
+  width: 45%;
 }
 
 .spacerAddTasks {
   width: 1px;
   height: 380px;
   border: 1px solid var(--backgroundSpacer);
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .fontUnderHeadlinesAddTasks {
@@ -112,17 +117,13 @@
   padding: 16px 10px 16px 10px;
 }
 
-.footerAddTasks {
-  margin-left: 96px;
-  margin-right: 96px;
-  margin-bottom: 80px;
+.footer {
+  margin-top: 100px;
 }
 
-.footerAddTasksContainer {
+.flexEnd {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .buttonPrio:hover {

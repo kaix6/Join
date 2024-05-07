@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AddTasks</title>
-    <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/img/general/logo_favicon.svg"
+    />
     <script src="js/script.js"></script>
     <script src="js/add_tasks.js"></script>
     <script defer src="js/template.js"></script>
@@ -34,138 +38,167 @@
 
             <div class="mainAddTasks">
               <form class="addTasksLeft">
-                <div>
-                  <label class="fontUnderHeadlinesAddTasks" for="title"
-                    >Title<span style="color: red">*</span></label
-                  >
-                  <br />
-                  <input type="text" id="title" placeholder="Enter a title" required/>
-                </div>
-
-                <div style="margin-top: 16px">
-                  <label class="fontUnderHeadlinesAddTasks" for="description"
-                    >Description</label
-                  >
-                  <br />
-                  <textarea
-                    id="description"
-                    name="description"
-                    rows="4"
-                    cols="50"
-                    placeholder="Enter a Description"
-                  ></textarea>
-                </div>
-
-                <div style="margin-top: 16px">
-                  <label class="fontUnderHeadlinesAddTasks" for="assigned"
-                    >Assigned to</label
-                  >
-                  <br />
-
-                  <select
-                    onclick="renderContactsInAddTasks()"
-                    name="assigned"
-                    id="assignedTo"
-                  ></select>
-                </div>
-
-                <div id="selectedMembers">
-                </div>
-              </form>
-
-              <div class="spacerAddTasks"></div>
-
-              <form class="addTasksRight">
-                <div>
-                  <label class="fontUnderHeadlinesAddTasks" for="date"
-                    >Due date<span style="color: red">*</span></label
-                  >
-                  <br />
-                  <input type="date" id="date" placeholder="dd/mm/yyyy" required/>
-                </div>
-
-                <div class="prio fontUnderHeadlinesAddTasks">
-                  Prio
-                  <div
-                    style="
-                      margin-top: 8px;
-                      display: flex;
-                      justify-content: space-between;
-                    "
-                  >
-                    <button
-                      id="buttonUrgent"
-                      onclick="addPrioButtonColor('urgent', event)"
-                      class="buttonPrio"
+                <div class="widthHalf">
+                  <div>
+                    <label class="fontUnderHeadlinesAddTasks" for="title"
+                      >Title<span style="color: red">*</span></label
                     >
-                      Urgent
-                      <img
-                        id="buttonImg1"
-                        src="assets/img/add_task/prio_urgent.svg"
-                        alt=""
-                      />
-                    </button>
-                    <button
-                      id="buttonMedium"
-                      onclick="addPrioButtonColor('medium', event)"
-                      class="buttonPrio"
+                    <br />
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      placeholder="Enter a title"
+                      required
+                    />
+                  </div>
+
+                  <div style="margin-top: 16px">
+                    <label class="fontUnderHeadlinesAddTasks" for="description"
+                      >Description</label
                     >
-                      Medium
-                      <img
-                        id="buttonImg2"
-                        src="assets/img/add_task/prio_medium.svg"
-                        alt=""
-                      />
-                    </button>
-                    <button
-                      id="buttonLow"
-                      onclick="addPrioButtonColor('low', event)"
-                      class="buttonPrio"
+                    <br />
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows="4"
+                      cols="50"
+                      placeholder="Enter a Description"
+                    ></textarea>
+                  </div>
+
+                  <div style="margin-top: 16px">
+                    <label class="fontUnderHeadlinesAddTasks" for="assigned"
+                      >Assigned to</label
                     >
-                      Low
-                      <img
-                        id="buttonImg3"
-                        src="assets/img/add_task/prio_low.svg"
-                        alt=""
-                      />
-                    </button>
+                    <br />
+
+                    <select
+                      onclick="renderContactsInAddTasks()"
+                      name="assigned"
+                      id="assignedTo"
+                    ></select>
+                  </div>
+
+                  <div id="selectedMembers"></div>
+
+                  <p class="footer">
+                    <span style="color: red">*</span>This field is required
+                  </p>
+                </div>
+
+                <div class="spacerAddTasks"></div>
+
+                <div class="addTasksRight">
+                  <div>
+                    <label class="fontUnderHeadlinesAddTasks" for="date"
+                      >Due date<span style="color: red">*</span></label
+                    >
+                    <br />
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      placeholder="dd/mm/yyyy"
+                      required
+                    />
+                  </div>
+
+                  <div class="prio fontUnderHeadlinesAddTasks">
+                    Prio
+                    <div
+                      style="
+                        margin-top: 8px;
+                        display: flex;
+                        justify-content: space-between;
+                      "
+                    >
+                      <button
+                        id="buttonUrgent"
+                        onclick="addPrioButtonColor('urgent', event)"
+                        class="buttonPrio"
+                      >
+                        Urgent
+                        <img
+                          id="buttonImg1"
+                          src="assets/img/add_task/prio_urgent.svg"
+                          alt=""
+                        />
+                      </button>
+                      <button
+                        id="buttonMedium"
+                        onclick="addPrioButtonColor('medium', event)"
+                        class="buttonPrio"
+                      >
+                        Medium
+                        <img
+                          id="buttonImg2"
+                          src="assets/img/add_task/prio_medium.svg"
+                          alt=""
+                        />
+                      </button>
+                      <button
+                        id="buttonLow"
+                        onclick="addPrioButtonColor('low', event)"
+                        class="buttonPrio"
+                      >
+                        Low
+                        <img
+                          id="buttonImg3"
+                          src="assets/img/add_task/prio_low.svg"
+                          alt=""
+                        />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 16px">
+                    <label class="fontUnderHeadlinesAddTasks" for="category"
+                      >Category<span style="color: red">*</span></label
+                    >
+                    <br />
+
+                    <select name="category" id="category" required>
+                      <option disabled selected>select task category</option>
+                      <option value="userStory">User Story</option>
+                      <option value="technicalTask">Technical Task</option>
+                    </select>
+                  </div>
+
+                  <div style="margin-top: 16px">
+                    <label class="fontUnderHeadlinesAddTasks" for="subtask"
+                      >Subtasks</label
+                    ><br />
+                    <input
+                      id="subtask"
+                      type="text"
+                      placeholder="add new subtask"
+                    />
+                  </div>
+                  <div id="subtaskArea"></div>
+                  <div>
+                    <div>
+                      <div class="footer flexEnd">
+                        <button
+                          onclick="reloadPage()"
+                          class="clearButtonAddTasks"
+                        >
+                          Clear
+                          <img src="assets/img/add_task/close.svg" alt="" />
+                        </button>
+                        <button
+                          onclick="validateForm()"
+                          class="createButtonAddTasks"
+                          id="submitButton"
+                        >
+                          Create Task
+                          <img src="assets/img/add_task/check.svg" alt="" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
-
-                <div style="margin-top: 16px">
-                  <label class="fontUnderHeadlinesAddTasks" for="category"
-                    >Category<span style="color: red">*</span></label
-                  >
-                  <br />
-
-                  <select name="category" id="category" required>
-                    <option disabled selected>select task category</option>
-                    <option value="userStory">User Story</option>
-                    <option value="technicalTask">Technical Task</option>
-                  </select>
-                </div>
-
-                <div style="margin-top: 16px">
-                  <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks</label><br />
-                  <input id="subtask" type="text" placeholder="add new subtask">
-                  
-                </div>
-                <div id="subtaskArea"></div>
               </form>
-            </div>
-          </div>
-          <div class="footerAddTasks">
-            <div class="footerAddTasksContainer">
-              <p><span style="color: red">*</span>This field is required</p>
-
-              <div>
-                <button onclick="reloadPage()" class="clearButtonAddTasks">
-                  Clear <img src="assets/img/add_task/close.svg" alt="" />
-                </button>
-                <button onclick="renderAddTasksFormAsJson()" class="createButtonAddTasks">
-                  Create Task <img src="assets/img/add_task/check.svg" alt="" />
-                </button>
-              </div>
             </div>
           </div>
 
@@ -214,8 +247,7 @@
                     id="assignedToMobil"
                   ></select>
                 </div>
-                <div id="selectedMembersMobil">
-                </div>
+                <div id="selectedMembersMobil"></div>
               </form>
 
               <div class="spacerAddTasks"></div>
@@ -238,42 +270,42 @@
                       justify-content: space-between;
                     "
                   >
-                  <button
-                  id="buttonUrgentMobil"
-                  onclick="addPrioButtonColor('urgent', event)"
-                  class="buttonPrio"
-                >
-                  Urgent
-                  <img
-                    id="buttonImg1Mobil"
-                    src="assets/img/add_task/prio_urgent.svg"
-                    alt=""
-                  />
-                </button>
-                <button
-                  id="buttonMediumMobil"
-                  onclick="addPrioButtonColor('medium', event)"
-                  class="buttonPrio"
-                >
-                  Medium
-                  <img
-                    id="buttonImg2Mobil"
-                    src="assets/img/add_task/prio_medium.svg"
-                    alt=""
-                  />
-                </button>
-                <button
-                  id="buttonLowMobil"
-                  onclick="addPrioButtonColor('low', event)"
-                  class="buttonPrio"
-                >
-                  Low
-                  <img
-                    id="buttonImg3Mobil"
-                    src="assets/img/add_task/prio_low.svg"
-                    alt=""
-                  />
-                </button>
+                    <button
+                      id="buttonUrgentMobil"
+                      onclick="addPrioButtonColor('urgent', event)"
+                      class="buttonPrio"
+                    >
+                      Urgent
+                      <img
+                        id="buttonImg1Mobil"
+                        src="assets/img/add_task/prio_urgent.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonMediumMobil"
+                      onclick="addPrioButtonColor('medium', event)"
+                      class="buttonPrio"
+                    >
+                      Medium
+                      <img
+                        id="buttonImg2Mobil"
+                        src="assets/img/add_task/prio_medium.svg"
+                        alt=""
+                      />
+                    </button>
+                    <button
+                      id="buttonLowMobil"
+                      onclick="addPrioButtonColor('low', event)"
+                      class="buttonPrio"
+                    >
+                      Low
+                      <img
+                        id="buttonImg3Mobil"
+                        src="assets/img/add_task/prio_low.svg"
+                        alt=""
+                      />
+                    </button>
                   </div>
                 </div>
 
@@ -298,7 +330,6 @@
 
                   <input id="subtask" placeholder="add new subtask" />
                 </div>
-                
               </form>
             </div>
           </div>
