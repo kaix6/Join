@@ -24,15 +24,11 @@
       "subtask": [
         {
           "id": 0,
-          "description": "Create the HTML markup for the product list according to the requirements"
+          "description": "Create the HTML markup for the product list"
         },
         {
           "id": 1,
           "description": "Develop CSS styles for the product list"
-        },
-        {
-          "id": 2,
-          "description": "Review the user interface for functionality and errors"
         }
       ]
     },
@@ -125,11 +121,11 @@
       "subtask": [
         {
           "id": 0,
-          "description": "Organize the requirements into structured sections for clarity and easy reference"
+          "description": "Organize the requirements into structured sections"
         },
         {
           "id": 1,
-          "description": "Review the document for completeness and accuracy, making revisions as necessary based on feedback"
+          "description": "Review the document for completeness and accuracy"
         }
       ]
     }
