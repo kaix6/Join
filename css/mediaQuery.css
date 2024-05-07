@@ -613,17 +613,23 @@
 /* Mobil */
 
 @media (max-width: 950px) {
-  .desktopAddTask,
-  .footerAddTasks,
-  .clearButtonAddTasks {
+  .widthHalf {
+    width: unset;
+  }
+
+  .footerNone {
     display: none;
   }
 
-  .mobileAddTask,
-  .mobilefooterAddTasks {
-    display: block;
-    overflow-x: hidden;
-    overflow-y: auto;
+  .footer {
+    margin-top: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .clearButtonAddTasks {
+    display: none;
   }
 
   .headlineAddTasks {
@@ -709,19 +715,6 @@
     padding: 18px 10px 18px 10px;
   }
 
-  .mobilefooterAddTasks {
-    margin-left: 16px;
-    margin-right: 16px;
-    height: 88px;
-  }
-
-  .footerAddTasksContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-  }
-
   .buttonPrio:hover {
     cursor: pointer;
     box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
@@ -762,6 +755,12 @@
   #date {
     background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
     background-size: 26px auto; /* Größe des Pfeils */
+  }
+}
+
+@media (max-width: 800px) {
+  .footer {
+    bottom: 100px;
   }
 }
 
