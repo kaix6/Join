@@ -614,7 +614,7 @@
 
 @media (max-width: 950px) {
   .widthHalf {
-    width: unset;
+    width: unset!important;
   }
 
   .footerNone {
@@ -633,16 +633,15 @@
   }
 
   .headlineAddTasks {
-    font-size: 47px;
-    margin-left: 16px;
-    margin-top: 40px;
+    font-size: 47px!important;
+    margin-left: 16px!important;
+    margin-top: 40px!important;
   }
 
   .mainAddTasks {
-    margin-left: 16px;
-    display: flex;
+    margin-left: 16px!important;
     flex-direction: column;
-    margin-right: 16px;
+    margin-right: 16px!important;
   }
 
   .addTasksLeft {
@@ -656,7 +655,7 @@
     margin-top: 16px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%!important;
   }
 
   .spacerAddTasks {
