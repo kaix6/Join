@@ -221,21 +221,6 @@ input {
     padding: 8px;
 }
 
-
-/* .b-img-email {
-    background-image: url("/assets/img/logIn_SignUp/mail.svg");
-} */
-
-
-/* .b-img-lock {
-    background-image: url("/assets/img/logIn_SignUp/lock.svg");
-} */
-
-
-/* .b-img-person {
-    background-image: url("/assets/img/logIn_SignUp/person.svg");
-} */
-
 input:hover {
     cursor: pointer;
 }
