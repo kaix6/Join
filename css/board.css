@@ -388,48 +388,34 @@
     .container-subtasks{
         display: flex;
         flex-direction: column;
-        margin-top: 8px;
-        gap: 16px;
-        padding-left: 16px;
-        padding-right: 16px;
-        height: 24px;
-        width: fit-content;
+        width: 445px;
+        gap: 4px;
     }
 
-    .container-subtasks:hover{
+    .subtasks:hover{
         background-color: var(--backgroundgrey);
         border-radius: 6px;
     }
 
-    .container-subtasks:hover .subtask-checkbox{
-        background-color: var(--fontGrey);
-        border-radius: 5px;
-    }
-
-    [type="checkbox"] {
-        left: 15px;
-        top: -4px;
-        z-index: 0;
-        appearance: none;
-        -webkit-appearance: none;
-    }
-
-    [type="checkbox"]::before{
-        width: 18px;
+    .subtask-checkbox{
+        width: 19px;
         height: 19px;
-        margin: 2px;
-        background-image: url(./assets/img/board/check_button.svg);
-        display: block;
-        content: "";
-        float: left;
-        z-index: 5;
-        position: relative;
+        background-image: url(/assets/img/board/check_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
 
-    [type="checkbox"]:checked::before {
+    .subtasks:hover .subtask-checkbox{
+        background-color: var(--fontGrey);
+        border-radius: 5px;
+    }
+
+    .subtask-checkbox-checked{
+        width: 19px;
+        height: 19px;
         background-image: url(/assets/img/board/checked_button.svg);
+        background-repeat: no-repeat;
+        cursor: pointer;
     }
 
     .container-subtasks p{
@@ -439,6 +425,12 @@
     
     .subtasks{
         display: flex;
+        align-items: center;
+        margin-top: 8px;
+        gap: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
     }
 
     .container-delete-edit{

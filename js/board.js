@@ -44,12 +44,20 @@ function setPriorityBigTask(currentTask){
 
 function getAllSubtasksBigTask(currentTask){
         let subtasksSection = document.getElementById(`subtasks${currentTask[0]['id']}`);
+        let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0]['id']}`);
         let taskAllSubtasks = currentTask[0]['subtask'];
-        for (let i = 0; i < taskAllSubtasks.length; i++) {
-            const subtask = taskAllSubtasks[i];
-            subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
-        }
-    };
+        if(taskAllSubtasks.length > 0){
+            subtaskHeadline.innerHTML = generateSubtasksHeadline();
+            for (let i = 0; i < taskAllSubtasks.length; i++) {
+                const subtask = taskAllSubtasks[i];
+                subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
+            };
+        };
+    }
+
+function checkUncheckBox(id){
+    document.getElementById(`subtask-checkbox${id}`).classList.toggle('subtask-checkbox-checked');
+}
 
 function closeDialogTask(){
     document.querySelector('.background-big-task').classList.add('d-none');

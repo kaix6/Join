@@ -44,7 +44,8 @@ function generateBigTaskBox(task){
         <div id="container-member-big-task" class="container-member-big-task">
         </div>
         <div>
-            <p class="margin-top-16px">Subtasks</p>
+            <div id="subtaks-headline${task[0]['id']}">
+            </div>
         <div id="subtasks${task[0]['id']}" class="container-subtasks">
         </div>
         </div>
@@ -66,10 +67,16 @@ function generateBigTaskBox(task){
     `;
 }
 
+function generateSubtasksHeadline(){
+    return`
+    <p class="margin-top-16px">Subtasks</p>
+    `
+}
+
 function generateSubtasksSectionBigTask(task){
     return`
     <div class="subtasks">
-        <input class="subtask-checkbox" type="checkbox" />
+        <div id="subtask-checkbox${task['id']}" class="subtask-checkbox" onclick="checkUncheckBox(${task['id']})"></div>
         <p>${task['description']}</p>
     </div>
     `
