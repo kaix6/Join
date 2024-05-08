@@ -1,3 +1,5 @@
+let users = [];
+
 async function addUsersJason() {
     let response = await fetch('./js/users.json');
     users = await response.json();
