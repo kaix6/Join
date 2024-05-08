@@ -13,14 +13,7 @@ function addPrioButtonColor(prio, event) {
   let imgUrgent = document.getElementById("buttonImg1");
   let imgMedium = document.getElementById("buttonImg2");
   let imgLow = document.getElementById("buttonImg3");
-  removeClasses(
-    buttonUrgent,
-    buttonMedium,
-    buttonLow,
-    imgUrgent,
-    imgMedium,
-    imgLow
-  );
+  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);
 
   if (prio === "urgent") {
     buttonUrgent.classList.add("backgroundColorRed", "fontWeightAndColor");
@@ -41,31 +34,12 @@ function addPrioButtonColor(prio, event) {
 function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
+  initJSONaddTasks();
 }
 // Funktion für entfernen der Farbe für die Prio-Buttons
-function removeClasses(
-  buttonUrgent,
-  buttonMedium,
-  buttonLow,
-  imgUrgent,
-  imgMedium,
-  imgLow
-) {
-  const classesToRemove = [
-    "backgroundColorRed",
-    "fontWeightAndColor",
-    "backgroundColorOrange",
-    "backgroundColorGreen",
-    "imgColor",
-  ];
-  const elements = [
-    buttonUrgent,
-    buttonMedium,
-    buttonLow,
-    imgUrgent,
-    imgMedium,
-    imgLow,
-  ];
+function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
+  const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor"];
+  const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow];
 
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
@@ -113,11 +87,14 @@ async function renderContactsInAddTasks() {
 function pushMembers(contact) {
   let name = contact.letters;
   let color = contact.color;
-  let fullName = contact.name;
+  let messageSelected = document.getElementById('isSelected');
+  messageSelected.classList.remove("unset-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
+  messageSelected.classList.add("none-display")
 
   if (selectUsers.includes(name)) {
     // Überprüfe, ob das Element bereits in selectUsers enthalten ist
-    alert(`${fullName} wurde bereits eingeteilt.`); // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
+    messageSelected.classList.add("unset-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
+    messageSelected.classList.remove("none-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
     return;
   }
   // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
@@ -139,39 +116,6 @@ function renderPushedMembers() {
   }
 }
 
-// Funktion zum rendern der Elemente für das addTasks.json
-function renderAddTasksFormAsJson(tasks) {
-  let title = document.getElementById("title").value;
-  let description = document.getElementById("description").value;
-  let assignedTo = selectUsers;
-  let date = document.getElementById("date").value;
-  let prio = selectedPrio;
-  let category = document.getElementById("category").value;
-  let subtasks = document.getElementById("subtask").value;
-  let task = tasks;
-
-  saveTaskToJson(
-    title,
-    description,
-    date,
-    prio,
-    category,
-    assignedTo,
-    subtasks
-  );
-
-  console.log(title, description, assignedTo, date, prio, category, subtasks);
-  console.log(task);
-}
-
-// Funktion zum rendern von addTasks.json
-async function renderAddTaskinJson() {
-  let response = await fetch("./js/addTasks.json");
-  let tasks = await response.json();
-
-  renderAddTasksFormAsJson(tasks);
-}
-
 // Funktion zum rendern in das addTasks.json
 async function saveTaskToJson(
   title,
@@ -182,8 +126,7 @@ async function saveTaskToJson(
   assignedTo,
   subtasks
 ) {
-  let response = await fetch("./js/addTasks.json");
-  let tasks = await response.json();
+
 
   // Neuen Task erstellen
   let newTask = {
@@ -221,15 +164,25 @@ function addNewSubtask() {
 }
 
 function validateForm() {
-  const title = document.getElementById("title").value.trim();
-  const date = document.getElementById("date").value.trim();
-  const category = document.getElementById("category").value.trim();
-  console.log(title, date, category);
+  let title = document.getElementById("title").value;
+  let description = document.getElementById("description").value;
+  let assignedTo = selectUsers;
+  let date = document.getElementById("date").value;
+  let prio = selectedPrio;
+  let category = document.getElementById("category").value;
+  let subtasks = document.getElementById("subtask").value;
 
   if (title === "" || date === "" || category === "") {
-    console.log("bitte noch ausfüllen");
-  } else {
-    console.log("passt");
-    renderAddTaskinJson();
+      return false; // Verhindert das Standardverhalten des Formulars
   }
+  // Wenn die Validierung erfolgreich ist, rufe die Funktion zur Speicherung des Tasks auf
+  saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks);
+  // Gib false zurück, um das Standardverhalten des Formulars zu unterdrücken
+  return false;
+
+}
+
+async function initJSONaddTasks() {
+  let response = await fetch('./js/addTasks.json');
+  tasks = await response.json();
 }

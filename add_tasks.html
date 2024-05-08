@@ -29,34 +29,29 @@
         <!--      Section header    -->
 
         <section id="main_container" class="main_addTasks">
-
           <div class="desktopAddTask">
             <div class="d-flex">
               <h1 class="headlineAddTasks">Add Tasks</h1>
             </div>
 
             <div class="mainAddTasks">
-              <form class="addTasksLeft">
+              <form class="addTasksLeft" onsubmit="return validateForm()">
                 <div class="widthHalf">
-                  <div>
-                    <label class="fontUnderHeadlinesAddTasks" for="title"
-                      >Title<span style="color: red">*</span></label
-                    >
-                    <br />
-                    <input
-                      type="text"
-                      id="title"
-                      name="title"
-                      placeholder="Enter a title"
-                      required
-                    />
-                  </div>
+                  <label class="fontUnderHeadlinesAddTasks" for="title"
+                    >Title<span style="color: red">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="Enter a title"
+                    required
+                  />
 
                   <div style="margin-top: 16px">
                     <label class="fontUnderHeadlinesAddTasks" for="description"
                       >Description</label
                     >
-                    <br />
                     <textarea
                       id="description"
                       name="description"
@@ -70,7 +65,6 @@
                     <label class="fontUnderHeadlinesAddTasks" for="assigned"
                       >Assigned to</label
                     >
-                    <br />
 
                     <select
                       onclick="renderContactsInAddTasks()"
@@ -80,6 +74,7 @@
                   </div>
 
                   <div id="selectedMembers"></div>
+                  <div class="none-display" id="isSelected">Has already been selected</div>
 
                   <p class="footer footerNone">
                     <span style="color: red">*</span>This field is required
@@ -185,11 +180,7 @@
                           Clear
                           <img src="assets/img/add_task/close.svg" alt="" />
                         </button>
-                        <button
-                          onclick="validateForm()"
-                          class="createButtonAddTasks"
-                          id="submitButton"
-                        >
+                        <button class="createButtonAddTasks" id="submitButton">
                           Create Task
                           <img src="assets/img/add_task/check.svg" alt="" />
                         </button>
@@ -200,7 +191,6 @@
               </form>
             </div>
           </div>
-
         </section>
       </div>
 

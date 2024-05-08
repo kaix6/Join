@@ -262,3 +262,16 @@ select,
   font-size: 12px;
   font-weight: bold;
 }
+
+#isSelected {
+  font-weight: bold;
+  color: red;
+}
+
+.unset-display {
+  display: unset;
+}
+
+.none-display {
+  display: none;
+}
