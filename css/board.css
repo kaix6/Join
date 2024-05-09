@@ -55,6 +55,7 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+        gap: 8px
     }
 
     .board-search-add{
@@ -98,7 +99,6 @@
         display: flex;
         border: 1px solid var(--grey);
         background-color: var(--white);
-        width: fixed(312px);
         height: 48px;
         padding: 8px 16px 8px 16px;
         border-radius: 10px;
@@ -472,11 +472,13 @@
     }
     /* Responsive */
 
-@media(max-width: 800px) {
+@media(max-width: 1000px){
 
     .small-add-button{
         display: block;
         align-items: center;
+        width: 40px;
+        height: 40px;
         border-radius: 8px;
         background-color: var(--activeClickMenuBlue);
         padding: 8px;
@@ -488,6 +490,9 @@
     }
 
     .h1-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 24px;
         width: 100%;
     }
@@ -497,6 +502,17 @@
         align-items: baseline;
     }
 
+    .board-search-add{
+        width: 100%;
+    }
+
+    .search-field{
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 800px) {
     .board-column{
         width: 100%;
     }
