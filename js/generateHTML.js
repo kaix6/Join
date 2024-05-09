@@ -1,9 +1,9 @@
 // Board
 
-function generateSmallTaskBox(task, i){
+function generateSmallTaskBox(task){
     return `
     <div>
-        <div id="task-box-small" class="task-box" onclick="showDialogTask(${i})">
+        <div id="task-box-small" class="task-box" onclick="showDialogTask(${task['id']})">
             <div id="task${task['id']}">
             <p id="task-category${task['id']}" class="task-type">${task['category']}</p>
             <p class="task-headline">${task['title']}</p>
@@ -22,35 +22,31 @@ function generateSmallTaskBox(task, i){
 function generateBigTaskBox(task){
     return `
     <div class="d-flex-center-space-btw">
-        <p class="task-type">Task Type</p>
+        <p id="task-category${task[0]['id']}" class="task-type">${task[0]['category']}</p>
         <div class="close-icon" onclick="closeDialogTask()">
             <img src="./assets/img/add_task/close.svg" />
         </div>
     </div>
-    <h2>${task['title']}</h2>
-    <p class="task-description-big">${task['description']}</p>
+    <h2>${task[0]['title']}</h2>
+    <p class="task-description-big">${task[0]['description']}</p>
     <div>
         <div class="d-flex">
             <p class="width-30">Due date:</p>
-            <p>${task['due date']}</p>
+            <p>${task[0]['due date']}</p>
         </div>
         <div class="d-flex">
             <p class="width-30">Priority:</p>
-            <p>${task['prio']}</p>
-            <img id="taskPrioBigBox${task['id']}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
+            <p>${task[0]['prio']}</p>
+            <img id="taskPrioBigBox${task[0]['id']}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
         </div>
         <div>
             <p class="margin-top-16px">Assigned To:</p>
-        <div class="container-member-big-task">
-            <div class="member-big-task">AM</div>
-                <p>Name</p>
-            </div>
+        <div id="container-member-big-task" class="container-member-big-task">
         </div>
         <div>
-            <p class="margin-top-16px">Subtasks</p>
-        <div class="container-subtasks">
-            <input class="subtask-checkbox" type="checkbox" />
-            <p>Subtask Name</p>
+            <div id="subtaks-headline${task[0]['id']}">
+            </div>
+        <div id="subtasks${task[0]['id']}" class="container-subtasks">
         </div>
         </div>
         <div class="container-delete-edit">
@@ -69,6 +65,21 @@ function generateBigTaskBox(task){
         </div>
     </div>
     `;
+}
+
+function generateSubtasksHeadline(){
+    return`
+    <p class="margin-top-16px">Subtasks</p>
+    `
+}
+
+function generateSubtasksSectionBigTask(task){
+    return`
+    <div class="subtasks">
+        <div id="subtask-checkbox${task['id']}" class="subtask-checkbox" onclick="checkUncheckBox(${task['id']})"></div>
+        <p>${task['description']}</p>
+    </div>
+    `
 }
 
 function generateSubtasksSection(){
@@ -95,6 +106,15 @@ function generateNoTaskBox(){
     <div class="no-task-div">
         <p>No tasks To do</p>
     </div>`;
+}
+
+function generateMemberBigTaskBox(member){
+    return`
+    <div class="container-letters-name">
+        <div id="member-letter-cirlce${member['id']}" class="member-big-task">${member['letters']}</div>
+        <p>${member['name']}</p>
+    </div>
+    `;
 }
 
 

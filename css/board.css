@@ -187,7 +187,8 @@
         text-align: center;
         border-radius: 8px;
         color: var(--white);
-        font-weight: lighter;
+        font-weight: 400;
+        font-size: 16px;
         width: fit-content;
         padding-left: 16px;
         padding-right: 16px;
@@ -254,13 +255,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         border: 1px solid var(--white);
         border-radius: 100%;
         color: var(--white);
-        font-weight: lighter;
-        margin-right: -4px;
+        font-weight: 400px;
+        font-size: 12px;
+        margin-right: -8px;
     }
 
     .d-flex-center-space-btw{
@@ -271,6 +273,7 @@
 
     .d-flex{
         display: flex;
+        margin-top: 24px;
     }
 
     .task-box-big{
@@ -328,14 +331,9 @@
     }
 
     .d-flex p{
-        margin-top: 24px;
         font-size: 20px;
         font-weight: 400;
         line-height: 24px;
-    }
-
-    .d-flex img{
-        margin-top: 16px;
     }
 
     .margin-top-16px{
@@ -359,14 +357,13 @@
         font-size: 12px;
         border: 2px solid var(--white);
         border-radius: 100%;
-        background-color: var(--tagApricot);
         color: var(--white);
         font-weight: 400;
     }
 
     .container-member-big-task{
         display: flex;
-        align-items: center;
+        flex-direction: column;
         margin-top: 8px;
         gap: 16px;
     }
@@ -378,55 +375,46 @@
         font-family: 'Open Sans';
     }
 
+    .container-letters-name{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
     .prio-icon{
         margin-left: 8px
     }
 
     .container-subtasks{
         display: flex;
-        align-items: center;
-        margin-top: 8px;
-        gap: 16px;
-        padding-left: 16px;
-        padding-right: 16px;
-        height: 24px;
-        width: fit-content;
+        flex-direction: column;
+        gap: 4px;
     }
 
-    .container-subtasks:hover{
+    .subtasks:hover{
         background-color: var(--backgroundgrey);
         border-radius: 6px;
     }
 
-    .container-subtasks:hover .subtask-checkbox{
-        background-color: var(--fontGrey);
-        border-radius: 5px;
-    }
-
-    [type="checkbox"] {
-        left: 15px;
-        top: -4px;
-        z-index: 0;
-        appearance: none;
-        -webkit-appearance: none;
-    }
-
-    [type="checkbox"]::before{
-        width: 18px;
+    .subtask-checkbox{
+        width: 19px;
         height: 19px;
-        margin: 2px;
-        background-image: url(./assets/img/board/check_button.svg);
-        display: block;
-        content: "";
-        float: left;
-        z-index: 5;
-        position: relative;
+        background-image: url(/assets/img/board/check_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
 
-    [type="checkbox"]:checked::before {
+    .subtasks:hover .subtask-checkbox{
+        background-color: var(--fontGrey);
+        border-radius: 5px;
+    }
+
+    .subtask-checkbox-checked{
+        width: 19px;
+        height: 19px;
         background-image: url(/assets/img/board/checked_button.svg);
+        background-repeat: no-repeat;
+        cursor: pointer;
     }
 
     .container-subtasks p{
@@ -434,6 +422,16 @@
         line-height: 19.2px;
     }
     
+    .subtasks{
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        gap: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+    }
+
     .container-delete-edit{
         display: flex;
         justify-content: end;
@@ -555,6 +553,50 @@
         width: calc(100% - 60px);
         margin-left: 30px;
         margin-right: 30px;
+    }
+
+    .task-description-big{
+        font-size: 16px;
+    }
+
+    .task-box-big h2{
+        font-size: 24px;        
+    }
+
+    .task-box-big{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: calc(100vw - 16px);
+        margin: 16px;
+    }
+
+    .d-flex p{
+        font-size: 16px;
+    }
+
+    .margin-top-16px{
+        font-size: 16px;
+    }
+
+    .container-member-big-task p{
+        font-size: 16px;
+    }
+
+    .container-subtasks p{
+        font-size: 12px;
+    }
+
+    .subtasks{
+        justify-content: flex-start;
+        padding-left: 0px;
+        padding-right: 0px;
+        gap: 8px;
+    }
+
+    .subtask-checkbox{
+        padding-right: 16px;
     }
 
     @media(max-width: 400px){

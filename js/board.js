@@ -1,11 +1,62 @@
 let currentDraggedTask;
+let allTasks;
 
-function showDialogTask(){
+async function showDialogTask(i){
     let bigTaskBox = document.getElementById('task-box-big');
-    document.querySelector('.background-big-task').classList.toggle('d-none');
-    setTimeout(function() {
-        document.querySelector('.task-box-big').classList.toggle('show-task-box-big');
-    }, 100);
+    let currentTask = allTasks.filter(t => t['id'] == i);
+    await animationDialogTask();
+    bigTaskBox.innerHTML = '';
+    bigTaskBox.innerHTML += generateBigTaskBox(currentTask)
+    getAllMembersBigTask(currentTask);
+    setPriorityBigTask(currentTask);
+    setTaskCategory(currentTask[0]);
+    getAllSubtasksBigTask(currentTask);
+}
+
+function getAllMembersBigTask(currentTask){
+    let memberContainer = document.getElementById('container-member-big-task');
+    let taskAllMembers = currentTask[0]['assigned member'];
+    for (let i = 0; i < taskAllMembers.length; i++){
+        const currentTaskMember = taskAllMembers[i];
+        memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
+        setColorMemberBigTask(currentTaskMember);
+    };
+}
+
+function setColorMemberBigTask(currentTaskMember){
+    let colorMember = currentTaskMember['color'];
+    let memberContainer = document.getElementById(`member-letter-cirlce${currentTaskMember['id']}`);
+    memberContainer.style.backgroundColor = colorMember;
+}
+
+function setPriorityBigTask(currentTask){
+    let taskPrio = currentTask[0]['prio'];
+    if (taskPrio == 'low') {
+        document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_low.svg';
+    } else {
+        if (taskPrio == 'medium') {
+            document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
+        } else {
+            document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
+        }
+    };
+}
+
+function getAllSubtasksBigTask(currentTask){
+        let subtasksSection = document.getElementById(`subtasks${currentTask[0]['id']}`);
+        let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0]['id']}`);
+        let taskAllSubtasks = currentTask[0]['subtask'];
+        if(taskAllSubtasks.length > 0){
+            subtaskHeadline.innerHTML = generateSubtasksHeadline();
+            for (let i = 0; i < taskAllSubtasks.length; i++) {
+                const subtask = taskAllSubtasks[i];
+                subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
+            };
+        };
+    }
+
+function checkUncheckBox(id){
+    document.getElementById(`subtask-checkbox${id}`).classList.toggle('subtask-checkbox-checked');
 }
 
 function closeDialogTask(){
@@ -13,30 +64,20 @@ function closeDialogTask(){
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
 }
 
-// um alle Daten zu laden
-// function init(){ 
-//     loadUsers
-//     loadTasks
-// }
+function animationDialogTask(){
+    document.querySelector('.background-big-task').classList.toggle('d-none');
+    setTimeout(function() {
+        document.querySelector('.task-box-big').classList.toggle('show-task-box-big');
+    }, 100)
+}
 
-// um Daten zu speichern - potenziell in der allgemeinen script.js?
-// function setItem(){
-// }
-
-// um Daten zu laden - potenziell in der allgemeinen script.js?
-// function getItem(){
-// }
-
-/**
- * This function renders all tasks per column on the board
- * 
- */
 async function updateTasksHTML(){
     let tasks = await getTasksJson();
     updateOpenTasks(tasks);
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
     updateDoneTasks(tasks);
+    allTasks = tasks;
 }
 
 /**
@@ -63,7 +104,7 @@ function updateOpenTasks(tasks){
         boardOpenTasks.innerHTML = '';
         for (let i = 0; i < open.length; i++) {
             const openTask = open[i];
-            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask, i);
+            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
             getAllMembers(openTask);
             setPriority(openTask);
             setTaskCategory(openTask);
