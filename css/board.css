@@ -388,7 +388,6 @@
     .container-subtasks{
         display: flex;
         flex-direction: column;
-        width: 445px;
         gap: 4px;
     }
 
@@ -554,6 +553,50 @@
         width: calc(100% - 60px);
         margin-left: 30px;
         margin-right: 30px;
+    }
+
+    .task-description-big{
+        font-size: 16px;
+    }
+
+    .task-box-big h2{
+        font-size: 24px;        
+    }
+
+    .task-box-big{
+        padding-top: 16px;
+        padding-bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: calc(100vw - 16px);
+        margin: 16px;
+    }
+
+    .d-flex p{
+        font-size: 16px;
+    }
+
+    .margin-top-16px{
+        font-size: 16px;
+    }
+
+    .container-member-big-task p{
+        font-size: 16px;
+    }
+
+    .container-subtasks p{
+        font-size: 12px;
+    }
+
+    .subtasks{
+        justify-content: flex-start;
+        padding-left: 0px;
+        padding-right: 0px;
+        gap: 8px;
+    }
+
+    .subtask-checkbox{
+        padding-right: 16px;
     }
 
     @media(max-width: 400px){
