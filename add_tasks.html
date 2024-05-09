@@ -159,7 +159,7 @@
                     </select>
                   </div>
 
-                  <div style="margin-top: 16px">
+                  <div style="margin-top: 16px; position: relative">
                     <label class="fontUnderHeadlinesAddTasks" for="subtask"
                       >Subtasks</label
                     ><br />
@@ -168,11 +168,12 @@
                       type="text"
                       placeholder="add new subtask"
                     />
+                    <img onclick="addNewSubtask()" class="addSubtask" src="assets/img/add_task/add.svg" alt="">
                   </div>
-                  <div id="subtaskArea"></div>
                   <div>
-                    <div>
-                      <div class="footer flexEnd">
+                    <div class="subtaskAreaContainer">
+                      <div id="subtaskArea"></div>
+                      <div class="footerButton flexEnd">
                         <button
                           onclick="reloadPage()"
                           class="clearButtonAddTasks"

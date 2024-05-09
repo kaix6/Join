@@ -13,7 +13,7 @@
 
 .mainAddTasks {
   margin-left: 96px;
-display: flex;
+  display: flex;
   margin-top: 50px;
   margin-right: 96px;
   justify-content: space-between;
@@ -47,6 +47,19 @@ display: flex;
   font-size: 20px;
   font-weight: 400;
   color: var(--menuButtonDarkblue);
+}
+
+.addSubtask {
+  position: absolute;
+  top: 47px;
+  right: 15px;
+  padding: 3px;
+  border-radius: 90px;
+}
+
+.addSubtask:hover {
+  cursor: pointer;
+  background-color: var(--backgroundSpacer);
 }
 
 #title,
@@ -121,6 +134,8 @@ display: flex;
   margin-top: 100px;
 }
 
+
+
 .flexEnd {
   display: flex;
   justify-content: flex-end;
@@ -175,7 +190,7 @@ display: flex;
 }
 
 select,
-#date, #subtask {
+#date {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
   background-repeat: no-repeat;
@@ -186,11 +201,6 @@ select,
 #date {
   background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
   background-size: 26px auto; /* Größe des Pfeils */
-}
-
-#subtask {
-  background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
-  background-size: 12px; /* Größe des Pfeils */
 }
 
 .mobileAddTask,
@@ -220,7 +230,8 @@ select,
     brightness(507%) contrast(101%);
 }
 
-#selectedMembers, #selectedMembersMobil {
+#selectedMembers,
+#selectedMembersMobil {
   width: 100%;
   height: 50px;
   display: flex;
@@ -249,13 +260,19 @@ select,
 }
 
 #subtaskArea {
-  height: 80px;
+  height: 100px;
   width: 100%;
   margin-top: 10px;
+  margin-bottom: 10px;
   padding-left: 16px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.subtaskAreaContainer {
+  height: 100px;
+  width: 100%;
 }
 
 .fontSubtask {
