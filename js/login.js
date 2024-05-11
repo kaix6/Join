@@ -31,22 +31,17 @@ async function login() {
     window.location.href = './summary.html';
 }
 
-function privaccy() {
-    location.href = '../../privacy.html';
-}
-
-function lega() {
-    location.href = '../../legal_notice.html';
-}
-
 function setLastVisitedPage(Id) {
-    localStorage.setItem('lastVisitedPage', Id);
+    localStorage.setItem('lastVisitedPage', window.location.href);
+    document.getElementById("profileHeader").classList.add("d_none");
+    document.getElementById("side_menu_desktop").classList.add("d_none");
+    document.getElementById("side_menu").classList.add("d_none");
 }
 
 function goBack() {
-    var lastVisitedPage = localStorage.getItem('lastVisitedPage');
+    let lastVisitedPage = localStorage.getItem('lastVisitedPage');
     if (lastVisitedPage) {
-        window.location.href = document.getElementById(lastVisitedPage).getAttribute('href');
+        window.location.href = lastVisitedPage;
     } else {
         alert('Es wurde keine vorherige Seite gefunden.');
     }
