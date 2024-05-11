@@ -591,6 +591,11 @@
     gap: 4px;
     font-size: 18px;
   }
+
+  .addSubtask {
+    top: 43px;
+    right: 10px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -737,18 +742,12 @@
   }
 
   select,
-  #subtask,
   #date {
     appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
     background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
     background-repeat: no-repeat;
     background-position: right 16px top 50%; /* Positionierung des Pfeils */
     background-size: 10px auto; /* Größe des Pfeils */
-  }
-
-  #subtask {
-    background-image: url(../assets/img/add_task/add.svg); /* Pfeil */
-    background-size: 12px auto; /* Größe des Pfeils */
   }
 
   #date {
