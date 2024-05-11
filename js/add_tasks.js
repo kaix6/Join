@@ -81,6 +81,7 @@ async function renderContactsInAddTasks() {
   let response = await fetch("./js/contacts.json");
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
+  let MembersArea = document.getElementById('selectedMembers');
 
   assignedTo.innerHTML = generateAssignedToFirst();
 
@@ -99,6 +100,7 @@ async function renderContactsInAddTasks() {
       (contact) => contact.letters === selectedName
     );
     pushMembers(selectedContact);
+    MembersArea.classList.remove('selectedMembersNone');
     renderContactsInAddTasks();
   };
 }
@@ -193,8 +195,8 @@ function addNewSubtask() {
 
 
   subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
+  subtaskArea.classList.remove('subtaskAreaNone')
   document.getElementById("subtask").value = '';
-  console.log("Neue Aufgabe hinzugefügt!");
 }
 
 function removeSubtask(subtaskId){
