@@ -2,6 +2,8 @@ let selectUsers = [];
 let selectUsersColor = [];
 let selectedPrio;
 
+let subtaskIdCounter = 0;
+
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
  * @param {string} prio - The priority of the button ("urgent", "medium", or "low").
@@ -80,8 +82,7 @@ async function renderContactsInAddTasks() {
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
 
-  assignedTo.innerHTML =
-    "<option disabled selected>select contacts to assign</option>";
+  assignedTo.innerHTML = generateAssignedToFirst();
 
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
@@ -178,16 +179,76 @@ async function saveTaskToJson(
 
 // Funktion für hinzufügen neuer Subtasks
 function addNewSubtask() {
-  subtask = document.getElementById("subtask").value;
-  subtaskArea = document.getElementById("subtaskArea");
+  let subtaskValue = document.getElementById("subtask").value;
+  let subtaskText = document.getElementById('textSubtask');
+  let subtaskArea = document.getElementById("subtaskArea");
+  let subtaskId = 'subtask_' + subtaskIdCounter++; // Erzeugen einer individuellen ID für generierte Subtask
 
-  subtaskArea.innerHTML += ` 
-  <div class=subtaskGenerate>
-  <p class="fontSubtask">- ${subtask}</p>
-  <div> <img class="iconSubtask" src="assets/img/add_task/edit.svg"/> | <img class="iconSubtask" src="assets/img/add_task/delete.svg"/> </div>
-  </div>
-  `
+  if (subtaskValue === '') {
+    subtaskText.classList.add('unset-display');
+    return;
+  } 
+
+  subtaskText.classList.remove('unset-display');
+
+
+  subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
+  document.getElementById("subtask").value = '';
   console.log("Neue Aufgabe hinzugefügt!");
+}
+
+function removeSubtask(subtaskId){
+let subtaskToRemove = document.getElementById(subtaskId);
+ if (subtaskToRemove) {
+   subtaskToRemove.remove();
+   console.log('subtask entfernt')
+ } else {
+  return;
+ }
+}
+
+// Funktion zum Bearbeiten eines bestimmten Subtasks
+function editSubtask(subtaskId) {
+  let subtaskElement = document.getElementById(subtaskId);
+  if (subtaskElement) {
+    let subtaskTextElement = subtaskElement.querySelector('.fontSubtask');
+    let subtaskText = subtaskTextElement.innerText;
+    
+    // Erzeuge ein Eingabefeld für die Bearbeitung
+    let editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.value = subtaskText; // Setze den aktuellen Text als Standardwert im Eingabefeld
+    editInput.classList.add('editInput');
+
+    // Ersetze den Text durch das Eingabefeld
+    subtaskTextElement.innerHTML = ''; // Entferne den bestehenden Text
+    subtaskTextElement.appendChild(editInput); // Füge das Eingabefeld hinzu
+
+    // Fokus auf das Eingabefeld setzen
+    editInput.focus();
+
+    // Funktion, um mit Enter zu bestätigen
+    editInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        let editedSubtask = editInput.value.trim();
+        if (editedSubtask !== '') {
+          subtaskTextElement.innerText = editedSubtask;
+        }
+      }
+    });
+
+    editInput.addEventListener('blur', function() {
+      saveEditedSubtask(subtaskTextElement, editInput, subtaskId);
+    });
+  }
+}
+
+// Hilfsfunktion, um die bearbeiteten Subtask-Änderungen zu speichern
+function saveEditedSubtask(subtaskTextElement, editInput, subtaskId) {
+  let editedSubtask = editInput.value.trim();
+  if (editedSubtask !== '') {
+    subtaskTextElement.innerText = editedSubtask;
+  }
 }
 
 function validateForm() {

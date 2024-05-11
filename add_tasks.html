@@ -12,6 +12,7 @@
     <script src="js/script.js"></script>
     <script src="js/add_tasks.js"></script>
     <script defer src="js/template.js"></script>
+    <script defer src="js/generateHTML.js"></script>
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -161,7 +162,7 @@
 
                   <div style="margin-top: 16px; position: relative">
                     <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                      >Subtasks</label
+                      >Subtasks <span id="textSubtask">Please enter a text</span></label
                     ><br />
                     <input
                       id="subtask"

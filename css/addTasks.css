@@ -282,7 +282,7 @@ select,
 }
 
 .unset-display {
-  display: unset;
+  display: unset!important;
 }
 
 .none-display {
@@ -309,7 +309,13 @@ select,
 
 .iconSubtask:hover {
   cursor: pointer;
-  filter: invert(53%) sepia(90%) saturate(655%) hue-rotate(165deg) brightness(94%) contrast(88%);
+  filter: invert(53%) sepia(90%) saturate(655%) hue-rotate(165deg)
+    brightness(94%) contrast(88%);
+}
 
-
+#textSubtask {
+  color: red;
+  font-size: 16px;
+  margin-left: 20px;
+  display: none;
 }
