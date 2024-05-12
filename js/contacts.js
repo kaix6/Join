@@ -11,15 +11,6 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
 
 
 /**
- * This function fetches the contacts data from 'contacts.json'.
- */
-/* async function initJSONContacts() {
-    let response = await fetch('./js/contacts.json');
-    contacts = await response.json();
-} */
-
-
-/**
  * This function loads contacts data by calling the loadData function with the 'contacts' path.
  * It then converts the data into an array of key-value pairs and logs the first contact's name.
  * Finally, it calls the render function to render the contacts data on the UI. 
