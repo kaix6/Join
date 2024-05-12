@@ -123,3 +123,10 @@ function loadContacts() {
         contacts = JSON.parse(contactsAsText);
     }
 }
+
+
+function setReferrer(container) {
+    document.querySelector(container).href = document.referrer;
+}
+
+
