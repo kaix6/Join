@@ -23,7 +23,7 @@ function getDivHeight(){
 }
 
 function changeTaskBoxHeight(height){
-    if (height < 0) {
+    if (height < -1) {
         var r = document.querySelector(':root');
         let newHeight = 'calc(100% - 80px - 83px)';
         r.style.setProperty('--height', newHeight);

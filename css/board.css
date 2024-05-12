@@ -178,7 +178,6 @@
         background-image: url("/assets/img/board/plus_button.svg" );
         background-repeat: no-repeat;
         cursor: pointer;
-        z-index: -1;
     }
 
     .column-plus-button:hover{
@@ -322,7 +321,8 @@
         transform: translateX(100%);
         transition: all 300ms ease-out;
         height: var(--height);
-        overflow-y: scroll
+        overflow-y: scroll;
+        z-index: 1;
     }
 
     .show-task-box-big {
