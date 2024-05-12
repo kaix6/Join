@@ -134,8 +134,6 @@
   margin-top: 100px;
 }
 
-
-
 .flexEnd {
   display: flex;
   justify-content: flex-end;
@@ -264,10 +262,9 @@ select,
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 16px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  overflow: scroll;
 }
 
 .subtaskAreaContainer {
@@ -277,7 +274,6 @@ select,
 
 .fontSubtask {
   font-size: 12px;
-  font-weight: bold;
 }
 
 #isSelected {
@@ -286,9 +282,40 @@ select,
 }
 
 .unset-display {
-  display: unset;
+  display: unset!important;
 }
 
 .none-display {
+  display: none;
+}
+
+.subtaskGenerate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 8px 5px 8px;
+}
+
+.subtaskGenerate:hover {
+  cursor: pointer;
+  background-color: var(--backgroundSpacer);
+  border-radius: 10px;
+}
+
+.iconSubtask {
+  height: 14px;
+  width: 14px;
+}
+
+.iconSubtask:hover {
+  cursor: pointer;
+  filter: invert(53%) sepia(90%) saturate(655%) hue-rotate(165deg)
+    brightness(94%) contrast(88%);
+}
+
+#textSubtask {
+  color: red;
+  font-size: 16px;
+  margin-left: 20px;
   display: none;
 }

@@ -1,52 +1,52 @@
 // Board
 
-function generateSmallTaskBox(task){
-    return `
+function generateSmallTaskBox(task) {
+  return `
     <div>
-        <div id="task-box-small" class="task-box" onclick="showDialogTask(${task['id']})">
-            <div id="task${task['id']}">
-            <p id="task-category${task['id']}" class="task-type">${task['category']}</p>
-            <p class="task-headline">${task['title']}</p>
-            <p id="task-description${task['id']}" class="task-description">${task['description']}</p>
+        <div id="task-box-small" class="task-box" onclick="showDialogTask(${task["id"]})">
+            <div id="task${task["id"]}">
+            <p id="task-category${task["id"]}" class="task-type">${task["category"]}</p>
+            <p class="task-headline">${task["title"]}</p>
+            <p id="task-description${task["id"]}" class="task-description">${task["description"]}</p>
             </div>
             <div class="member-prio-section">
-                <div id="task-all-member${task['id']}" class="task-all-member">
+                <div id="task-all-member${task["id"]}" class="task-all-member">
                 </div>
-                <img id="taskPrio${task['id']}" src="/assets/img/add_task/prio_low.svg">
+                <img id="taskPrio${task["id"]}" src="/assets/img/add_task/prio_low.svg">
             </div>
         </div>
     </div>
     `;
 }
 
-function generateBigTaskBox(task){
-    return `
+function generateBigTaskBox(task) {
+  return `
     <div class="d-flex-center-space-btw">
-        <p id="task-category${task[0]['id']}" class="task-type">${task[0]['category']}</p>
+        <p id="task-category${task[0]["id"]}" class="task-type">${task[0]["category"]}</p>
         <div class="close-icon" onclick="closeDialogTask()">
             <img src="./assets/img/add_task/close.svg" />
         </div>
     </div>
-    <h2>${task[0]['title']}</h2>
-    <p class="task-description-big">${task[0]['description']}</p>
+    <h2>${task[0]["title"]}</h2>
+    <p class="task-description-big">${task[0]["description"]}</p>
     <div>
         <div class="d-flex">
             <p class="width-30">Due date:</p>
-            <p>${task[0]['due date']}</p>
+            <p>${task[0]["due date"]}</p>
         </div>
         <div class="d-flex">
             <p class="width-30">Priority:</p>
-            <p>${task[0]['prio']}</p>
-            <img id="taskPrioBigBox${task[0]['id']}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
+            <p>${task[0]["prio"]}</p>
+            <img id="taskPrioBigBox${task[0]["id"]}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
         </div>
         <div>
             <p class="margin-top-16px">Assigned To:</p>
         <div id="container-member-big-task" class="container-member-big-task">
         </div>
         <div>
-            <div id="subtaks-headline${task[0]['id']}">
+            <div id="subtaks-headline${task[0]["id"]}">
             </div>
-        <div id="subtasks${task[0]['id']}" class="container-subtasks">
+        <div id="subtasks${task[0]["id"]}" class="container-subtasks">
         </div>
         </div>
         <div class="container-delete-edit">
@@ -67,23 +67,23 @@ function generateBigTaskBox(task){
     `;
 }
 
-function generateSubtasksHeadline(){
-    return`
+function generateSubtasksHeadline() {
+  return `
     <p class="margin-top-16px">Subtasks</p>
-    `
+    `;
 }
 
-function generateSubtasksSectionBigTask(task){
-    return`
+function generateSubtasksSectionBigTask(task) {
+  return `
     <div class="subtasks">
-        <div id="subtask-checkbox${task['id']}" class="subtask-checkbox" onclick="checkUncheckBox(${task['id']})"></div>
-        <p>${task['description']}</p>
+        <div id="subtask-checkbox${task["id"]}" class="subtask-checkbox" onclick="checkUncheckBox(${task["id"]})"></div>
+        <p>${task["description"]}</p>
     </div>
-    `
+    `;
 }
 
-function generateSubtasksSection(){
-    return`
+function generateSubtasksSection() {
+  return `
     <div class="progress-section">
         <div class="progress">
             <div class="progress-bar" style="width: 50%;"></div>
@@ -93,13 +93,14 @@ function generateSubtasksSection(){
     `;
 }
 
-function generateMemberTaskBox(member, memberId){
-    return`
+function generateMemberTaskBox(member, memberId) {
+  return `
     <div id="${memberId}" class="member">
         ${member}
     </div>
     `;
 }
+
 
 function generateNoTaskBox(sentence){
     return `
@@ -108,84 +109,97 @@ function generateNoTaskBox(sentence){
     </div>`;
 }
 
-function generateMemberBigTaskBox(member){
-    return`
+function generateMemberBigTaskBox(member) {
+  return `
     <div class="container-letters-name">
-        <div id="member-letter-cirlce${member['id']}" class="member-big-task">${member['letters']}</div>
-        <p>${member['name']}</p>
+        <div id="member-letter-cirlce${member["id"]}" class="member-big-task">${member["letters"]}</div>
+        <p>${member["name"]}</p>
     </div>
     `;
 }
 
-
 // Contacts
 
 function generateContactsInnerHTML(contact, i) {
-    return /* HTML */ `
-        <div class="letter_content">
-                <div onclick="toggleContactView(${i})" id="contact${i}" class="contact pointer"> <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
-                    <div id="short_name${i}" class="short_name round_div">
-                        <p class="short_name_text">${contact.letters}</p>
-                    </div>
-                    <div class="name_data flex_dir_c">
-                        <p class="contact_fullName">${contact.name}</p>
-                        <p class="contact_mail">${contact.mail}</p>
-                    </div>
-                </div>
-        </div>`;
+  return /* HTML */ ` <div class="letter_content">
+    <div
+      onclick="toggleContactView(${i})"
+      id="contact${i}"
+      class="contact pointer"
+    >
+      <!-- Vergabe einer ID für JavaScript, wenn in JS gerendert wird -->
+      <div id="short_name${i}" class="short_name round_div">
+        <p class="short_name_text">${contact.letters}</p>
+      </div>
+      <div class="name_data flex_dir_c">
+        <p class="contact_fullName">${contact.name}</p>
+        <p class="contact_mail">${contact.mail}</p>
+      </div>
+    </div>
+  </div>`;
 }
 
-
 function generateLettersInnerHTML(i, letter) {
-    return /* HTML */ `
-    <div id="letter_names${i}" class="letter_names">
-        <p class="head_letters">${letter}</p>
+  return /* HTML */ ` <div id="letter_names${i}" class="letter_names">
+      <p class="head_letters">${letter}</p>
     </div>
     <div class="horizontal_line_content">
-        <div class="horizontal_line"></div>
+      <div class="horizontal_line"></div>
     </div>`;
 }
 
-
 function generateFloatingContactInnerHTML(i) {
-    return /* HTML */ `
-        <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
-            <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon">
+  return /* HTML */ ` <div
+      onclick="showContactOptions(${i})"
+      class="add_change_btn_mobile hide_desktop pointer"
+    >
+      <img
+        class="add_person_more_icon"
+        src="assets/img/contacts/more_vert.svg"
+        alt="add person icon"
+      />
+    </div>
+    <div class="head_floating_content">
+      <div id="short_name_overview${i}" class="short_name_overview round_div">
+        <p class="short_name_text_overview">${sortedContacts[i].letters}</p>
+      </div>
+      <div class="name_editable_content">
+        <h3 class="name_overview">${sortedContacts[i].name}</h3>
+        <div class="editable_content">
+          <div onclick="editContact(event, ${i})" class="edit_content pointer">
+            <img
+              class="contact_edit_icon img_width24"
+              src="assets/img/contacts/edit.svg"
+              alt="edit icon"
+            />
+            <p>Edit</p>
+          </div>
+          <div onclick="deleteContact(${i})" class="delete_content pointer">
+            <img
+              class="contact_delete_icon img_width24"
+              src="assets/img/contacts/delete.svg"
+              alt="delete icon"
+            />
+            <p>Delete</p>
+          </div>
         </div>
-        <div class="head_floating_content">
-            <div id="short_name_overview${i}" class="short_name_overview round_div">
-                <p class="short_name_text_overview">${sortedContacts[i].letters}</p>
-            </div>
-        <div class="name_editable_content">
-            <h3 class="name_overview">${sortedContacts[i].name}</h3>
-            <div class="editable_content">
-                <div onclick="editContact(event, ${i})" class="edit_content pointer">
-                    <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
-                    <p>Edit</p>
-                </div>
-                <div onclick="deleteContact(${i})" class="delete_content pointer">
-                    <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
-                    <p>Delete</p>
-                </div>
-            </div>
-        </div>
-        </div>
-        <p class="text_information">Contact Information</p>
-        <div class="contact_information">
-            <div class="contact_overview_mail">
-                <h4>Email</h4>
-                <p class="overview_mail">${sortedContacts[i].mail}</p>
-            </div>
-            <div class="contact_overview_phone">
-                <h4>Phone</h4>
-                <p>${sortedContacts[i].phone}</p>
-            </div>
-        </div>`;
+      </div>
+    </div>
+    <p class="text_information">Contact Information</p>
+    <div class="contact_information">
+      <div class="contact_overview_mail">
+        <h4>Email</h4>
+        <p class="overview_mail">${sortedContacts[i].mail}</p>
+      </div>
+      <div class="contact_overview_phone">
+        <h4>Phone</h4>
+        <p>${sortedContacts[i].phone}</p>
+      </div>
+    </div>`;
 }
 
-
 function generateContactOptionsInnerHTML(i) {
-    return /*HTML*/ `
+  return /*HTML*/ `
         <div onclick="editContact(event, ${i})" class="edit_content pointer">
             <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
             <p>Edit</p>
@@ -196,9 +210,8 @@ function generateContactOptionsInnerHTML(i) {
         </div> `;
 }
 
-
 function generateDialoEditInnerHTML(index) {
-    return /* HTML */`
+  return /* HTML */ `
         <div onclick="doNotClose(event)" class="dialog_edit_contact">
             <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
                 <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
@@ -237,3 +250,34 @@ function generateDialoEditInnerHTML(index) {
     </div>
     `;
 }
+
+// addTasks
+function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
+  return /* HTML */ `
+    <div id="${subtaskId}" class="subtaskGenerate">
+      <p class="fontSubtask">- ${subtaskValue}</p>
+      <div>
+        <img
+          onclick="editSubtask('${subtaskId}')"
+          class="iconSubtask"
+          src="assets/img/add_task/edit.svg"
+        />
+        |
+        <img
+          onclick="removeSubtask('${subtaskId}')"
+          class="iconSubtask"
+          src="assets/img/add_task/delete.svg"
+        />
+      </div>
+    </div>
+  `;
+}
+
+function generateAssignedToFirst() {
+  return /* HTML */ `
+    "<option disabled selected>select contacts to assign</option>"
+  `;
+}
+
+
+

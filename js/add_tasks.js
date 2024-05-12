@@ -2,19 +2,24 @@ let selectUsers = [];
 let selectUsersColor = [];
 let selectedPrio;
 
-// Funktion für einfärben der Prio-Buttons
+let subtaskIdCounter = 0;
+
+/**
+ * Changes the highlighting color and appearance of the priority button based on the provided priority.
+ * @param {string} prio - The priority of the button ("urgent", "medium", or "low").
+ * @param {Event} event - The event object that triggered the call.
+ * @returns {void}
+ */
 function addPrioButtonColor(prio, event) {
-  event.preventDefault(); // Verhindert das Standardverhalten des Buttons
+  event.preventDefault(); // Prevents the default behavior of the button
 
   let buttonUrgent = document.getElementById("buttonUrgent");
   let buttonMedium = document.getElementById("buttonMedium");
   let buttonLow = document.getElementById("buttonLow");
-
   let imgUrgent = document.getElementById("buttonImg1");
   let imgMedium = document.getElementById("buttonImg2");
   let imgLow = document.getElementById("buttonImg3");
-  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);
-
+  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);  // Remove existing classes to clear previous highlights
   if (prio === "urgent") {
     buttonUrgent.classList.add("backgroundColorRed", "fontWeightAndColor");
     imgUrgent.classList.add("imgColor");
@@ -30,13 +35,26 @@ function addPrioButtonColor(prio, event) {
   }
 }
 
-// Funktion fürs initiieren
+/**
+ * Initializes the process of adding tasks.
+ * @returns {void}
+ */
 function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
   initJSONaddTasks();
 }
-// Funktion für entfernen der Farbe für die Prio-Buttons
+
+/**
+ * Removes the highlighting classes from priority buttons and their images.
+ * @param {HTMLElement} buttonUrgent - The urgent priority button element.
+ * @param {HTMLElement} buttonMedium - The medium priority button element.
+ * @param {HTMLElement} buttonLow - The low priority button element.
+ * @param {HTMLElement} imgUrgent - The image associated with the urgent priority button.
+ * @param {HTMLElement} imgMedium - The image associated with the medium priority button.
+ * @param {HTMLElement} imgLow - The image associated with the low priority button.
+ * @returns {void}
+ */
 function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
   const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor"];
   const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow];
@@ -50,7 +68,10 @@ function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedi
   }
 }
 
-// Funktion für neu laden der Seite (zum Clearen)
+/**
+ * Reloads the page to clear the content.
+ * @returns {void}
+ */
 function reloadPage() {
   location.reload();
 }
@@ -60,9 +81,9 @@ async function renderContactsInAddTasks() {
   let response = await fetch("./js/contacts.json");
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
+  let MembersArea = document.getElementById('selectedMembers');
 
-  assignedTo.innerHTML =
-    "<option disabled selected>select contacts to assign</option>";
+  assignedTo.innerHTML = generateAssignedToFirst();
 
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
@@ -79,6 +100,7 @@ async function renderContactsInAddTasks() {
       (contact) => contact.letters === selectedName
     );
     pushMembers(selectedContact);
+    MembersArea.classList.remove('selectedMembersNone');
     renderContactsInAddTasks();
   };
 }
@@ -103,7 +125,10 @@ function pushMembers(contact) {
   renderPushedMembers();
 }
 
-// Funktion zum rendern der ausgewählten Users unterhalb "Assigned To"
+/**
+ * Renders the selected users below the "Assigned To" section.
+ * @returns {void}
+ */
 function renderPushedMembers() {
   selectMembersArea = document.getElementById("selectedMembers");
   selectMembersArea.innerHTML = "";
@@ -156,11 +181,76 @@ async function saveTaskToJson(
 
 // Funktion für hinzufügen neuer Subtasks
 function addNewSubtask() {
-  subtask = document.getElementById("subtask").value;
-  subtaskArea = document.getElementById("subtaskArea");
+  let subtaskValue = document.getElementById("subtask").value;
+  let subtaskText = document.getElementById('textSubtask');
+  let subtaskArea = document.getElementById("subtaskArea");
+  let subtaskId = 'subtask_' + subtaskIdCounter++; // Erzeugen einer individuellen ID für generierte Subtask
 
-  subtaskArea.innerHTML += `<p class="fontSubtask">- ${subtask}</p>`;
-  console.log("Neue Aufgabe hinzugefügt!");
+  if (subtaskValue === '') {
+    subtaskText.classList.add('unset-display');
+    return;
+  } 
+
+  subtaskText.classList.remove('unset-display');
+
+
+  subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
+  subtaskArea.classList.remove('subtaskAreaNone')
+  document.getElementById("subtask").value = '';
+}
+
+function removeSubtask(subtaskId){
+let subtaskToRemove = document.getElementById(subtaskId);
+ if (subtaskToRemove) {
+   subtaskToRemove.remove();
+   console.log('subtask entfernt')
+ } else {
+  return;
+ }
+}
+
+// Funktion zum Bearbeiten eines bestimmten Subtasks
+function editSubtask(subtaskId) {
+  let subtaskElement = document.getElementById(subtaskId);
+  if (subtaskElement) {
+    let subtaskTextElement = subtaskElement.querySelector('.fontSubtask');
+    let subtaskText = subtaskTextElement.innerText;
+    
+    // Erzeuge ein Eingabefeld für die Bearbeitung
+    let editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.value = subtaskText; // Setze den aktuellen Text als Standardwert im Eingabefeld
+    editInput.classList.add('editInput');
+
+    // Ersetze den Text durch das Eingabefeld
+    subtaskTextElement.innerHTML = ''; // Entferne den bestehenden Text
+    subtaskTextElement.appendChild(editInput); // Füge das Eingabefeld hinzu
+
+    // Fokus auf das Eingabefeld setzen
+    editInput.focus();
+
+    // Funktion, um mit Enter zu bestätigen
+    editInput.addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        let editedSubtask = editInput.value.trim();
+        if (editedSubtask !== '') {
+          subtaskTextElement.innerText = editedSubtask;
+        }
+      }
+    });
+
+    editInput.addEventListener('blur', function() {
+      saveEditedSubtask(subtaskTextElement, editInput, subtaskId);
+    });
+  }
+}
+
+// Hilfsfunktion, um die bearbeiteten Subtask-Änderungen zu speichern
+function saveEditedSubtask(subtaskTextElement, editInput, subtaskId) {
+  let editedSubtask = editInput.value.trim();
+  if (editedSubtask !== '') {
+    subtaskTextElement.innerText = editedSubtask;
+  }
 }
 
 function validateForm() {
@@ -175,11 +265,8 @@ function validateForm() {
   if (title === "" || date === "" || category === "") {
       return false; // Verhindert das Standardverhalten des Formulars
   }
-  // Wenn die Validierung erfolgreich ist, rufe die Funktion zur Speicherung des Tasks auf
   saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks);
-  // Gib false zurück, um das Standardverhalten des Formulars zu unterdrücken
   return false;
-
 }
 
 async function initJSONaddTasks() {
