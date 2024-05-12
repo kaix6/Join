@@ -92,6 +92,24 @@
   .activeLink {
     border-radius: 16px;
   }
+
+  .wrapped_maxWidth {
+    flex-direction: column;
+}
+
+  /* Scrollbar */
+  
+  ::-webkit-scrollbar {
+      width: 4px;
+    }
+  
+  ::-webkit-scrollbar-thumb {
+      border-radius: 4px;
+    }
+  
+  #main_container {
+      height: calc(100vh - 80px - 83px);
+  }
 }
 
 /* Contacts - Dialog add & edit Contact */
