@@ -33,9 +33,7 @@ async function login() {
 
 function setLastVisitedPage(Id) {
     localStorage.setItem('lastVisitedPage', window.location.href);
-    document.getElementById("profileHeader").classList.add("d_none");
-    document.getElementById("side_menu_desktop").classList.add("d_none");
-    document.getElementById("side_menu").classList.add("d_none");
+
 }
 
 function goBack() {
