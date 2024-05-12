@@ -5,10 +5,6 @@ async function initLogin() {
 }
 
 
-/* loadContacts(); */
-/* load('tasks'); */
-
-
 /**
  * This async function includes HTML content into elements with the 'w3-include-html' attribute.
  */
@@ -111,7 +107,7 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
 }
 
 
-function saveContacts() {
+/* function saveContacts() {
     let contactsAsText = JSON.stringify(contacts);
     localStorage.setItem('contacts', contactsAsText);
 }
@@ -122,7 +118,7 @@ function loadContacts() {
     if (contactsAsText) {
         contacts = JSON.parse(contactsAsText);
     }
-}
+} */
 
 
 function setReferrer(container) {
