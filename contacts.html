@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/template.css">
     <link rel="stylesheet" href="./css/mediaQuery.css">
     <link rel="stylesheet" href="./css/fonts.css">
-    <script src="js/script.js"></script>
+    <script defer src="js/script.js"></script>
     <script defer src="js/template.js"></script>
     <script defer src="js/contacts.js"></script>
     <script defer src="js/generateHTML.js"></script>
@@ -48,7 +48,7 @@
                     <label for="telNumber"></label>
                     <input class="create_contact_input" type="tel" id="telNumber" pattern="\d*" placeholder="Phone" required>
                     <div class="container_button">
-                        <button class="cancel_create_contact_btn contact_btn pointer">
+                        <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>

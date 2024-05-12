@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Join</title>
-    <script src="js/script.js"></script>
+    <script defer src="js/script.js"></script>
     <script defer src="js/template.js"></script>
     <script src="./js/login.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg">
@@ -33,7 +33,9 @@
                 <div class="content">
                     <div class="h1-container">
                         <h1 class="margin-bottom-32px">Privacy Policy</h1>
-                        <a onclick="goBack()" class="arrow-left pointer">
+
+                        <a onclick="setReferrer('.referrer_privacy');"  href="" class="referrer_privacy arrow-left pointer">
+
                             <img src="/assets/img/general/arrow_left_line.svg">
                         </a>
                     </div>
