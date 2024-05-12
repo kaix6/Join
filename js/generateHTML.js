@@ -161,10 +161,10 @@ function generateFloatingContactInnerHTML(i) {
     </div>
     <div class="head_floating_content">
       <div id="short_name_overview${i}" class="short_name_overview round_div">
-        <p class="short_name_text_overview">${sortedContacts[i].letters}</p>
+        <p class="short_name_text_overview">${sortedContacts[i][1].letters}</p>
       </div>
       <div class="name_editable_content">
-        <h3 class="name_overview">${sortedContacts[i].name}</h3>
+        <h3 class="name_overview">${sortedContacts[i][1].name}</h3>
         <div class="editable_content">
           <div onclick="editContact(event, ${i})" class="edit_content pointer">
             <img
@@ -174,7 +174,7 @@ function generateFloatingContactInnerHTML(i) {
             />
             <p>Edit</p>
           </div>
-          <div onclick="deleteContact(${i})" class="delete_content pointer">
+          <div onclick="deleteContact(event, ${i})" class="delete_content pointer">
             <img
               class="contact_delete_icon img_width24"
               src="assets/img/contacts/delete.svg"
@@ -189,11 +189,11 @@ function generateFloatingContactInnerHTML(i) {
     <div class="contact_information">
       <div class="contact_overview_mail">
         <h4>Email</h4>
-        <p class="overview_mail">${sortedContacts[i].mail}</p>
+        <p class="overview_mail">${sortedContacts[i][1].mail}</p>
       </div>
       <div class="contact_overview_phone">
         <h4>Phone</h4>
-        <p>${sortedContacts[i].phone}</p>
+        <p>${sortedContacts[i][1].phone}</p>
       </div>
     </div>`;
 }
@@ -204,7 +204,7 @@ function generateContactOptionsInnerHTML(i) {
             <img class="contact_edit_icon img_width24" src="assets/img/contacts/edit.svg" alt="edit icon">
             <p>Edit</p>
         </div>
-        <div onclick="deleteContact(${i})" class="delete_content pointer">
+        <div onclick="deleteContact(event, ${i})" class="delete_content pointer">
             <img class="contact_delete_icon img_width24" src="assets/img/contacts/delete.svg" alt="delete icon">
             <p>Delete</p>
         </div> `;
@@ -225,7 +225,7 @@ function generateDialoEditInnerHTML(index) {
             </div>
         </div>
         <div id="create_contact_short_name_edit${index}" class="create_contact_short_name_edit round_div">
-            <p class="short_name_text_overview_edit">${sortedContacts[index].letters}</p>
+            <p class="short_name_text_overview_edit">${sortedContacts[index][1].letters}</p>
         </div>
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">

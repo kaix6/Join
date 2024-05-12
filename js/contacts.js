@@ -8,15 +8,19 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
     'var(--tagYellow)', 'var(--tagBlue)', 'var(--tagGreen)',
     'var(--taglightYellow)', 'var(--tagRed)', 'var(--tagMediumYellow)',
 ]
-loadContacts();
 
 
 /**
- * This function fetches the contacts data from 'contacts.json'.
+ * This function loads contacts data by calling the loadData function with the 'contacts' path.
+ * It then converts the data into an array of key-value pairs and logs the first contact's name.
+ * Finally, it calls the render function to render the contacts data on the UI. 
  */
-async function initJSONContacts() {
-    let response = await fetch('./js/contacts.json');
-    contacts = await response.json();
+async function loadContacts() {
+    contacts = Object.entries(await loadData('contacts'));
+    console.log(contacts);
+    console.log(contacts[0][0]);
+    console.log(contacts[0][1].name);
+    renderContacts();
 }
 
 
@@ -30,7 +34,7 @@ async function initJSONContacts() {
 async function renderContacts(filter) {
     // die initial contact soll nur einmal initial geladen werden
     if (contacts.length <= 1) {
-        await initJSONContacts();
+        initialLoadContactsFirebase();
     }
     let contentContacts = document.querySelector('.contacts');
     sortedContacts = sortArray(contacts);
@@ -38,7 +42,7 @@ async function renderContacts(filter) {
     let prevLetter = null;
 
     for (let i = 0; i < sortedContacts.length; i++) {
-        const contact = sortedContacts[i];
+        const contact = sortedContacts[i][1];
         let firstLetter = contact['name'].charAt(0);
 
         if (!filter || filter == firstLetter) {
@@ -97,7 +101,7 @@ function toggleContactView(i) {
     }
     if (typeIsDefined(i)) {
         renderFloatingContact(i);
-        changeColorContact('#short_name_overview', i, sortedContacts[i].color);
+        changeColorContact('#short_name_overview', i, sortedContacts[i][1].color);
     }
     if (!currentElementWidth(1110)) {
         showActiveContact();
@@ -202,19 +206,19 @@ function capitalize(string) {
  * the new contact object to the 'contacts' array. After adding the contact, it triggers the rendering
  * of the updated contacts list, closes the add contact dialog, and shows a confirmation message.
  */
-function addContact() {
+async function addContact() {
     let fullName = document.querySelector('#fullName');
     let mail = document.querySelector('#mail');
     let telNumber = document.querySelector('#telNumber');
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
-    contacts.push({ name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters });
-    renderContacts();
+    await postData(`contacts`, { name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters });
+    contacts = Object.entries(await loadData('contacts'));
+    await renderContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
     showCreateContactDoneShort();
-    saveContacts();
     fullName.value = '';
     mail.value = '';
     telNumber.value = '';
@@ -257,7 +261,7 @@ function editContact(event, index) {
     }
     let dialogEditContact = document.querySelector('.dialog_edit_contact_bg');
     dialogEditContact.innerHTML = generateDialoEditInnerHTML(index);
-    changeColorContact('#create_contact_short_name_edit', index, sortedContacts[index].color);
+    changeColorContact('#create_contact_short_name_edit', index, sortedContacts[index][1].color);
     showSavedData(index);
 }
 
@@ -267,9 +271,9 @@ function editContact(event, index) {
  * @param {number} index - The index of the contact whose data to display.
  */
 function showSavedData(index) {
-    document.querySelector('#fullName_edit').value = `${sortedContacts[index].name}`;
-    document.querySelector('#mail_edit').value = `${sortedContacts[index].mail}`;
-    document.querySelector('#telNumber_edit').value = `${sortedContacts[index].phone}`;
+    document.querySelector('#fullName_edit').value = `${sortedContacts[index][1].name}`;
+    document.querySelector('#mail_edit').value = `${sortedContacts[index][1].mail}`;
+    document.querySelector('#telNumber_edit').value = `${sortedContacts[index][1].phone}`;
 }
 
 
@@ -277,18 +281,15 @@ function showSavedData(index) {
  * This function saves the edited data for the specified contact in the contacts array
  * @param {number} index - The index of the contact whose data has been edited.
  */
-function saveNewData(index) {
+async function saveNewData(index) {
     let newName = document.querySelector('#fullName_edit');
     let newMail = document.querySelector('#mail_edit');
     let newTelNumber = document.querySelector('#telNumber_edit');
     let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
 
-    contacts[currentIndex].name = newName.value;
-    contacts[currentIndex].mail = newMail.value;
-    contacts[currentIndex].phone = newTelNumber.value;
-    contacts[currentIndex].letters = getContactsInitials(newName.value);
-    saveContacts();
-    renderContacts();
+    await editData(`contacts/${contacts[currentIndex][0]}`, {name: newName.value, mail: newMail.value, phone: newTelNumber.value, letters: getContactsInitials(newName.value)});
+    contacts = Object.entries(await loadData('contacts'));
+    await renderContacts();
     closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
 }
@@ -298,10 +299,11 @@ function saveNewData(index) {
  * This function deletes the specified contact from the array 'contacts' based on the provided index.
  * @param {number} index - The index of the contact to delete.
  */
-function deleteContact(index) {
-    contacts.splice(contacts.findIndex(contact => contact === sortedContacts[index]), 1);
+async function deleteContact(event, index) {
+    let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
+    await deleteData(`contacts/${contacts[currentIndex][0]}`);
+    contacts = Object.entries(await loadData('contacts'));
     renderContacts();
-    saveContacts();
     if (currentElementWidth(1110)) {
         showContactMobile();
         closeContactOptions(event);
@@ -341,7 +343,7 @@ function showContactDesktop() {
  * @returns {boolean} - Returns true if the name of 'a' comes after the name of 'b' alphabetically, otherwise false.
  */
 function nameIsGreaterThan(a, b) {
-    return a.name < b.name;
+    return a[1].name < b[1].name;
 }
 
 
@@ -352,7 +354,7 @@ function nameIsGreaterThan(a, b) {
  * @returns {boolean} - Returns true if the name of 'a' comes before the name of 'b' alphabetically, otherwise false.
  */
 function nameIsLessThan(a, b) {
-    return a.name > b.name;
+    return a[1].name > b[1].name;
 }
 
 

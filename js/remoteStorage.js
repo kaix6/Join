@@ -6,7 +6,7 @@ const BASE_URL = 'https://join-156-default-rtdb.europe-west1.firebasedatabase.ap
  * After posting all contacts, it loads the contacts data again from Firebase. 
  */
 async function initialLoadContactsFirebase() {
-    let response = await fetch('contacts.json');
+    let response = await fetch('./js/contacts.json');
     contacts = await response.json();
 
     for (let i = 0; i < contacts.length; i++) {
