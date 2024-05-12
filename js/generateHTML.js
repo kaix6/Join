@@ -101,10 +101,10 @@ function generateMemberTaskBox(member, memberId){
     `;
 }
 
-function generateNoTaskBox(){
+function generateNoTaskBox(sentence){
     return `
     <div class="no-task-div">
-        <p>No tasks To do</p>
+        <p>${sentence}</p>
     </div>`;
 }
 

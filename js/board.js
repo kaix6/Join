@@ -11,7 +11,26 @@ async function showDialogTask(i){
     setPriorityBigTask(currentTask);
     setTaskCategory(currentTask[0]);
     getAllSubtasksBigTask(currentTask);
+    getDivHeight();
 }
+
+function getDivHeight(){
+    let bigTaskBox = document.querySelector('.task-box-big');
+    let viewportWithoutNavi = window.innerHeight - 83;
+    let height = bigTaskBox.offsetHeight;
+    let gapHeight = (viewportWithoutNavi - height);
+    changeTaskBoxHeight(gapHeight);
+}
+
+function changeTaskBoxHeight(height){
+    if (height < -1) {
+        var r = document.querySelector(':root');
+        let newHeight = 'calc(100% - 80px - 83px)';
+        r.style.setProperty('--height', newHeight);
+    }
+};
+
+// wenn die neue Height negativ ist, dann minus fixen Wert --> calc(100% - 80px - 83px)
 
 function getAllMembersBigTask(currentTask){
     let memberContainer = document.getElementById('container-member-big-task');
@@ -112,8 +131,9 @@ function updateOpenTasks(tasks){
             truncateText(openTask);
         };
     } else {
+        let noTaskSentence = 'No tasks To do'
         boardOpenTasks.innerHTML = '';
-        boardOpenTasks.innerHTML = generateNoTaskBox;
+        boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
     };
 }
 
@@ -126,6 +146,9 @@ function updateInProgressTasks(tasks){
     let inProgress = tasks.filter(t => t['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
     boardInProgressTasks.innerHTML = '';
+
+    if (inProgress.length > 0) {
+        boardInProgressTasks.innerHTML = '';
     for (let i = 0; i < inProgress.length; i++) {
         const inProgressTask = inProgress[i];
         boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
@@ -134,6 +157,11 @@ function updateInProgressTasks(tasks){
         setTaskCategory(inProgressTask);
         getAllSubtasks(inProgressTask);
         truncateText(inProgressTask);
+        };
+    } else {
+        let noTaskSentence = 'No tasks in progress'
+        boardInProgressTasks.innerHTML = '';
+        boardInProgressTasks.innerHTML = generateNoTaskBox(noTaskSentence);
     };
 }
 
@@ -146,6 +174,9 @@ function updateAwaitFeedbackTasks(tasks){
     let awaitFeedback = tasks.filter(t => t['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
     boardAwaitFeedbackTasks.innerHTML = '';
+
+    if (awaitFeedback.length > 0) {
+        boardAwaitFeedbackTasks.innerHTML = '';
     for (let i = 0; i < awaitFeedback.length; i++) {
         const awaitFeedbackTask = awaitFeedback[i];
         boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
@@ -154,6 +185,11 @@ function updateAwaitFeedbackTasks(tasks){
         setTaskCategory(awaitFeedbackTask);
         getAllSubtasks(awaitFeedbackTask);
         truncateText(awaitFeedbackTask);
+        };
+    } else {
+        let noTaskSentence = 'No tasks await feedback'
+        boardOpenTasks.innerHTML = '';
+        boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
     };
 }
 
@@ -166,6 +202,9 @@ function updateDoneTasks(tasks){
     let done = tasks.filter(t => t['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
     boardDoneTasks.innerHTML = '';
+
+    if (done.length > 0) {
+        boardDoneTasks.innerHTML = '';
     for (let i = 0; i < done.length; i++) {
         const doneTask = done[i];
         boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
@@ -174,6 +213,11 @@ function updateDoneTasks(tasks){
         setTaskCategory(doneTask);
         getAllSubtasks(doneTask);
         truncateText(doneTask);
+    };
+    } else{
+        let noTaskSentence = 'No tasks Done'
+        boardDoneTasks.innerHTML = '';
+        boardDoneTasks.innerHTML = generateNoTaskBox(noTaskSentence);
     };
 }
 
