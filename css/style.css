@@ -42,23 +42,33 @@ h1{
     border-radius: 8px;
   }
 
-::-webkit-scrollbar-button {
+#content_contacts::-webkit-scrollbar-button {
     display: block;
     background-repeat: no-repeat;
 }
 
 /* Up arrow*/
-::-webkit-scrollbar-button:vertical:start:decrement {
+#content_contacts::-webkit-scrollbar-button:vertical:start:decrement {
     height: 14px;
     background-position: center -1px;
     background-image: url("../assets/img/general/arrow_up_grey.png");
 }
 
 /* Down arrow*/
-::-webkit-scrollbar-button:vertical:end:increment {
+#content_contacts::-webkit-scrollbar-button:vertical:end:increment {
     height: 14px;
     background-position: center -7px;
     background-image: url("../assets/img/general/arrow_down_grey.png");
+}
+
+.task-box-big::-webkit-scrollbar-button:vertical:start:decrement {
+    height: 32px;
+    background-position: center -1px;
+}
+
+.task-box-big::-webkit-scrollbar-button:vertical:end:increment {
+    height: 32px;
+    background-position: center -7px;
 }
 
 a {

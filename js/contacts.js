@@ -312,6 +312,9 @@ async function deleteContact(event, index) {
         document.querySelector('.floating_contact').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop');
     }
+    if(document.querySelector('.show_dialog_edit_contact')) {
+        closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 0);
+    }
 }
 
 
