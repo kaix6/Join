@@ -3,6 +3,7 @@ let selectUsersColor = [];
 let selectedPrio;
 
 let subtaskIdCounter = 0;
+let subtaskArray = [];
 
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
@@ -82,16 +83,12 @@ async function renderContactsInAddTasks() {
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
   let MembersArea = document.getElementById('selectedMembers');
-
-  assignedTo.innerHTML = generateAssignedToFirst();
-
+  assignedTo.innerHTML = generateAssignedToFirst(); // Platzhalter
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     let name = contact.name;
     let letters = contact.letters;
-    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(
-      contact
-    )})" value="${letters}">${name}</option>`;
+    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(contact)})" value="${letters}">${name}</option>`;
   }
 
   assignedTo.onchange = function () {
@@ -148,8 +145,7 @@ async function saveTaskToJson(
   date,
   prio,
   category,
-  assignedTo,
-  subtasks
+  assignedTo
 ) {
 
 
@@ -161,7 +157,7 @@ async function saveTaskToJson(
     prio: prio,
     category: category,
     "assigned member": assignedTo,
-    subtask: subtasks,
+    subtask: subtaskArray,
   };
 
   tasks.push(newTask);
@@ -177,6 +173,7 @@ async function saveTaskToJson(
 
   console.log("Task erfolgreich hinzugefügt.");
   console.log(tasks);
+  console.log(subtaskArray);
 }
 
 // Funktion für hinzufügen neuer Subtasks
@@ -197,6 +194,7 @@ function addNewSubtask() {
   subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
   subtaskArea.classList.remove('subtaskAreaNone')
   document.getElementById("subtask").value = '';
+  subtaskArray.push(subtaskValue);
 }
 
 function removeSubtask(subtaskId){
@@ -260,12 +258,11 @@ function validateForm() {
   let date = document.getElementById("date").value;
   let prio = selectedPrio;
   let category = document.getElementById("category").value;
-  let subtasks = document.getElementById("subtask").value;
 
   if (title === "" || date === "" || category === "") {
       return false; // Verhindert das Standardverhalten des Formulars
   }
-  saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks);
+  saveTaskToJson(title, description, date, prio, category, assignedTo);
   return false;
 }
 
