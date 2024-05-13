@@ -3,6 +3,7 @@ let selectUsersColor = [];
 let selectedPrio;
 
 let subtaskIdCounter = 0;
+let subtaskArray = [];
 
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
@@ -161,7 +162,7 @@ async function saveTaskToJson(
     prio: prio,
     category: category,
     "assigned member": assignedTo,
-    subtask: subtasks,
+    subtask: subtaskArray,
   };
 
   tasks.push(newTask);
@@ -177,6 +178,7 @@ async function saveTaskToJson(
 
   console.log("Task erfolgreich hinzugefügt.");
   console.log(tasks);
+  console.log(subtaskArray);
 }
 
 // Funktion für hinzufügen neuer Subtasks
@@ -197,6 +199,7 @@ function addNewSubtask() {
   subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
   subtaskArea.classList.remove('subtaskAreaNone')
   document.getElementById("subtask").value = '';
+  subtaskArray.push(subtaskValue);
 }
 
 function removeSubtask(subtaskId){
