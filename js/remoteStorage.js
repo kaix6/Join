@@ -1,4 +1,4 @@
-const BASE_URL = 'https://join-156-default-rtdb.europe-west1.firebasedatabase.app/'; 
+const BASE_URL = 'https://join-156-default-rtdb.europe-west1.firebasedatabase.app/';
 
 /**
  * This function initializes Firebase by first fetching contacts data from a JSON file.
@@ -11,11 +11,32 @@ async function initialLoadContactsFirebase() {
 
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-        postData('contacts', {name: contact.name, mail: contact.mail, phone: contact.phone, color: contact.color, letters: contact.letters});
+        postData('contacts', { name: contact.name, mail: contact.mail, phone: contact.phone, color: contact.color, letters: contact.letters });
     }
     await loadData('contacts');
 }
 
+async function initialLoadUsersFirebase() {
+    let response = await fetch('./js/users.json');
+    users = await response.json();
+
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        postData('users', { name: user.name, mail: user.mail, password: user.password });
+    }
+    await loadData('users');
+}
+
+async function initialLoadTasksFirebase() {
+    let response = await fetch('./js/addTasks.json');
+    tasks = await response.json();
+
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        postData('tasks', { id: task.id, title: task.title, description: task.description, "due date": task["due date"], prio: task.prio, category: task.category, "assigned member": task["assigned member"], subtask: task.subtask });
+    }
+    await loadData('tasks');
+}
 
 /**
  * This function loads data from the specified path using a fetch request.
@@ -24,7 +45,7 @@ async function initialLoadContactsFirebase() {
  * @param {string} path - The path from which to load the data.
  * @returns {Promise} - A Promise object that resolves to the loaded data.
  */
-async function loadData(path='') {
+async function loadData(path = '') {
     let response = await fetch(BASE_URL + path + '.json');
     return data = await response.json();
 }
@@ -38,7 +59,7 @@ async function loadData(path='') {
  * @param {object} data - The data to be posted.
  * @returns {Promise} - A Promise object that resolves to the response data.
  */
-async function postData(path='', data={}) {
+async function postData(path = '', data = {}) {
     let response = await fetch(BASE_URL + path + '.json', {
         method: 'POST',
         header: {
@@ -58,7 +79,7 @@ async function postData(path='', data={}) {
  * @param {object} data - The data with which to edit.
  * @returns {Promise} - A Promise object that resolves to the response data.
  */
-async function editData(path='', data={}) {
+async function editData(path = '', data = {}) {
     let response = await fetch(BASE_URL + path + '.json', {
         method: 'PATCH',
         header: {
@@ -78,9 +99,9 @@ async function editData(path='', data={}) {
  * @returns {Promise} - A Promise object that resolves to the response data.
 
  */
-async function deleteData(path='') {
-	let response = await fetch(BASE_URL + path + '.json',{
-		method: "DELETE",
-	});
-	return responseToJSON = await response.json();
+async function deleteData(path = '') {
+    let response = await fetch(BASE_URL + path + '.json', {
+        method: "DELETE",
+    });
+    return responseToJSON = await response.json();
 }

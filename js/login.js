@@ -1,9 +1,9 @@
 let users = [];
 
-async function addUsersJason() {
-    let response = await fetch('./js/users.json');
-    users = await response.json();
-}
+// async function addUsersJason() {
+//     let response = await fetch('./js/users.json');
+//     users = await response.json();
+// }
 
 /**
  * This function is to animat the start page
@@ -19,8 +19,13 @@ function animationWindow() {
  * This function is to checkt for the rigth password 
  */
 
+
+
 async function login() {
-    await addUsersJason();
+    // await addUsersJason();
+    users = Object.entries(await loadData('users'));
+
+    console.log(users);
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let user = users.find(u => u.mail == email.value && u.password == password.value);
