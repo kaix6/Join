@@ -83,16 +83,12 @@ async function renderContactsInAddTasks() {
   let contacts = await response.json();
   let assignedTo = document.getElementById("assignedTo");
   let MembersArea = document.getElementById('selectedMembers');
-
-  assignedTo.innerHTML = generateAssignedToFirst();
-
+  assignedTo.innerHTML = generateAssignedToFirst(); // Platzhalter
   for (let i = 0; i < contacts.length; i++) {
     let contact = contacts[i];
     let name = contact.name;
     let letters = contact.letters;
-    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(
-      contact
-    )})" value="${letters}">${name}</option>`;
+    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(contact)})" value="${letters}">${name}</option>`;
   }
 
   assignedTo.onchange = function () {
@@ -149,8 +145,7 @@ async function saveTaskToJson(
   date,
   prio,
   category,
-  assignedTo,
-  subtasks
+  assignedTo
 ) {
 
 
@@ -263,12 +258,11 @@ function validateForm() {
   let date = document.getElementById("date").value;
   let prio = selectedPrio;
   let category = document.getElementById("category").value;
-  let subtasks = document.getElementById("subtask").value;
 
   if (title === "" || date === "" || category === "") {
       return false; // Verhindert das Standardverhalten des Formulars
   }
-  saveTaskToJson(title, description, date, prio, category, assignedTo, subtasks);
+  saveTaskToJson(title, description, date, prio, category, assignedTo);
   return false;
 }
 
