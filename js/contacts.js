@@ -12,48 +12,55 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
 
 /**
  * This function loads contacts data by calling the loadData function with the 'contacts' path.
- * It then converts the data into an array of key-value pairs and logs the first contact's name.
+ * It then converts the retrieved data into an array of key-value pairs using Object.entries().
  * Finally, it calls the render function to render the contacts data on the UI. 
  */
 async function loadContacts() {
     contacts = Object.entries(await loadData('contacts'));
-    console.log(contacts);
-    console.log(contacts[0][0]);
-    console.log(contacts[0][1].name);
     renderContacts();
 }
 
 
 /**
  * This funcion renders the contacts based on the specified filter.
- * If the contacts have not been initialized yet, it first initializes them by calling the 'initJSONContacts()' function.
- * It then sorts the contacts alphabetically, clears the existing content in the '.contacts' element,
- * and iterates through the sorted contacts array to generate the HTML content.
+ * If the contacts have not been initialized yet, it first initializes them by calling the 'initialLoadContactsFirebase()' function.
+ * It then sorts the contacts alphabetically, clears the existing content in the '.contacts' element, and iterates through the sorted contacts array to generate the HTML content.
  * @param {string|null} filter - The filter letter to render contacts for. If null, all contacts are rendered. 
  */
 async function renderContacts(filter) {
-    // die initial contact soll nur einmal initial geladen werden
-    if (contacts.length <= 1) {
+    if (contacts.length <= 1) { // die initial contact soll nur einmal initial geladen werden
         initialLoadContactsFirebase();
     }
     let contentContacts = document.querySelector('.contacts');
     sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
     let prevLetter = null;
-
+    
     for (let i = 0; i < sortedContacts.length; i++) {
         const contact = sortedContacts[i][1];
         let firstLetter = contact['name'].charAt(0);
-
-        if (!filter || filter == firstLetter) {
-            if (firstLetter !== prevLetter) {
-                contentContacts.innerHTML += generateLettersInnerHTML(i, firstLetter);
-                prevLetter = firstLetter;
-            }
-            contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
-            changeColorContact('#short_name', i, contact.color);
-        }
+        prevLetter = generateLetterIfNeeded(contentContacts, i, firstLetter, prevLetter, filter);
+        contentContacts.innerHTML += generateContactsInnerHTML(contact, i);
+        changeColorContact('#short_name', i, contact.color);
     }
+}
+
+
+/**
+ * This function generates a letter HTML element if needed based on the specified filter and the previous letter.
+ * @param {HTMLElement} contentContacts - The HTML element where the contacts are rendered.
+ * @param {number} i - The index of the current contact in the sorted contacts array.
+ * @param {string} firstLetter - The first letter of the current contact's name.
+ * @param {string} prevLetter - The previous rendered letter.
+ * @param {string|null} filter - The filter letter for rendering contacts. If null, all contacts are rendered.
+ * @returns {string} - The updated value for the previous letter.
+ */
+function generateLetterIfNeeded(contentContacts, i, firstLetter, prevLetter, filter) {
+    if ((!filter || filter == firstLetter) && firstLetter !== prevLetter) {
+        contentContacts.innerHTML += generateLettersInnerHTML(i, firstLetter);
+        prevLetter = firstLetter;
+    }
+    return prevLetter;
 }
 
 
@@ -213,8 +220,7 @@ async function addContact() {
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(fullName.value);
     await postData(`contacts`, { name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters });
-    contacts = Object.entries(await loadData('contacts'));
-    await renderContacts();
+    await updateArrayContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
@@ -288,8 +294,7 @@ async function saveNewData(index) {
     let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
 
     await editData(`contacts/${contacts[currentIndex][0]}`, {name: newName.value, mail: newMail.value, phone: newTelNumber.value, letters: getContactsInitials(newName.value)});
-    contacts = Object.entries(await loadData('contacts'));
-    await renderContacts();
+    await updateArrayContacts();
     closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
 }
@@ -302,13 +307,11 @@ async function saveNewData(index) {
 async function deleteContact(event, index) {
     let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
     await deleteData(`contacts/${contacts[currentIndex][0]}`);
-    contacts = Object.entries(await loadData('contacts'));
-    renderContacts();
+    await updateArrayContacts();
     if (currentElementWidth(1110)) {
         showContactMobile();
         closeContactOptions(event);
-    } else {
-        // Desktop
+    } else { // Desktop
         document.querySelector('.floating_contact').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop');
     }
@@ -336,6 +339,15 @@ function showContactDesktop() {
     setTimeout(function () {
         document.querySelector('.floating_contact').classList.add('show_floating_contact_desktop');
     }, 0);
+}
+
+
+/**
+ * This function updates the 'contacts' array by fetching data from the server and re-renders the contacts.
+ */
+async function updateArrayContacts() {
+    contacts = Object.entries(await loadData('contacts'));
+    renderContacts();
 }
 
 

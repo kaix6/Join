@@ -107,20 +107,10 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
 }
 
 
-/* function saveContacts() {
-    let contactsAsText = JSON.stringify(contacts);
-    localStorage.setItem('contacts', contactsAsText);
-}
-
-
-function loadContacts() {
-    let contactsAsText = localStorage.getItem('contacts');
-    if (contactsAsText) {
-        contacts = JSON.parse(contactsAsText);
-    }
-} */
-
-
+/**
+ * This function sets the href attribute of a specified container element to the URL of the referring page.
+ * @param {string} container - The CSS selector for the container element whose href attribute will be set.
+ */
 function setReferrer(container) {
     document.querySelector(container).href = document.referrer;
 }
