@@ -13,27 +13,43 @@ let subtaskArray = [];
  */
 function addPrioButtonColor(prio, event) {
   event.preventDefault(); // Prevents the default behavior of the button
-
   let buttonUrgent = document.getElementById("buttonUrgent");
   let buttonMedium = document.getElementById("buttonMedium");
   let buttonLow = document.getElementById("buttonLow");
   let imgUrgent = document.getElementById("buttonImg1");
   let imgMedium = document.getElementById("buttonImg2");
   let imgLow = document.getElementById("buttonImg3");
-  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);  // Remove existing classes to clear previous highlights
+  removeClasses(
+    buttonUrgent,
+    buttonMedium,
+    buttonLow,
+    imgUrgent,
+    imgMedium,
+    imgLow
+  ); // Remove existing classes to clear previous highlights
   if (prio === "urgent") {
-    buttonUrgent.classList.add("backgroundColorRed", "fontWeightAndColor");
-    imgUrgent.classList.add("imgColor");
-    selectedPrio = "urgent";
+    selectedButtonColor(
+      buttonUrgent,
+      imgUrgent,
+      "backgroundColorRed",
+      "urgent"
+    );
   } else if (prio === "medium") {
-    buttonMedium.classList.add("backgroundColorOrange", "fontWeightAndColor");
-    imgMedium.classList.add("imgColor");
-    selectedPrio = "medium";
+    selectedButtonColor(
+      buttonMedium,
+      imgMedium,
+      "backgroundColorOrange",
+      "medium"
+    );
   } else if (prio === "low") {
-    buttonLow.classList.add("backgroundColorGreen", "fontWeightAndColor");
-    imgLow.classList.add("imgColor");
-    selectedPrio = "low";
+    selectedButtonColor(buttonLow, imgLow, "backgroundColorGreen", "low");
   }
+}
+
+function selectedButtonColor(button, img, backgroundColorClass, prio) {
+  button.classList.add(backgroundColorClass, "fontWeightAndColor");
+  img.classList.add("imgColor");
+  selectedPrio = prio;
 }
 
 /**
@@ -56,9 +72,29 @@ function initAddTasks() {
  * @param {HTMLElement} imgLow - The image associated with the low priority button.
  * @returns {void}
  */
-function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
-  const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor"];
-  const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow];
+function removeClasses(
+  buttonUrgent,
+  buttonMedium,
+  buttonLow,
+  imgUrgent,
+  imgMedium,
+  imgLow
+) {
+  const classesToRemove = [
+    "backgroundColorRed",
+    "fontWeightAndColor",
+    "backgroundColorOrange",
+    "backgroundColorGreen",
+    "imgColor",
+  ];
+  const elements = [
+    buttonUrgent,
+    buttonMedium,
+    buttonLow,
+    imgUrgent,
+    imgMedium,
+    imgLow,
+  ];
 
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
@@ -77,57 +113,67 @@ function reloadPage() {
   location.reload();
 }
 
-// Funktion zum rendern von Kontakten in das Feld "Assigned To"
+// Funktion zum Rendern von Kontakten in das Feld "Assigned To"
 async function renderContactsInAddTasks() {
-  let response = await fetch("./js/contacts.json");
-  let contacts = await response.json();
-  let assignedTo = document.getElementById("assignedTo");
-  let MembersArea = document.getElementById('selectedMembers');
+  const contacts = Object.entries(await loadData("contacts"));
+  const assignedTo = document.getElementById("assignedTo");
+  const MembersArea = document.getElementById("selectedMembers");
   assignedTo.innerHTML = generateAssignedToFirst(); // Platzhalter
-  for (let i = 0; i < contacts.length; i++) {
-    let contact = contacts[i];
-    let name = contact.name;
-    let letters = contact.letters;
-    assignedTo.innerHTML += `<option onchange="pushMembers(${JSON.stringify(contact)})" value="${letters}">${name}</option>`;
-  }
 
-  assignedTo.onchange = function () {
-    let selectedName = assignedTo.value;
-    let selectedContact = contacts.find(
-      (contact) => contact.letters === selectedName
-    );
-    pushMembers(selectedContact);
-    MembersArea.classList.remove('selectedMembersNone');
-    renderContactsInAddTasks();
-  };
+  contacts.forEach((contact) => {
+    const { name, letters } = contact[1];
+    assignedTo.innerHTML += `<option value="${letters}">${name}</option>`;
+  });
+
+  assignedTo.onchange = () =>
+    handleAssignedToChange(contacts, assignedTo, MembersArea);
 }
 
-// Funktion zum hinzufügen der ausgewählten Users (anzeigen von Profilbildern) unter "Assigned To"
-function pushMembers(contact) {
-  let name = contact.letters;
-  let color = contact.color;
-  let messageSelected = document.getElementById('isSelected');
-  messageSelected.classList.remove("unset-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
-  messageSelected.classList.add("none-display")
+// Funktion zum Bearbeiten der Auswahländerung
+function handleAssignedToChange(contacts, assignedTo, MembersArea) {
+  const selectedName = assignedTo.value;
+  const selectedContact = contacts.find(
+    (contact) => contact[1].letters === selectedName
+  );
 
-  if (selectUsers.includes(name)) {
-    // Überprüfe, ob das Element bereits in selectUsers enthalten ist
-    messageSelected.classList.add("unset-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
-    messageSelected.classList.remove("none-display") // Wenn das Element bereits vorhanden ist, zeige eine Meldung an und beende die Funktion
+  if (selectedContact) {
+    pushMembers(selectedContact[1]);
+    MembersArea.classList.remove("selectedMembersNone");
+  } else {
+    console.error(`Contact with letters '${selectedName}' not found.`);
+  }
+}
+
+// Funktion zum Hinzufügen der ausgewählten Benutzer (Anzeigen von Profilbildern) unter "Assigned To"
+function pushMembers(contact) {
+  const { letters, color } = contact;
+  const messageSelected = document.getElementById("isSelected");
+
+  if (selectUsers.includes(letters)) {
+    messageMemberIsAdded(messageSelected);
     return;
   }
+  messageIsSelected(messageSelected);
+
   // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
-  selectUsers.push(name);
+  selectUsers.push(letters);
   selectUsersColor.push(color);
   renderPushedMembers();
 }
 
-/**
- * Renders the selected users below the "Assigned To" section.
- * @returns {void}
- */
+function messageIsSelected(messageSelected) {
+  messageSelected.classList.remove("unset-display");
+  messageSelected.classList.add("none-display");
+}
+
+function messageMemberIsAdded(messageSelected) {
+  messageSelected.classList.add("unset-display");
+  messageSelected.classList.remove("none-display");
+}
+
+// Renders the selected users below the "Assigned To" section
 function renderPushedMembers() {
-  selectMembersArea = document.getElementById("selectedMembers");
+  const selectMembersArea = document.getElementById("selectedMembers");
   selectMembersArea.innerHTML = "";
 
   for (let i = 0; i < selectUsers.length; i++) {
@@ -147,8 +193,6 @@ async function saveTaskToJson(
   category,
   assignedTo
 ) {
-
-
   // Neuen Task erstellen
   let newTask = {
     title: title,
@@ -179,74 +223,82 @@ async function saveTaskToJson(
 // Funktion für hinzufügen neuer Subtasks
 function addNewSubtask() {
   let subtaskValue = document.getElementById("subtask").value;
-  let subtaskText = document.getElementById('textSubtask');
+  let subtaskText = document.getElementById("textSubtask");
   let subtaskArea = document.getElementById("subtaskArea");
-  let subtaskId = 'subtask_' + subtaskIdCounter++; // Erzeugen einer individuellen ID für generierte Subtask
+  let subtaskId = "subtask_" + subtaskIdCounter++; // Erzeugen einer individuellen ID für generierte Subtask
 
-  if (subtaskValue === '') {
-    subtaskText.classList.add('unset-display');
+  if (subtaskValue === "") {
+    subtaskText.classList.add("unset-display");
     return;
-  } 
+  }
+  generateSubtaskArea(subtaskText, subtaskArea, subtaskValue, subtaskId);
+}
 
-  subtaskText.classList.remove('unset-display');
-
-
+function generateSubtaskArea(
+  subtaskText,
+  subtaskArea,
+  subtaskValue,
+  subtaskId
+) {
+  subtaskText.classList.remove("unset-display");
   subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
-  subtaskArea.classList.remove('subtaskAreaNone')
-  document.getElementById("subtask").value = '';
+  subtaskArea.classList.remove("subtaskAreaNone");
+  document.getElementById("subtask").value = "";
   subtaskArray.push(subtaskValue);
 }
 
-function removeSubtask(subtaskId){
-let subtaskToRemove = document.getElementById(subtaskId);
- if (subtaskToRemove) {
-   subtaskToRemove.remove();
-   console.log('subtask entfernt')
- } else {
-  return;
- }
+function removeSubtask(subtaskId) {
+  let subtaskToRemove = document.getElementById(subtaskId);
+  if (subtaskToRemove) {
+    subtaskToRemove.remove();
+    console.log("subtask entfernt");
+  } else {
+    return;
+  }
 }
 
 // Funktion zum Bearbeiten eines bestimmten Subtasks
 function editSubtask(subtaskId) {
   let subtaskElement = document.getElementById(subtaskId);
   if (subtaskElement) {
-    let subtaskTextElement = subtaskElement.querySelector('.fontSubtask');
+    let subtaskTextElement = subtaskElement.querySelector(".fontSubtask");
     let subtaskText = subtaskTextElement.innerText;
-    
-    // Erzeuge ein Eingabefeld für die Bearbeitung
-    let editInput = document.createElement('input');
-    editInput.type = 'text';
-    editInput.value = subtaskText; // Setze den aktuellen Text als Standardwert im Eingabefeld
-    editInput.classList.add('editInput');
+    let editInput = document.createElement("input");
+    renderEditInputField(subtaskText, subtaskTextElement, editInput); // Erzeuge ein Eingabefeld für die Bearbeitung
+    acceptEnter(editInput, subtaskTextElement); // Funktion, um mit Enter zu bestätigen
 
-    // Ersetze den Text durch das Eingabefeld
-    subtaskTextElement.innerHTML = ''; // Entferne den bestehenden Text
-    subtaskTextElement.appendChild(editInput); // Füge das Eingabefeld hinzu
-
-    // Fokus auf das Eingabefeld setzen
-    editInput.focus();
-
-    // Funktion, um mit Enter zu bestätigen
-    editInput.addEventListener('keyup', function(event) {
-      if (event.key === 'Enter') {
-        let editedSubtask = editInput.value.trim();
-        if (editedSubtask !== '') {
-          subtaskTextElement.innerText = editedSubtask;
-        }
-      }
-    });
-
-    editInput.addEventListener('blur', function() {
-      saveEditedSubtask(subtaskTextElement, editInput, subtaskId);
+    editInput.addEventListener("blur", function () {
+      saveEditedSubtask(subtaskTextElement, editInput);
     });
   }
 }
 
+function acceptEnter(editInput, subtaskTextElement) {
+  editInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      let editedSubtask = editInput.value.trim();
+      if (editedSubtask !== "") {
+        subtaskTextElement.innerText = editedSubtask;
+      }
+    }
+  });
+}
+
+function renderEditInputField(subtaskText, subtaskTextElement, editInput) {
+  editInput.type = "text";
+  editInput.value = subtaskText; // Setze den aktuellen Text als Standardwert im Eingabefeld
+  editInput.classList.add("editInput");
+  // Ersetze den Text durch das Eingabefeld
+  subtaskTextElement.innerHTML = ""; // Entferne den bestehenden Text
+  subtaskTextElement.appendChild(editInput); // Füge das Eingabefeld hinzu
+
+  editInput.focus(); // Fokus auf das Eingabefeld setzen
+}
+
 // Hilfsfunktion, um die bearbeiteten Subtask-Änderungen zu speichern
-function saveEditedSubtask(subtaskTextElement, editInput, subtaskId) {
+function saveEditedSubtask(subtaskTextElement, editInput) {
   let editedSubtask = editInput.value.trim();
-  if (editedSubtask !== '') {
+  if (editedSubtask !== "") {
     subtaskTextElement.innerText = editedSubtask;
   }
 }
@@ -260,13 +312,12 @@ function validateForm() {
   let category = document.getElementById("category").value;
 
   if (title === "" || date === "" || category === "") {
-      return false; // Verhindert das Standardverhalten des Formulars
+    return false; // Verhindert das Standardverhalten des Formulars
   }
   saveTaskToJson(title, description, date, prio, category, assignedTo);
   return false;
 }
 
 async function initJSONaddTasks() {
-  let response = await fetch('./js/addTasks.json');
-  tasks = await response.json();
+  let tasks = Object.entries(await loadData("tasks"));
 }

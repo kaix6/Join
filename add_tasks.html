@@ -13,6 +13,7 @@
     <script src="js/add_tasks.js"></script>
     <script defer src="js/template.js"></script>
     <script defer src="js/generateHTML.js"></script>
+    <script defer src="js/remoteStorage.js"></script>
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -75,7 +76,9 @@
                   </div>
 
                   <div class="selectedMembersNone" id="selectedMembers"></div>
-                  <div class="none-display" id="isSelected">Has already been selected</div>
+                  <div class="none-display" id="isSelected">
+                    Has already been selected
+                  </div>
 
                   <p class="footer footerNone">
                     <span style="color: red">*</span>This field is required
@@ -162,14 +165,20 @@
 
                   <div style="margin-top: 16px; position: relative">
                     <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                      >Subtasks <span id="textSubtask">Please enter a text</span></label
+                      >Subtasks
+                      <span id="textSubtask">Please enter a text</span></label
                     ><br />
                     <input
                       id="subtask"
                       type="text"
                       placeholder="add new subtask"
                     />
-                    <img onclick="addNewSubtask()" class="addSubtask" src="assets/img/add_task/add.svg" alt="">
+                    <img
+                      onclick="addNewSubtask()"
+                      class="addSubtask"
+                      src="assets/img/add_task/add.svg"
+                      alt=""
+                    />
                   </div>
                   <div>
                     <div class="subtaskAreaContainer">
