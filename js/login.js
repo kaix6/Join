@@ -38,7 +38,6 @@ async function login() {
 
 function setLastVisitedPage(Id) {
     localStorage.setItem('lastVisitedPage', window.location.href);
-
 }
 
 function goBack() {

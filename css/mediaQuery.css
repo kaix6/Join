@@ -20,6 +20,7 @@
   /* Header */
 
   #header {
+    height: 80px;
     padding: 20px 40px 20px 52px;
   }
 }

@@ -20,12 +20,22 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+    loadTemplateFunctions();
+}
+
+
+/**
+ * This function loads and executes various template functions based on the current page.
+ */
+function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
-    // function updateTasksHTML() wird nur ausgeführt, wenn die html 'board.html' geöffnet ist
+    if(window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
+        removesElements();
+    }
     if(window.location.pathname == '/board.html') {
         updateTasksHTML();
-    }  
+    } 
 }
 
 
@@ -116,3 +126,20 @@ function setReferrer(container) {
 }
 
 
+/**
+ * This function removes elements from the DOM if the previous page was 'index.html'.
+ * This function checks the referring page. If the previous page is 'index.html', 
+ * it clears the innerHTML of elements matching the specified selectors ('.links' and '#profileHeader').
+ */
+function removesElements() {
+    let previousPage = document.referrer;
+
+    if (previousPage.includes('/index.html')) {
+        ['.links', '#profileHeader'].forEach(classes => {
+            let element = document.querySelector(classes);
+            if (element) {
+                element.innerHTML = '';
+            }
+        });
+    }
+}
