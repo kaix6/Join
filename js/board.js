@@ -3,15 +3,15 @@ let allTasks;
 
 async function showDialogTask(i){
     let bigTaskBox = document.getElementById('task-box-big');
-    let currentTask = allTasks.filter(t => t['id'] == i);
+    let currentTask = allTasks.filter(t => t[1]['id'] == i);
     await animationDialogTask();
     bigTaskBox.innerHTML = '';
-    bigTaskBox.innerHTML += generateBigTaskBox(currentTask)
+    bigTaskBox.innerHTML += generateBigTaskBox(currentTask);
     getAllMembersBigTask(currentTask);
     setPriorityBigTask(currentTask);
-    setTaskCategory(currentTask[0]);
+    setTaskCategoryBigTask(currentTask);
     getAllSubtasksBigTask(currentTask);
-    getDivHeight();
+    getDivHeight(currentTask);
 }
 
 function getDivHeight(){
@@ -19,13 +19,17 @@ function getDivHeight(){
     let viewportWithoutNavi = window.innerHeight - 83;
     let height = bigTaskBox.offsetHeight;
     let gapHeight = (viewportWithoutNavi - height);
-    changeTaskBoxHeight(gapHeight);
+    changeTaskBoxHeight(gapHeight, height);
 }
 
-function changeTaskBoxHeight(height){
-    if (height < -1) {
+function changeTaskBoxHeight(gapHeight, height){
+    if (gapHeight < -1) {
         var r = document.querySelector(':root');
         let newHeight = 'calc(100% - 80px - 83px)';
+        r.style.setProperty('--height', newHeight);
+    } else {
+        var r = document.querySelector(':root');
+        let newHeight = height;
         r.style.setProperty('--height', newHeight);
     }
 };
@@ -34,7 +38,7 @@ function changeTaskBoxHeight(height){
 
 function getAllMembersBigTask(currentTask){
     let memberContainer = document.getElementById('container-member-big-task');
-    let taskAllMembers = currentTask[0]['assigned member'];
+    let taskAllMembers = currentTask[0][1]['assigned member'];
     for (let i = 0; i < taskAllMembers.length; i++){
         const currentTaskMember = taskAllMembers[i];
         memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
@@ -49,30 +53,41 @@ function setColorMemberBigTask(currentTaskMember){
 }
 
 function setPriorityBigTask(currentTask){
-    let taskPrio = currentTask[0]['prio'];
+    let taskPrio = currentTask[0][1]['prio'];
     if (taskPrio == 'low') {
-        document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_low.svg';
+        document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_low.svg';
     } else {
         if (taskPrio == 'medium') {
-            document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
+            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
         } else {
-            document.getElementById(`taskPrioBigBox${currentTask[0]['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
+            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
         }
     };
 }
 
+function setTaskCategoryBigTask(task){
+    let taskCategory = task[0][1]['category'];
+    let taskCategoryContainer = document.getElementById(`task-category${task[0][1]['id']}`);
+    if (taskCategory == 'User Story') {
+        taskCategoryContainer.style.backgroundColor = '#0038FF';
+    } else {
+        taskCategoryContainer.style.backgroundColor = '#1FD7C1';
+    };
+}
+
 function getAllSubtasksBigTask(currentTask){
-        let subtasksSection = document.getElementById(`subtasks${currentTask[0]['id']}`);
-        let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0]['id']}`);
-        let taskAllSubtasks = currentTask[0]['subtask'];
-        if(taskAllSubtasks.length > 0){
-            subtaskHeadline.innerHTML = generateSubtasksHeadline();
-            for (let i = 0; i < taskAllSubtasks.length; i++) {
-                const subtask = taskAllSubtasks[i];
-                subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
-            };
+    let subtasksSection = document.getElementById(`subtasks${currentTask[0][1]['id']}`);
+    let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
+    let taskAllSubtasks = currentTask[0][1]['subtask'];
+    if(typeof taskAllSubtasks === "undefined"){
+    } else {
+        subtaskHeadline.innerHTML = generateSubtasksHeadline();
+        for (let i = 0; i < taskAllSubtasks.length; i++) {
+            const subtask = taskAllSubtasks[i];
+            subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
         };
-    }
+    };
+}
 
 function checkUncheckBox(id){
     document.getElementById(`subtask-checkbox${id}`).classList.toggle('subtask-checkbox-checked');
@@ -90,13 +105,16 @@ function animationDialogTask(){
     }, 100)
 }
 
-async function updateTasksHTML(){
-    let tasks = await getTasksJson();
+async function loadTasks() {
+    allTasks = Object.entries(await loadData('tasks'));
+    updateTasksHTML(allTasks);
+}
+
+function updateTasksHTML(tasks){
     updateOpenTasks(tasks);
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
     updateDoneTasks(tasks);
-    allTasks = tasks;
 }
 
 /**
@@ -116,13 +134,13 @@ async function getTasksJson(){
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateOpenTasks(tasks){
-    let open = tasks.filter(t => t['status'] == 'open')
+    let open = tasks.filter(t => t[1]['status'] == 'open')
     let boardOpenTasks = document.getElementById('openTasks');
 
     if(open.length > 0){
         boardOpenTasks.innerHTML = '';
         for (let i = 0; i < open.length; i++) {
-            const openTask = open[i];
+            const openTask = open[i][1];
             boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
             getAllMembers(openTask);
             setPriority(openTask);
@@ -143,14 +161,14 @@ function updateOpenTasks(tasks){
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateInProgressTasks(tasks){
-    let inProgress = tasks.filter(t => t['status'] == 'in progress');
+    let inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
     boardInProgressTasks.innerHTML = '';
 
     if (inProgress.length > 0) {
         boardInProgressTasks.innerHTML = '';
     for (let i = 0; i < inProgress.length; i++) {
-        const inProgressTask = inProgress[i];
+        const inProgressTask = inProgress[i][1];
         boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
         getAllMembers(inProgressTask);
         setPriority(inProgressTask);
@@ -171,14 +189,14 @@ function updateInProgressTasks(tasks){
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateAwaitFeedbackTasks(tasks){
-    let awaitFeedback = tasks.filter(t => t['status'] == 'await feedback');
+    let awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
     boardAwaitFeedbackTasks.innerHTML = '';
 
     if (awaitFeedback.length > 0) {
         boardAwaitFeedbackTasks.innerHTML = '';
     for (let i = 0; i < awaitFeedback.length; i++) {
-        const awaitFeedbackTask = awaitFeedback[i];
+        const awaitFeedbackTask = awaitFeedback[i][1];
         boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
         getAllMembers(awaitFeedbackTask);
         setPriority(awaitFeedbackTask);
@@ -199,14 +217,14 @@ function updateAwaitFeedbackTasks(tasks){
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateDoneTasks(tasks){
-    let done = tasks.filter(t => t['status'] == 'done');
+    let done = tasks.filter(t => t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
     boardDoneTasks.innerHTML = '';
 
     if (done.length > 0) {
         boardDoneTasks.innerHTML = '';
     for (let i = 0; i < done.length; i++) {
-        const doneTask = done[i];
+        const doneTask = done[i][1];
         boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
         getAllMembers(doneTask);
         setPriority(doneTask);
@@ -288,9 +306,9 @@ function setTaskCategory(task){
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllSubtasks(task){
-    let subtasks = task['subtask']
-    let subtasksSection = document.getElementById(`task${task['id']}`);
-    if(subtasks.length > 0){
+    if(typeof task['subtask'] === "undefined" ){
+    } else {
+        let subtasksSection = document.getElementById(`task${task['id']}`);
         subtasksSection.innerHTML += generateSubtasksSection();
     };
 }
