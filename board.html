@@ -9,6 +9,7 @@
     <script defer src="js/template.js"></script>
     <script defer src="js/add_tasks.js"></script>
     <script defer src="js/generateHTML.js"></script>
+    <script defer src="js/remoteStorage.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="./css/addTasks.css" />
   </head>
 
-  <body class="flex_dir_c" onload="includeHTML()">
+  <body class="flex_dir_c" onload="includeHTML(); loadTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
       <!--      Section Dialog Box Small TodoTask    -->
       <div id="task-box-small" class="task-box d-none">
@@ -244,7 +245,7 @@
         <!--      Section header    -->
 
         <section id="main_container">
-          <div class="content-board">
+          <div id="content-board" class="content-board">
             <div class="headline-container margin-bottom-32px">
               <div class="h1-container">
                 <h1>Board</h1>
