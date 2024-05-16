@@ -33,7 +33,7 @@ async function initialLoadTasksFirebase() {
 
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
-        postData('tasks', { id: task.id, title: task.title, description: task.description, "due date": task["due date"], prio: task.prio, category: task.category, "assigned member": task["assigned member"], subtask: task.subtask });
+        postData('tasks', { id: task.id, title: task.title, description: task.description, "due date": task["due date"], prio: task.prio, category: task.category, status: task.status, "assigned member": task["assigned member"], subtask: task.subtask });
     }
     await loadData('tasks');
 }

@@ -17,7 +17,7 @@ h1{
 }
 
 .d_none {
-    display: none;
+    display: none 
 }
 
 .flex_dir_c {

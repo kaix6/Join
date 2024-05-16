@@ -6,7 +6,7 @@ async function initLogin() {
 
 
 /**
- * This async function includes HTML content into elements with the 'w3-include-html' attribute.
+ * This function includes HTML content into elements with the 'w3-include-html' attribute.
  */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -20,12 +20,22 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+    loadTemplateFunctions();
+}
+
+
+/**
+ * This function loads and executes various template functions based on the current page.
+ */
+function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
-    // function updateTasksHTML() wird nur ausgeführt, wenn die html 'board.html' geöffnet ist
+    if(window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
+        removesElements();
+    }
     if(window.location.pathname == '/board.html') {
         updateTasksHTML();
-    }  
+    } 
 }
 
 
@@ -107,22 +117,33 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
 }
 
 
-/* function saveContacts() {
-    let contactsAsText = JSON.stringify(contacts);
-    localStorage.setItem('contacts', contactsAsText);
+/**
+ * This function sets the href attribute of a specified container element to the URL of the referring page.
+ * @param {string} container - The CSS selector for the container element whose href attribute will be set.
+ */
+function setReferrer(container) {
+    document.querySelector(container).href = document.referrer;
 }
 
 
-function loadContacts() {
-    let contactsAsText = localStorage.getItem('contacts');
-    if (contactsAsText) {
-        contacts = JSON.parse(contactsAsText);
+/**
+ * This function removes elements from the DOM if the previous page was 'index.html'.
+ * This function checks the referring page. If the previous page is 'index.html', 
+ * it removes elements matching the specified selectors ('.links', '#profileHeader', '#side_menu') and adjusts the height of the '#main_container' element.
+ */
+function removesElements() {
+    let previousPage = document.referrer;
+    if (previousPage.includes('/index.html')) {
+        ['.links'].forEach(classes => {
+            let element = document.querySelector(classes);
+            if (element) {
+                element.remove();
+            }
+        });
+        document.querySelector('#profileHeader').remove();
+        document.querySelector('#side_menu').remove();
+        document.querySelector('#main_container').style.height = "calc(100vh - 80px)";  
     }
-} */
-
-
-function setReferrer(container) {
-    document.querySelector(container).href = document.referrer;
 }
 
 

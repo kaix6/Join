@@ -1,6 +1,7 @@
 /* Header */
 
 #header {
+    height: 96px;
     display: flex;
     justify-content: space-between;
     padding: 20px 40px 20px 116px;
