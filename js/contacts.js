@@ -405,20 +405,20 @@ function classIsNotAddPersonMoreIcon(event) {
 
 
 /**
- * This function checks if the width of the specified element is less than or equal to the given number.
- * @param {number} number - The threshold width to compare with.
- * @returns {boolean} - Returns true if the width of the specified element is less than or equal to the given number, otherwise false.
- */
-function currentElementWidth(number) {
-    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
-}
-
-
-/**
  * This function checks if the length of the specified string is greater than 2 characters.
  * @param {string} string - The string to check its length.
  * @returns {boolean} - Returns true if the length of the specified string is greater than 2, otherwise false.
  */
 function stringIsLongEnough(string) {
     return string.length > 2;
+}
+
+
+/**
+ * This function checks if the width of the specified element is less than or equal to the given number.
+ * @param {number} number - The threshold width to compare with.
+ * @returns {boolean} - Returns true if the width of the specified element is less than or equal to the given number, otherwise false.
+ */
+function currentElementWidth(number) {
+    return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }

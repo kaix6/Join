@@ -6,7 +6,7 @@ async function initLogin() {
 
 
 /**
- * This async function includes HTML content into elements with the 'w3-include-html' attribute.
+ * This function includes HTML content into elements with the 'w3-include-html' attribute.
  */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -129,17 +129,21 @@ function setReferrer(container) {
 /**
  * This function removes elements from the DOM if the previous page was 'index.html'.
  * This function checks the referring page. If the previous page is 'index.html', 
- * it clears the innerHTML of elements matching the specified selectors ('.links' and '#profileHeader').
+ * it removes elements matching the specified selectors ('.links', '#profileHeader', '#side_menu') and adjusts the height of the '#main_container' element.
  */
 function removesElements() {
     let previousPage = document.referrer;
-
     if (previousPage.includes('/index.html')) {
-        ['.links', '#profileHeader'].forEach(classes => {
+        ['.links'].forEach(classes => {
             let element = document.querySelector(classes);
             if (element) {
-                element.innerHTML = '';
+                element.remove();
             }
         });
+        document.querySelector('#profileHeader').remove();
+        document.querySelector('#side_menu').remove();
+        document.querySelector('#main_container').style.height = "calc(100vh - 80px)";  
     }
 }
+
+
