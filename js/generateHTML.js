@@ -21,7 +21,6 @@ function generateSmallTaskBox(task) {
 
 function generateBigTaskBox(task) {
   return `
-  <div id="container-big-task-box${task[0][1]["id"]}">
     <div class="d-flex-center-space-btw">
         <p id="task-category${task[0][1]["id"]}" class="task-type">${task[0][1]["category"]}</p>
         <div class="close-icon" onclick="closeDialogTask()">
@@ -65,7 +64,7 @@ function generateBigTaskBox(task) {
             </div>
         </div>
     </div>
-</div>`;
+    `;
 }
 
 function generateSubtasksHeadline() {
