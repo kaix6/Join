@@ -385,12 +385,12 @@ function typeIsDefined(i) {
 
 /**
  * This function checks if the specified contact element contains the name of the active contact.
- * @param {*} contact - The contact element to check.
- * @param {*} activeContact - The name of the active contact.
+ * @param {HTMLElement} contact - The contact element to check.
+ * @param {string} activeContact - The name of the active contact.
  * @returns {boolean} - Returns true if the contact element contains the name of the active contact, otherwise false.
  */
 function elementContainsActiveContact(contact, activeContact) {
-    return contact.textContent.includes(`${activeContact}`);
+    return contact.textContent == activeContact;
 }
 
 
