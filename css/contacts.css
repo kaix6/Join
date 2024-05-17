@@ -338,6 +338,11 @@
 
 /* Contact Overview*/
 
+#contact_view {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 .active_contact {
     background-color: var(--menuButtonDarkblue);
     color: var(--white);

@@ -3,7 +3,8 @@
  * If the display style is 'flex', it toggles the visibility of the submenu header for mobile view.
  * If the display style is not 'flex', it toggles the visibility of the submenu header for desktop view.
  */
-function showSubmenuHeader() {
+function showSubmenuHeader(event) {
+    event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
     if (currentElementDisplayStyleFlex()) {
         document.querySelector('.submenu_header_mobile').classList.toggle('show_submenu_header');
     } else {
