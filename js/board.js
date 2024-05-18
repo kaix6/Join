@@ -323,3 +323,69 @@ function truncateText(task) {
     var truncated = description.substring(0, 50) + "...";
     document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
   }
+
+// edit Tasks
+
+// Initialisieren des Counters beim Laden der bestehenden Subtasks
+function initializeSubtaskIdCounter(index) {
+    let maxId = 0;
+    let subtasks = allTasks[index][1].subtask;
+
+    for (let i = 0; i < subtasks.length; i++) {
+        let subtaskIdNum = parseInt(subtasks[i].id);
+        if (subtaskIdNum > maxId) {
+          maxId = subtaskIdNum;
+        }
+      }
+    subtaskIdCounter = maxId + 1; // Setze den Counter auf den höchsten Wert + 1
+  }
+
+  function editTask(index, event) {
+    let bigTaskBox = document.getElementById('task-box-big');
+    bigTaskBox.innerHTML = '';
+    bigTaskBox.innerHTML += generateEditTaskBox(index);
+    renderContactsInAddTasks();
+    let formattedDate = convertStringToData(index);
+    showSavedTasksData(index, formattedDate);
+    let currentPrio = (allTasks[index][1].prio);
+    addPrioButtonColor(currentPrio, event);
+  }
+
+  function showSavedTasksData(index, formattedDate) {
+    document.querySelector('.title_tasks').value = `${allTasks[index][1].title}`;
+    document.querySelector('.description_tasks').value = `${allTasks[index][1].description}`;
+    document.querySelector('.dueDate_edit').innerHTML = generateInputDateHTML(formattedDate);
+    renderExistingMembersEditTask(index);
+    if(typeof allTasks[index][1].subtask !== 'undefined') {
+        renderSubtasks(index);
+    }
+}
+
+function convertStringToData(index) {
+    let dateString = allTasks[index][1]["due date"];
+    let parts = dateString.split(".");
+    parts = [parts[2], parts[1], parts[0]];
+    return parts.join("-");
+}
+
+function renderExistingMembersEditTask(index) {
+    let existingMembersContainer = document.querySelector('#selectedMembers_edit');
+    let existingMembers = allTasks[index][1]['assigned member'];
+    for (let i = 0; i < existingMembers.length; i++) {
+        const member = existingMembers[i];
+        existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
+        document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
+    }
+}
+
+function renderSubtasks(index) {
+    initializeSubtaskIdCounter(index);
+    console.log(subtaskIdCounter);
+    let subtaskAreaEdit = document.querySelector('#subtaskArea');
+    let existingSubTasks = allTasks[index][1].subtask;
+
+    for (let i = 0; i < existingSubTasks.length; i++) {
+        const subTask = existingSubTasks[i];
+        subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${subTask.id}`, subTask.description);
+    }
+}

@@ -52,13 +52,13 @@ function generateBigTaskBox(task) {
         <div class="container-delete-edit">
             <div class="delete">
                 <img
-                class="delete-edit-icon"
+                class="delete-edit-icon" 
                 src="./assets/img/board/icon+delete_black.svg"
                 />
             </div>
-            <div class="edit">
+            <div class="edit" onclick="editTask(${task[0][1]["id"]}, event)">
                 <img
-                class="delete-edit-icon"
+                class="delete-edit-icon" 
                 src="./assets/img/board/icon+edit_black.svg"
                 />
             </div>
@@ -116,6 +116,86 @@ function generateMemberBigTaskBox(member) {
         <p>${member["name"]}</p>
     </div>
     `;
+}
+
+function generateEditTaskBox(index) {
+  return /* HTML */ `
+            <section class="edit_box_big">
+
+              <div class="mainEditTasks dialogMainTasks">
+              <div class="wrapper_close_edit_task round_div pointer">
+                    <img class="close_edit_tasks" src="./assets/img/general/close.svg" alt="close icon">
+                </div>
+              <div class="scroll_EditTasks">
+                <form onsubmit="return validateForm()">
+                    <label class="fontUnderHeadlinesAddTasks" for="title">Title</label>
+                    <input type="text" id="title" class="focus_editTask title_tasks" name="title" placeholder="Enter a title" required/>
+                    <div style="margin-top: 24px">
+                      <label class="fontUnderHeadlinesAddTasks" for="description">Description</label>
+                      <textarea id="description" class="focus_editTask_description description_tasks" name="description" rows="4" cols="50" placeholder="Enter a Description"></textarea>
+                    </div>
+
+                  <div class="dueDate_edit" style="margin-top: 24px">
+                    </div>
+
+                    <div class="prio_edit fontUnderHeadlinesAddTasks">
+                      <p class="prio_edit_text">Priority</p>
+                      <div style="margin-top: 8px; display: flex; justify-content: space-between;">
+                        <button id="buttonUrgent" onclick="addPrioButtonColor('urgent', event)" class="buttonPrio">
+                          Urgent
+                          <img id="buttonImg1" src="assets/img/add_task/prio_urgent.svg" alt=""/>
+                        </button>
+                        <button id="buttonMedium" onclick="addPrioButtonColor('medium', event)" class="buttonPrio">
+                          Medium
+                          <img id="buttonImg2" src="assets/img/add_task/prio_medium.svg" alt=""/>
+                        </button>
+                        <button id="buttonLow" onclick="addPrioButtonColor('low', event)" class="buttonPrio">
+                          Low
+                          <img id="buttonImg3" src="assets/img/add_task/prio_low.svg" alt=""/>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div style="margin-top: 24px">
+                      <label class="fontUnderHeadlinesAddTasks" for="assigned">Assigned to</label>
+                      <select onclick="renderContactsInAddTasks()" name="assigned" id="assignedTo"></select>
+                    </div>
+
+                    <div id="selectedMembers_edit"></div>
+                    <div class="none-display" id="isSelected">
+                      Has already been selected
+                    </div>
+                    <div style="margin-top: 24px; position: relative">
+                      <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>
+                      <br />
+                      <input id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
+                      <img onclick="addNewSubtask()" class="addSubtask" src="assets/img/add_task/add.svg" alt="plus icon"/>
+                    </div>
+                    <div id="subtaskArea">
+ 
+                    </div>
+                    <div>
+                      <div>
+                      </div>
+                    </div>
+                    <div class="footer_edit_task">
+                      <button class="edit_task_btn blue_btn pointer" type="submit">
+                          <p class="text_edit_task_btn">Ok</p>
+                          <img class="img_white_btn img_width16" src="./assets/img/contacts/check.svg" alt="checked icon">
+                      </button>
+                    </div>
+                    </div>
+                </form>
+                
+              </div>
+          </section>`
+}
+
+function generateInputDateHTML(formattedDate) {
+  return /*HTML */ `
+      <label class="fontUnderHeadlinesAddTasks" for="date">Due date</label>
+      <br/>
+      <input type="date" id="date" class="focus_editTask dueDate_tasks" name="date" value='${formattedDate}' placeholder="dd/mm/yyyy" required/>`;
 }
 
 // Contacts
@@ -275,7 +355,7 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
 
 function generateAssignedToFirst() {
   return /* HTML */ `
-    "<option disabled selected>select contacts to assign</option>"
+    "<option disabled selected>Select contacts to assign</option>"
   `;
 }
 
