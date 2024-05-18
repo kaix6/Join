@@ -136,6 +136,7 @@ function generateEditTaskBox(index) {
                     </div>
 
                   <div class="dueDate_edit" style="margin-top: 24px">
+                    
                     </div>
 
                     <div class="prio_edit fontUnderHeadlinesAddTasks">
@@ -191,11 +192,11 @@ function generateEditTaskBox(index) {
           </section>`
 }
 
-function generateInputDateHTML(formattedDate) {
+function generateInputDateHTML(index) {
   return /*HTML */ `
       <label class="fontUnderHeadlinesAddTasks" for="date">Due date</label>
       <br/>
-      <input type="date" id="date" class="focus_editTask dueDate_tasks" name="date" value='${formattedDate}' placeholder="dd/mm/yyyy" required/>`;
+      <input type="date" id="date" class="focus_editTask dueDate_tasks" name="date" value='${allTasks[index][1]['due date']}' placeholder="dd/mm/yyyy" required/>`;
 }
 
 // Contacts

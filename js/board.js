@@ -354,8 +354,7 @@ function initializeSubtaskIdCounter(index) {
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
     renderContactsInAddTasks();
-    let formattedDate = convertStringToData(index);
-    showSavedTasksData(index, formattedDate);
+    showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
   }
@@ -365,26 +364,14 @@ function initializeSubtaskIdCounter(index) {
    * @param {number} index - The index of the task in the `allTasks` array.
    * @param {string} formattedDate - The formatted due date for the task.
    */
-  function showSavedTasksData(index, formattedDate) {
+  function showSavedTasksData(index) {
     document.querySelector('.title_tasks').value = `${allTasks[index][1].title}`;
     document.querySelector('.description_tasks').value = `${allTasks[index][1].description}`;
-    document.querySelector('.dueDate_edit').innerHTML = generateInputDateHTML(formattedDate);
+    document.querySelector('.dueDate_edit').innerHTML = generateInputDateHTML(index);
     renderExistingMembersEditTask(index);
     if(typeof allTasks[index][1].subtask !== 'undefined') {
         renderSubtasks(index);
     }
-}
-
-/**
- * This function converts the due date string of a task to a formatted date string.
- * @param {number} index - The index of the task in the allTasks array.
- * @returns {string} - The formatted date string in the format "YYYY-MM-DD".
- */
-function convertStringToData(index) {
-    let dateString = allTasks[index][1]["due date"];
-    let parts = dateString.split(".");
-    parts = [parts[2], parts[1], parts[0]];
-    return parts.join("-");
 }
 
 /**
