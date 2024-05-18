@@ -96,6 +96,7 @@ function checkUncheckBox(id){
 function closeDialogTask(){
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
+    subtaskIdCounter = 0;
 }
 
 function animationDialogTask(){
@@ -326,7 +327,10 @@ function truncateText(task) {
 
 // edit Tasks
 
-// Initialisieren des Counters beim Laden der bestehenden Subtasks
+/**
+ * This function initializes the subtask ID counter by finding the highest existing subtask ID n the specified task and setting the counter to this value plus one.
+ * @param {number} index - The index of the task in the `allTasks` array.
+ */
 function initializeSubtaskIdCounter(index) {
     let maxId = 0;
     let subtasks = allTasks[index][1].subtask;
@@ -337,9 +341,14 @@ function initializeSubtaskIdCounter(index) {
           maxId = subtaskIdNum;
         }
       }
-    subtaskIdCounter = maxId + 1; // Setze den Counter auf den höchsten Wert + 1
+    subtaskIdCounter = maxId + 1; // Set counter to the highest value + 1
   }
 
+  /**
+   * This function edits a task by updating the task box with the edit form, rendering contacts and displaying the current task data.
+   * @param {number} index - The index of the task to be edited in the `allTasks` array.
+   * @param {event} event - The event object, used to update the priority button color.
+   */
   function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.innerHTML = '';
@@ -351,6 +360,11 @@ function initializeSubtaskIdCounter(index) {
     addPrioButtonColor(currentPrio, event);
   }
 
+  /**
+   * This function displays saved task data in the edit form.
+   * @param {number} index - The index of the task in the `allTasks` array.
+   * @param {string} formattedDate - The formatted due date for the task.
+   */
   function showSavedTasksData(index, formattedDate) {
     document.querySelector('.title_tasks').value = `${allTasks[index][1].title}`;
     document.querySelector('.description_tasks').value = `${allTasks[index][1].description}`;
@@ -361,6 +375,11 @@ function initializeSubtaskIdCounter(index) {
     }
 }
 
+/**
+ * This function converts the due date string of a task to a formatted date string.
+ * @param {number} index - The index of the task in the allTasks array.
+ * @returns {string} - The formatted date string in the format "YYYY-MM-DD".
+ */
 function convertStringToData(index) {
     let dateString = allTasks[index][1]["due date"];
     let parts = dateString.split(".");
@@ -368,16 +387,31 @@ function convertStringToData(index) {
     return parts.join("-");
 }
 
+/**
+ * This function renders the existing members for editing a task, including their profile pictures.
+ * @param {number} index - The index of the task in the allTasks array. 
+ */
 function renderExistingMembersEditTask(index) {
-    let existingMembersContainer = document.querySelector('#selectedMembers_edit');
+    let existingMembersContainer = document.querySelector('#selectedMembers');
+    existingMembersContainer.innerHTML = '';
     let existingMembers = allTasks[index][1]['assigned member'];
+
+    selectUsers = [];
+    selectUsersColor = [];
+
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
+        selectUsers.push(member.letters);
+        selectUsersColor.push(member.color);
         existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
     }
 }
 
+/**
+ * This function renders the existing subtasks for editing a task.
+ * @param {number} index - The index of the task in the allTasks array.
+ */
 function renderSubtasks(index) {
     initializeSubtaskIdCounter(index);
     console.log(subtaskIdCounter);

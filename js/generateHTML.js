@@ -123,11 +123,11 @@ function generateEditTaskBox(index) {
             <section class="edit_box_big">
 
               <div class="mainEditTasks dialogMainTasks">
-              <div class="wrapper_close_edit_task round_div pointer">
+              <div onclick="closeDialogTask()" class="wrapper_close_edit_task round_div pointer">
                     <img class="close_edit_tasks" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
               <div class="scroll_EditTasks">
-                <form onsubmit="return validateForm()">
+                <form onsubmit="event.preventDefault(); saveNewDataTasks(${index})">
                     <label class="fontUnderHeadlinesAddTasks" for="title">Title</label>
                     <input type="text" id="title" class="focus_editTask title_tasks" name="title" placeholder="Enter a title" required/>
                     <div style="margin-top: 24px">
@@ -161,7 +161,7 @@ function generateEditTaskBox(index) {
                       <select onclick="renderContactsInAddTasks()" name="assigned" id="assignedTo"></select>
                     </div>
 
-                    <div id="selectedMembers_edit"></div>
+                    <div id="selectedMembers"></div>
                     <div class="none-display" id="isSelected">
                       Has already been selected
                     </div>

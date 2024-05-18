@@ -179,8 +179,11 @@ function renderPushedMembers() {
   for (let i = 0; i < selectUsers.length; i++) {
     const element = selectUsers[i];
     const color = selectUsersColor[i];
+
+    if (!document.getElementById(`${element}`)) {
     selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
     document.getElementById(`${element}`).style.backgroundColor = `${color}`;
+    }
   }
 }
 
