@@ -319,3 +319,27 @@ select,
   margin-left: 20px;
   display: none;
 }
+
+.dialogboxCreateTask {
+  width: 200px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--menuButtonDarkblue);
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  transform: translateY(1000%);
+  transition: all 100ms ease-in-out;
+}
+
+.show_dialog_addTask {
+  /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
+  transform: translateX(0);
+}
