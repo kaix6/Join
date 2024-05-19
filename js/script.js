@@ -133,7 +133,9 @@ function setReferrer(container) {
  */
 function removesElements() {
     let previousPage = document.referrer;
-    if (previousPage.includes('/index.html')) {
+
+    console.log(document.querySelector('.top_side_menu').children);
+    if (previousPage.includes('/index.html') || previousPage.includes('/signup.html')) {
         ['.links'].forEach(classes => {
             let element = document.querySelector(classes);
             if (element) {
@@ -143,6 +145,11 @@ function removesElements() {
         document.querySelector('#profileHeader').remove();
         document.querySelector('#side_menu').remove();
         document.querySelector('#main_container').style.height = "calc(100vh - 80px)";  
+    }
+    if(document.querySelector('.top_side_menu').contains(document.querySelector('.links'))) {
+        console.log('true')
+    } else {
+        console.log('false')
     }
 }
 

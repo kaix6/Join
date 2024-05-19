@@ -5,6 +5,8 @@ let selectedPrio;
 let subtaskIdCounter = 0;
 let subtaskArray = [];
 
+let allTasksJson = [];
+
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
  * @param {string} prio - The priority of the button ("urgent", "medium", or "low").
@@ -179,8 +181,11 @@ function renderPushedMembers() {
   for (let i = 0; i < selectUsers.length; i++) {
     const element = selectUsers[i];
     const color = selectUsersColor[i];
+
+    if (!document.getElementById(`${element}`)) {
     selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
     document.getElementById(`${element}`).style.backgroundColor = `${color}`;
+    }
   }
 }
 
@@ -202,22 +207,23 @@ async function saveTaskToJson(
     category: category,
     "assigned member": assignedTo,
     subtask: subtaskArray,
+    status: "open",
   };
 
-  tasks.push(newTask);
-
-  // JSON-Datei aktualisieren
-  await fetch("./js/addTasks.json", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(tasks),
-  });
+  await postData("tasks", newTask);
 
   console.log("Task erfolgreich hinzugefügt.");
-  console.log(tasks);
-  console.log(subtaskArray);
+  showAddToBoardDialog();
+}
+
+function showAddToBoardDialog() {
+  let dialogbox = document.getElementById('dialogboxTask');
+  dialogbox.classList.remove('none-display'); 
+  dialogbox.classList.add('show_dialog_addTask'); 
+  setTimeout(function() {
+    dialogbox.classList.remove('show_dialog_addTask');
+    dialogbox.classList.add('none-display');
+}, 1500)
 }
 
 // Funktion für hinzufügen neuer Subtasks
@@ -320,4 +326,5 @@ function validateForm() {
 
 async function initJSONaddTasks() {
   let tasks = Object.entries(await loadData("tasks"));
+  allTasksJson.push(tasks);
 }

@@ -72,6 +72,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
 }
 
 #description {
@@ -83,6 +84,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
 }
 
 #assignedTo,
@@ -97,6 +99,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -106,6 +109,16 @@
 #category,
 #subtask:hover {
   cursor: pointer;
+}
+
+#title:focus,
+#date:focus,
+#description:focus,
+#assignedTo:focus,
+#assignedToMobil:focus,
+#category:focus,
+#subtask:focus {
+  border: 1px solid var(--lightblue);
 }
 
 .prio {
@@ -141,7 +154,7 @@
 
 .buttonPrio:hover {
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks {
@@ -171,7 +184,7 @@
 .createButtonAddTasks:hover {
   background-color: var(--lightblue);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks:hover {
@@ -179,7 +192,7 @@
   filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
     brightness(94%) contrast(87%);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .createButtonAddTasks img {
@@ -228,6 +241,7 @@ select,
     brightness(507%) contrast(101%);
 }
 
+#selectedMembers_edit,
 #selectedMembers,
 #selectedMembersMobil {
   width: 100%;
@@ -264,7 +278,7 @@ select,
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .subtaskAreaContainer {
@@ -286,7 +300,7 @@ select,
 }
 
 .none-display {
-  display: none;
+  display: none!important;
 }
 
 .subtaskGenerate {
@@ -318,4 +332,28 @@ select,
   font-size: 16px;
   margin-left: 20px;
   display: none;
+}
+
+.dialogboxCreateTask {
+  width: 200px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--menuButtonDarkblue);
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  transform: translateY(1000%);
+  transition: all 100ms ease-in-out;
+}
+
+.show_dialog_addTask {
+  /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
+  transform: translateX(0);
 }

@@ -23,6 +23,10 @@
     height: 80px;
     padding: 20px 40px 20px 52px;
   }
+
+  #main_container {
+    height: calc(100vh - 80px);
+}
 }
 
 @media (max-width: 800px) {
@@ -171,9 +175,7 @@
   .create_contact_short_name {
     z-index: 1;
     position: absolute;
-    top: calc(
-      46% - 60px
-    ); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+    top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
   }
 
   .dialog_add_contact,
