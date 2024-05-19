@@ -33,9 +33,9 @@ function loadTemplateFunctions() {
     if(window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
         removesElements();
     }
-    if(window.location.pathname == '/board.html') {
-        updateTasksHTML();
-    } 
+    // if(window.location.pathname == '/board.html') {
+    //     updateTasksHTML();
+    // } 
 }
 
 

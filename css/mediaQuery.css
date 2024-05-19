@@ -1105,3 +1105,175 @@
   }
 }
 /* Summary - end     */
+
+
+/* Board - start     */
+
+@media(max-width: 1000px){
+
+  .small-add-button{
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+      background-color: var(--activeClickMenuBlue);
+      padding: 8px;
+      cursor: pointer;
+  }
+
+  .small-add-button:hover{
+      background-color: var(--lightblue);
+  }
+
+  .add-task-button{
+      display: none;
+  }
+
+  .h1-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      width: 100%;
+  }
+
+  .headline-container{
+      flex-direction: column;
+      align-items: baseline;
+  }
+
+  .board-search-add{
+      width: 100%;
+  }
+
+  .search-field{
+      width: 100%;
+  }
+
+  .content-board{
+      margin-top: 50px;
+  }
+
+  .d-flex-start{
+      flex-direction: column;
+      flex-wrap: nowrap;
+  }
+
+  .board-column{
+      width: 100%;
+  }
+
+  .tasks-container{
+      display: flex;
+      overflow-x: scroll;
+  }
+}
+
+@media(max-width: 800px) {
+
+  .background-big-task{
+      height: calc(100% - 83px);
+  }
+
+  .right_section{
+    width: 100%;
+  }
+}
+
+@media(max-width: 500px){
+
+  h1{
+      margin-bottom: 16px;
+      font-size: 61px;
+      font-weight: 700;
+      line-height: 73.2px;
+  }
+
+  .board-search-add{
+      width: 100%;
+  }
+
+  .search-field{
+      width: 100vw;
+  }
+
+  .d-flex-start{
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .board-headline{
+      width: 100%;
+  }
+
+  .plus-button{
+      cursor: pointer;
+  }
+
+  .plus-button:hover{
+      src: url(/assets/img/board/plus_button_blue.svg);
+  }
+
+  .content-board{
+      margin-top: 32px;
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-bottom: 8px;
+  }
+
+  .task-description-big{
+      font-size: 16px;
+  }
+
+  .task-box-big h2{
+      font-size: 24px;        
+  }
+
+  .task-box-big{
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: 16px;
+      padding-right: 16px;
+      width: calc(100vw - 16px);
+      margin: 16px;
+  }
+
+  .d-flex p{
+      font-size: 16px;
+  }
+
+  .margin-top-16px{
+      font-size: 16px;
+  }
+
+  .container-member-big-task p{
+      font-size: 16px;
+  }
+
+  .container-subtasks p{
+      font-size: 12px;
+  }
+
+  .subtasks{
+      justify-content: flex-start;
+      padding-left: 0px;
+      padding-right: 0px;
+      gap: 8px;
+  }
+
+  .subtask-checkbox{
+      padding-right: 16px;
+  }
+
+  @media(max-width: 400px){
+
+      .task-box-big{
+          width: 300px;
+      }
+
+      .board-column{
+          width: 100%;
+      }
+  }
+}
+
+/* Board - End     */

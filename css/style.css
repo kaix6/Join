@@ -92,6 +92,7 @@ body {
 
 .right_section {
     flex: 1;
+    width: calc(100% - 232px);
 }
 
 #main_container {

@@ -2,8 +2,7 @@
 
 function generateSmallTaskBox(task) {
   return `
-    <div>
-        <div id="task-box-small" class="task-box" onclick="showDialogTask(${task["id"]})">
+        <div id="task-box-small" class="task-box" onclick="showDialogTask(${task["id"]})" draggable="true" ondragstart="startDraggin(${task["id"]})">
             <div id="task${task["id"]}">
             <p id="task-category${task["id"]}" class="task-type">${task["category"]}</p>
             <p class="task-headline">${task["title"]}</p>
@@ -15,7 +14,6 @@ function generateSmallTaskBox(task) {
                 <img id="taskPrio${task["id"]}" src="/assets/img/add_task/prio_low.svg">
             </div>
         </div>
-    </div>
     `;
 }
 
