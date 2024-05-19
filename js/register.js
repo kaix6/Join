@@ -3,17 +3,14 @@
  */
 let users = [];
 
-function addUser() {
+async function addUser() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     matchPassword();
-    users.push({ name: name.value, email: email.value, password: password.value, confirmPassword: confirmPassword.value });
+    newUsers.push({ email: email.value, password: password.value, name: name.value });
 
-    // ändern auf backen speicherung
-    // let allUserAsString = JSON.stringify(users);
-    // localStorage.setItem('users', allUserAsString);
-
+    await initialLoadUsersFirebase();
     window.location.href = './index.html';
 
 }
@@ -26,4 +23,17 @@ function matchPassword() {
     } else {
         alert("Password created successfully");
     }
+}
+
+async function initialLoadUsersFirebase() {
+    let response = await fetch('#newUsers');
+    users = await response.json();
+
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        await postData('users', { name: user.name, mail: user.mail, password: user.password })
+
+
+    }
+    await loadData('users');
 }
