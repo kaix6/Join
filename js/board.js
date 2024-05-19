@@ -1,6 +1,23 @@
 let currentDraggedTask;
 let allTasks;
 
+// * Drag & Drop Start * //
+
+function startDraggin(id){
+    currentDraggedTask = id;
+}
+
+function allowDrop(ev){
+    ev.preventDefault();
+}
+
+function moveTo(status){
+    allTasks[currentDraggedTask][1]['status'] = status;
+    updateTasksHTML(allTasks);
+}
+
+// * Drag & Drop End * //
+
 async function showDialogTask(i){
     let bigTaskBox = document.getElementById('task-box-big');
     let currentTask = allTasks.filter(t => t[1]['id'] == i);
@@ -207,8 +224,8 @@ function updateAwaitFeedbackTasks(tasks){
         };
     } else {
         let noTaskSentence = 'No tasks await feedback'
-        boardOpenTasks.innerHTML = '';
-        boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
+        boardAwaitFeedbackTasks.innerHTML = '';
+        boardAwaitFeedbackTasks.innerHTML = generateNoTaskBox(noTaskSentence);
     };
 }
 
