@@ -16,6 +16,18 @@ function moveTo(status){
     updateTasksHTML(allTasks);
 }
 
+function highlight(id){
+    document.getElementById(id).classList.add('board-column-highlight');
+}
+
+function removeHighlightLeave(id){
+    document.getElementById(id).classList.remove('board-column-highlight');
+}
+
+function removeHighlightEnd(id){
+    document.getElementById(id).classList.remove('board-column-highlight');
+}
+
 // * Drag & Drop End * //
 
 async function showDialogTask(i){
@@ -125,6 +137,10 @@ function animationDialogTask(){
 
 async function loadTasks() {
     allTasks = Object.entries(await loadData('tasks'));
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        task[1]['id'] = i;
+    }
     updateTasksHTML(allTasks);
 }
 

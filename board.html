@@ -274,7 +274,7 @@
             </div>
 
             <div class="d-flex-start">
-              <div class="board-column" id="column-open" ondrop="moveTo('open')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-open" ondrop="moveTo('open'); removeHighlightEnd('column-open')" ondragleave="removeHighlightLeave('column-open')" ondragover="allowDrop(event); highlight('column-open')">
                 <div class="board-headline">
                   <span
                     style="
@@ -290,7 +290,7 @@
                 <div id="openTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-inProgress" ondrop="moveTo('in progress')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-inProgress" ondrop="moveTo('in progress'); removeHighlightEnd('column-inProgress')" ondragleave="removeHighlightLeave('column-inProgress')" ondragover="allowDrop(event); highlight('column-inProgress')">
                 <div class="board-headline">
                   <span
                     style="
@@ -306,7 +306,7 @@
                 <div id="inProgressTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-awaitFeedback" ondrop="moveTo('await feedback')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-awaitFeedback" ondrop="moveTo('await feedback'); removeHighlightEnd('column-awaitFeedback')" ondragleave="removeHighlightLeave('column-awaitFeedback')" ondragover="allowDrop(event); highlight('column-awaitFeedback')">
                 <div class="board-headline">
                   <span
                     style="
@@ -322,7 +322,7 @@
                 <div id="awaitFeedbackTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-done" ondrop="moveTo('done'); removeHighlightEnd('column-done')" ondragleave="removeHighlightLeave('column-done')" ondragover="allowDrop(event); highlight('column-done')">
                 <div class="board-headline">
                   <span
                     style="
