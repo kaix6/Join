@@ -286,7 +286,7 @@ select,
 }
 
 .none-display {
-  display: none;
+  display: none!important;
 }
 
 .subtaskGenerate {

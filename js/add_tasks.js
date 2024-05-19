@@ -215,9 +215,11 @@ async function saveTaskToJson(
 
 function showAddToBoardDialog() {
   let dialogbox = document.getElementById('dialogboxTask');
+  dialogbox.classList.remove('none-display'); 
   dialogbox.classList.add('show_dialog_addTask'); 
   setTimeout(function() {
     dialogbox.classList.remove('show_dialog_addTask');
+    dialogbox.classList.add('none-display');
 }, 1500)
 }
 
