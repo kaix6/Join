@@ -141,7 +141,7 @@
 
 .buttonPrio:hover {
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks {
@@ -171,7 +171,7 @@
 .createButtonAddTasks:hover {
   background-color: var(--lightblue);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks:hover {
@@ -179,7 +179,7 @@
   filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
     brightness(94%) contrast(87%);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .createButtonAddTasks img {
