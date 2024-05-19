@@ -154,7 +154,7 @@
 
 .buttonPrio:hover {
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks {
@@ -184,7 +184,7 @@
 .createButtonAddTasks:hover {
   background-color: var(--lightblue);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .clearButtonAddTasks:hover {
@@ -192,7 +192,7 @@
   filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
     brightness(94%) contrast(87%);
   cursor: pointer;
-  box-shadow: -1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .createButtonAddTasks img {
@@ -300,7 +300,7 @@ select,
 }
 
 .none-display {
-  display: none;
+  display: none!important;
 }
 
 .subtaskGenerate {
@@ -332,4 +332,28 @@ select,
   font-size: 16px;
   margin-left: 20px;
   display: none;
+}
+
+.dialogboxCreateTask {
+  width: 200px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--menuButtonDarkblue);
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  transform: translateY(1000%);
+  transition: all 100ms ease-in-out;
+}
+
+.show_dialog_addTask {
+  /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
+  transform: translateX(0);
 }
