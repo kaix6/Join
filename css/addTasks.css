@@ -72,6 +72,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
 }
 
 #description {
@@ -83,6 +84,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
 }
 
 #assignedTo,
@@ -97,6 +99,7 @@
   gap: 10px;
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
+  outline: none;
   appearance: none;
   -webkit-appearance: none;
 }
@@ -106,6 +109,16 @@
 #category,
 #subtask:hover {
   cursor: pointer;
+}
+
+#title:focus,
+#date:focus,
+#description:focus,
+#assignedTo:focus,
+#assignedToMobil:focus,
+#category:focus,
+#subtask:focus {
+  border: 1px solid var(--lightblue);
 }
 
 .prio {
@@ -228,6 +241,7 @@ select,
     brightness(507%) contrast(101%);
 }
 
+#selectedMembers_edit,
 #selectedMembers,
 #selectedMembersMobil {
   width: 100%;
@@ -264,7 +278,7 @@ select,
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .subtaskAreaContainer {
