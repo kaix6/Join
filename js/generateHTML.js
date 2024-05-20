@@ -48,7 +48,7 @@ function generateBigTaskBox(task) {
         </div>
         </div>
         <div class="container-delete-edit">
-            <div class="delete">
+            <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})">
                 <img
                 class="delete-edit-icon" 
                 src="./assets/img/board/icon+delete_black.svg"

@@ -427,3 +427,10 @@ function renderSubtasks(index) {
         subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${subTask.id}`, subTask.description);
     }
 }
+
+async function deleteTask(event, index) {
+    console.log(allTasks[index][0]);
+/*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    await loadTasks();
+    closeDialogTask();
+}

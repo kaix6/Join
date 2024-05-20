@@ -31,6 +31,8 @@ async function renderContacts(filter) {
     if (contacts.length <= 1) { // die initial contact soll nur einmal initial geladen werden
         initialLoadContactsFirebase();
     }
+    console.log(contacts);
+    console.log(contacts[0]);
     let contentContacts = document.querySelector('.contacts');
     sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
