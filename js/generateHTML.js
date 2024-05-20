@@ -309,7 +309,7 @@ function generateDialoEditInnerHTML(index) {
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">
                 <label for="fullName_edit"></label>
-                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" placeholder="Name" required>
+                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" pattern="[a-zA-Z\s]*" placeholder="Name" required>
                 <label for="mail_edit"></label>
                 <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                 <label for="telNumber_edit"></label>
@@ -318,7 +318,7 @@ function generateDialoEditInnerHTML(index) {
                     <button onclick="deleteContact(event, ${index})" type="button" class="cancel_create_contact_edit_btn contact_btn pointer">
                         <p class="text_cancel_create_contact_edit_btn">Delete</p>
                     </button>
-                    <button class="create_contact_btn contact_btn pointer" type="submit">
+                    <button class="blue_btn contact_btn pointer" type="submit">
                         <p class="text_create_contact_btn">Save</p>
                         <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
                     </button>

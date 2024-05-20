@@ -43,7 +43,7 @@
             <div class="bottom_dialog_add_edit">
                 <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
                     <label for="fullName"></label>
-                    <input class="create_contact_input" minlength="2" type="text" id="fullName" placeholder="Name" required>
+                    <input class="create_contact_input" minlength="2" type="text" id="fullName" pattern="[a-zA-Z\s]*" placeholder="Name" required>
                     <label for="mail"></label>
                     <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
                     <label for="telNumber"></label>
@@ -53,7 +53,7 @@
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>
-                        <button class="create_contact_btn add_contact_btn contact_btn pointer" type="submit">
+                        <button class="blue_btn add_contact_btn contact_btn pointer" type="submit">
                             <p class="text_create_contact_btn">Create contact</p>
                             <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
                         </button>
