@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/addTasks.css" />
   </head>
 
-  <body class="flex_dir_c" onload="includeHTML(); loadTasks()">
+  <body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
       <!--      Section Dialog Box Small TodoTask    -->
       <div id="task-box-small" class="task-box d-none">
@@ -105,7 +105,8 @@
                         onclick="renderContactsInAddTasks()"
                         name="assigned"
                         id="assignedTo"
-                      ></select>
+                      >
+                    </select>
                     </div>
 
                     <div class="selectedMembersNone" id="selectedMembers"></div>
