@@ -1176,12 +1176,18 @@
 
   .board-column{
       width: 100%;
+      overflow-y: inherit;
   }
 
   .tasks-container{
       display: flex;
       overflow-x: scroll;
   }
+
+  .dialog_addTask_bg {
+    display: none!important;
+  } 
+}
 
 @media(max-width: 800px) {
 

@@ -41,8 +41,8 @@
 
 .content-board{
     margin-top: 60px;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 100px;
     height: calc(100% - 60px - 100px)
     }
@@ -56,9 +56,11 @@
     }
 
     .board-column{
-        width: 250px;
+        width: 280px;
         margin-bottom: 16px;
         height: 100%;
+        padding: 8px;
+        overflow-y: scroll;
     }
     
     .d-flex-start{
@@ -198,6 +200,11 @@
         cursor: pointer;
         width: 18px;
         height: 18px;
+    }
+
+    .board-column-highlight{
+        border: dashed 1px var(--grey);
+        border-radius: 24px;
     }
 
     /* Board - End */

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/addTasks.css" />
   </head>
 
-  <body class="flex_dir_c" onload="includeHTML(); loadTasks()">
+  <body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
       <!--      Section Dialog Box Small TodoTask    -->
       <div id="task-box-small" class="task-box d-none">
@@ -105,10 +105,11 @@
                         onclick="renderContactsInAddTasks()"
                         name="assigned"
                         id="assignedTo"
-                      ></select>
+                      >
+                    </select>
                     </div>
 
-                    <div id="selectedMembers"></div>
+                    <div class="selectedMembersNone" id="selectedMembers"></div>
                     <div class="none-display" id="isSelected">
                       Has already been selected
                     </div>
@@ -196,20 +197,27 @@
                       </select>
                     </div>
 
-                    <div style="margin-top: 16px">
+                    <div style="margin-top: 16px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                        >Subtasks</label
+                        >Subtasks <span id="textSubtask">Please enter a text</span></label
                       ><br />
                       <input
                         id="subtask"
                         type="text"
                         placeholder="add new subtask"
                       />
+                      <img
+                      onclick="addNewSubtask()"
+                      class="addSubtask"
+                      src="assets/img/add_task/add.svg"
+                      alt=""
+                    />
                     </div>
-                    <div id="subtaskArea"></div>
+                    
                     <div>
-                      <div>
-                        <div class="footer flexEnd">
+                      <div class="subtaskAreaContainer">
+                        <div class="subtaskAreaNone" id="subtaskArea"></div>
+                        <div class="footerButton flexEnd">
                           <button
                             onclick="reloadPage()"
                             class="clearButtonAddTasks"
@@ -217,10 +225,7 @@
                             Clear
                             <img src="assets/img/add_task/close.svg" alt="" />
                           </button>
-                          <button
-                            class="createButtonAddTasks"
-                            id="submitButton"
-                          >
+                          <button class="createButtonAddTasks" id="submitButton">
                             Create Task
                             <img src="assets/img/add_task/check.svg" alt="" />
                           </button>
@@ -274,7 +279,7 @@
             </div>
 
             <div class="d-flex-start">
-              <div class="board-column" id="column-open" ondrop="moveTo('open')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-open" ondrop="moveTo('open'); removeHighlightEnd('column-open')" ondragleave="removeHighlightLeave('column-open')" ondragover="allowDrop(event); highlight('column-open')">
                 <div class="board-headline">
                   <h2 class="test_headline"
 
@@ -285,7 +290,7 @@
                 <div id="openTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-inProgress" ondrop="moveTo('in progress')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-inProgress" ondrop="moveTo('in progress'); removeHighlightEnd('column-inProgress')" ondragleave="removeHighlightLeave('column-inProgress')" ondragover="allowDrop(event); highlight('column-inProgress')">
                 <div class="board-headline">
                   <span
                     style="
@@ -301,7 +306,7 @@
                 <div id="inProgressTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-awaitFeedback" ondrop="moveTo('await feedback')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-awaitFeedback" ondrop="moveTo('await feedback'); removeHighlightEnd('column-awaitFeedback')" ondragleave="removeHighlightLeave('column-awaitFeedback')" ondragover="allowDrop(event); highlight('column-awaitFeedback')">
                 <div class="board-headline">
                   <span
                     style="
@@ -317,7 +322,7 @@
                 <div id="awaitFeedbackTasks" class="tasks-container"></div>
               </div>
 
-              <div class="board-column" id="column-done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+              <div class="board-column" id="column-done" ondrop="moveTo('done'); removeHighlightEnd('column-done')" ondragleave="removeHighlightLeave('column-done')" ondragover="allowDrop(event); highlight('column-done')">
                 <div class="board-headline">
                   <span
                     style="
