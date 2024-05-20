@@ -175,6 +175,13 @@
         justify-content: space-between;
     }
 
+    .test_headline {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24px;
+/*         text-align: left; */
+    }
+
     .column-plus-button{
         display: flex;
         position: relative;
@@ -514,4 +521,86 @@
 
     .d-none{
         display: none;
+    }
+
+    .edit_box_big {
+        height: 750px; 
+    }
+    
+    .scroll_EditTasks {
+        overflow-y: auto;
+    }
+    
+    .mainEditTasks {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 50px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    
+    .wrapper_close_edit_task {
+        position: fixed;
+        right: 50px;
+        top: 48px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .wrapper_close_edit_task:hover {
+        background-color: #EEEEEE;
+    }
+    
+    .focus_editTask {
+      font-size: 20px;
+      width: 100%;
+      height: 48px;
+      border-radius: 10px;
+      padding: 12px 21px 12px 21px;
+      gap: 10px;
+      border: 1px solid var(--backgroundSpacer);
+      margin-top: 8px;
+      outline: none;
+    }
+    
+    .focus_editTask_description {
+        font-size: 20px;
+        width: 100%;
+        height: 120px;
+        border-radius: 10px;
+        padding: 12px 21px 12px 21px;
+        gap: 10px;
+        border: 1px solid var(--backgroundSpacer);
+        margin-top: 8px;
+        outline: none;
+      }
+    
+    .focus_editTask_description:focus,
+    .focus_editTask:focus {
+        border: 1px solid var(--lightblue);
+    }
+    
+    .prio_edit {
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .prio_edit_text {
+        font-weight: bold;
+    }
+    
+    .edit_task_btn {
+        display: flex;
+        gap: 4px;
+        padding: 18px;
+        align-items: center;
+    }
+    
+    .footer_edit_task {
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 48px;
     }

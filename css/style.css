@@ -60,7 +60,7 @@ h1{
     width: 8px;
   }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb:vertical {
     background: var(--grey);
     border-radius: 8px;
   }
