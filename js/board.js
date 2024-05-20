@@ -3,15 +3,15 @@ let allTasks;
 
 // * Drag & Drop Start * //
 
-function startDraggin(id){
+function startDraggin(id) {
     currentDraggedTask = id;
 }
 
-function allowDrop(ev){
+function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status){
+function moveTo(status) {
     allTasks[currentDraggedTask][1]['status'] = status;
     // await editData(`tasks/${allTasks[currentDraggedTask][1]['status']}`, {status: status.value});
     updateTasksHTML(allTasks);
@@ -31,7 +31,7 @@ function removeHighlightEnd(id){
 
 // * Drag & Drop End * //
 
-async function showDialogTask(i){
+async function showDialogTask(i) {
     let bigTaskBox = document.getElementById('task-box-big');
     let currentTask = allTasks.filter(t => t[1]['id'] == i);
     await animationDialogTask();
@@ -44,7 +44,7 @@ async function showDialogTask(i){
     getDivHeight(currentTask);
 }
 
-function getDivHeight(){
+function getDivHeight() {
     let bigTaskBox = document.querySelector('.task-box-big');
     let viewportWithoutNavi = window.innerHeight - 83;
     let height = bigTaskBox.offsetHeight;
@@ -52,7 +52,7 @@ function getDivHeight(){
     changeTaskBoxHeight(gapHeight, height);
 }
 
-function changeTaskBoxHeight(gapHeight, height){
+function changeTaskBoxHeight(gapHeight, height) {
     if (gapHeight < -1) {
         var r = document.querySelector(':root');
         let newHeight = 'calc(100% - 80px - 83px)';
@@ -66,36 +66,36 @@ function changeTaskBoxHeight(gapHeight, height){
 
 // wenn die neue Height negativ ist, dann minus fixen Wert --> calc(100% - 80px - 83px)
 
-function getAllMembersBigTask(currentTask){
+function getAllMembersBigTask(currentTask) {
     let memberContainer = document.getElementById('container-member-big-task');
     let taskAllMembers = currentTask[0][1]['assigned member'];
-    for (let i = 0; i < taskAllMembers.length; i++){
+    for (let i = 0; i < taskAllMembers.length; i++) {
         const currentTaskMember = taskAllMembers[i];
         memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
         setColorMemberBigTask(currentTaskMember);
     };
 }
 
-function setColorMemberBigTask(currentTaskMember){
+function setColorMemberBigTask(currentTaskMember) {
     let colorMember = currentTaskMember['color'];
     let memberContainer = document.getElementById(`member-letter-cirlce${currentTaskMember['id']}`);
     memberContainer.style.backgroundColor = colorMember;
 }
 
-function setPriorityBigTask(currentTask){
+function setPriorityBigTask(currentTask) {
     let taskPrio = currentTask[0][1]['prio'];
     if (taskPrio == 'low') {
-        document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_low.svg';
+        document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src = './assets/img/add_task/prio_low.svg';
     } else {
         if (taskPrio == 'medium') {
-            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
+            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src = './assets/img/add_task/prio_medium.svg';
         } else {
-            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
+            document.getElementById(`taskPrioBigBox${currentTask[0][1]['id']}`).src = './assets/img/add_task/prio_urgent.svg';
         }
     };
 }
 
-function setTaskCategoryBigTask(task){
+function setTaskCategoryBigTask(task) {
     let taskCategory = task[0][1]['category'];
     let taskCategoryContainer = document.getElementById(`task-category${task[0][1]['id']}`);
     if (taskCategory == 'User Story') {
@@ -105,12 +105,11 @@ function setTaskCategoryBigTask(task){
     };
 }
 
-function getAllSubtasksBigTask(currentTask){
+function getAllSubtasksBigTask(currentTask) {
     let subtasksSection = document.getElementById(`subtasks${currentTask[0][1]['id']}`);
     let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
     let taskAllSubtasks = currentTask[0][1]['subtask'];
-    if(typeof taskAllSubtasks === "undefined"){
-    } else {
+    if (typeof taskAllSubtasks === "undefined") {} else {
         subtaskHeadline.innerHTML = generateSubtasksHeadline();
         for (let i = 0; i < taskAllSubtasks.length; i++) {
             const subtask = taskAllSubtasks[i];
@@ -119,17 +118,17 @@ function getAllSubtasksBigTask(currentTask){
     };
 }
 
-function checkUncheckBox(id){
+function checkUncheckBox(id) {
     document.getElementById(`subtask-checkbox${id}`).classList.toggle('subtask-checkbox-checked');
 }
 
-function closeDialogTask(){
+function closeDialogTask() {
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
     subtaskIdCounter = 0;
 }
 
-function animationDialogTask(){
+function animationDialogTask() {
     document.querySelector('.background-big-task').classList.toggle('d-none');
     setTimeout(function() {
         document.querySelector('.task-box-big').classList.toggle('show-task-box-big');
@@ -145,7 +144,7 @@ async function loadTasks() {
     updateTasksHTML(allTasks);
 }
 
-function updateTasksHTML(tasks){
+function updateTasksHTML(tasks) {
     updateOpenTasks(tasks);
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
@@ -157,7 +156,7 @@ function updateTasksHTML(tasks){
  * 
  * @returns tasks - This is the JSON Array, which is returned to function updateTasksHTML()
  */
-async function getTasksJson(){
+async function getTasksJson() {
     let response = await fetch('./js/addTasks.json');
     tasks = await response.json();
     return tasks;
@@ -168,11 +167,11 @@ async function getTasksJson(){
  * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
-function updateOpenTasks(tasks){
+function updateOpenTasks(tasks) {
     let open = tasks.filter(t => t[1]['status'] == 'open')
     let boardOpenTasks = document.getElementById('openTasks');
 
-    if(open.length > 0){
+    if (open.length > 0) {
         boardOpenTasks.innerHTML = '';
         for (let i = 0; i < open.length; i++) {
             const openTask = open[i][1];
@@ -195,21 +194,21 @@ function updateOpenTasks(tasks){
  * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
-function updateInProgressTasks(tasks){
+function updateInProgressTasks(tasks) {
     let inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
     boardInProgressTasks.innerHTML = '';
 
     if (inProgress.length > 0) {
         boardInProgressTasks.innerHTML = '';
-    for (let i = 0; i < inProgress.length; i++) {
-        const inProgressTask = inProgress[i][1];
-        boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
-        getAllMembers(inProgressTask);
-        setPriority(inProgressTask);
-        setTaskCategory(inProgressTask);
-        getAllSubtasks(inProgressTask);
-        truncateText(inProgressTask);
+        for (let i = 0; i < inProgress.length; i++) {
+            const inProgressTask = inProgress[i][1];
+            boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
+            getAllMembers(inProgressTask);
+            setPriority(inProgressTask);
+            setTaskCategory(inProgressTask);
+            getAllSubtasks(inProgressTask);
+            truncateText(inProgressTask);
         };
     } else {
         let noTaskSentence = 'No tasks in progress'
@@ -223,21 +222,21 @@ function updateInProgressTasks(tasks){
  * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
-function updateAwaitFeedbackTasks(tasks){
+function updateAwaitFeedbackTasks(tasks) {
     let awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
     boardAwaitFeedbackTasks.innerHTML = '';
 
     if (awaitFeedback.length > 0) {
         boardAwaitFeedbackTasks.innerHTML = '';
-    for (let i = 0; i < awaitFeedback.length; i++) {
-        const awaitFeedbackTask = awaitFeedback[i][1];
-        boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
-        getAllMembers(awaitFeedbackTask);
-        setPriority(awaitFeedbackTask);
-        setTaskCategory(awaitFeedbackTask);
-        getAllSubtasks(awaitFeedbackTask);
-        truncateText(awaitFeedbackTask);
+        for (let i = 0; i < awaitFeedback.length; i++) {
+            const awaitFeedbackTask = awaitFeedback[i][1];
+            boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
+            getAllMembers(awaitFeedbackTask);
+            setPriority(awaitFeedbackTask);
+            setTaskCategory(awaitFeedbackTask);
+            getAllSubtasks(awaitFeedbackTask);
+            truncateText(awaitFeedbackTask);
         };
     } else {
         let noTaskSentence = 'No tasks await feedback'
@@ -251,23 +250,23 @@ function updateAwaitFeedbackTasks(tasks){
  * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
-function updateDoneTasks(tasks){
+function updateDoneTasks(tasks) {
     let done = tasks.filter(t => t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
     boardDoneTasks.innerHTML = '';
 
     if (done.length > 0) {
         boardDoneTasks.innerHTML = '';
-    for (let i = 0; i < done.length; i++) {
-        const doneTask = done[i][1];
-        boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
-        getAllMembers(doneTask);
-        setPriority(doneTask);
-        setTaskCategory(doneTask);
-        getAllSubtasks(doneTask);
-        truncateText(doneTask);
-    };
-    } else{
+        for (let i = 0; i < done.length; i++) {
+            const doneTask = done[i][1];
+            boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
+            getAllMembers(doneTask);
+            setPriority(doneTask);
+            setTaskCategory(doneTask);
+            getAllSubtasks(doneTask);
+            truncateText(doneTask);
+        };
+    } else {
         let noTaskSentence = 'No tasks Done'
         boardDoneTasks.innerHTML = '';
         boardDoneTasks.innerHTML = generateNoTaskBox(noTaskSentence);
@@ -279,11 +278,11 @@ function updateDoneTasks(tasks){
  * 
  * @param {string} task - This is the JSON array with all tasks
  */
-function getAllMembers(task){
+function getAllMembers(task) {
     for (let j = 0; j < task['assigned member'].length; j++) {
         const member = task['assigned member'][j]['letters'];
         let taskId = task['id'];
-        let memberId = taskId+member;
+        let memberId = taskId + member;
         document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
         setColorMember(task, j, memberId);
     };
@@ -296,7 +295,7 @@ function getAllMembers(task){
  * @param {number} j - This is the index of the member
  * @param {string} memberId - This is the id of the member consisting of the task ID and the letters of the member (e.g. 0AM)
  */
-function setColorMember(task, j, memberId){
+function setColorMember(task, j, memberId) {
     let colorMember = task['assigned member'][j]['color'];
     let memberContainer = document.getElementById(memberId);
     memberContainer.style.backgroundColor = colorMember;
@@ -307,15 +306,15 @@ function setColorMember(task, j, memberId){
  * 
  * @param {string} task - This is the JSON array with all tasks
  */
-function setPriority(task){
+function setPriority(task) {
     let taskPrio = task['prio'];
     if (taskPrio == 'low') {
-        document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_low.svg';
+        document.getElementById(`taskPrio${task['id']}`).src = './assets/img/add_task/prio_low.svg';
     } else {
         if (taskPrio == 'medium') {
-            document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_medium.svg';  
+            document.getElementById(`taskPrio${task['id']}`).src = './assets/img/add_task/prio_medium.svg';
         } else {
-            document.getElementById(`taskPrio${task['id']}`).src ='./assets/img/add_task/prio_urgent.svg';
+            document.getElementById(`taskPrio${task['id']}`).src = './assets/img/add_task/prio_urgent.svg';
         }
     };
 }
@@ -325,7 +324,7 @@ function setPriority(task){
  * 
  * @param {string} task - This is the JSON array with all tasks
  */
-function setTaskCategory(task){
+function setTaskCategory(task) {
     let taskCategory = task['category'];
     let taskCategoryContainer = document.getElementById(`task-category${task['id']}`);
     if (taskCategory == 'User Story') {
@@ -340,9 +339,8 @@ function setTaskCategory(task){
  * 
  * @param {string} task - This is the JSON array with all tasks
  */
-function getAllSubtasks(task){
-    if(typeof task['subtask'] === "undefined" ){
-    } else {
+function getAllSubtasks(task) {
+    if (typeof task['subtask'] === "undefined") {} else {
         let subtasksSection = document.getElementById(`task${task['id']}`);
         subtasksSection.innerHTML += generateSubtasksSection();
     };
@@ -357,7 +355,7 @@ function truncateText(task) {
     var description = document.getElementById(`task-description${task['id']}`).innerHTML;
     var truncated = description.substring(0, 50) + "...";
     document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
-  }
+}
 
 // edit Tasks
 
@@ -372,18 +370,18 @@ function initializeSubtaskIdCounter(index) {
     for (let i = 0; i < subtasks.length; i++) {
         let subtaskIdNum = parseInt(subtasks[i].id);
         if (subtaskIdNum > maxId) {
-          maxId = subtaskIdNum;
+            maxId = subtaskIdNum;
         }
-      }
+    }
     subtaskIdCounter = maxId + 1; // Set counter to the highest value + 1
-  }
+}
 
-  /**
-   * This function edits a task by updating the task box with the edit form, rendering contacts and displaying the current task data.
-   * @param {number} index - The index of the task to be edited in the `allTasks` array.
-   * @param {event} event - The event object, used to update the priority button color.
-   */
-  function editTask(index, event) {
+/**
+ * This function edits a task by updating the task box with the edit form, rendering contacts and displaying the current task data.
+ * @param {number} index - The index of the task to be edited in the `allTasks` array.
+ * @param {event} event - The event object, used to update the priority button color.
+ */
+function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
@@ -391,19 +389,19 @@ function initializeSubtaskIdCounter(index) {
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
-  }
+}
 
-  /**
-   * This function displays saved task data in the edit form.
-   * @param {number} index - The index of the task in the `allTasks` array.
-   * @param {string} formattedDate - The formatted due date for the task.
-   */
-  function showSavedTasksData(index) {
+/**
+ * This function displays saved task data in the edit form.
+ * @param {number} index - The index of the task in the `allTasks` array.
+ * @param {string} formattedDate - The formatted due date for the task.
+ */
+function showSavedTasksData(index) {
     document.querySelector('.title_tasks').value = `${allTasks[index][1].title}`;
     document.querySelector('.description_tasks').value = `${allTasks[index][1].description}`;
     document.querySelector('.dueDate_edit').innerHTML = generateInputDateHTML(index);
     renderExistingMembersEditTask(index);
-    if(typeof allTasks[index][1].subtask !== 'undefined') {
+    if (typeof allTasks[index][1].subtask !== 'undefined') {
         renderSubtasks(index);
     }
 }
@@ -445,9 +443,42 @@ function renderSubtasks(index) {
     }
 }
 
+
+function addSearchTask() {
+    let search = document.getElementById('searchField').value.toLowerCase();
+    console.log(search, "hier stet die eingabe ");
+    console.log(allTasks);
+    serch = search.toLowerCase();
+
+    teachingFields();
+
+}
+
+function teachingFields() {
+    // document.getElementById('openTasks').innerHTML = '';
+    document.getElementById('inProgressTasks').innerHTML = '';
+    document.getElementById('awaitFeedbackTasks').innerHTML = '';
+    document.getElementById('doneTasks').innerHTML = '';
+
+    emptyTasks();
+
+    for (let i = 0; i < allTasks.length; i++) {
+        let description = allTasks[i];
+        console.log(description[description])
+    }
+}
+
+function emptyTasks() {
+    let boardOpenTasks = document.getElementById('openTasks');
+    let noTaskSentence = 'No tasks To do'
+    boardOpenTasks.innerHTML = '';
+    boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
+
+
 async function deleteTask(event, index) {
     console.log(allTasks[index][0]);
 /*     await deleteData(`tasks/${allTasks[index][0]}`); */
     await loadTasks();
     closeDialogTask();
+
 }

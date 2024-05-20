@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board | Join</title>
@@ -18,60 +19,54 @@
     <link rel="stylesheet" href="./css/board.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
     <link rel="stylesheet" href="./css/addTasks.css" />
-  </head>
+</head>
+
 
   <body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
+
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-      <!--      Section Dialog Box Small TodoTask    -->
-      <div id="task-box-small" class="task-box d-none">
-        <p class="task-type">Task Type</p>
-        <p class="task-headline">Task Headline</p>
-        <p class="task-description">Task Description</p>
-        <div class="progress-section">
-          <div class="progress">
-            <div class="progress-bar" style="width: 50%"></div>
-          </div>
-          <p class="amount-subtask">1/2 Subtasks</p>
+        <!--      Section Dialog Box Small TodoTask    -->
+        <div id="task-box-small" class="task-box d-none">
+            <p class="task-type">Task Type</p>
+            <p class="task-headline">Task Headline</p>
+            <p class="task-description">Task Description</p>
+            <div class="progress-section">
+                <div class="progress">
+                    <div class="progress-bar" style="width: 50%"></div>
+                </div>
+                <p class="amount-subtask">1/2 Subtasks</p>
+            </div>
+            <div class="member-prio-section">
+                <div class="task-all-member">
+                    <div class="member">AM</div>
+                    <div class="member">EM</div>
+                </div>
+                <img src="./assets/img/add_task/prio_low.svg" />
+            </div>
         </div>
-        <div class="member-prio-section">
-          <div class="task-all-member">
-            <div class="member">AM</div>
-            <div class="member">EM</div>
-          </div>
-          <img src="./assets/img/add_task/prio_low.svg" />
+        <!--      End Section Dialog Box Small TodoTask    -->
+
+        <!--      Section Dialog Box Big TodoTask    -->
+        <div class="background-big-task d-none" onclick="closeDialogTask()">
+            <div id="task-box-big" class="task-box-big" onclick="doNotClose(event)"></div>
         </div>
-      </div>
-      <!--      End Section Dialog Box Small TodoTask    -->
+        <!--      End Section Dialog Box Big TodoTask    -->
 
-      <!--      Section Dialog Box Big TodoTask    -->
-      <div class="background-big-task d-none" onclick="closeDialogTask()">
-        <div
-          id="task-box-big"
-          class="task-box-big" 
-          onclick="doNotClose(event)"
-        ></div>
-      </div>
-      <!--      End Section Dialog Box Big TodoTask    -->
+        <!--      Section Dialogbox Add task    -->
 
-      <!--      Section Dialogbox Add task    -->
+        <div onclick="closeDialog('.dialog_addTask', 'show_dialog_addTask', '.dialog_addTask_bg', 'd-none', 250)" class="dialog_addTask_bg d-none">
+            <div onclick="doNotClose(event)" class="dialog_addTask">
+                <!-- Desktop - Version -->
+                <section id="main_container" class="main_addTasks">
+                    <div class="desktopAddTask">
+                        <div class="d-flex">
+                            <h1 class="headlineAddTasks">Add Tasks</h1>
+                        </div>
 
-      <div
-        onclick="closeDialog('.dialog_addTask', 'show_dialog_addTask', '.dialog_addTask_bg', 'd-none', 250)"
-        class="dialog_addTask_bg d-none"
-      >
-        <div onclick="doNotClose(event)" class="dialog_addTask">
-          <!-- Desktop - Version -->
-          <section id="main_container" class="main_addTasks">
-            <div class="desktopAddTask">
-              <div class="d-flex">
-                <h1 class="headlineAddTasks">Add Tasks</h1>
-              </div>
-
-              <div class="mainAddTasks dialogMainTasks">
-                <form class="addTasksLeft" onsubmit="return validateForm()">
-                  <div class="widthHalf">
-                    <label class="fontUnderHeadlinesAddTasks" for="title"
-                      >Title<span style="color: red">*</span></label
+                        <div class="mainAddTasks dialogMainTasks">
+                            <form class="addTasksLeft" onsubmit="return validateForm()">
+                                <div class="widthHalf">
+                                    <label class="fontUnderHeadlinesAddTasks" for="title">Title<span style="color: red">*</span></label
                     >
                     <input
                       type="text"
@@ -263,8 +258,8 @@
               </div>
               <div class="board-search-add">
                 <div class="search-field">
-                  <input type="text" placeholder="Find Task" />
-                  <div class="container-search-icon">
+                  <input id="searchField" type="text" placeholder="Find Task" />
+                  <div onclick="addSearchTask()"  class="container-search-icon">
                     <img class="search-icon" src="./assets/img/board/search.svg" />
                   </div>
                 </div>
