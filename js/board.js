@@ -13,6 +13,7 @@ function allowDrop(ev){
 
 function moveTo(status){
     allTasks[currentDraggedTask][1]['status'] = status;
+    // await editData(`tasks/${allTasks[currentDraggedTask][1]['status']}`, {status: status.value});
     updateTasksHTML(allTasks);
 }
 
