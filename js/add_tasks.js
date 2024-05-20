@@ -1,5 +1,6 @@
 let selectUsers = [];
 let selectUsersColor = [];
+let selectUsersLetters = [];
 let selectedPrio;
 
 let subtaskIdCounter = 0;
@@ -123,8 +124,8 @@ async function renderContactsInAddTasks() {
   assignedTo.innerHTML = generateAssignedToFirst(); // Platzhalter
 
   contacts.forEach((contact) => {
-    const { name, letters } = contact[1];
-    assignedTo.innerHTML += `<option value="${letters}">${name}</option>`;
+    const {name, letters} = contact[1];
+    assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
   });
 
   assignedTo.onchange = () =>
@@ -135,7 +136,7 @@ async function renderContactsInAddTasks() {
 function handleAssignedToChange(contacts, assignedTo, MembersArea) {
   const selectedName = assignedTo.value;
   const selectedContact = contacts.find(
-    (contact) => contact[1].letters === selectedName
+    (contact) => contact[1].name === selectedName
   );
 
   if (selectedContact) {
@@ -148,18 +149,19 @@ function handleAssignedToChange(contacts, assignedTo, MembersArea) {
 
 // Funktion zum Hinzufügen der ausgewählten Benutzer (Anzeigen von Profilbildern) unter "Assigned To"
 function pushMembers(contact) {
-  const { letters, color } = contact;
+  const { name, color, letters } = contact;
   const messageSelected = document.getElementById("isSelected");
 
-  if (selectUsers.includes(letters)) {
+  if (selectUsers.includes(name)) {
     messageMemberIsAdded(messageSelected);
     return;
   }
   messageIsSelected(messageSelected);
 
   // Füge das Element und seine Farbe zu selectUsers und selectUsersColor hinzu
-  selectUsers.push(letters);
+  selectUsers.push(name);
   selectUsersColor.push(color);
+  selectUsersLetters.push(letters);
   renderPushedMembers();
 }
 
@@ -181,9 +183,10 @@ function renderPushedMembers() {
   for (let i = 0; i < selectUsers.length; i++) {
     const element = selectUsers[i];
     const color = selectUsersColor[i];
+    const letters = selectUsersLetters[i];
 
     if (!document.getElementById(`${element}`)) {
-    selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${element}</div>`;
+    selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${letters}</div>`;
     document.getElementById(`${element}`).style.backgroundColor = `${color}`;
     }
   }
