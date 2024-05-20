@@ -1116,10 +1116,12 @@
   .small-add-button{
       display: flex;
       align-items: center;
-      border-radius: 8px;
+      justify-content: center;
+      border-radius: 10px;
       background-color: var(--activeClickMenuBlue);
-      padding: 8px;
       cursor: pointer;
+      height: 40px;
+      width: 40px;
   }
 
   .small-add-button:hover{
@@ -1136,6 +1138,10 @@
       align-items: center;
       margin-bottom: 24px;
       width: 100%;
+  }
+
+  h1 {
+    font-size: 47px;
   }
 
   .headline-container{
@@ -1155,6 +1161,16 @@
       margin-top: 50px;
   }
 
+  .test_headline{
+    font-size: 27px;
+}
+
+  .column-plus-button{
+    width: 30px;
+    height: 30px;
+    background-size: contain
+}
+
   .d-flex-start{
       flex-direction: column;
       flex-wrap: nowrap;
@@ -1168,7 +1184,6 @@
       display: flex;
       overflow-x: scroll;
   }
-}
 
 @media(max-width: 800px) {
 
