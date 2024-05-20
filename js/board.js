@@ -13,7 +13,7 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     allTasks[currentDraggedTask][1]['status'] = status;
-    // await editData(`tasks/${allTasks[currentDraggedTask][1]['status']}`, {status: status.value});
+    // await editData(`tasks/${allTasks[currentDraggedTask][1]}`, {status: status.value});
     updateTasksHTML(allTasks);
 }
 
@@ -71,6 +71,7 @@ function getAllMembersBigTask(currentTask) {
     let taskAllMembers = currentTask[0][1]['assigned member'];
     for (let i = 0; i < taskAllMembers.length; i++) {
         const currentTaskMember = taskAllMembers[i];
+        console.log(currentTaskMember);
         memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
         setColorMemberBigTask(currentTaskMember);
     };
@@ -433,7 +434,6 @@ function renderExistingMembersEditTask(index) {
  */
 function renderSubtasks(index) {
     initializeSubtaskIdCounter(index);
-    console.log(subtaskIdCounter);
     let subtaskAreaEdit = document.querySelector('#subtaskArea');
     let existingSubTasks = allTasks[index][1].subtask;
 

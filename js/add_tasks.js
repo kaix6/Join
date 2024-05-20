@@ -227,6 +227,7 @@ async function saveTaskToJson(title, description, date, prio, category, assigned
     "assigned member": assignedTo,
     subtask: subtaskArray,
     status: "open",
+    id: 1,
   };
   await postData("tasks", newTask);
   console.log("Task erfolgreich hinzugefügt.");
