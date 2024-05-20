@@ -1,3 +1,36 @@
+/**
+ * This funciton adds a 'containsLinks' query parameter to all anchor tags' href attributes.
+ *  * The 'containsLinks' parameter indicates whether the '.top_side_menu' element contains the '.links' element.
+ */
+function setPreviousPageParams() {
+    let containsLinks = document.querySelector('.top_side_menu')?.contains(document.querySelector('.links')) || false;
+    let links = document.querySelectorAll('a');
+    
+    links.forEach(link => {
+        try {
+            let url = new URL(link.href);
+            url.searchParams.set('containsLinks', containsLinks);
+            link.href = url.toString();
+/*             console.log('URL:', url.toString()); */
+        } catch (error) {
+/*             console.error('Error constructing URL:', error);
+            console.warn('Invalid URL:', link.href); */
+        }
+    });
+}
+
+
+/**
+ * This function retrieves a query parameter value from the URL.
+ * @param {string} param - The name of the query parameter.
+ * @returns {string|null} The value of the query parameter or null if not found.
+ */
+function getQueryParam(param) {
+    let urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+
 // Braucht die jemand war hautzächlich für die an imation 
 async function initLogin() {
     await includeHTML();
@@ -21,6 +54,7 @@ async function includeHTML() {
         }
     }
     loadTemplateFunctions();
+    setPreviousPageParams();
 }
 
 
@@ -31,7 +65,7 @@ function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
     if(window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
-        removesElements();
+        removeElements();
     }
     // if(window.location.pathname == '/board.html') {
     //     updateTasksHTML();
@@ -125,17 +159,16 @@ function setReferrer(container) {
     document.querySelector(container).href = document.referrer;
 }
 
-
 /**
  * This function removes elements from the DOM if the previous page was 'index.html'.
  * This function checks the referring page. If the previous page is 'index.html', 
  * it removes elements matching the specified selectors ('.links', '#profileHeader', '#side_menu') and adjusts the height of the '#main_container' element.
  */
-function removesElements() {
+function removeElements() {
     let previousPage = document.referrer;
+    let containsLinks = getQueryParam('containsLinks') === 'true';
 
-    console.log(document.querySelector('.top_side_menu').children);
-    if (previousPage.includes('/index.html') || previousPage.includes('/signup.html')) {
+    if (previousPage.includes('/index.html') || previousPage.includes('/signup.html') || !containsLinks) {
         ['.links'].forEach(classes => {
             let element = document.querySelector(classes);
             if (element) {
@@ -145,11 +178,6 @@ function removesElements() {
         document.querySelector('#profileHeader').remove();
         document.querySelector('#side_menu').remove();
         document.querySelector('#main_container').style.height = "calc(100vh - 80px)";  
-    }
-    if(document.querySelector('.top_side_menu').contains(document.querySelector('.links'))) {
-        console.log('true')
-    } else {
-        console.log('false')
     }
 }
 

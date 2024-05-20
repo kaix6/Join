@@ -179,21 +179,21 @@
     background-color: var(--white);
 }
 
-.create_contact_btn {
+/* .create_contact_btn {
     border: none;
     background-color: var(--menuButtonDarkblue);
     color: var(--white);
-}
+} */
 
 .text_cancel_create_contact_edit_btn,
 .text_cancel_create_contact_btn {
     font-size: 20px;
 }
 
-.text_create_contact_btn {
+/* .text_create_contact_btn {
     font-size: 21px;
     font-weight: 700;
-}
+} */
 
 .img_cancel_checked_btn {
     filter: invert(21%) sepia(15%) saturate(944%) hue-rotate(176deg) brightness(93%) contrast(97%);

@@ -13,7 +13,20 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     allTasks[currentDraggedTask][1]['status'] = status;
+    // await editData(`tasks/${allTasks[currentDraggedTask][1]['status']}`, {status: status.value});
     updateTasksHTML(allTasks);
+}
+
+function highlight(id){
+    document.getElementById(id).classList.add('board-column-highlight');
+}
+
+function removeHighlightLeave(id){
+    document.getElementById(id).classList.remove('board-column-highlight');
+}
+
+function removeHighlightEnd(id){
+    document.getElementById(id).classList.remove('board-column-highlight');
 }
 
 // * Drag & Drop End * //
@@ -124,6 +137,10 @@ function animationDialogTask() {
 
 async function loadTasks() {
     allTasks = Object.entries(await loadData('tasks'));
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        task[1]['id'] = i;
+    }
     updateTasksHTML(allTasks);
 }
 
@@ -426,6 +443,7 @@ function renderSubtasks(index) {
     }
 }
 
+
 function addSearchTask() {
     let search = document.getElementById('searchField').value.toLowerCase();
     console.log(search, "hier stet die eingabe ");
@@ -455,5 +473,12 @@ function emptyTasks() {
     let noTaskSentence = 'No tasks To do'
     boardOpenTasks.innerHTML = '';
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
+
+
+async function deleteTask(event, index) {
+    console.log(allTasks[index][0]);
+/*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    await loadTasks();
+    closeDialogTask();
 
 }
