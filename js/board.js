@@ -473,7 +473,7 @@ function emptyTasks() {
     let noTaskSentence = 'No tasks To do'
     boardOpenTasks.innerHTML = '';
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-
+}
 
 async function deleteTask(event, index) {
     console.log(allTasks[index][0]);
