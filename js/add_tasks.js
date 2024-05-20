@@ -231,6 +231,18 @@ async function saveTaskToJson(title, description, date, prio, category, assigned
   await postData("tasks", newTask);
   console.log("Task erfolgreich hinzugefügt.");
   showAddToBoardDialog();
+  openBoardPage();
+}
+
+/**
+ * open board after create a task
+ * @function openBoardPage
+ * @returns {void}
+ */
+function openBoardPage() {
+  setTimeout(function () {
+    window.location.href = 'board.html';
+  }, 2000);
 }
 
 /**
