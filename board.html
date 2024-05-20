@@ -108,7 +108,7 @@
                       ></select>
                     </div>
 
-                    <div id="selectedMembers"></div>
+                    <div class="selectedMembersNone" id="selectedMembers"></div>
                     <div class="none-display" id="isSelected">
                       Has already been selected
                     </div>
@@ -196,20 +196,27 @@
                       </select>
                     </div>
 
-                    <div style="margin-top: 16px">
+                    <div style="margin-top: 16px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                        >Subtasks</label
+                        >Subtasks <span id="textSubtask">Please enter a text</span></label
                       ><br />
                       <input
                         id="subtask"
                         type="text"
                         placeholder="add new subtask"
                       />
+                      <img
+                      onclick="addNewSubtask()"
+                      class="addSubtask"
+                      src="assets/img/add_task/add.svg"
+                      alt=""
+                    />
                     </div>
-                    <div id="subtaskArea"></div>
+                    
                     <div>
-                      <div>
-                        <div class="footer flexEnd">
+                      <div class="subtaskAreaContainer">
+                        <div class="subtaskAreaNone" id="subtaskArea"></div>
+                        <div class="footerButton flexEnd">
                           <button
                             onclick="reloadPage()"
                             class="clearButtonAddTasks"
@@ -217,10 +224,7 @@
                             Clear
                             <img src="assets/img/add_task/close.svg" alt="" />
                           </button>
-                          <button
-                            class="createButtonAddTasks"
-                            id="submitButton"
-                          >
+                          <button class="createButtonAddTasks" id="submitButton">
                             Create Task
                             <img src="assets/img/add_task/check.svg" alt="" />
                           </button>
