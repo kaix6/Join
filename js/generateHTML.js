@@ -295,6 +295,7 @@ function generateDialoEditInnerHTML(index) {
             <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
                 <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
             </div>
+            <div class="dialog_content">
         <div class="top_dialog_add_edit flex_dir_c">
             <div class="head_top_dialog_add_edit flex_dir_c">
                 <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
@@ -303,8 +304,10 @@ function generateDialoEditInnerHTML(index) {
                 </div>
             </div>
         </div>
+        <div class="short_name_container">
         <div id="create_contact_short_name_edit${index}" class="create_contact_short_name_edit round_div">
             <p class="short_name_text_overview_edit">${sortedContacts[index][1].letters}</p>
+        </div>
         </div>
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">
@@ -324,6 +327,7 @@ function generateDialoEditInnerHTML(index) {
                     </button>
                 </div>
             </form>
+        </div>
         </div>
         </div>
     </div>

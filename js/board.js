@@ -71,7 +71,6 @@ function getAllMembersBigTask(currentTask) {
     let taskAllMembers = currentTask[0][1]['assigned member'];
     for (let i = 0; i < taskAllMembers.length; i++) {
         const currentTaskMember = taskAllMembers[i];
-        console.log(currentTaskMember);
         memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
         setColorMemberBigTask(currentTaskMember);
     };
