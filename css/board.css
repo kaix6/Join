@@ -175,11 +175,10 @@
         justify-content: space-between;
     }
 
-    .test_headline {
+    .text_board_headline {
         font-size: 20px;
         font-weight: 700;
         line-height: 24px;
-/*         text-align: left; */
     }
 
     .column-plus-button{
