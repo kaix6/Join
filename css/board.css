@@ -57,10 +57,10 @@
 
     .board-column{
         width: 280px;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
         height: 100%;
         padding: 8px;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
     }
     
     .d-flex-start{
@@ -228,7 +228,7 @@
         padding: 16px;
         border-radius: 24px;
         box-shadow:  0px 0px 10px 0px rgba(0,0,0,0.1);
-        width: 252px;
+        min-width: 252px;
         height: fit-content;
         margin: 8px;
     }
@@ -253,6 +253,13 @@
         line-height: 19.2px;
         margin-bottom: 8px;
         font-weight: 700;
+        width: 230px;
+    }
+
+    .tasks-container{
+        overflow-y: scroll;
+        height: 100%;
+        width: 280px;
     }
 
     .task-description{
@@ -261,6 +268,7 @@
         font-weight: 400;
         line-height: 19.2px;
         color: #A8A8A8;
+        width: 230px;
     }
 
     .progress-section{
