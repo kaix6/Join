@@ -44,6 +44,17 @@ async function showDialogTask(i) {
     getDivHeight(currentTask);
 }
 
+/**
+ * This function converts the data into the format DD/MM/YYY
+ * @param {*} date - 
+ * @returns 
+ */
+function convertDate(date) {
+    let splittedDate = date.split("-");
+    let newDate = [splittedDate[2], splittedDate[1], splittedDate[0]];
+    return newDate.join("/");
+}
+
 function getDivHeight() {
     let bigTaskBox = document.querySelector('.task-box-big');
     let viewportWithoutNavi = window.innerHeight - 83;

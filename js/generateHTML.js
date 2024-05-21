@@ -30,7 +30,7 @@ function generateBigTaskBox(task) {
     <div>
         <div class="d-flex">
             <p class="width-30">Due date:</p>
-            <p>${task[0][1]["due date"]}</p>
+            <p>${convertDate(task[0][1]["due date"])}</p>
         </div>
         <div class="d-flex">
             <p class="width-30">Priority:</p>

@@ -177,7 +177,6 @@
   .create_contact_short_name {
     z-index: 1;
     position: absolute;
-    top: 50%; /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
