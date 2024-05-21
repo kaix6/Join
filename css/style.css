@@ -84,13 +84,11 @@ h1{
     background-image: url("../assets/img/general/arrow_down_grey.png");
 }
 
-.dialog_content::-webkit-scrollbar-button:vertical:start:decrement,
 .task-box-big::-webkit-scrollbar-button:vertical:start:decrement {
     height: 48px;
     background-position: center -1px;
 }
 
-.dialog_content::-webkit-scrollbar-button:vertical:end:decrement,
 .task-box-big::-webkit-scrollbar-button:vertical:end:increment {
     height: 48px;
     background-position: center -7px;
