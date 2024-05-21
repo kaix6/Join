@@ -2,6 +2,8 @@ let selectUsers = [];
 let selectUsersColor = [];
 let selectUsersLetters = [];
 let selectedPrio;
+let assignedArray = [];
+let memberIdCounter = 0;
 
 let subtaskIdCounter = 0;
 let subtaskArray = [];
@@ -216,19 +218,28 @@ function renderPushedMembers() {
  * @param {string} assignedTo - The member assigned to the task.
  * @returns {void}
  */
-async function saveTaskToJson(title, description, date, prio, category, assignedTo) {
-  // Neuen Task erstellen
-  let newTask = {
-    title: title,
-    description: description,
-    "due date": date,
-    prio: prio,
-    category: category,
-    "assigned member": assignedTo,
-    subtask: subtaskArray,
-    status: "open",
-    id: 1,
-  };
+async function saveTaskToJson(title, description, date, prio, category) {
+  for (let i = 0; i < selectUsers.length; i++) {
+    const assignedUsers = selectUsers[i];
+    const color = selectUsersColor[i];
+    const letters = selectUsersLetters[i];
+    const id = memberIdCounter++;
+    let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
+    assignedArray.push(memberArray);
+  }
+      // Neuen Task erstellen
+      newTask = {
+        title: title,
+        description: description,
+        "due date": date,
+        prio: prio,
+        category: category,
+        "assigned member": assignedArray,
+        subtask: subtaskArray,
+        status: "open",
+        id: 1,
+      };
+
   await postData("tasks", newTask);
   console.log("Task erfolgreich hinzugefügt.");
   showAddToBoardDialog();
@@ -406,7 +417,6 @@ function saveEditedSubtask(subtaskTextElement, editInput) {
 function validateForm() {
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
-  let assignedTo = selectUsers;
   let date = document.getElementById("date").value;
   let prio = selectedPrio;
   let category = document.getElementById("category").value;
@@ -414,7 +424,7 @@ function validateForm() {
   if (title === "" || date === "" || category === "") {
     return false; // Prevents default form behavior
   }
-  saveTaskToJson(title, description, date, prio, category, assignedTo);
+  saveTaskToJson(title, description, date, prio, category);
   return false;
 }
 
