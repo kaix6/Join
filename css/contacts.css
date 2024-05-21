@@ -19,13 +19,14 @@
     justify-content: space-between;
     max-width: 1211px;
     max-height: 835px;
-    min-height: 482px;
+/*     min-height: 482px; */
     width: 85%;
     height: 65%;
     border-radius: 30px;
     background-color: var(--white);
     transform: translateX(100%);
     transition: all 300ms ease-out;
+    overflow: hidden; 
 }
 
 .dialog_content {
@@ -34,6 +35,7 @@
     justify-content: space-between;  
     flex: 1;
     overflow-y: auto; 
+    overflow-x: hidden; 
 }
 
 .dialog_edit_contact {
@@ -51,9 +53,6 @@
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     justify-content: center;
-/*     align-items: center;
-    position: relative; */
-/*     height: 100%; */
 }
 
 .head_top_dialog_add_edit {
@@ -341,6 +340,7 @@
 #contact_view {
     overflow-y: auto;
     overflow-x: hidden;
+    flex: 1;
 }
 
 .active_contact {
