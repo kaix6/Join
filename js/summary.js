@@ -5,10 +5,13 @@ let done;
 
 async function initializeSummary() {
     await loadTasks();
-    test();
+    getTasksLength();
 }
 
-function test() {
+function getTasksLength() {
+    let urgent = allTasks.filter(t => t[1]['prio'] == 'urgent');
+    let numberUrgent = urgent.length
+    console.log(urgent);
     let numberOpen = open.length;
     let numberInProgress = inProgress.length;
     let numberAwaitFeedback = awaitFeedback.length;
@@ -16,5 +19,5 @@ function test() {
     let numberAllTasks = allTasks.length;
     let mainSummary = document.querySelector('.main_summary');
     mainSummary.innerHTML = '';
-    mainSummary.innerHTML += generateSummaryInnerHTML(numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks);
+    mainSummary.innerHTML += generateSummaryInnerHTML(numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks);
 }

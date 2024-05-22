@@ -363,7 +363,7 @@ function generateAssignedToFirst() {
 }
 
 // Summary
-function generateSummaryInnerHTML(numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -398,7 +398,7 @@ function generateSummaryInnerHTML(numberOpen, numberInProgress, numberAwaitFeedb
                     <div class="d-flex container">
                         <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
                         <div class="doneMain">
-                            <span class="sizeNumbersSummary" id="urgentNumber">1</span>  
+                            <span class="sizeNumbersSummary" id="urgentNumber">${numberUrgent}</span>  
                             <span class="sizeTextSummary">Urgent</span>
                           </div>
                         </div>
