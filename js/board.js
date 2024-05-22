@@ -45,9 +45,9 @@ async function showDialogTask(i) {
 }
 
 /**
- * This function converts the data into the format DD/MM/YYY
- * @param {*} date - 
- * @returns 
+ * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
+ * @param {string} date - The date string in "YYYY-MM-DD" format.
+ * @returns {string} - The date string in "DD/MM/YYYY" format.
  */
 function convertDate(date) {
     let splittedDate = date.split("-");
