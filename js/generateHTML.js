@@ -362,5 +362,79 @@ function generateAssignedToFirst() {
   `;
 }
 
+// Summary
+function generateSummaryInnerHTML(numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+  return /* HTML */ `
+      <div class="containerSummary">
+            <div class="marginSummary">
+              <div class="containerHeadline d-flex">
+                <h1 class="headlineSummary">Join 360</h1>
+                <div class="spacerHeadline"></div>
+                <span class="fontSizeMobil">Key Metrics at a Glance</span>
+                <div class="spacerHeadlineMobil"></div>
+              </div>
+              <div class="mainSummary">
+                <div class="topSummary">
+                  <div class="toDo summaryCardHover">
+                    <div class="imgAndIcon">
+                      <img class="iconSummary" src="assets/img/summary/edit.svg" alt=""/> 
+                    </div>
+                    <div class="doneMain">
+                      <span class="sizeNumbersSummary" id="toDoNumber">${numberOpen}</span>
+                      <span class="sizeTextSummary">To-do</span>
+                    </div>
+                  </div>
+                  <div class="done summaryCardHover">
+                    <div class="imgAndIcon">
+                      <img class="iconSummary" src="assets/img/summary/check.svg" alt=""/>                      
+                    </div>
+                    <div class="doneMain">
+                      <span class="sizeNumbersSummary" id="doneNumber">${numberDone}</span>
+                      <span class="sizeTextSummary">Done</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="urgent summaryCardHover">
+                    <div class="d-flex container">
+                        <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
+                        <div class="doneMain">
+                            <span class="sizeNumbersSummary" id="urgentNumber">1</span>  
+                            <span class="sizeTextSummary">Urgent</span>
+                          </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="deadline">
+                            <span class="deadlineMobil">Day Month, Year</span>
+                            <span class="deadlineTextMobil">Upcoming Deadline</span>
+                        </div>
+                            </div>
+
+                            <div class="bottomSummary d-flex">
+                                <div class="bottomCard summaryCardHover">
+                                    <span class="sizeNumbersSummary" id="boardNumber">${numberAllTasks}</span>
+                                    <span class="sizeTextSummary">Tasks in <br />
+                              Board</span>
+                  </div>
+                  <div class="bottomCard summaryCardHover">
+                    <span class="sizeNumbersSummary" id="progressNumber">${numberInProgress}</span>
+                    <span class="sizeTextSummary">Tasks in <br />
+                      Progress</span>
+                  </div>
+                  <div class="bottomCard summaryCardHover">
+                    <span class="sizeNumbersSummary" id="feedbackNumber">${numberAwaitFeedback}</span>
+                    <span class="sizeTextSummary"
+                      >Awaiting <br />
+                      Feedback</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="summaryText">
+              <span class="goodMorningSummary">Good morning, </span>
+              <span class="nameSummary">Vorname Nachname </span>
+            </div>
+      </div>`;
+}
+
 
 

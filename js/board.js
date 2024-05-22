@@ -179,25 +179,26 @@ async function getTasksJson() {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateOpenTasks(tasks) {
-    let open = tasks.filter(t => t[1]['status'] == 'open')
+    open = tasks.filter(t => t[1]['status'] == 'open');
     let boardOpenTasks = document.getElementById('openTasks');
-
-    if (open.length > 0) {
-        boardOpenTasks.innerHTML = '';
-        for (let i = 0; i < open.length; i++) {
-            const openTask = open[i][1];
-            boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
-            getAllMembers(openTask);
-            setPriority(openTask);
-            setTaskCategory(openTask);
-            getAllSubtasks(openTask);
-            truncateText(openTask);
+    if(boardOpenTasks) {
+        if (open.length > 0) {
+            boardOpenTasks.innerHTML = '';
+            for (let i = 0; i < open.length; i++) {
+                const openTask = open[i][1];
+                boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
+                getAllMembers(openTask);
+                setPriority(openTask);
+                setTaskCategory(openTask);
+                getAllSubtasks(openTask);
+                truncateText(openTask);
+            };
+        } else {
+            let noTaskSentence = 'No tasks To do'
+            boardOpenTasks.innerHTML = '';
+            boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
         };
-    } else {
-        let noTaskSentence = 'No tasks To do'
-        boardOpenTasks.innerHTML = '';
-        boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-    };
+    }
 }
 
 /**
@@ -206,26 +207,27 @@ function updateOpenTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateInProgressTasks(tasks) {
-    let inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
+    inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-    boardInProgressTasks.innerHTML = '';
-
-    if (inProgress.length > 0) {
-        boardInProgressTasks.innerHTML = '';
-        for (let i = 0; i < inProgress.length; i++) {
-            const inProgressTask = inProgress[i][1];
-            boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
-            getAllMembers(inProgressTask);
-            setPriority(inProgressTask);
-            setTaskCategory(inProgressTask);
-            getAllSubtasks(inProgressTask);
-            truncateText(inProgressTask);
+  /*   boardInProgressTasks.innerHTML = ''; */
+    if(boardInProgressTasks) {
+        if (inProgress.length > 0) {
+            boardInProgressTasks.innerHTML = '';
+            for (let i = 0; i < inProgress.length; i++) {
+                const inProgressTask = inProgress[i][1];
+                boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
+                getAllMembers(inProgressTask);
+                setPriority(inProgressTask);
+                setTaskCategory(inProgressTask);
+                getAllSubtasks(inProgressTask);
+                truncateText(inProgressTask);
+            };
+        } else {
+            let noTaskSentence = 'No tasks in progress'
+            boardInProgressTasks.innerHTML = '';
+            boardInProgressTasks.innerHTML = generateNoTaskBox(noTaskSentence);
         };
-    } else {
-        let noTaskSentence = 'No tasks in progress'
-        boardInProgressTasks.innerHTML = '';
-        boardInProgressTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-    };
+    }
 }
 
 /**
@@ -234,26 +236,27 @@ function updateInProgressTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateAwaitFeedbackTasks(tasks) {
-    let awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
+    awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
-    boardAwaitFeedbackTasks.innerHTML = '';
-
-    if (awaitFeedback.length > 0) {
-        boardAwaitFeedbackTasks.innerHTML = '';
-        for (let i = 0; i < awaitFeedback.length; i++) {
-            const awaitFeedbackTask = awaitFeedback[i][1];
-            boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
-            getAllMembers(awaitFeedbackTask);
-            setPriority(awaitFeedbackTask);
-            setTaskCategory(awaitFeedbackTask);
-            getAllSubtasks(awaitFeedbackTask);
-            truncateText(awaitFeedbackTask);
+/*     boardAwaitFeedbackTasks.innerHTML = ''; */
+    if(boardAwaitFeedbackTasks) {
+        if (awaitFeedback.length > 0) {
+            boardAwaitFeedbackTasks.innerHTML = '';
+            for (let i = 0; i < awaitFeedback.length; i++) {
+                const awaitFeedbackTask = awaitFeedback[i][1];
+                boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
+                getAllMembers(awaitFeedbackTask);
+                setPriority(awaitFeedbackTask);
+                setTaskCategory(awaitFeedbackTask);
+                getAllSubtasks(awaitFeedbackTask);
+                truncateText(awaitFeedbackTask);
+            };
+        } else {
+            let noTaskSentence = 'No tasks await feedback'
+            boardAwaitFeedbackTasks.innerHTML = '';
+            boardAwaitFeedbackTasks.innerHTML = generateNoTaskBox(noTaskSentence);
         };
-    } else {
-        let noTaskSentence = 'No tasks await feedback'
-        boardAwaitFeedbackTasks.innerHTML = '';
-        boardAwaitFeedbackTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-    };
+    }
 }
 
 /**
@@ -262,26 +265,27 @@ function updateAwaitFeedbackTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateDoneTasks(tasks) {
-    let done = tasks.filter(t => t[1]['status'] == 'done');
+    done = tasks.filter(t => t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
-    boardDoneTasks.innerHTML = '';
-
-    if (done.length > 0) {
-        boardDoneTasks.innerHTML = '';
-        for (let i = 0; i < done.length; i++) {
-            const doneTask = done[i][1];
-            boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
-            getAllMembers(doneTask);
-            setPriority(doneTask);
-            setTaskCategory(doneTask);
-            getAllSubtasks(doneTask);
-            truncateText(doneTask);
+/*     boardDoneTasks.innerHTML = ''; */
+    if(boardDoneTasks) {
+        if (done.length > 0) {
+            boardDoneTasks.innerHTML = '';
+            for (let i = 0; i < done.length; i++) {
+                const doneTask = done[i][1];
+                boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
+                getAllMembers(doneTask);
+                setPriority(doneTask);
+                setTaskCategory(doneTask);
+                getAllSubtasks(doneTask);
+                truncateText(doneTask);
+            };
+        } else {
+            let noTaskSentence = 'No tasks Done'
+            boardDoneTasks.innerHTML = '';
+            boardDoneTasks.innerHTML = generateNoTaskBox(noTaskSentence);
         };
-    } else {
-        let noTaskSentence = 'No tasks Done'
-        boardDoneTasks.innerHTML = '';
-        boardDoneTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-    };
+    }
 }
 
 /**
