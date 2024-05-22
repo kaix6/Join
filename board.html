@@ -22,7 +22,7 @@
 </head>
 
 
-  <body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
+<body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
 
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
         <!--      Section Dialog Box Small TodoTask    -->
@@ -258,8 +258,8 @@
               </div>
               <div class="board-search-add">
                 <div class="search-field">
-                  <input id="searchField" type="text" placeholder="Find Task" />
-                  <div onclick="addSearchTask()"  class="container-search-icon">
+                  <input onkeydown="addSearchTask()" id="searchField" type="text" placeholder="Find Task" />
+                  <div class="container-search-icon">
                     <img class="search-icon" src="./assets/img/board/search.svg" />
                   </div>
                 </div>
