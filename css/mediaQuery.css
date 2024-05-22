@@ -1116,7 +1116,7 @@
 
 /* Board - start     */
 
-@media(max-width: 1000px){
+@media(max-width: 1136px){
 
   .small-add-button{
       display: flex;
@@ -1184,6 +1184,7 @@
   .board-column{
       width: 100%;
       overflow-y: inherit;
+      margin-bottom: 0;
   }
 
   .tasks-container{
@@ -1194,6 +1195,11 @@
   .dialog_addTask_bg {
     display: none!important;
   } 
+
+  .tasks-container{
+    overflow-y: inherit;
+    width: 100%;
+  }
 }
 
 @media(max-width: 800px) {

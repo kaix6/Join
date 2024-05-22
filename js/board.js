@@ -11,9 +11,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(status) {
-    allTasks[currentDraggedTask][1]['status'] = status;
-    // await editData(`tasks/${allTasks[currentDraggedTask][1]}`, {status: status.value});
+function moveTo(newStatus) {
+    allTasks[currentDraggedTask][1]['status'] = newStatus;
+    // await editData(`tasks/${allTasks[currentDraggedTask][1]}`, {status: newStatus.value});
     updateTasksHTML(allTasks);
 }
 
@@ -120,17 +120,27 @@ function getAllSubtasksBigTask(currentTask) {
     let subtasksSection = document.getElementById(`subtasks${currentTask[0][1]['id']}`);
     let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
     let taskAllSubtasks = currentTask[0][1]['subtask'];
+    let currentTaskId = currentTask[0][1]['id'];
     if (typeof taskAllSubtasks === "undefined") {} else {
         subtaskHeadline.innerHTML = generateSubtasksHeadline();
         for (let i = 0; i < taskAllSubtasks.length; i++) {
             const subtask = taskAllSubtasks[i];
-            subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask);
+            subtasksSection.innerHTML += generateSubtasksSectionBigTask(subtask, currentTaskId);
         };
     };
 }
 
-function checkUncheckBox(id) {
-    document.getElementById(`subtask-checkbox${id}`).classList.toggle('subtask-checkbox-checked');
+function checkUncheckBox(id, currentTaskId) {
+    let subtask = document.getElementById(`subtask-checkbox${id}`);
+    if (subtask.className == 'subtask-checkbox') {
+        subtask.classList.add('subtask-checkbox-checked')
+        // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+    } else {
+        if (subtask.className == 'subtask-checkbox subtask-checkbox-checked') {
+            subtask.classList.remove('subtask-checkbox-checked')
+            // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+        }
+    }
 }
 
 function closeDialogTask() {
@@ -355,7 +365,9 @@ function setTaskCategory(task) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllSubtasks(task) {
-    if (typeof task['subtask'] === "undefined") {} else {
+    let subtasks = task['subtask'];
+    if (typeof subtasks === "undefined") {} else {
+        let checkedSubtaks = document.getElementsByClassName('subtask-checkbox-checked');
         let subtasksSection = document.getElementById(`task${task['id']}`);
         subtasksSection.innerHTML += generateSubtasksSection();
     };
