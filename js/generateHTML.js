@@ -363,7 +363,7 @@ function generateAssignedToFirst() {
 }
 
 // Summary
-function generateSummaryInnerHTML(numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -404,7 +404,7 @@ function generateSummaryInnerHTML(numberUrgent, numberOpen, numberInProgress, nu
                         </div>
                         <div class="spacer"></div>
                         <div class="deadline">
-                            <span class="deadlineMobil">Day Month, Year</span>
+                            <span class="deadlineMobil">${upcomingDeadline}</span>
                             <span class="deadlineTextMobil">Upcoming Deadline</span>
                         </div>
                             </div>
