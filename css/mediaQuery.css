@@ -169,24 +169,31 @@
 @media (max-width: 1280px) {
   /* Contacts - Dialog add & edit Contact */
 
+  .dialog_content {
+    flex-direction: column;
+  }
+
   .create_contact_short_name_edit,
   .create_contact_short_name {
     z-index: 1;
     position: absolute;
-    top: calc(46% - 60px); /* zentriert das Element vertikal basierend auf der Höhe von "top_dialog_add" und der Hälfte der Höhe des eigenen Elements (hier: 120px)*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .dialog_add_contact,
   .dialog_edit_contact {
     flex-direction: column;
     width: 450px;
+    max-height: 842px;
   }
 
   .top_dialog_add_edit {
     padding-left: 24px;
     border-top-right-radius: 30px;
     border-bottom-left-radius: unset;
-    height: 46%;
+    min-height: 378px;
   }
 
   .img_logo {
@@ -217,7 +224,7 @@
   }
 
   .bottom_dialog_add_edit {
-    height: 54%;
+    min-height: 443px;
     border-bottom-left-radius: 30px;
     flex-direction: column;
     justify-content: center;
@@ -1159,7 +1166,7 @@
       margin-top: 50px;
   }
 
-  .test_headline{
+  .text_board_headline {
     font-size: 27px;
 }
 

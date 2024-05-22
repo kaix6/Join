@@ -30,7 +30,7 @@ function generateBigTaskBox(task) {
     <div>
         <div class="d-flex">
             <p class="width-30">Due date:</p>
-            <p>${task[0][1]["due date"]}</p>
+            <p>${convertDate(task[0][1]["due date"])}</p>
         </div>
         <div class="d-flex">
             <p class="width-30">Priority:</p>
@@ -295,6 +295,7 @@ function generateDialoEditInnerHTML(index) {
             <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="wrapper_close_add_edit_contact round_div pointer">
                 <img class="close_add_edit_contact pointer" src="./assets/img/general/close.svg" alt="close icon">
             </div>
+            <div class="dialog_content">
         <div class="top_dialog_add_edit flex_dir_c">
             <div class="head_top_dialog_add_edit flex_dir_c">
                 <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
@@ -303,8 +304,10 @@ function generateDialoEditInnerHTML(index) {
                 </div>
             </div>
         </div>
+        <div class="short_name_container">
         <div id="create_contact_short_name_edit${index}" class="create_contact_short_name_edit round_div">
             <p class="short_name_text_overview_edit">${sortedContacts[index][1].letters}</p>
+        </div>
         </div>
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">
@@ -324,6 +327,7 @@ function generateDialoEditInnerHTML(index) {
                     </button>
                 </div>
             </form>
+        </div>
         </div>
         </div>
     </div>
@@ -356,6 +360,80 @@ function generateAssignedToFirst() {
   return /* HTML */ `
     "<option disabled selected>Select contacts to assign</option>"
   `;
+}
+
+// Summary
+function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+  return /* HTML */ `
+      <div class="containerSummary">
+            <div class="marginSummary">
+              <div class="containerHeadline d-flex">
+                <h1 class="headlineSummary">Join 360</h1>
+                <div class="spacerHeadline"></div>
+                <span class="fontSizeMobil">Key Metrics at a Glance</span>
+                <div class="spacerHeadlineMobil"></div>
+              </div>
+              <div class="mainSummary">
+                <div class="topSummary">
+                  <div class="toDo summaryCardHover">
+                    <div class="imgAndIcon">
+                      <img class="iconSummary" src="assets/img/summary/edit.svg" alt=""/> 
+                    </div>
+                    <div class="doneMain">
+                      <span class="sizeNumbersSummary" id="toDoNumber">${numberOpen}</span>
+                      <span class="sizeTextSummary">To-do</span>
+                    </div>
+                  </div>
+                  <div class="done summaryCardHover">
+                    <div class="imgAndIcon">
+                      <img class="iconSummary" src="assets/img/summary/check.svg" alt=""/>                      
+                    </div>
+                    <div class="doneMain">
+                      <span class="sizeNumbersSummary" id="doneNumber">${numberDone}</span>
+                      <span class="sizeTextSummary">Done</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="urgent summaryCardHover">
+                    <div class="d-flex container">
+                        <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
+                        <div class="doneMain">
+                            <span class="sizeNumbersSummary" id="urgentNumber">${numberUrgent}</span>  
+                            <span class="sizeTextSummary">Urgent</span>
+                          </div>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="deadline">
+                            <span class="deadlineMobil">${upcomingDeadline}</span>
+                            <span class="deadlineTextMobil">Upcoming Deadline</span>
+                        </div>
+                            </div>
+
+                            <div class="bottomSummary d-flex">
+                                <div class="bottomCard summaryCardHover">
+                                    <span class="sizeNumbersSummary" id="boardNumber">${numberAllTasks}</span>
+                                    <span class="sizeTextSummary">Tasks in <br />
+                              Board</span>
+                  </div>
+                  <div class="bottomCard summaryCardHover">
+                    <span class="sizeNumbersSummary" id="progressNumber">${numberInProgress}</span>
+                    <span class="sizeTextSummary">Tasks in <br />
+                      Progress</span>
+                  </div>
+                  <div class="bottomCard summaryCardHover">
+                    <span class="sizeNumbersSummary" id="feedbackNumber">${numberAwaitFeedback}</span>
+                    <span class="sizeTextSummary"
+                      >Awaiting <br />
+                      Feedback</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="summaryText">
+              <span class="goodMorningSummary">Good morning, </span>
+              <span class="nameSummary">Vorname Nachname </span>
+            </div>
+      </div>`;
 }
 
 

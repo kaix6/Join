@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Summary</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
-    <script src="js/script.js"></script>
+    <script defer src="js/remoteStorage.js"></script> 
+    <script defer src="js/script.js"></script>
     <script defer src="js/template.js"></script>
+    <script defer src="js/board.js"></script>
+    <script defer src="js/contacts.js"></script>
+    <script defer src="js/summary.js"></script>
+    <script defer src="js/generateHTML.js"></script> 
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -16,7 +21,7 @@
     <link rel="stylesheet" href="./css/mediaQuery.css" />
 </head>
 
-<body class="flex_dir_c" onload="includeHTML()">
+<body class="flex_dir_c" onload="includeHTML(); initializeSummary()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
         <div class="right_section flex_dir_c">
             <!--      Section header    -->
@@ -27,104 +32,16 @@
 
 
         <section id="main_container" class="main_summary">
-          <div class="containerSummary">
-            <div class="marginSummary">
-              <div class="containerHeadline d-flex">
-                <h1 class="headlineSummary">Join 360</h1>
-                <div class="spacerHeadline"></div>
-                <span class="fontSizeMobil">Key Metrics at a Glance</span>
-                <div class="spacerHeadlineMobil"></div>
-              </div>
-              <div class="mainSummary">
-                <div class="topSummary">
-                  <div class="toDo summaryCardHover">
-                    <div class="imgAndIcon">
-                      <img
-                        class="iconSummary"
-                        src="assets/img/summary/edit.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="doneMain">
-                      <span class="sizeNumbersSummary" id="toDoNumber">1</span>
-                      <span class="sizeTextSummary">To-do</span>
-                    </div>
-                  </div>
-                  <div class="done summaryCardHover">
-                    <div class="imgAndIcon">
-                      <img
-                        class="iconSummary"
-                        src="assets/img/summary/check.svg"
-                        alt=""
-                      />
-                    </div>
-                    <div class="doneMain">
-                      <span class="sizeNumbersSummary" id="doneNumber">1</span>
-                      <span class="sizeTextSummary">Done</span>
-                    </div>
-                  </div>
-                </div>
-
-
-                            <div class="urgent summaryCardHover">
-                                <div class="d-flex container">
-                                    <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
-                                    <div class="doneMain">
-                                        <span class="sizeNumbersSummary" id="urgentNumber">1</span
-                      >
-                      <span class="sizeTextSummary">Urgent</span>
-                                    </div>
-                                </div>
-                                <div class="spacer"></div>
-
-                                <div class="deadline">
-                                    <span class="deadlineMobil">Day Month, Year</span>
-                                    <span class="deadlineTextMobil">Upcoming Deadline</span>
-                                </div>
-                            </div>
-
-                            <div class="bottomSummary d-flex">
-                                <div class="bottomCard summaryCardHover">
-                                    <span class="sizeNumbersSummary" id="boardNumber">1</span>
-                                    <span class="sizeTextSummary">Tasks in <br />
-                      Board</span
-                    >
-                  </div>
-                  <div class="bottomCard summaryCardHover">
-                    <span class="sizeNumbersSummary" id="progressNumber"
-                      >1</span
-                    >
-                    <span class="sizeTextSummary"
-                      >Tasks in <br />
-                      Progress</span
-                    >
-                  </div>
-                  <div class="bottomCard summaryCardHover">
-                    <span class="sizeNumbersSummary" id="feedbackNumber"
-                      >1</span
-                    >
-                    <span class="sizeTextSummary"
-                      >Awaiting <br />
-                      Feedback</span
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="summaryText">
-              <span class="goodMorningSummary">Good morning, </span>
-                                    <span class="nameSummary">Vorname Nachname </span>
-                                </div>
-                            </div>
-            </section>
-            </div>
+              <!--     render Summary in JS    --> 
+        </section>
+        </div>
 
             <!--      Section Side Menu   -->
 
-            <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
+        <div class="side_menu_sticky" w3-include-html="assets/templates/side_menu.html"></div>
 
             <!--      Section Side Menu    -->
-            </div>
+      </div>
 </body>
 
 </html>

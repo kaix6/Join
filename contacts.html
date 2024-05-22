@@ -28,6 +28,7 @@
                 <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="wrapper_close_add_edit_contact round_div pointer">
                     <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
+                <div class="dialog_content">
             <div class="top_dialog_add_edit flex_dir_c">
                 <div class="head_top_dialog_add_edit flex_dir_c">
                     <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
@@ -37,8 +38,10 @@
                     </div>
                 </div>
             </div>
-            <div class="create_contact_short_name round_div">
-                <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
+            <div class="short_name_container">
+                <div class="create_contact_short_name round_div">
+                    <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
+                </div>
             </div>
             <div class="bottom_dialog_add_edit">
                 <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
@@ -60,7 +63,8 @@
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
+            </div>
         </div>
 
             <!--      End Section Dialogbox Add Contact    -->

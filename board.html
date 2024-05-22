@@ -276,8 +276,7 @@
             <div class="d-flex-start">
               <div class="board-column" id="column-open" ondrop="moveTo('open'); removeHighlightEnd('column-open')" ondragleave="removeHighlightLeave('column-open')" ondragover="allowDrop(event); highlight('column-open')">
                 <div class="board-headline">
-                  <h2 class="test_headline"
-
+                  <h2 class="text_board_headline"
                     >To do</h2
                   >
                   <a href="add_tasks.html" class="column-plus-button"></a>
@@ -287,14 +286,8 @@
 
               <div class="board-column" id="column-inProgress" ondrop="moveTo('in progress'); removeHighlightEnd('column-inProgress')" ondragleave="removeHighlightLeave('column-inProgress')" ondragover="allowDrop(event); highlight('column-inProgress')">
                 <div class="board-headline">
-                  <span
-                    style="
-                      font-size: 20px;
-                      font-weight: 700;
-                      line-height: 24px;
-                      text-align: left;
-                    "
-                    >In progress</span
+                  <h2 class="text_board_headline"
+                    >In progress</h2
                   >
                   <a href="add_tasks.html" class="column-plus-button"></a>
                 </div>
@@ -303,14 +296,8 @@
 
               <div class="board-column" id="column-awaitFeedback" ondrop="moveTo('await feedback'); removeHighlightEnd('column-awaitFeedback')" ondragleave="removeHighlightLeave('column-awaitFeedback')" ondragover="allowDrop(event); highlight('column-awaitFeedback')">
                 <div class="board-headline">
-                  <span
-                    style="
-                      font-size: 20px;
-                      font-weight: 700;
-                      line-height: 24px;
-                      text-align: left;
-                    "
-                    >Await Feedback</span
+                  <h2 class="text_board_headline"
+                    >Await Feedback</h2
                   >
                   <a href="add_tasks.html" class="column-plus-button"></a>
                 </div>
@@ -319,14 +306,8 @@
 
               <div class="board-column" id="column-done" ondrop="moveTo('done'); removeHighlightEnd('column-done')" ondragleave="removeHighlightLeave('column-done')" ondragover="allowDrop(event); highlight('column-done')">
                 <div class="board-headline">
-                  <span
-                    style="
-                      font-size: 20px;
-                      font-weight: 700;
-                      line-height: 24px;
-                      text-align: left;
-                    "
-                    >Done</span
+                  <h2 class="text_board_headline"
+                    >Done</h2
                   >
                 </div>
                 <div id="doneTasks" class="tasks-container"></div>

@@ -120,15 +120,17 @@ function toggleContactView(i) {
  * This function shows the active contact in the contact list by adding the class 'active_contact' to higlight the element.
  */
 function showActiveContact() {
-    let activeContact = document.querySelector('.name_overview').textContent;
-    let contacts = document.querySelectorAll('.contact_fullName');
+    let activeContactName = document.querySelector('.name_overview').textContent;
+    let activeContactMail = document.querySelector('.overview_mail').textContent;
+    let contacts = document.querySelectorAll('.contact'); // Select all contact elements
     contacts.forEach(contact => {
-        let parentElement = contact.closest('.contact'); // closest() gibt das nahegelegenste übergeordnete Element zurück
-        parentElement.classList.remove('active_contact');
-        if (elementContainsActiveContact(contact, activeContact)) {
-            parentElement.classList.add('active_contact');
+        let contactName = contact.querySelector('.contact_fullName').textContent;
+        let contactMail = contact.querySelector('.contact_mail').textContent;
+        contact.classList.remove('active_contact');
+        if (elementContainsActiveContact(contactName, activeContactName, contactMail, activeContactMail)) {
+            contact.classList.add('active_contact');
         }
-    })
+    });
 }
 
 
@@ -384,13 +386,15 @@ function typeIsDefined(i) {
 
 
 /**
- * This function checks if the specified contact element contains the name of the active contact.
- * @param {HTMLElement} contact - The contact element to check.
- * @param {string} activeContact - The name of the active contact.
- * @returns {boolean} - Returns true if the contact element contains the name of the active contact, otherwise false.
+ * This function checks if the specified contact element contains the name and the mail of the active contact.
+ * @param {string} contactName - The name of the contact element to check.
+ * @param {string} activeContactName - The name of the active contact.
+ * @param {string} contactMail - The email of the contact element to check.
+ * @param {string} activeContactMail - The email of the active contact.
+ * @returns {boolean} - Returns true if the contact element contains both the name and mail of the active contact, otherwise false.
  */
-function elementContainsActiveContact(contact, activeContact) {
-    return contact.textContent == activeContact;
+function elementContainsActiveContact(contactName, activeContactName, contactMail, activeContactMail) {
+    return contactName === activeContactName && contactMail === activeContactMail;
 }
 
 
