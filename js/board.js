@@ -17,15 +17,15 @@ function moveTo(status) {
     updateTasksHTML(allTasks);
 }
 
-function highlight(id){
+function highlight(id) {
     document.getElementById(id).classList.add('board-column-highlight');
 }
 
-function removeHighlightLeave(id){
+function removeHighlightLeave(id) {
     document.getElementById(id).classList.remove('board-column-highlight');
 }
 
-function removeHighlightEnd(id){
+function removeHighlightEnd(id) {
     document.getElementById(id).classList.remove('board-column-highlight');
 }
 
@@ -445,25 +445,20 @@ function renderSubtasks(index) {
 
 
 function addSearchTask() {
-    let search = document.getElementById('searchField').value.toLowerCase();
-    console.log(search, "hier stet die eingabe ");
-    console.log(allTasks);
-    serch = search.toLowerCase();
+    let serch = document.getElementById('searchField').value;
+    serch = serch.toLowerCase();
+    console.log(serch);
 
-    teachingFields();
-
-}
-
-function teachingFields() {
-    // document.getElementById('openTasks').innerHTML = '';
+    emptyTasks();
     document.getElementById('inProgressTasks').innerHTML = '';
     document.getElementById('awaitFeedbackTasks').innerHTML = '';
     document.getElementById('doneTasks').innerHTML = '';
 
-    emptyTasks();
-
     for (let i = 0; i < allTasks.length; i++) {
-        let description = allTasks[i];
+        let description = allTasks['tasks[0]'];
+        if (description.toLowerCase().includes(serch)) {
+            // rendern 
+        }
         console.log(description[description])
     }
 }
@@ -477,7 +472,7 @@ function emptyTasks() {
 
 async function deleteTask(event, index) {
     console.log(allTasks[index][0]);
-/*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    /*     await deleteData(`tasks/${allTasks[index][0]}`); */
     await loadTasks();
     closeDialogTask();
 

@@ -36,4 +36,7 @@ async function initialLoadUsersFirebase() {
 
     }
     await loadData('users');
+
+
+    // await editData(`user/${ name: user.name, mail: user.mail, password: user.password });
 }
