@@ -108,7 +108,7 @@ function setPriorityBigTask(currentTask) {
 
 function setTaskCategoryBigTask(task) {
     let taskCategory = task[0][1]['category'];
-    let taskCategoryContainer = document.getElementById(`task-category${task[0][1]['id']}`);
+    let taskCategoryContainer = document.getElementById(`task-category-big${task[0][1]['id']}`);
     if (taskCategory == 'User Story') {
         taskCategoryContainer.style.backgroundColor = '#0038FF';
     } else {
