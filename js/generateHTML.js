@@ -312,7 +312,7 @@ function generateDialoEditInnerHTML(index) {
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">
                 <label for="fullName_edit"></label>
-                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" pattern="[a-zA-Z\s]*" placeholder="Name" required>
+                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" placeholder="Name" required>
                 <label for="mail_edit"></label>
                 <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                 <label for="telNumber_edit"></label>

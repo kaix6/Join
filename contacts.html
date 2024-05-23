@@ -46,13 +46,13 @@
             <div class="bottom_dialog_add_edit">
                 <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
                     <label for="fullName"></label>
-                    <input class="create_contact_input" minlength="2" type="text" id="fullName" pattern="[a-zA-Z\s]*" placeholder="Name" required>
+                    <input class="create_contact_input" attern="[a-zA-Z\s]*" minlength="2" type="text" id="fullName" placeholder="Name" required>
                     <label for="mail"></label>
                     <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
                     <label for="telNumber"></label>
                     <input class="create_contact_input" type="tel" id="telNumber" pattern="^.+$" placeholder="Phone" required>
                     <div class="container_button">
-                        <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer" type="button">
+                        <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>
