@@ -246,6 +246,14 @@
         margin-bottom: 8px;
     }
 
+    .user-story{
+        background-color: #0038FF;
+    }
+
+    .technical-task{
+        background-color: #1FD7C1;
+    }
+
     .task-headline{
         margin-top: 16px;
         font-size: 16px;

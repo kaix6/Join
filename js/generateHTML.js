@@ -71,11 +71,11 @@ function generateSubtasksHeadline() {
     `;
 }
 
-function generateSubtasksSectionBigTask(task, taskId) {
+function generateSubtasksSectionBigTask(subtask, i, taskId) {
   return `
     <div class="subtasks">
-        <div id="subtask-checkbox${task["id"]}" class="subtask-checkbox" onclick="checkUncheckBox(${task["id"]},${taskId})"></div>
-        <p>${task["description"]}</p>
+        <div id="subtask-checkbox${i}" class="subtask-checkbox" onclick="checkUncheckBox(${i},${taskId})"></div>
+        <p>${subtask["description"]}</p>
     </div>
     `;
 }
