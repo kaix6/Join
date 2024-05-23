@@ -21,9 +21,10 @@ async function initializeSummary() {
 function getTasksLength() {
     let urgent = allTasks.filter(t => t[1]['prio'] == 'urgent' && t[1]['status'] !== 'done');
     let upcomingDeadline = formateDateSummary(urgent);
+    let currentGreeting = showGreeting();
     let mainSummary = document.querySelector('.main_summary');
     mainSummary.innerHTML = '';
-    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
+    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, currentGreeting, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
 }
 
 
@@ -44,4 +45,32 @@ function formateDateSummary(array) {
         return "";
     }
     return newUrgentDate;
+}
+
+
+/**
+ * This function returns a greeting message based on the current time of day.
+ * The greeting is determined by the hour of the day:
+ * - 05:00 to 10:59: "Good Morning,"
+ * - 11:00 to 14:59: "Good Day,"
+ * - 15:00 to 17:59: "Good Afternoon,"
+ * - 18:00 to 21:59: "Good Evening,"
+ * - Otherwise: "Still awake or do you ever sleep?"
+ *
+ * @returns {string} A greeting message based on the current time of day.
+ */
+function showGreeting() {
+    let today = new Date();
+    let currentHour = today.getHours();
+    if(currentHour >= 5 && currentHour <11) {
+        return'Good Morning,';
+    } else if (currentHour >= 11 && currentHour <15) {
+        return 'Good Day,';  
+    } else if (currentHour >= 15 && currentHour <18) {
+        return 'Good Afternoon,';
+    } else if (currentHour >= 18 && currentHour <22) {
+        return 'Good Evening,';
+    } else {
+        return 'Still awake or do you ever sleep?';
+    }
 }

@@ -130,11 +130,11 @@ function getAllSubtasksBigTask(currentTask) {
     };
 }
 
-function checkUncheckBox(id, currentTaskId) {
+async function checkUncheckBox(id, currentTaskId) {
     let subtask = document.getElementById(`subtask-checkbox${id}`);
     if (subtask.className == 'subtask-checkbox') {
-        subtask.classList.add('subtask-checkbox-checked')
-        // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+        subtask.classList.add('subtask-checkbox-checked');
+        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${id}`, {isDone: true});
     } else {
         if (subtask.className == 'subtask-checkbox subtask-checkbox-checked') {
             subtask.classList.remove('subtask-checkbox-checked')
@@ -498,8 +498,7 @@ function emptyTasks() {
 
 async function deleteTask(event, index) {
     console.log(allTasks[index][0]);
-    /*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    await deleteData(`tasks/${allTasks[index][0]}`); 
     await loadTasks();
     closeDialogTask();
-
 }

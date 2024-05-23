@@ -363,7 +363,7 @@ function generateAssignedToFirst() {
 }
 
 // Summary
-function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -430,7 +430,7 @@ function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, nu
               </div>
             </div>
             <div class="summaryText">
-              <span class="goodMorningSummary">Good morning, </span>
+              <span class="goodMorningSummary">${currentGreeting}</span>
               <span class="nameSummary">Vorname Nachname </span>
             </div>
       </div>`;
