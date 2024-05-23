@@ -362,7 +362,6 @@ function setPriority(task) {
 function setTaskCategory(task) {
     let taskCategory = task['category'];
     let taskCategoryContainer = document.getElementById(`task-category${task['id']}`);
-    taskCategoryContainer.removeAttribute("style")
     if (taskCategory == 'User Story') {
         taskCategoryContainer.classList.add('user-story');
     } else {
