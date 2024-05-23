@@ -309,7 +309,8 @@ function generateSubtaskArea(subtaskText, subtaskArea, subtaskValue, subtaskId) 
   subtaskArea.innerHTML += generateSubtaskInnerHTML(subtaskId, subtaskValue);
   subtaskArea.classList.remove("subtaskAreaNone");
   document.getElementById("subtask").value = "";
-  subtaskArray.push(subtaskValue);
+  let subtaskComplete = {description: subtaskValue, id: subtaskId, isDone: false}
+  subtaskArray.push(subtaskComplete);
 }
 
 /**
