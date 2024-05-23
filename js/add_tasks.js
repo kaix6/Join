@@ -199,9 +199,26 @@ function renderPushedMembers() {
     const letters = selectUsersLetters[i];
 
     if (!document.getElementById(`${element}`)) {
-      selectMembersArea.innerHTML += `<div id="${element}" class="profilbild">${letters}</div>`;
+      selectMembersArea.innerHTML += `<div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild">${letters}</div>`;
       document.getElementById(`${element}`).style.backgroundColor = `${color}`;
     }
+  }
+}
+
+// Funktion zum Löschen eines Mitglieds
+function deleteSelectMember(element, color, letters) {
+  console.log(element, color, letters);
+
+  // Element-Index finden
+  const index = selectUsers.indexOf(element);
+  if (index > -1) {
+    // Elemente aus den Arrays entfernen
+    selectUsers.splice(index, 1);
+    selectUsersColor.splice(index, 1);
+    selectUsersLetters.splice(index, 1);
+
+    // Mitglieder neu rendern
+    renderPushedMembers();
   }
 }
 
