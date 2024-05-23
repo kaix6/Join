@@ -186,13 +186,13 @@
         position: relative;
         width: 24px;
         height: 24px;
-        background-image: url("/assets/img/board/plus_button.svg" );
+        background-image: url(/assets/img/board/plus_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
 
     .column-plus-button:hover{
-        background-image: url("/assets/img/board/plus_button_blue.svg" );
+        background-image: url(/assets/img/board/plus_button_blue.svg);
     }
 
     .search-icon{
