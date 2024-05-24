@@ -136,18 +136,24 @@ function setSubtaskStatus(subtask, i){
     let subtaskClass = document.getElementById(`subtask-checkbox${i}`)
     if(subtaskStatus == true){
         subtaskClass.classList.add('subtask-checkbox-checked');
-    }
+    } else {
+        subtaskClass.classList.remove('subtask-checkbox-checked');
+    };
 }
 
 async function checkUncheckBox(i, currentTaskId) {
-    let subtask = document.getElementById(`subtask-checkbox${i}`);
+    let subtaskContainer = document.getElementById(`subtask-checkbox${i}`);
+    let subtask = allTasks[currentTaskId][1]['subtask'][i];
+    console.log(subtask);
     if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == false) {
-        subtask.classList.add('subtask-checkbox-checked');
+        subtaskContainer.classList.add('subtask-checkbox-checked');
         await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: true});
+        setSubtaskStatus(subtask, i);
     } else {
         if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == true) {
-            subtask.classList.remove('subtask-checkbox-checked')
+            subtaskContainer.classList.remove('subtask-checkbox-checked')
             await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: false});
+            setSubtaskStatus(subtask, i);
         }
     }
 }
@@ -380,7 +386,17 @@ function getAllSubtasks(task) {
     if (typeof subtasks === "undefined") {} else {
         let subtasksSection = document.getElementById(`task${task['id']}`);
         subtasksSection.innerHTML += generateSubtasksSection();
+        // calcSubtasksProgress(subtasks);
     };
+}
+
+function calcSubtasksProgress(subtasks){
+    doneSubtasks = subtasks.filter(t => t['isDone'] == true);
+    let numberSubtasks = subtasks.length;
+    console.log(doneSubtasks);
+    // let numberDoneSubtasks = doneSubtasks.length;
+    // // let progress = numberSubtasks/numberDoneSubtasks;
+    // // console.log(progress);
 }
 
 /**
