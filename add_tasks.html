@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AddTasks</title>
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="assets/img/general/logo_favicon.svg"
-    />
-    <script src="js/script.js"></script>
-    <script src="js/add_tasks.js"></script>
-    <script defer src="js/template.js"></script>
-    <script defer src="js/generateHTML.js"></script>
-    <script defer src="js/remoteStorage.js"></script>
+    <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/add_tasks.js"></script>
+    <script defer src="./js/template.js"></script>
+    <script defer src="./js/generateHTML.js"></script>
+    <script defer src="./js/remoteStorage.js"></script>
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/template.css" />
     <link rel="stylesheet" href="./css/addTasks.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
-  </head>
-  <body class="flex_dir_c" onload="initAddTasks()">
+</head>
+
+<body class="flex_dir_c" onload="initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-      <div class="right_section flex_dir_c">
-        <!--      Section header    -->
+        <div class="right_section flex_dir_c">
+            <!--      Section header    -->
 
-        <div w3-include-html="assets/templates/header.html"></div>
+            <div w3-include-html="assets/templates/header.html"></div>
 
-        <!--      Section header    -->
+            <!--      Section header    -->
 
-        <section id="main_container" class="main_addTasks main_maxWidth">
-          <div class="desktopAddTask">
-            <div class="d-flex">
-              <h1 class="headlineAddTasks">Add Tasks</h1>
-            </div>
+            <section id="main_container" class="main_addTasks main_maxWidth">
+                <div class="desktopAddTask">
+                    <div class="d-flex">
+                        <h1 class="headlineAddTasks">Add Tasks</h1>
+                    </div>
 
-            <div class="mainAddTasks">
-              <form class="addTasksLeft" onsubmit="return validateForm()">
-                <div class="widthHalf">
-                  <label class="fontUnderHeadlinesAddTasks" for="title"
-                    >Title<span style="color: red">*</span></label
+                    <div class="mainAddTasks">
+                        <form class="addTasksLeft" onsubmit="return validateForm()">
+                            <div class="widthHalf">
+                                <label class="fontUnderHeadlinesAddTasks" for="title">Title<span style="color: red">*</span></label
                   >
                   <input
                     type="text"

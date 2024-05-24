@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
-    <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/general/logo_favicon.svg" />
     <link rel="stylesheet" href="./css/colors.css">
     <link rel="stylesheet" href="./css/contacts.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/template.css">
     <link rel="stylesheet" href="./css/mediaQuery.css">
     <link rel="stylesheet" href="./css/fonts.css">
-    <script defer src="js/script.js"></script>
-    <script defer src="js/remoteStorage.js"></script>
-    <script defer src="js/template.js"></script>
-    <script defer src="js/contacts.js"></script>
-    <script defer src="js/generateHTML.js"></script>
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/remoteStorage.js"></script>
+    <script defer src="./js/template.js"></script>
+    <script defer src="./js/contacts.js"></script>
+    <script defer src="./js/generateHTML.js"></script>
 </head>
+
 <body class="flex_dir_c" onload="includeHTML(); loadContacts()">
 
     <div onclick="closeSubmenuHeader(event); closeContactOptions(event)" class="wrapped_maxWidth">
-   
-            <!--      Section Dialogbox Add Contact    -->
+
+        <!--      Section Dialogbox Add Contact    -->
 
         <div onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="dialog_add_contact_bg d_none">
             <div onclick="doNotClose(event)" class="dialog_add_contact">
@@ -29,53 +31,53 @@
                     <img class="close_add_edit_contact" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
                 <div class="dialog_content">
-            <div class="top_dialog_add_edit flex_dir_c">
-                <div class="head_top_dialog_add_edit flex_dir_c">
-                    <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
-                    <h3 class="headline_add_edit_contact">Add contact</h3>
-                    <p class="text_add_edit_contact_dialog">Tasks are better with a team</p>
-                    <div class="seperator_line_content_contact">
+                    <div class="top_dialog_add_edit flex_dir_c">
+                        <div class="head_top_dialog_add_edit flex_dir_c">
+                            <img class="img_logo" src="./assets/img/general/logo.svg" alt="join logo">
+                            <h3 class="headline_add_edit_contact">Add contact</h3>
+                            <p class="text_add_edit_contact_dialog">Tasks are better with a team</p>
+                            <div class="seperator_line_content_contact">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="short_name_container">
-                <div class="create_contact_short_name round_div">
-                    <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
-                </div>
-            </div>
-            <div class="bottom_dialog_add_edit">
-                <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
-                    <label for="fullName"></label>
-                    <input class="create_contact_input" pattern="[a-zA-Z\s]*" minlength="2" type="text" id="fullName" placeholder="Name" required>
-                    <label for="mail"></label>
-                    <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
-                    <label for="telNumber"></label>
-                    <input class="create_contact_input" type="tel" id="telNumber" pattern="^.+$" placeholder="Phone" required>
-                    <div class="container_button">
-                        <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer">
+                    <div class="short_name_container">
+                        <div class="create_contact_short_name round_div">
+                            <img class="create_contact_add_edit_person_img" src="./assets/img/contacts/person_add.svg" alt="placeholder image new contact">
+                        </div>
+                    </div>
+                    <div class="bottom_dialog_add_edit">
+                        <form onsubmit="event.preventDefault(); addContact()" class="create_contact_form">
+                            <label for="fullName"></label>
+                            <input class="create_contact_input" pattern="[a-zA-Z\s]*" minlength="2" type="text" id="fullName" placeholder="Name" required>
+                            <label for="mail"></label>
+                            <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
+                            <label for="telNumber"></label>
+                            <input class="create_contact_input" type="tel" id="telNumber" pattern="^.+$" placeholder="Phone" required>
+                            <div class="container_button">
+                                <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_btn">Cancel</p>
                             <img class="img_cancel_checked_btn img_width24" src="./assets/img/general/close.svg" alt="cancel icon">
                         </button>
-                        <button class="blue_btn add_contact_btn contact_btn pointer" type="submit">
+                                <button class="blue_btn add_contact_btn contact_btn pointer" type="submit">
                             <p class="text_create_contact_btn">Create contact</p>
                             <img class="img_checked_btn img_width24" src="./assets/img/contacts/check.svg" alt="checked icon">
                         </button>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-            </div>
+                </div>
             </div>
         </div>
 
-            <!--      End Section Dialogbox Add Contact    -->
+        <!--      End Section Dialogbox Add Contact    -->
 
-            <!--      Section Dialogbox Edit Contact    -->
+        <!--      Section Dialogbox Edit Contact    -->
 
         <div onclick="closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100)" class="dialog_edit_contact_bg d_none">
-            <!--     render Contacts in JS    --> 
+            <!--     render Contacts in JS    -->
         </div>
 
-             <!--      End Section Dialogbox Edit Contact    -->
+        <!--      End Section Dialogbox Edit Contact    -->
 
         <div class="right_section flex_dir_c">
 
@@ -88,23 +90,23 @@
 
             <section id="main_container" class="main_contacts">
 
-            <!--      Section Contact options   -->
+                <!--      Section Contact options   -->
 
-            <div onclick="doNotClose(event)" class="contact_options_mobile">
-                <!--     render Contacts in JS    --> 
-            </div>
+                <div onclick="doNotClose(event)" class="contact_options_mobile">
+                    <!--     render Contacts in JS    -->
+                </div>
 
-            <!--      End Section Contact options   -->
+                <!--      End Section Contact options   -->
 
-             <!--      Section Contact created   -->
+                <!--      Section Contact created   -->
 
-            <div class="create_contact_done">
-                <p class="text_create_contact_done">Contact successfully created</p>
-            </div>
+                <div class="create_contact_done">
+                    <p class="text_create_contact_done">Contact successfully created</p>
+                </div>
 
-            <!--      Section Contact created   -->
+                <!--      Section Contact created   -->
 
-            <!--      Section Contact    -->
+                <!--      Section Contact    -->
 
                 <div id="content_contacts">
                     <div onclick="showDialog('.dialog_add_contact_bg', 'd_none', '.dialog_add_contact', 'show_dialog_add_contact', 50)" class="add_change_btn_mobile pointer">
@@ -112,13 +114,13 @@
                         <img class="add_person_more_icon" src="assets/img/contacts/person_add.svg" alt="add person icon">
                     </div>
                     <div class="contacts">
-            <!--     render Contacts in JS    --> 
+                        <!--     render Contacts in JS    -->
                     </div>
                 </div>
 
-            <!--     End  Section Contact    -->
+                <!--     End  Section Contact    -->
 
-            <!--      Section Contact View   -->
+                <!--      Section Contact View   -->
 
                 <div id="contact_view" class="d_none">
                     <div class="head_overview">
@@ -130,29 +132,28 @@
                                 </div>
                             </div>
                         </div>
-                        <div onclick="toggleContactView()"  class="right_part_overview pointer hide_desktop">
+                        <div onclick="toggleContactView()" class="right_part_overview pointer hide_desktop">
                             <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
                         </div>
                     </div>
-                    <div class="floating_contact flex_dir_c d_none"> 
-            <!--     render Contacts in JS    --> 
+                    <div class="floating_contact flex_dir_c d_none">
+                        <!--     render Contacts in JS    -->
                     </div>
                 </div>
 
-            <!--      End Section Contact View   -->
+                <!--      End Section Contact View   -->
             </section>
 
         </div>
 
-            <!--      Section Side Menu   -->
+        <!--      Section Side Menu   -->
 
         <div class="side_menu_sticky" w3-include-html="./assets/templates/side_menu.html"></div>
 
-            <!--      End Section Side Menu    -->
+        <!--      End Section Side Menu    -->
 
     </div>
 
 </body>
+
 </html>
-
-
