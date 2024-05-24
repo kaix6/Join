@@ -45,9 +45,9 @@ async function showDialogTask(i) {
 }
 
 /**
- * This function converts the data into the format DD/MM/YYY
- * @param {*} date - 
- * @returns 
+ * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
+ * @param {string} date - The date string in "YYYY-MM-DD" format.
+ * @returns {string} - The date string in "DD/MM/YYYY" format.
  */
 function convertDate(date) {
     let splittedDate = date.split("-");
@@ -154,6 +154,7 @@ async function checkUncheckBox(i, currentTaskId) {
             subtaskContainer.classList.remove('subtask-checkbox-checked')
             await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: false});
             setSubtaskStatus(subtask, i);
+
         }
     }
 }
@@ -208,7 +209,7 @@ async function getTasksJson() {
 function updateOpenTasks(tasks) {
     open = tasks.filter(t => t[1]['status'] == 'open');
     let boardOpenTasks = document.getElementById('openTasks');
-    if(boardOpenTasks) {
+    if (boardOpenTasks) {
         if (open.length > 0) {
             boardOpenTasks.innerHTML = '';
             for (let i = 0; i < open.length; i++) {
@@ -236,7 +237,7 @@ function updateOpenTasks(tasks) {
 function updateInProgressTasks(tasks) {
     inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-  /*   boardInProgressTasks.innerHTML = ''; */
+/*     boardInProgressTasks.innerHTML = ''; */
     if(boardInProgressTasks) {
         if (inProgress.length > 0) {
             boardInProgressTasks.innerHTML = '';
@@ -265,8 +266,8 @@ function updateInProgressTasks(tasks) {
 function updateAwaitFeedbackTasks(tasks) {
     awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
-/*     boardAwaitFeedbackTasks.innerHTML = ''; */
-    if(boardAwaitFeedbackTasks) {
+    /*     boardAwaitFeedbackTasks.innerHTML = ''; */
+    if (boardAwaitFeedbackTasks) {
         if (awaitFeedback.length > 0) {
             boardAwaitFeedbackTasks.innerHTML = '';
             for (let i = 0; i < awaitFeedback.length; i++) {
@@ -294,8 +295,8 @@ function updateAwaitFeedbackTasks(tasks) {
 function updateDoneTasks(tasks) {
     done = tasks.filter(t => t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
-/*     boardDoneTasks.innerHTML = ''; */
-    if(boardDoneTasks) {
+    /*     boardDoneTasks.innerHTML = ''; */
+    if (boardDoneTasks) {
         if (done.length > 0) {
             boardDoneTasks.innerHTML = '';
             for (let i = 0; i < done.length; i++) {
@@ -459,6 +460,17 @@ function showSavedTasksData(index) {
     }
 }
 
+function saveNewDataTasks(index) {
+    console.log(document.getElementById("title").value);
+    console.log(document.getElementById("description").value);
+    console.log(document.getElementById("date").value);
+    console.log(selectedPrio);
+    console.log(selectUsers);
+    console.log(selectUsersColor);
+    console.log(selectUsersLetters);
+    console.log(memberIdCounter);
+}
+
 /**
  * This function renders the existing members for editing a task, including their profile pictures.
  * @param {number} index - The index of the task in the allTasks array. 
@@ -470,10 +482,13 @@ function renderExistingMembersEditTask(index) {
 
     selectUsers = [];
     selectUsersColor = [];
+    selectUsersLetters = [];
 
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
-        selectUsers.push(member.letters);
+        console.log(member);
+        selectUsers.push(member.name);
+        selectUsersLetters.push(member.letters);
         selectUsersColor.push(member.color);
         existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
@@ -496,23 +511,27 @@ function renderSubtasks(index) {
 }
 
 
-function addSearchTask() {
-    let serch = document.getElementById('searchField').value;
-    serch = serch.toLowerCase();
-    console.log(serch);
+async function addSearchTask() {
+    let search = document.getElementById('searchField').value.toLowerCase();
 
+
+    let filertasks = allTasks.filter(tasks => tasks.allTasks[i][1].description.includes(search));
+    console.log(filertasks)
     emptyTasks();
     document.getElementById('inProgressTasks').innerHTML = '';
     document.getElementById('awaitFeedbackTasks').innerHTML = '';
     document.getElementById('doneTasks').innerHTML = '';
 
+
+}
+
+async function loadFilterTasks(filertasks) {
+    filertasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
-        let description = allTasks['tasks[0]'];
-        if (description.toLowerCase().includes(serch)) {
-            // rendern 
-        }
-        console.log(description[description])
+        const task = allTasks[i];
+        task[1]['id'] = i;
     }
+    updateTasksHTML(allTasks);
 }
 
 function emptyTasks() {
@@ -522,10 +541,14 @@ function emptyTasks() {
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
 }
 
+/**
+ * This function deletes a task the specified index from the 'allTasks' array.
+ * Finally it reloads the task, and closes the task dialog.
+ * @param {Event} event - The event object associated with the delete action.
+ * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
+ */
 async function deleteTask(event, index) {
-    console.log(allTasks[index][0]);
-    /*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    await deleteData(`tasks/${allTasks[index][0]}`); 
     await loadTasks();
     closeDialogTask();
-
 }

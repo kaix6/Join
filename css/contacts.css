@@ -236,7 +236,7 @@
     border-radius: 20px;
     padding: 20px;
     z-index: 1;
-    transform: translateX(1000px);
+    transform: translateX(1000%);
     transition: all 300ms ease-out;
 }
 

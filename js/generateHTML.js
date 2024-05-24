@@ -312,7 +312,7 @@ function generateDialoEditInnerHTML(index) {
         <div class="bottom_dialog_add_edit">
             <form onsubmit="event.preventDefault(); saveNewData(${index})" class="create_contact_form">
                 <label for="fullName_edit"></label>
-                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" pattern="[a-zA-Z\s]*" placeholder="Name" required>
+                <input class="create_contact_input" minlength="2" type="text" id="fullName_edit" placeholder="Name" required>
                 <label for="mail_edit"></label>
                 <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                 <label for="telNumber_edit"></label>
@@ -363,7 +363,7 @@ function generateAssignedToFirst() {
 }
 
 // Summary
-function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -430,7 +430,7 @@ function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, nu
               </div>
             </div>
             <div class="summaryText">
-              <span class="goodMorningSummary">Good morning, </span>
+              <span class="goodMorningSummary">${currentGreeting}</span>
               <span class="nameSummary">Vorname Nachname </span>
             </div>
       </div>`;
