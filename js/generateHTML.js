@@ -20,7 +20,7 @@ function generateSmallTaskBox(task) {
 function generateBigTaskBox(task) {
   return `
     <div class="d-flex-center-space-btw">
-        <p id="task-category${task[0][1]["id"]}" class="task-type">${task[0][1]["category"]}</p>
+        <p id="task-category-big${task[0][1]["id"]}" class="task-type">${task[0][1]["category"]}</p>
         <div class="close-icon" onclick="closeDialogTask()">
             <img src="./assets/img/add_task/close.svg" />
         </div>
@@ -71,11 +71,11 @@ function generateSubtasksHeadline() {
     `;
 }
 
-function generateSubtasksSectionBigTask(task, taskId) {
+function generateSubtasksSectionBigTask(subtask, i, taskId) {
   return `
     <div class="subtasks">
-        <div id="subtask-checkbox${task["id"]}" class="subtask-checkbox" onclick="checkUncheckBox(${task["id"]},${taskId})"></div>
-        <p>${task["description"]}</p>
+        <div id="subtask-checkbox${i}" class="subtask-checkbox" onclick="checkUncheckBox(${i},${taskId})"></div>
+        <p>${subtask["description"]}</p>
     </div>
     `;
 }

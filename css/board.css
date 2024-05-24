@@ -186,13 +186,13 @@
         position: relative;
         width: 24px;
         height: 24px;
-        background-image: url("/assets/img/board/plus_button.svg" );
+        background-image: url(/assets/img/board/plus_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
 
     .column-plus-button:hover{
-        background-image: url("/assets/img/board/plus_button_blue.svg" );
+        background-image: url(/assets/img/board/plus_button_blue.svg);
     }
 
     .search-icon{
@@ -244,6 +244,14 @@
         padding-top: 4px;
         padding-bottom: 4px;
         margin-bottom: 8px;
+    }
+
+    .user-story{
+        background-color: #0038FF;
+    }
+
+    .technical-task{
+        background-color: #1FD7C1;
     }
 
     .task-headline{
@@ -458,7 +466,7 @@
     .subtask-checkbox{
         width: 19px;
         height: 19px;
-        background-image: url(/assets/img/board/check_button.svg);
+        background-image: url(../assets/img/board/check_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
@@ -471,7 +479,7 @@
     .subtask-checkbox-checked{
         width: 19px;
         height: 19px;
-        background-image: url(/assets/img/board/checked_button.svg);
+        background-image: url(../assets/img/board/checked_button.svg);
         background-repeat: no-repeat;
         cursor: pointer;
     }
