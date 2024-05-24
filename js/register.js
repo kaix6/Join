@@ -8,9 +8,9 @@ async function addUser() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     matchPassword();
-    // newUsers.push({ email: email.value, password: password.value, name: name.value });
+    newUsers.push({ email: email.value, password: password.value, name: name.value });
 
-    await initialLoadUsersFirebase();
+    // await initialLoadUsersFirebase();
     window.location.href = './index.html';
 
 }
