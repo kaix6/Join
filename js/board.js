@@ -180,6 +180,7 @@ function updateTasksHTML(tasks) {
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
     updateDoneTasks(tasks);
+    document.querySelector(':root').style.setProperty('--height', 'fit-content');
 }
 
 /**
