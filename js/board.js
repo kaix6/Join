@@ -45,9 +45,9 @@ async function showDialogTask(i) {
 }
 
 /**
- * This function converts the data into the format DD/MM/YYY
- * @param {*} date - 
- * @returns 
+ * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
+ * @param {string} date - The date string in "YYYY-MM-DD" format.
+ * @returns {string} - The date string in "DD/MM/YYYY" format.
  */
 function convertDate(date) {
     let splittedDate = date.split("-");
@@ -130,11 +130,11 @@ function getAllSubtasksBigTask(currentTask) {
     };
 }
 
-function checkUncheckBox(id, currentTaskId) {
+async function checkUncheckBox(id, currentTaskId) {
     let subtask = document.getElementById(`subtask-checkbox${id}`);
     if (subtask.className == 'subtask-checkbox') {
-        subtask.classList.add('subtask-checkbox-checked')
-            // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+        subtask.classList.add('subtask-checkbox-checked');
+        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${id}`, {isDone: true});
     } else {
         if (subtask.className == 'subtask-checkbox subtask-checkbox-checked') {
             subtask.classList.remove('subtask-checkbox-checked')
@@ -219,8 +219,8 @@ function updateOpenTasks(tasks) {
 function updateInProgressTasks(tasks) {
     inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-    /*   boardInProgressTasks.innerHTML = ''; */
-    if (boardInProgressTasks) {
+/*     boardInProgressTasks.innerHTML = ''; */
+    if(boardInProgressTasks) {
         if (inProgress.length > 0) {
             boardInProgressTasks.innerHTML = '';
             for (let i = 0; i < inProgress.length; i++) {
@@ -433,6 +433,17 @@ function showSavedTasksData(index) {
     }
 }
 
+function saveNewDataTasks(index) {
+    console.log(document.getElementById("title").value);
+    console.log(document.getElementById("description").value);
+    console.log(document.getElementById("date").value);
+    console.log(selectedPrio);
+    console.log(selectUsers);
+    console.log(selectUsersColor);
+    console.log(selectUsersLetters);
+    console.log(memberIdCounter);
+}
+
 /**
  * This function renders the existing members for editing a task, including their profile pictures.
  * @param {number} index - The index of the task in the allTasks array. 
@@ -444,10 +455,13 @@ function renderExistingMembersEditTask(index) {
 
     selectUsers = [];
     selectUsersColor = [];
+    selectUsersLetters = [];
 
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
-        selectUsers.push(member.letters);
+        console.log(member);
+        selectUsers.push(member.name);
+        selectUsersLetters.push(member.letters);
         selectUsersColor.push(member.color);
         existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
@@ -500,10 +514,14 @@ function emptyTasks() {
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
 }
 
+/**
+ * This function deletes a task the specified index from the 'allTasks' array.
+ * Finally it reloads the task, and closes the task dialog.
+ * @param {Event} event - The event object associated with the delete action.
+ * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
+ */
 async function deleteTask(event, index) {
-    console.log(allTasks[index][0]);
-    /*     await deleteData(`tasks/${allTasks[index][0]}`); */
+    await deleteData(`tasks/${allTasks[index][0]}`); 
     await loadTasks();
     closeDialogTask();
-
 }
