@@ -219,7 +219,7 @@ function updateOpenTasks(tasks) {
 function updateInProgressTasks(tasks) {
     inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-  /*   boardInProgressTasks.innerHTML = ''; */
+/*     boardInProgressTasks.innerHTML = ''; */
     if(boardInProgressTasks) {
         if (inProgress.length > 0) {
             boardInProgressTasks.innerHTML = '';
@@ -433,6 +433,17 @@ function showSavedTasksData(index) {
     }
 }
 
+function saveNewDataTasks(index) {
+    console.log(document.getElementById("title").value);
+    console.log(document.getElementById("description").value);
+    console.log(document.getElementById("date").value);
+    console.log(selectedPrio);
+    console.log(selectUsers);
+    console.log(selectUsersColor);
+    console.log(selectUsersLetters);
+    console.log(memberIdCounter);
+}
+
 /**
  * This function renders the existing members for editing a task, including their profile pictures.
  * @param {number} index - The index of the task in the allTasks array. 
@@ -444,10 +455,13 @@ function renderExistingMembersEditTask(index) {
 
     selectUsers = [];
     selectUsersColor = [];
+    selectUsersLetters = [];
 
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
-        selectUsers.push(member.letters);
+        console.log(member);
+        selectUsers.push(member.name);
+        selectUsersLetters.push(member.letters);
         selectUsersColor.push(member.color);
         existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
@@ -496,8 +510,13 @@ function emptyTasks() {
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
 }
 
+/**
+ * This function deletes a task the specified index from the 'allTasks' array.
+ * Finally it reloads the task, and closes the task dialog.
+ * @param {Event} event - The event object associated with the delete action.
+ * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
+ */
 async function deleteTask(event, index) {
-    console.log(allTasks[index][0]);
     await deleteData(`tasks/${allTasks[index][0]}`); 
     await loadTasks();
     closeDialogTask();
