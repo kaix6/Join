@@ -8,7 +8,7 @@ async function addUser() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     matchPassword();
-    newUsers.push({ email: email.value, password: password.value, name: name.value });
+    // newUsers.push({ email: email.value, password: password.value, name: name.value });
 
     await initialLoadUsersFirebase();
     window.location.href = './index.html';
@@ -29,6 +29,9 @@ async function initialLoadUsersFirebase() {
     let response = await fetch('#newUsers');
     users = await response.json();
 
+    await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
+
+
     for (let i = 0; i < users.length; i++) {
         const user = users[i];
         await postData('users', { name: user.name, mail: user.mail, password: user.password })
@@ -36,7 +39,8 @@ async function initialLoadUsersFirebase() {
 
     }
     await loadData('users');
+    // await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
 
 
-    // await editData(`user/${ name: user.name, mail: user.mail, password: user.password });
+    // await editData(`users/${ name: user.name, mail: user.mail, password: user.password}`);
 }

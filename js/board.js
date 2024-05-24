@@ -134,11 +134,11 @@ function checkUncheckBox(id, currentTaskId) {
     let subtask = document.getElementById(`subtask-checkbox${id}`);
     if (subtask.className == 'subtask-checkbox') {
         subtask.classList.add('subtask-checkbox-checked')
-        // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+            // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
     } else {
         if (subtask.className == 'subtask-checkbox subtask-checkbox-checked') {
             subtask.classList.remove('subtask-checkbox-checked')
-            // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
+                // editData(path = `tasks/${allTasks[currentTaskId][1]['subtask'][id][subtaskStatus]}`, data = {})
         }
     }
 }
@@ -191,7 +191,7 @@ async function getTasksJson() {
 function updateOpenTasks(tasks) {
     open = tasks.filter(t => t[1]['status'] == 'open');
     let boardOpenTasks = document.getElementById('openTasks');
-    if(boardOpenTasks) {
+    if (boardOpenTasks) {
         if (open.length > 0) {
             boardOpenTasks.innerHTML = '';
             for (let i = 0; i < open.length; i++) {
@@ -219,8 +219,8 @@ function updateOpenTasks(tasks) {
 function updateInProgressTasks(tasks) {
     inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-  /*   boardInProgressTasks.innerHTML = ''; */
-    if(boardInProgressTasks) {
+    /*   boardInProgressTasks.innerHTML = ''; */
+    if (boardInProgressTasks) {
         if (inProgress.length > 0) {
             boardInProgressTasks.innerHTML = '';
             for (let i = 0; i < inProgress.length; i++) {
@@ -248,8 +248,8 @@ function updateInProgressTasks(tasks) {
 function updateAwaitFeedbackTasks(tasks) {
     awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
-/*     boardAwaitFeedbackTasks.innerHTML = ''; */
-    if(boardAwaitFeedbackTasks) {
+    /*     boardAwaitFeedbackTasks.innerHTML = ''; */
+    if (boardAwaitFeedbackTasks) {
         if (awaitFeedback.length > 0) {
             boardAwaitFeedbackTasks.innerHTML = '';
             for (let i = 0; i < awaitFeedback.length; i++) {
@@ -277,8 +277,8 @@ function updateAwaitFeedbackTasks(tasks) {
 function updateDoneTasks(tasks) {
     done = tasks.filter(t => t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
-/*     boardDoneTasks.innerHTML = ''; */
-    if(boardDoneTasks) {
+    /*     boardDoneTasks.innerHTML = ''; */
+    if (boardDoneTasks) {
         if (done.length > 0) {
             boardDoneTasks.innerHTML = '';
             for (let i = 0; i < done.length; i++) {
@@ -470,23 +470,27 @@ function renderSubtasks(index) {
 }
 
 
-function addSearchTask() {
-    let serch = document.getElementById('searchField').value;
-    serch = serch.toLowerCase();
-    console.log(serch);
+async function addSearchTask() {
+    let search = document.getElementById('searchField').value.toLowerCase();
 
+
+    let filertasks = allTasks.filter(tasks => tasks.allTasks[i][1].description.includes(search));
+    console.log(filertasks)
     emptyTasks();
     document.getElementById('inProgressTasks').innerHTML = '';
     document.getElementById('awaitFeedbackTasks').innerHTML = '';
     document.getElementById('doneTasks').innerHTML = '';
 
+
+}
+
+async function loadFilterTasks(filertasks) {
+    filertasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
-        let description = allTasks['tasks[0]'];
-        if (description.toLowerCase().includes(serch)) {
-            // rendern 
-        }
-        console.log(description[description])
+        const task = allTasks[i];
+        task[1]['id'] = i;
     }
+    updateTasksHTML(allTasks);
 }
 
 function emptyTasks() {
