@@ -330,7 +330,7 @@ function getAllMembers(task) {
     for (let j = 0; j < task['assigned member'].length; j++) {
         const member = task['assigned member'][j]['letters'];
         let taskId = task['id'];
-        let memberId = taskId + member;
+        let memberId = taskId + task['assigned member'][j]['name'];
         document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
         setColorMember(task, j, memberId);
     };
@@ -390,19 +390,17 @@ function setTaskCategory(task) {
 function getAllSubtasks(task) {
     let subtasks = task['subtask'];
     if (typeof subtasks === "undefined") {} else {
-        let subtasksSection = document.getElementById(`task${task['id']}`);
-        subtasksSection.innerHTML += generateSubtasksSection();
-        // calcSubtasksProgress(subtasks);
+        calcSubtasksProgress(subtasks, task);
     };
 }
 
-function calcSubtasksProgress(subtasks){
-    doneSubtasks = subtasks.filter(t => t['isDone'] == true);
+function calcSubtasksProgress(subtasks, task){
+    let subtasksSection = document.getElementById(`task${task['id']}`);
+    allDoneSubtasks = subtasks.filter(t => t['isDone'] == true);
     let numberSubtasks = subtasks.length;
-    console.log(doneSubtasks);
-    // let numberDoneSubtasks = doneSubtasks.length;
-    // // let progress = numberSubtasks/numberDoneSubtasks;
-    // // console.log(progress);
+    let numberDoneSubtasks = allDoneSubtasks.length;
+    let progress = ((numberDoneSubtasks/numberSubtasks)*100).toFixed(0);
+    subtasksSection.innerHTML += generateSubtasksSection(numberSubtasks, numberDoneSubtasks, progress);
 }
 
 /**
