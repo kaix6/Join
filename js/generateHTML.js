@@ -362,6 +362,12 @@ function generateAssignedToFirst() {
   `;
 }
 
+function generatePushedMembers(element, color, letters) {
+  return /* HTML */ `
+    <div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild">${letters}</div>
+    `;
+}
+
 // Summary
 function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `

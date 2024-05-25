@@ -207,16 +207,14 @@ function renderPushedMembers() {
     const letters = selectUsersLetters[i];
 
     if (!document.getElementById(`${element}`)) {
-      selectMembersArea.innerHTML += `<div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild">${letters}</div>`;
+      selectMembersArea.innerHTML += generatePushedMembers(element, color, letters);
       document.getElementById(`${element}`).style.backgroundColor = `${color}`;
     }
   }
 }
 
 // Funktion zum Löschen eines Mitglieds
-function deleteSelectMember(element, color, letters) {
-  console.log(element, color, letters);
-
+function deleteSelectMember(element) {
   // Element-Index finden
   const index = selectUsers.indexOf(element);
   if (index > -1) {
@@ -251,29 +249,30 @@ async function saveTaskToJson(title, description, date, prio, category) {
     const id = memberIdCounter++;
     let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
     assignedArray.push(memberArray);
-  }
-  if (subtaskStatus.length === 0) {
+  } if (subtaskStatus.length === 0) {
     subtaskStatus.push('open');
   }
   localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
-      // Neuen Task erstellen
-      newTask = {
-        title: title,
-        description: description,
-        "due date": date,
-        prio: prio,
-        category: category,
-        "assigned member": assignedArray,
-        subtask: subtaskArray,
-        status: subtaskStatus,
-        id: 1,
-      };
-
+  renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
-  console.log("Task erfolgreich hinzugefügt.");
   showAddToBoardDialog();
   initRemoveItemTasks();
   openBoardPage();
+}
+
+function renderNewTask(title, description, date, prio, category) {
+        // Neuen Task erstellen
+        newTask = {
+          title: title,
+          description: description,
+          "due date": date,
+          prio: prio,
+          category: category,
+          "assigned member": assignedArray,
+          subtask: subtaskArray,
+          status: subtaskStatus,
+          id: 1,
+        };
 }
 
 function addSubtaskStatus(status) {
