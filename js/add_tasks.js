@@ -482,3 +482,25 @@ async function initJSONaddTasks() {
   let tasks = Object.entries(await loadData("tasks"));
   allTasksJson.push(tasks);
 }
+
+/* feature - hover name*/
+function showTooltip(event, id) {
+  let tooltip = document.getElementById('tooltip');
+  tooltip.innerHTML = id;
+
+  let targetElement = event.target;
+  let targetRect = targetElement.getBoundingClientRect();
+
+  // Positionierung über dem Element
+  let left = targetRect.left + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  let top = targetRect.top - tooltip.offsetHeight - 30; // 10px Abstand zum Element
+
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+  tooltip.classList.add('show');
+}
+
+function hideTooltip() {
+  let tooltip = document.getElementById('tooltip');
+  tooltip.classList.remove('show');
+}

@@ -364,7 +364,8 @@ function generateAssignedToFirst() {
 
 function generatePushedMembers(element, color, letters) {
   return /* HTML */ `
-    <div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild">${letters}</div>
+    <div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild" onmouseover="showTooltip(event, '${element}')" onmouseout="hideTooltip()">${letters}</div>
+    <div id="tooltip" class="tooltip"></div>
     `;
 }
 
