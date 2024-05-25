@@ -3,14 +3,35 @@ let allTasks;
 
 // * Drag & Drop Start * //
 
+/**
+ * Initiates the dragging process for a task.
+ *
+ * This function sets the global variable `currentDraggedTask` to the specified task's ID,
+ * indicating that the task with this ID is currently being dragged.
+ *
+ * @param {string} id - The unique identifier of the task to be dragged.
+ */
 function startDraggin(id) {
     currentDraggedTask = id;
 }
 
+/**
+ * This function prevents the default handling of the event, enabling the drop
+ * functionality for the specified drag event.
+ *
+ * @param {DragEvent} ev - The drag event that is being handled.
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * This function updates the status of the currently dragged task
+ * to the specified new status. It then sends the updated status to the server
+ * and refreshes the tasks displayed in the UI.
+ *
+ * @param {string} newStatus - The new status to assign to the currently dragged task.
+ */
 async function moveTo(newStatus) {
     allTasks[currentDraggedTask][1]['status'] = newStatus;
     // console.log(`tasks/${allTasks[currentDraggedTask][0]}`);
@@ -18,20 +39,48 @@ async function moveTo(newStatus) {
     updateTasksHTML(allTasks);
 }
 
+/**
+ * This function adds the highlight style to the element with the given ID.
+ *
+ * @param {string} id - The ID of the element to be highlighted.
+ */
 function highlight(id) {
     document.getElementById(id).classList.add('board-column-highlight');
 }
 
+/**
+ * This function removes the the highlight style from the element with the given ID.
+ *
+ * @param {string} id - The ID of the element to remove the highlight from.
+ */
 function removeHighlightLeave(id) {
     document.getElementById(id).classList.remove('board-column-highlight');
 }
 
+/**
+ * Removes the highlight from a specified element at the end of a drag operation.
+ *
+ * @param {string} id - The ID of the element to remove the highlight from.
+ */
 function removeHighlightEnd(id) {
     document.getElementById(id).classList.remove('board-column-highlight');
 }
 
 // * Drag & Drop End * //
 
+// * Board Start * //
+
+/**
+ * Displays a detailed view of a specific task in a dialog box.
+ *
+ * 1. Finds the task with the specified ID from the `allTasks` array.
+ * 2. Executes an animation for the dialog.
+ * 3. Clears and updates the content of the 'task-box-big' element with the task's details.
+ * 4. Populates the task's details including members, priority, category, subtasks, and height.
+ *
+ * @param {number} i - The ID of the task to be displayed.
+ * @returns {Promise<void>} A promise that resolves when the task details have been fully displayed.
+ */
 async function showDialogTask(i) {
     let bigTaskBox = document.getElementById('task-box-big');
     let currentTask = allTasks.filter(t => t[1]['id'] == i);
@@ -56,6 +105,9 @@ function convertDate(date) {
     return newDate.join("/");
 }
 
+/**
+ * Adjusts the height of the task box to fit within the viewport.
+ */
 function getDivHeight() {
     let bigTaskBox = document.querySelector('.task-box-big');
     let viewportWithoutNavi = window.innerHeight - 83;
@@ -64,6 +116,12 @@ function getDivHeight() {
     changeTaskBoxHeight(gapHeight, height);
 }
 
+/**
+ * Adjusts the CSS variable for the task box height based on the available space.
+ *
+ * @param {number} gapHeight - The gap between the available viewport height and the task box height.
+ * @param {number} height - The current height of the task box.
+ */
 function changeTaskBoxHeight(gapHeight, height) {
     if (gapHeight < -1) {
         var r = document.querySelector(':root');
@@ -76,8 +134,11 @@ function changeTaskBoxHeight(gapHeight, height) {
     }
 };
 
-// wenn die neue Height negativ ist, dann minus fixen Wert --> calc(100% - 80px - 83px)
-
+/**
+ * Retrieves and displays all members assigned to a given task in a detailed view.
+ *
+ * @param {Array} currentTask - The current task for which members are to be displayed.
+ */
 function getAllMembersBigTask(currentTask) {
     let memberContainer = document.getElementById('container-member-big-task');
     let taskAllMembers = currentTask[0][1]['assigned member'];
@@ -88,12 +149,22 @@ function getAllMembersBigTask(currentTask) {
     };
 }
 
+/**
+ * Sets the background color of a member circle in the detailed task view.
+ *
+ * @param {Object} currentTaskMember - The member object for which the color is to be set.
+ */
 function setColorMemberBigTask(currentTaskMember) {
     let colorMember = currentTaskMember['color'];
     let memberContainer = document.getElementById(`member-letter-cirlce${currentTaskMember['id']}`);
     memberContainer.style.backgroundColor = colorMember;
 }
 
+/**
+ * Sets the priority icon for a task in the detailed task view.
+ *
+ * @param {Array} currentTask - The current task for which the priority icon is to be set.
+ */
 function setPriorityBigTask(currentTask) {
     let taskPrio = currentTask[0][1]['prio'];
     if (taskPrio == 'low') {
@@ -107,6 +178,11 @@ function setPriorityBigTask(currentTask) {
     };
 }
 
+/**
+ * Sets the category color for a task in the detailed task view.
+ *
+ * @param {Array} task - The current task for which the category color is to be set.
+ */
 function setTaskCategoryBigTask(task) {
     let taskCategory = task[0][1]['category'];
     let taskCategoryContainer = document.getElementById(`task-category-big${task[0][1]['id']}`);
@@ -117,6 +193,11 @@ function setTaskCategoryBigTask(task) {
     };
 }
 
+/**
+ * Retrieves and displays all subtasks associated with a given task in the detailed task view.
+ *
+ * @param {Array} currentTask - The current task for which subtasks are to be displayed.
+ */
 function getAllSubtasksBigTask(currentTask) {
     let subtasksSection = document.getElementById(`subtasks${currentTask[0][1]['id']}`);
     let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
@@ -132,6 +213,12 @@ function getAllSubtasksBigTask(currentTask) {
     };
 }
 
+/**
+ * Sets the status of a subtask checkbox based on its completion status.
+ *
+ * @param {Object} subtask - The subtask object containing information about the subtask.
+ * @param {number} i - The index of the subtask in the list of subtasks.
+ */
 function setSubtaskStatus(subtask, i){
     let subtaskStatus = subtask['isDone'];
     let subtaskClass = document.getElementById(`subtask-checkbox${i}`)
@@ -142,6 +229,12 @@ function setSubtaskStatus(subtask, i){
     };
 }
 
+/**
+ * Toggles the completion status of a subtask checkbox and updates it in the UI and database.
+ *
+ * @param {number} i - The index of the subtask within the task's list of subtasks.
+ * @param {number} currentTaskId - The ID of the current task containing the subtask.
+ */
 async function checkUncheckBox(i, currentTaskId) {
     let subtaskContainer = document.getElementById(`subtask-checkbox${i}`);
     if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == false) {
@@ -157,6 +250,9 @@ async function checkUncheckBox(i, currentTaskId) {
     }
 }
 
+/**
+ * Renders and updates subtasks for all tasks.
+ */
 async function renderSubtask(){
     allTasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
@@ -165,6 +261,9 @@ async function renderSubtask(){
     }
 }
 
+/**
+ * Closes the detailed task dialog box.
+ */
 function closeDialogTask() {
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
@@ -172,6 +271,9 @@ function closeDialogTask() {
     loadTasks();
 }
 
+/**
+ * Animates the opening and closing of the detailed task dialog box.
+ */
 function animationDialogTask() {
     document.querySelector('.background-big-task').classList.toggle('d-none');
     setTimeout(function() {
@@ -179,6 +281,10 @@ function animationDialogTask() {
     }, 100)
 }
 
+/**
+ * Loads tasks from the database and updates their IDs before updating the HTML.
+ *
+ */
 async function loadTasks() {
     allTasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
@@ -188,6 +294,11 @@ async function loadTasks() {
     updateTasksHTML(allTasks);
 }
 
+/**
+ * Updates the HTML display of tasks across different task statuses.
+ *
+ * @param {Array} tasks - The array containing all tasks to be displayed.
+ */
 function updateTasksHTML(tasks) {
     updateOpenTasks(tasks);
     updateInProgressTasks(tasks);
@@ -395,6 +506,12 @@ function getAllSubtasks(task) {
     };
 }
 
+/**
+ * Calculates and displays the progress of subtasks for a task.
+ *
+ * @param {Array} subtasks - The array containing all subtasks for the task.
+ * @param {Object} task - The task object for which subtask progress is calculated.
+ */
 function calcSubtasksProgress(subtasks, task){
     let subtasksSection = document.getElementById(`task${task['id']}`);
     allDoneSubtasks = subtasks.filter(t => t['isDone'] == true);
@@ -414,8 +531,6 @@ function truncateText(task) {
     var truncated = description.substring(0, 50) + "...";
     document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
 }
-
-// edit Tasks
 
 /**
  * This function initializes the subtask ID counter by finding the highest existing subtask ID n the specified task and setting the counter to this value plus one.
