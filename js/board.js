@@ -11,9 +11,10 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(newStatus) {
+async function moveTo(newStatus) {
     allTasks[currentDraggedTask][1]['status'] = newStatus;
-    // await editData(`tasks/${allTasks[currentDraggedTask][1]}`, {status: newStatus.value});
+    // console.log(`tasks/${allTasks[currentDraggedTask][0]}`);
+    await editData(`tasks/${allTasks[currentDraggedTask][0]}`, {status: newStatus});
     updateTasksHTML(allTasks);
 }
 
