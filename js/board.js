@@ -5,10 +5,6 @@ let allTasks;
 
 /**
  * Initiates the dragging process for a task.
- *
- * This function sets the global variable `currentDraggedTask` to the specified task's ID,
- * indicating that the task with this ID is currently being dragged.
- *
  * @param {string} id - The unique identifier of the task to be dragged.
  */
 function startDraggin(id) {
@@ -16,9 +12,7 @@ function startDraggin(id) {
 }
 
 /**
- * This function prevents the default handling of the event, enabling the drop
- * functionality for the specified drag event.
- *
+ * This function prevents the default handling of the event, enabling the drop functionality for the specified drag event.
  * @param {DragEvent} ev - The drag event that is being handled.
  */
 function allowDrop(ev) {
@@ -26,22 +20,17 @@ function allowDrop(ev) {
 }
 
 /**
- * This function updates the status of the currently dragged task
- * to the specified new status. It then sends the updated status to the server
- * and refreshes the tasks displayed in the UI.
- *
+ * This function updates the status of the currently dragged task to the specified new status.
  * @param {string} newStatus - The new status to assign to the currently dragged task.
  */
 async function moveTo(newStatus) {
     allTasks[currentDraggedTask][1]['status'] = newStatus;
-    // console.log(`tasks/${allTasks[currentDraggedTask][0]}`);
     await editData(`tasks/${allTasks[currentDraggedTask][0]}`, {status: newStatus});
     updateTasksHTML(allTasks);
 }
 
 /**
  * This function adds the highlight style to the element with the given ID.
- *
  * @param {string} id - The ID of the element to be highlighted.
  */
 function highlight(id) {
@@ -50,7 +39,6 @@ function highlight(id) {
 
 /**
  * This function removes the the highlight style from the element with the given ID.
- *
  * @param {string} id - The ID of the element to remove the highlight from.
  */
 function removeHighlightLeave(id) {
@@ -59,7 +47,6 @@ function removeHighlightLeave(id) {
 
 /**
  * Removes the highlight from a specified element at the end of a drag operation.
- *
  * @param {string} id - The ID of the element to remove the highlight from.
  */
 function removeHighlightEnd(id) {
@@ -68,16 +55,8 @@ function removeHighlightEnd(id) {
 
 // * Drag & Drop End * //
 
-// * Board Start * //
-
 /**
  * Displays a detailed view of a specific task in a dialog box.
- *
- * 1. Finds the task with the specified ID from the `allTasks` array.
- * 2. Executes an animation for the dialog.
- * 3. Clears and updates the content of the 'task-box-big' element with the task's details.
- * 4. Populates the task's details including members, priority, category, subtasks, and height.
- *
  * @param {number} i - The ID of the task to be displayed.
  * @returns {Promise<void>} A promise that resolves when the task details have been fully displayed.
  */
@@ -118,7 +97,6 @@ function getDivHeight() {
 
 /**
  * Adjusts the CSS variable for the task box height based on the available space.
- *
  * @param {number} gapHeight - The gap between the available viewport height and the task box height.
  * @param {number} height - The current height of the task box.
  */
@@ -136,7 +114,6 @@ function changeTaskBoxHeight(gapHeight, height) {
 
 /**
  * Retrieves and displays all members assigned to a given task in a detailed view.
- *
  * @param {Array} currentTask - The current task for which members are to be displayed.
  */
 function getAllMembersBigTask(currentTask) {
@@ -151,7 +128,6 @@ function getAllMembersBigTask(currentTask) {
 
 /**
  * Sets the background color of a member circle in the detailed task view.
- *
  * @param {Object} currentTaskMember - The member object for which the color is to be set.
  */
 function setColorMemberBigTask(currentTaskMember) {
@@ -162,7 +138,6 @@ function setColorMemberBigTask(currentTaskMember) {
 
 /**
  * Sets the priority icon for a task in the detailed task view.
- *
  * @param {Array} currentTask - The current task for which the priority icon is to be set.
  */
 function setPriorityBigTask(currentTask) {
@@ -180,7 +155,6 @@ function setPriorityBigTask(currentTask) {
 
 /**
  * Sets the category color for a task in the detailed task view.
- *
  * @param {Array} task - The current task for which the category color is to be set.
  */
 function setTaskCategoryBigTask(task) {
@@ -195,7 +169,6 @@ function setTaskCategoryBigTask(task) {
 
 /**
  * Retrieves and displays all subtasks associated with a given task in the detailed task view.
- *
  * @param {Array} currentTask - The current task for which subtasks are to be displayed.
  */
 function getAllSubtasksBigTask(currentTask) {
@@ -215,7 +188,6 @@ function getAllSubtasksBigTask(currentTask) {
 
 /**
  * Sets the status of a subtask checkbox based on its completion status.
- *
  * @param {Object} subtask - The subtask object containing information about the subtask.
  * @param {number} i - The index of the subtask in the list of subtasks.
  */
@@ -231,7 +203,6 @@ function setSubtaskStatus(subtask, i){
 
 /**
  * Toggles the completion status of a subtask checkbox and updates it in the UI and database.
- *
  * @param {number} i - The index of the subtask within the task's list of subtasks.
  * @param {number} currentTaskId - The ID of the current task containing the subtask.
  */
@@ -283,7 +254,6 @@ function animationDialogTask() {
 
 /**
  * Loads tasks from the database and updates their IDs before updating the HTML.
- *
  */
 async function loadTasks() {
     allTasks = Object.entries(await loadData('tasks'));
@@ -296,7 +266,6 @@ async function loadTasks() {
 
 /**
  * Updates the HTML display of tasks across different task statuses.
- *
  * @param {Array} tasks - The array containing all tasks to be displayed.
  */
 function updateTasksHTML(tasks) {
@@ -309,7 +278,6 @@ function updateTasksHTML(tasks) {
 
 /**
  * This function fetches the JSON array with the tasks and return it to the function updateTasksHTML()
- * 
  * @returns tasks - This is the JSON Array, which is returned to function updateTasksHTML()
  */
 async function getTasksJson() {
@@ -320,7 +288,6 @@ async function getTasksJson() {
 
 /**
  * This function renders the tasks with the status “open”
- * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateOpenTasks(tasks) {
@@ -348,7 +315,6 @@ function updateOpenTasks(tasks) {
 
 /**
  * This function renders the tasks with the status "in Progress"
- * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateInProgressTasks(tasks) {
@@ -377,7 +343,6 @@ function updateInProgressTasks(tasks) {
 
 /**
  * This function renders the tasks with the status "await Feedback"
- * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateAwaitFeedbackTasks(tasks) {
@@ -406,7 +371,6 @@ function updateAwaitFeedbackTasks(tasks) {
 
 /**
  * This function renders the tasks with the status "done"
- * 
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateDoneTasks(tasks) {
@@ -435,7 +399,6 @@ function updateDoneTasks(tasks) {
 
 /**
  * This function renders the members of each task
- * 
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllMembers(task) {
@@ -450,7 +413,6 @@ function getAllMembers(task) {
 
 /**
  * This function sets the background color for each member
- * 
  * @param {string} task - This is the JSON array with all tasks
  * @param {number} j - This is the index of the member
  * @param {string} memberId - This is the id of the member consisting of the task ID and the letters of the member (e.g. 0AM)
@@ -463,7 +425,6 @@ function setColorMember(task, j, memberId) {
 
 /**
  * This functions changes the img src depending of the task priority (low, middle, urgent)
- * 
  * @param {string} task - This is the JSON array with all tasks
  */
 function setPriority(task) {
@@ -481,7 +442,6 @@ function setPriority(task) {
 
 /**
  * This function changes the background color depending of the task category (User Story/Technical Task)
- * 
  * @param {string} task - This is the JSON array with all tasks
  */
 function setTaskCategory(task) {
@@ -496,7 +456,6 @@ function setTaskCategory(task) {
 
 /**
  * This function checks if there are subtaks and includes the subtaks html-section to the div container
- * 
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllSubtasks(task) {
@@ -508,7 +467,6 @@ function getAllSubtasks(task) {
 
 /**
  * Calculates and displays the progress of subtasks for a task.
- *
  * @param {Array} subtasks - The array containing all subtasks for the task.
  * @param {Object} task - The task object for which subtask progress is calculated.
  */
@@ -523,7 +481,6 @@ function calcSubtasksProgress(subtasks, task){
 
 /**
  * This function cuts the description text after 50 characters and sets three dots (...)
- * 
  * @param {string} task - This is the JSON array with all tasks
  */
 function truncateText(task) {
