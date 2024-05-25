@@ -143,19 +143,24 @@ function setSubtaskStatus(subtask, i){
 
 async function checkUncheckBox(i, currentTaskId) {
     let subtaskContainer = document.getElementById(`subtask-checkbox${i}`);
-    let subtask = allTasks[currentTaskId][1]['subtask'][i];
-    console.log(subtask);
     if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == false) {
         subtaskContainer.classList.add('subtask-checkbox-checked');
         await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: true});
-        setSubtaskStatus(subtask, i);
+        renderSubtask();
     } else {
         if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == true) {
             subtaskContainer.classList.remove('subtask-checkbox-checked')
             await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: false});
-            setSubtaskStatus(subtask, i);
-
+            renderSubtask();
         }
+    }
+}
+
+async function renderSubtask(){
+    allTasks = Object.entries(await loadData('tasks'));
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i];
+        task[1]['id'] = i;
     }
 }
 
