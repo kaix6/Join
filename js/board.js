@@ -1,5 +1,6 @@
 let currentDraggedTask;
 let allTasks;
+let assignedArrayEdit = [];
 
 // * Drag & Drop Start * //
 
@@ -460,15 +461,35 @@ function showSavedTasksData(index) {
     }
 }
 
-function saveNewDataTasks(index) {
-    console.log(document.getElementById("title").value);
-    console.log(document.getElementById("description").value);
-    console.log(document.getElementById("date").value);
-    console.log(selectedPrio);
-    console.log(selectUsers);
-    console.log(selectUsersColor);
-    console.log(selectUsersLetters);
-    console.log(memberIdCounter);
+async function saveNewDataTasks(index) {
+    let newTitle = document.getElementById("title");
+    let newDescription = document.getElementById("description");
+    let newDueDate = document.getElementById("date");
+    let newPrio = selectedPrio;
+    await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
+    for (let i = 0; i < selectUsers.length; i++) {
+        let memberArray = {name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i],id: i};
+        assignedArrayEdit.push(memberArray);
+    }
+    await deleteData(`tasks/${allTasks[index][0]["subtask"]}`);
+    let newSubtasks = getCurrentSubtasks();
+    await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: newSubtasks});
+    await loadTasks();
+    assignedArrayEdit = [];
+    console.log(assignedArrayEdit);
+}
+
+function getCurrentSubtasks() {
+    let subtaskParagraphs = document.querySelectorAll('#subtaskArea .subtaskGenerate .fontSubtask');
+    let subtaskTexts = [];
+
+    subtaskParagraphs.forEach(paragraph => {
+        // Remove the leading '-' and trim any extra spaces
+        let text = paragraph.textContent.replace(/^- /, '').trim();
+        let subtaskComplete = {description: text, isDone: false}
+        subtaskTexts.push(subtaskComplete);
+    });
+    return subtaskTexts;
 }
 
 /**
@@ -486,11 +507,10 @@ function renderExistingMembersEditTask(index) {
 
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
-        console.log(member);
         selectUsers.push(member.name);
         selectUsersLetters.push(member.letters);
         selectUsersColor.push(member.color);
-        existingMembersContainer.innerHTML += `<div id="${member.id}" class="profilbild">${member.letters}</div>`;
+        existingMembersContainer.innerHTML += `<div onclick="deleteSelectMember('${member.name}', '${member.color}', '${member.letters}')" id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
     }
 }
