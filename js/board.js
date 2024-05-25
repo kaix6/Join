@@ -461,6 +461,10 @@ function showSavedTasksData(index) {
     }
 }
 
+/**
+ * This function updates the task data at the specified index with new values from input fields and deletes and replaces the assigned members and subtasks for the task.
+ * @param {number} index - The index of the task to be updated.
+ */
 async function saveNewDataTasks(index) {
     let newTitle = document.getElementById("title");
     let newDescription = document.getElementById("description");
@@ -475,10 +479,14 @@ async function saveNewDataTasks(index) {
     let newSubtasks = getCurrentSubtasks();
     await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: newSubtasks});
     await loadTasks();
-    assignedArrayEdit = [];
-    console.log(assignedArrayEdit);
+    assignedArrayEdit.length = 0;
 }
 
+/**
+ * This function retrieves the current subtasks from the DOM and returns them as an array of objects.
+ * Each subtask object contains a description and a completion status.
+  * @returns {Array<{description: string, isDone: boolean}>} - An array of subtask objects with description and completion status.
+ */
 function getCurrentSubtasks() {
     let subtaskParagraphs = document.querySelectorAll('#subtaskArea .subtaskGenerate .fontSubtask');
     let subtaskTexts = [];
