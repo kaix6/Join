@@ -10,6 +10,8 @@ let subtaskArray = [];
 
 let allTasksJson = [];
 
+let subtaskStatus = JSON.parse(localStorage.getItem('subtaskStatus')) || [];
+
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
  * The function prevents the default behavior of the event, clears existing classes from the priority buttons and their images,
@@ -62,6 +64,12 @@ function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
   initJSONaddTasks();
+  localStorage.removeItem('subtaskStatus');
+  console.log(subtaskStatus);
+}
+
+function initRemoveItemTasks() {
+  localStorage.removeItem('subtaskStatus');
 }
 
 /**
@@ -244,6 +252,10 @@ async function saveTaskToJson(title, description, date, prio, category) {
     let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
     assignedArray.push(memberArray);
   }
+  if (subtaskStatus.length === 0) {
+    subtaskStatus.push('open');
+  }
+  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
       // Neuen Task erstellen
       newTask = {
         title: title,
@@ -253,14 +265,29 @@ async function saveTaskToJson(title, description, date, prio, category) {
         category: category,
         "assigned member": assignedArray,
         subtask: subtaskArray,
-        status: "open",
+        status: subtaskStatus,
         id: 1,
       };
 
   await postData("tasks", newTask);
   console.log("Task erfolgreich hinzugefügt.");
   showAddToBoardDialog();
+  initRemoveItemTasks();
   openBoardPage();
+}
+
+function addSubtaskStatus(status) {
+  if (status === 'todo') {
+      subtaskStatus.push('open');
+  } else if (status === 'in_progress') {
+      subtaskStatus.push('in progress');
+  } else if (status === 'feedback') {
+      subtaskStatus.push('await feedback');
+  } else {
+      console.error('Unrecognized status:', status);
+      return;
+  }
+  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
 }
 
 /**
