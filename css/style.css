@@ -98,6 +98,10 @@ a {
     text-decoration: none;
 }
 
+a:visited {
+    text-decoration: none;
+  }
+
 body {
     align-items: center;
     height: 100vh;
