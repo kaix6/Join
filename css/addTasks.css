@@ -261,6 +261,27 @@ select,
   align-items: center;
   color: white;
   margin-left: -10px;
+  position: relative;
+}
+
+/* feature - hover name*/
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: var(--menuButtonDarkblue);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000;
+  pointer-events: none;
+
+  /* Relative Positionierung zum übergeordneten Element */
+  top: -80px; /* Abstand nach oben anpassen */
+  transform: translateX(-80%);
+}
+
+.tooltip.show {
+  display: block;
 }
 
 .profilbild:hover {

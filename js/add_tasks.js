@@ -10,6 +10,8 @@ let subtaskArray = [];
 
 let allTasksJson = [];
 
+let subtaskStatus = JSON.parse(localStorage.getItem('subtaskStatus')) || [];
+
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
  * The function prevents the default behavior of the event, clears existing classes from the priority buttons and their images,
@@ -62,6 +64,12 @@ function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
   initJSONaddTasks();
+  localStorage.removeItem('subtaskStatus');
+  console.log(subtaskStatus);
+}
+
+function initRemoveItemTasks() {
+  localStorage.removeItem('subtaskStatus');
 }
 
 /**
@@ -199,16 +207,14 @@ function renderPushedMembers() {
     const letters = selectUsersLetters[i];
 
     if (!document.getElementById(`${element}`)) {
-      selectMembersArea.innerHTML += `<div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild">${letters}</div>`;
+      selectMembersArea.innerHTML += generatePushedMembers(element, color, letters);
       document.getElementById(`${element}`).style.backgroundColor = `${color}`;
     }
   }
 }
 
 // Funktion zum Löschen eines Mitglieds
-function deleteSelectMember(element, color, letters) {
-  console.log(element, color, letters);
-
+function deleteSelectMember(element) {
   // Element-Index finden
   const index = selectUsers.indexOf(element);
   if (index > -1) {
@@ -243,24 +249,44 @@ async function saveTaskToJson(title, description, date, prio, category) {
     const id = memberIdCounter++;
     let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
     assignedArray.push(memberArray);
+  } if (subtaskStatus.length === 0) {
+    subtaskStatus.push('open');
   }
-      // Neuen Task erstellen
-      newTask = {
-        title: title,
-        description: description,
-        "due date": date,
-        prio: prio,
-        category: category,
-        "assigned member": assignedArray,
-        subtask: subtaskArray,
-        status: "open",
-        id: 1,
-      };
-
+  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
+  renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
-  console.log("Task erfolgreich hinzugefügt.");
   showAddToBoardDialog();
+  initRemoveItemTasks();
   openBoardPage();
+}
+
+function renderNewTask(title, description, date, prio, category) {
+        // Neuen Task erstellen
+        newTask = {
+          title: title,
+          description: description,
+          "due date": date,
+          prio: prio,
+          category: category,
+          "assigned member": assignedArray,
+          subtask: subtaskArray,
+          status: subtaskStatus,
+          id: 1,
+        };
+}
+
+function addSubtaskStatus(status) {
+  if (status === 'todo') {
+      subtaskStatus.push('open');
+  } else if (status === 'in_progress') {
+      subtaskStatus.push('in progress');
+  } else if (status === 'feedback') {
+      subtaskStatus.push('await feedback');
+  } else {
+      console.error('Unrecognized status:', status);
+      return;
+  }
+  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
 }
 
 /**
@@ -455,4 +481,26 @@ function validateForm() {
 async function initJSONaddTasks() {
   let tasks = Object.entries(await loadData("tasks"));
   allTasksJson.push(tasks);
+}
+
+/* feature - hover name*/
+function showTooltip(event, id) {
+  let tooltip = document.getElementById('tooltip');
+  tooltip.innerHTML = id;
+
+  let targetElement = event.target;
+  let targetRect = targetElement.getBoundingClientRect();
+
+  // Positionierung über dem Element
+  let left = targetRect.left + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  let top = targetRect.top - tooltip.offsetHeight - 30; // 10px Abstand zum Element
+
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+  tooltip.classList.add('show');
+}
+
+function hideTooltip() {
+  let tooltip = document.getElementById('tooltip');
+  tooltip.classList.remove('show');
 }
