@@ -131,10 +131,10 @@ function getAllSubtasksBigTask(currentTask) {
     };
 }
 
-function setSubtaskStatus(subtask, i){
+function setSubtaskStatus(subtask, i) {
     let subtaskStatus = subtask['isDone'];
     let subtaskClass = document.getElementById(`subtask-checkbox${i}`)
-    if(subtaskStatus == true){
+    if (subtaskStatus == true) {
         subtaskClass.classList.add('subtask-checkbox-checked');
     } else {
         subtaskClass.classList.remove('subtask-checkbox-checked');
@@ -147,12 +147,12 @@ async function checkUncheckBox(i, currentTaskId) {
     console.log(subtask);
     if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == false) {
         subtaskContainer.classList.add('subtask-checkbox-checked');
-        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: true});
+        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, { isDone: true });
         setSubtaskStatus(subtask, i);
     } else {
         if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == true) {
             subtaskContainer.classList.remove('subtask-checkbox-checked')
-            await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: false});
+            await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, { isDone: false });
             setSubtaskStatus(subtask, i);
 
         }
@@ -237,8 +237,8 @@ function updateOpenTasks(tasks) {
 function updateInProgressTasks(tasks) {
     inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
-/*     boardInProgressTasks.innerHTML = ''; */
-    if(boardInProgressTasks) {
+    /*     boardInProgressTasks.innerHTML = ''; */
+    if (boardInProgressTasks) {
         if (inProgress.length > 0) {
             boardInProgressTasks.innerHTML = '';
             for (let i = 0; i < inProgress.length; i++) {
@@ -391,7 +391,7 @@ function getAllSubtasks(task) {
     };
 }
 
-function calcSubtasksProgress(subtasks){
+function calcSubtasksProgress(subtasks) {
     doneSubtasks = subtasks.filter(t => t['isDone'] == true);
     let numberSubtasks = subtasks.length;
     console.log(doneSubtasks);
@@ -511,28 +511,25 @@ function renderSubtasks(index) {
 }
 
 
-async function addSearchTask() {
+function addSearchTask() {
+
     let search = document.getElementById('searchField').value.toLowerCase();
 
-
-    let filertasks = allTasks.filter(tasks => tasks.allTasks[i][1].description.includes(search));
-    console.log(filertasks)
     emptyTasks();
     document.getElementById('inProgressTasks').innerHTML = '';
     document.getElementById('awaitFeedbackTasks').innerHTML = '';
     document.getElementById('doneTasks').innerHTML = '';
 
-
-}
-
-async function loadFilterTasks(filertasks) {
-    filertasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
-        const task = allTasks[i];
-        task[1]['id'] = i;
+        let tasks = allTasks[i];
+        if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
+            updateTasksHTML(tasks)
+        }
+
     }
-    updateTasksHTML(allTasks);
+
 }
+
 
 function emptyTasks() {
     let boardOpenTasks = document.getElementById('openTasks');
@@ -541,6 +538,7 @@ function emptyTasks() {
     boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
 }
 
+
 /**
  * This function deletes a task the specified index from the 'allTasks' array.
  * Finally it reloads the task, and closes the task dialog.
@@ -548,7 +546,7 @@ function emptyTasks() {
  * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
  */
 async function deleteTask(event, index) {
-    await deleteData(`tasks/${allTasks[index][0]}`); 
+    await deleteData(`tasks/${allTasks[index][0]}`);
     await loadTasks();
     closeDialogTask();
 }
