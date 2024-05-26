@@ -80,13 +80,13 @@ function generateSubtasksSectionBigTask(subtask, i, taskId) {
     `;
 }
 
-function generateSubtasksSection() {
+function generateSubtasksSection(allSubtasks, doneSubtasks, progress) {
   return `
     <div class="progress-section">
         <div class="progress">
-            <div class="progress-bar" style="width: 50%;"></div>
+            <div class="progress-bar" style="width: ${progress}%;"></div>
         </div>
-        <p class="amount-subtask">1/2 Subtasks</p>
+        <p class="amount-subtask">${doneSubtasks}/${allSubtasks} Subtasks</p>
     </div>
     `;
 }
