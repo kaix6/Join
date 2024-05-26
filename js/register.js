@@ -8,7 +8,7 @@ async function addUser() {
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     matchPassword();
-    newUsers.push({ email: email.value, password: password.value, name: name.value });
+    users.push({ email: email.value, password: password.value, name: name.value });
 
     // await initialLoadUsersFirebase();
     window.location.href = './index.html';
@@ -39,7 +39,7 @@ async function initialLoadUsersFirebase() {
 
     }
     await loadData('users');
-    // await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
+    await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
 
 
     // await editData(`users/${ name: user.name, mail: user.mail, password: user.password}`);
