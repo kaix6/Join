@@ -38,7 +38,7 @@ function generateBigTaskBox(task) {
             <img id="taskPrioBigBox${task[0][1]["id"]}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
         </div>
         <div>
-            <p class="margin-top-16px">Assigned To:</p>
+            <div id ="member-headline" class="margin-top-16px">Assigned To:</div>
         <div id="container-member-big-task" class="container-member-big-task">
         </div>
         <div>
@@ -95,6 +95,14 @@ function generateMemberTaskBox(member, memberId) {
   return `
     <div id="${memberId}" class="member">
         ${member}
+    </div>
+    `;
+}
+
+function generateFurtherMemberNumber(furtherMember){
+  return`
+    <div class="further-member">
+      &emsp;+${furtherMember}
     </div>
     `;
 }
