@@ -1,7 +1,7 @@
 let selectUsers = [];
 let selectUsersColor = [];
 let selectUsersLetters = [];
-let selectedPrio;
+let selectedPrio = "low";
 let assignedArray = [];
 let memberIdCounter = 0;
 
@@ -11,6 +11,13 @@ let subtaskArray = [];
 let allTasksJson = [];
 
 let subtaskStatus = JSON.parse(localStorage.getItem('subtaskStatus')) || [];
+
+
+function standardPrioButton() {
+  let buttonLow = document.getElementById("buttonLow");
+  let imgLow = document.getElementById("buttonImg3");
+  selectedButtonColor(buttonLow, imgLow, "backgroundColorGreen", "low");
+}
 
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
@@ -64,6 +71,7 @@ function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
   initJSONaddTasks();
+  standardPrioButton();
   localStorage.removeItem('subtaskStatus');
   console.log(subtaskStatus);
 }
@@ -503,4 +511,18 @@ function showTooltip(event, id) {
 function hideTooltip() {
   let tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
+}
+
+function clearDialogAddTask() {
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("category").innerHTML = `
+  <option disabled selected>Select task category</option>
+  <option value="User Story">User Story</option>
+  <option value="Technical Task">Technical Task</option>
+  `;
+  document.getElementById("subtaskArea").innerHTML = "";
+  document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
+  document.getElementById("selectedMembers").innerHTML = "";
 }
