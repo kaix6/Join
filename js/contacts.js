@@ -209,6 +209,15 @@ function capitalize(string) {
 
 
 /**
+ * This function opens the dialog for adding a new contact. but clears the input fields for contact values.
+ */
+function openAddContact() {
+    showDialog('.dialog_add_contact_bg', 'd_none', '.dialog_add_contact', 'show_dialog_add_contact', 50);
+    clearDataContactValues();
+}
+
+
+/**
  * This function adds a new contact to the array 'contacts' based on the user input.
  * It retrieves the input values for full name, email, and phone number from the corresponding input fields.
  * It generates a random color allocation for the contact, initializes the contact's initials, and pushes
@@ -232,6 +241,15 @@ async function addContact() {
     telNumber.value = '';
 }
 
+
+/**
+ * This function clears the input fields for adding or editing a contact.
+ */
+function clearDataContactValues() {
+    document.querySelector('#fullName').value = '';
+    document.querySelector('#mail').value = '';
+    document.querySelector('#telNumber').value = '';
+}
 
 /**
  * This function displays a short confirmation message after successfully adding a contact.
