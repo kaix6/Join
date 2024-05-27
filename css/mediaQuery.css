@@ -106,12 +106,17 @@
   
   ::-webkit-scrollbar {
       width: 4px;
+      height: 4px;
     }
   
   ::-webkit-scrollbar-thumb {
       border-radius: 4px;
     }
   
+    ::-webkit-scrollbar-thumb:horizontal {
+      display: none;
+    }
+
   #main_container {
       height: calc(100vh - 80px - 83px);
   }
@@ -428,6 +433,7 @@
 
   #contact_view {
     height: calc(100vh - 80px - 83px);
+    overflow: hidden;
   }
 
   .text_add_contact {
@@ -1183,13 +1189,8 @@
 
   .board-column{
       width: 100%;
-      overflow-y: inherit;
+/*       overflow-y: inherit; */
       margin-bottom: 0;
-  }
-
-  .tasks-container{
-      display: flex;
-      overflow-x: scroll;
   }
 
   .dialog_addTask_bg {
@@ -1199,6 +1200,8 @@
   .tasks-container{
     overflow-y: inherit;
     width: 100%;
+    display: flex;
+    overflow-x: scroll;
   }
 }
 

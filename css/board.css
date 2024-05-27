@@ -16,11 +16,12 @@
     flex-direction: column;
     justify-content: space-between;
     width: 85%;
-/*     height: 70%; */
     max-width: 1211px;
     max-height: 835px;
     border-radius: 30px;
     background-color: var(--white);
+    overflow-x: hidden;
+    overflow-y: auto;
     /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
     transform: translateX(120%);
     transition: all 100ms ease-in-out;
