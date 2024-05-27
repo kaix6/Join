@@ -28,9 +28,6 @@ async function loadContacts() {
  * @param {string|null} filter - The filter letter to render contacts for. If null, all contacts are rendered. 
  */
 async function renderContacts(filter) {
-    if (contacts.length <= 1) { // die initial contact soll nur einmal initial geladen werden
-        initialLoadContactsFirebase();
-    }
     let contentContacts = document.querySelector('.contacts');
     sortedContacts = sortArray(contacts);
     contentContacts.innerHTML = '';
