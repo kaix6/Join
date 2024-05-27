@@ -139,16 +139,16 @@ function generateEditTaskBox(index) {
 
                     <div class="prio_edit fontUnderHeadlinesAddTasks">
                       <p class="prio_edit_text">Priority</p>
-                      <div style="margin-top: 8px; display: flex; justify-content: space-between;">
-                        <button id="buttonUrgent" onclick="addPrioButtonColor('urgent', event)" class="buttonPrio">
+                      <div class="prio_edit_buttons">
+                        <button id="buttonUrgent" onclick="addPrioButtonColor('urgent', event)" class="buttonPrio buttonPrio_edit">
                           Urgent
                           <img id="buttonImg1" src="assets/img/add_task/prio_urgent.svg" alt=""/>
                         </button>
-                        <button id="buttonMedium" onclick="addPrioButtonColor('medium', event)" class="buttonPrio">
+                        <button id="buttonMedium" onclick="addPrioButtonColor('medium', event)" class="buttonPrio buttonPrio_edit">
                           Medium
                           <img id="buttonImg2" src="assets/img/add_task/prio_medium.svg" alt=""/>
                         </button>
-                        <button id="buttonLow" onclick="addPrioButtonColor('low', event)" class="buttonPrio">
+                        <button id="buttonLow" onclick="addPrioButtonColor('low', event)" class="buttonPrio buttonPrio_edit">
                           Low
                           <img id="buttonImg3" src="assets/img/add_task/prio_low.svg" alt=""/>
                         </button>
@@ -339,7 +339,7 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
   return /* HTML */ `
     <div id="${subtaskId}" class="subtaskGenerate">
       <p class="fontSubtask">- ${subtaskValue}</p>
-      <div>
+      <div class="subtask_container_edit">
         <img
           onclick="editSubtask('${subtaskId}')"
           class="iconSubtask"

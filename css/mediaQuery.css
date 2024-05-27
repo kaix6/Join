@@ -1122,6 +1122,7 @@
 
 /* Board - start     */
 
+
 @media(max-width: 1136px){
 
   .small-add-button{
@@ -1189,7 +1190,6 @@
 
   .board-column{
       width: 100%;
-/*       overflow-y: inherit; */
       margin-bottom: 0;
   }
 
@@ -1198,10 +1198,10 @@
   } 
 
   .tasks-container{
-    overflow-y: inherit;
+    overflow-y: hidden;
     width: 100%;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 }
 

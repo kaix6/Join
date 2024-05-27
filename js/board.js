@@ -550,6 +550,7 @@ async function saveNewDataTasks(index) {
     let newDescription = document.getElementById("description");
     let newDueDate = document.getElementById("date");
     let newPrio = selectedPrio;
+    console.log(allTasks[index][1]['subtask']);
     await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
     for (let i = 0; i < selectUsers.length; i++) {
         let memberArray = {name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i],id: i};
@@ -615,7 +616,7 @@ function renderSubtasks(index) {
 
     for (let i = 0; i < existingSubTasks.length; i++) {
         const subTask = existingSubTasks[i];
-        subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${subTask.id}`, subTask.description);
+        subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${i}`, subTask.description);
     }
 }
 
