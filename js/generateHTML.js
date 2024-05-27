@@ -382,7 +382,7 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
               </div>
               <div class="mainSummary">
                 <div class="topSummary">
-                  <div class="toDo summaryCardHover">
+                  <a href="./board.html" class="toDo summaryCardHover">
                     <div class="imgAndIcon">
                       <img class="iconSummary" src="assets/img/summary/edit.svg" alt=""/> 
                     </div>
@@ -390,8 +390,8 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
                       <span class="sizeNumbersSummary" id="toDoNumber">${numberOpen}</span>
                       <span class="sizeTextSummary">To-do</span>
                     </div>
-                  </div>
-                  <div class="done summaryCardHover">
+                  </a>
+                  <a href="./board.html" class="done summaryCardHover">
                     <div class="imgAndIcon">
                       <img class="iconSummary" src="assets/img/summary/check.svg" alt=""/>                      
                     </div>
@@ -399,9 +399,9 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
                       <span class="sizeNumbersSummary" id="doneNumber">${numberDone}</span>
                       <span class="sizeTextSummary">Done</span>
                     </div>
-                  </div>
+                  </a>
                 </div>
-                <div class="urgent summaryCardHover">
+                <a href="./board.html" class="urgent summaryCardHover">
                     <div class="d-flex container">
                         <img class="iconUrgent" src="assets/img/summary/circle-urgent.svg" alt="" />
                         <div class="doneMain">
@@ -414,25 +414,26 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
                             <span class="deadlineMobil">${upcomingDeadline}</span>
                             <span class="deadlineTextMobil">Upcoming Deadline</span>
                         </div>
-                            </div>
+                </a>
 
                             <div class="bottomSummary d-flex">
-                                <div class="bottomCard summaryCardHover">
+                              <a href="./board.html" class="bottomCard summaryCardHover">
                                     <span class="sizeNumbersSummary" id="boardNumber">${numberAllTasks}</span>
-                                    <span class="sizeTextSummary">Tasks in <br />
-                              Board</span>
-                  </div>
-                  <div class="bottomCard summaryCardHover">
+                                    <span class="sizeTextSummary">Tasks in 
+                                      <br />
+                                    Board</span>
+                              </a>
+                  <a href="./board.html" class="bottomCard summaryCardHover">
                     <span class="sizeNumbersSummary" id="progressNumber">${numberInProgress}</span>
                     <span class="sizeTextSummary">Tasks in <br />
                       Progress</span>
-                  </div>
-                  <div class="bottomCard summaryCardHover">
+                  </a>
+                  <a href="./board.html" class="bottomCard summaryCardHover">
                     <span class="sizeNumbersSummary" id="feedbackNumber">${numberAwaitFeedback}</span>
                     <span class="sizeTextSummary"
                       >Awaiting <br />
                       Feedback</span>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
