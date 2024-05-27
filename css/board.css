@@ -594,6 +594,10 @@
         margin-top: 8px;
         outline: none;
       }
+
+    .subtask_container_edit {
+        min-width: fit-content;
+    }
     
     .focus_editTask_description:focus,
     .focus_editTask:focus {
@@ -611,6 +615,12 @@
         font-weight: bold;
     }
     
+    .prio_edit_buttons {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
     .edit_task_btn {
         display: flex;
         gap: 4px;
