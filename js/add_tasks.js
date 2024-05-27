@@ -10,7 +10,7 @@ let subtaskArray = [];
 
 let allTasksJson = [];
 
-let subtaskStatus = JSON.parse(localStorage.getItem('subtaskStatus')) || [];
+let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
 
 function standardPrioButton() {
@@ -255,12 +255,13 @@ async function saveTaskToJson(title, description, date, prio, category) {
     const color = selectUsersColor[i];
     const letters = selectUsersLetters[i];
     const id = memberIdCounter++;
-    let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
+    let memberArray = {name: assignedUsers, color: color, letters: letters, id: id};
     assignedArray.push(memberArray);
-  } if (subtaskStatus.length === 0) {
-    subtaskStatus.push('open');
   }
-  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
+  if (subtaskStatus.length === 0) {
+    subtaskStatus = 'open'; // Setzen Sie den subtaskStatus als String 'open'
+  }
+  localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
   showAddToBoardDialog();
@@ -285,16 +286,16 @@ function renderNewTask(title, description, date, prio, category) {
 
 function addSubtaskStatus(status) {
   if (status === 'todo') {
-      subtaskStatus.push('open');
+      subtaskStatus = 'open';
   } else if (status === 'in_progress') {
-      subtaskStatus.push('in progress');
+      subtaskStatus = 'in progress';
   } else if (status === 'feedback') {
-      subtaskStatus.push('await feedback');
+      subtaskStatus = 'await feedback';
   } else {
       console.error('Unrecognized status:', status);
       return;
   }
-  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
+  localStorage.setItem('subtaskStatus', subtaskStatus);
 }
 
 /**
@@ -493,17 +494,17 @@ async function initJSONaddTasks() {
 
 /* feature - hover name*/
 function showTooltip(event, id) {
-  var tooltip = document.getElementById('tooltip');
+  let tooltip = document.getElementById('tooltip');
   tooltip.innerHTML = id;
 
-  var targetElement = event.currentTarget;
-  var targetRect = targetElement.getBoundingClientRect();
-  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+  let targetElement = event.currentTarget;
+  let targetRect = targetElement.getBoundingClientRect();
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  let scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
 
   // Berechnung der Tooltip-Position relativ zum Dokument
-  var left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
-  var top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
+  let left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  let top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
 
   // Verfeinerung der Position, um den Tooltip genauer zu platzieren
   tooltip.style.position = 'absolute';
@@ -513,12 +514,12 @@ function showTooltip(event, id) {
 }
 
 function hideTooltip() {
-  var tooltip = document.getElementById('tooltip');
+  let tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
 }
 
 function hideTooltip() {
-  var tooltip = document.getElementById('tooltip');
+  let tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
 }
 
