@@ -493,23 +493,32 @@ async function initJSONaddTasks() {
 
 /* feature - hover name*/
 function showTooltip(event, id) {
-  let tooltip = document.getElementById('tooltip');
+  var tooltip = document.getElementById('tooltip');
   tooltip.innerHTML = id;
 
-  let targetElement = event.target;
-  let targetRect = targetElement.getBoundingClientRect();
+  var targetElement = event.currentTarget;
+  var targetRect = targetElement.getBoundingClientRect();
+  var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
 
-  // Positionierung über dem Element
-  let left = targetRect.left + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
-  let top = targetRect.top - tooltip.offsetHeight - 30; // 10px Abstand zum Element
+  // Berechnung der Tooltip-Position relativ zum Dokument
+  var left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  var top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
 
-  tooltip.style.left = left + 'px';
-  tooltip.style.top = top + 'px';
+  // Verfeinerung der Position, um den Tooltip genauer zu platzieren
+  tooltip.style.position = 'absolute';
+  tooltip.style.left = `${left}px - 30px`;
+  tooltip.style.top = `${top}px`;
   tooltip.classList.add('show');
 }
 
 function hideTooltip() {
-  let tooltip = document.getElementById('tooltip');
+  var tooltip = document.getElementById('tooltip');
+  tooltip.classList.remove('show');
+}
+
+function hideTooltip() {
+  var tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
 }
 
