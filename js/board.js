@@ -118,15 +118,13 @@ function changeTaskBoxHeight(gapHeight, height) {
  * @param {Array} currentTask - The current task for which members are to be displayed.
  */
 function getAllMembersBigTask(currentTask) {
-    if (typeof currentTask[0][1]['assigned member'] === "undefined") 
-    {document.getElementById('member-headline').innerHTML = ''} 
-    else {
-    let memberContainer = document.getElementById('container-member-big-task');
-    let taskAllMembers = currentTask[0][1]['assigned member'];
-    for (let i = 0; i < taskAllMembers.length; i++) {
-        const currentTaskMember = taskAllMembers[i];
-        memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
-        setColorMemberBigTask(currentTaskMember);
+    if (typeof currentTask[0][1]['assigned member'] === "undefined") { document.getElementById('member-headline').innerHTML = '' } else {
+        let memberContainer = document.getElementById('container-member-big-task');
+        let taskAllMembers = currentTask[0][1]['assigned member'];
+        for (let i = 0; i < taskAllMembers.length; i++) {
+            const currentTaskMember = taskAllMembers[i];
+            memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
+            setColorMemberBigTask(currentTaskMember);
         };
     }
 }
@@ -246,7 +244,7 @@ async function renderSubtask() {
 function closeDialogTask() {
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
-/*     subtaskIdCounter = 0; */
+    /*     subtaskIdCounter = 0; */
     loadTasks();
 }
 
@@ -410,14 +408,13 @@ function updateDoneTasks(tasks) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllMembers(task) {
-    if (typeof task['assigned member'] === "undefined") {} 
-    else {
-    for (let j = 0; j < task['assigned member'].length; j++) {
-        const member = task['assigned member'][j]['letters'];
-        let taskId = task['id'];
-        let memberId = taskId + task['assigned member'][j]['name'];
-        document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
-        setColorMember(task, j, memberId);
+    if (typeof task['assigned member'] === "undefined") {} else {
+        for (let j = 0; j < task['assigned member'].length; j++) {
+            const member = task['assigned member'][j]['letters'];
+            let taskId = task['id'];
+            let memberId = taskId + task['assigned member'][j]['name'];
+            document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
+            setColorMember(task, j, memberId);
         };
         if (task['assigned member'].length > 9) {
             let memberArray = task['assigned member'];
@@ -426,7 +423,7 @@ function getAllMembers(task) {
     };
 }
 
-function truncateMember(memberArray, task){
+function truncateMember(memberArray, task) {
     let memberContainer = document.getElementById(`task-all-member${task['id']}`);
     memberContainer.innerHTML = '';
     for (let i = 0; i < 7; i++) {
@@ -436,7 +433,7 @@ function truncateMember(memberArray, task){
         memberContainer.innerHTML += generateMemberTaskBox(member, memberId);
         setColorMember(task, i, memberId);
     };
-    let furtherMember = memberArray.length -7;
+    let furtherMember = memberArray.length - 7;
     memberContainer.innerHTML += generateFurtherMemberNumber(furtherMember);
 }
 
@@ -579,7 +576,7 @@ async function saveNewDataTasks(index) {
         let memberArray = { name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i], id: i };
         assignedArrayEdit.push(memberArray);
     }
-    await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit});
+    await editData(`tasks/${allTasks[index][0]}`, { title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit });
     await loadTasks();
     animationDialogTask();
     showDialogTask(index);
@@ -596,7 +593,7 @@ async function saveNewDataTasks(index) {
 async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
     let taskData = allTasks[iTask][1];
     taskData.subtask.splice(iSubtask, 1);
-    
+
     // Indizes neu aktualisieren
     for (let i = iSubtask; i < taskData.subtask.length; i++) {
         taskData.subtask[i].index = i;
@@ -612,14 +609,14 @@ async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
  */
 async function addNewSubtaskPush(index) {
     let newTask = document.getElementById("subtask").value;
-/*     if (newTask === "") {
-        document.getElementById("textSubtask").classList.add("unset-display");
-        return;
-    } */
+    /*     if (newTask === "") {
+            document.getElementById("textSubtask").classList.add("unset-display");
+            return;
+        } */
     let existingSubtasks = allTasks[index][1].subtask || [];
     let newSubtask = { description: newTask, isDone: false };
     existingSubtasks.push(newSubtask);
-    await editData(`tasks/${allTasks[index][0]}`, {subtask: existingSubtasks});
+    await editData(`tasks/${allTasks[index][0]}`, { subtask: existingSubtasks });
     allTasks[index][1].subtask = existingSubtasks;
     addNewSubtask();
 }
@@ -637,15 +634,14 @@ function renderExistingMembersEditTask(index) {
     selectUsersColor = [];
     selectUsersLetters = [];
 
-    if (typeof allTasks[index][1]['assigned member'] === "undefined"){} 
-    else {
-    for (let i = 0; i < existingMembers.length; i++) {
-        const member = existingMembers[i];
-        selectUsers.push(member.name);
-        selectUsersLetters.push(member.letters);
-        selectUsersColor.push(member.color);
-        existingMembersContainer.innerHTML += `<div onclick="deleteSelectMember('${member.name}', '${member.color}', '${member.letters}')" id="${member.id}" class="profilbild">${member.letters}</div>`;
-        document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
+    if (typeof allTasks[index][1]['assigned member'] === "undefined") {} else {
+        for (let i = 0; i < existingMembers.length; i++) {
+            const member = existingMembers[i];
+            selectUsers.push(member.name);
+            selectUsersLetters.push(member.letters);
+            selectUsersColor.push(member.color);
+            existingMembersContainer.innerHTML += `<div onclick="deleteSelectMember('${member.name}', '${member.color}', '${member.letters}')" id="${member.id}" class="profilbild">${member.letters}</div>`;
+            document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
         };
     };
 }
@@ -655,7 +651,7 @@ function renderExistingMembersEditTask(index) {
  * @param {number} index - The index of the task in the allTasks array.
  */
 function renderSubtasks(index) {
-/*     initializeSubtaskIdCounter(index); */
+    /*     initializeSubtaskIdCounter(index); */
     let subtaskAreaEdit = document.querySelector('#subtaskArea');
     let existingSubTasks = allTasks[index][1].subtask;
 
@@ -668,18 +664,19 @@ function renderSubtasks(index) {
 let filteredTasks = [];
 
 function addSearchTask() {
-
+    filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
 
     if (search === '') {
+
         loadTasks();
         return;
     }
 
 
     for (let i = 0; i < allTasks.length; i++) {
-        let tasks = allTasks[i][1];
-        if (tasks['description'].toLowerCase().includes(search) || tasks['title'].toLowerCase().includes(search)) {
+        let tasks = allTasks[i];
+        if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
             updateTasksHTML(filteredTasks);
         }
