@@ -550,15 +550,16 @@ async function saveNewDataTasks(index) {
     let newDescription = document.getElementById("description");
     let newDueDate = document.getElementById("date");
     let newPrio = selectedPrio;
-    console.log(allTasks[index][1]['subtask']);
     await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
     for (let i = 0; i < selectUsers.length; i++) {
         let memberArray = {name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i],id: i};
         assignedArrayEdit.push(memberArray);
     }
-    await deleteData(`tasks/${allTasks[index][0]["subtask"]}`);
-    let newSubtasks = getCurrentSubtasks();
-    await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: newSubtasks});
+    let existingSubtasks = allTasks[index][1]['subtask'];
+    let updatedSubtasks = getCurrentSubtasks(existingSubtasks);
+/*     await deleteData(`tasks/${allTasks[index][0]["subtask"]}`); */
+/*     let newSubtasks = getCurrentSubtasks(index); */
+    await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: updatedSubtasks});
     await loadTasks();
     closeDialogTask();
     assignedArrayEdit = [];
@@ -569,17 +570,38 @@ async function saveNewDataTasks(index) {
  * Each subtask object contains a description and a completion status.
   * @returns {Array<{description: string, isDone: boolean}>} - An array of subtask objects with description and completion status.
  */
-function getCurrentSubtasks() {
+function getCurrentSubtasks(existingSubtasks) {
     let subtaskParagraphs = document.querySelectorAll('#subtaskArea .subtaskGenerate .fontSubtask');
     let subtaskTexts = [];
 
-    subtaskParagraphs.forEach(paragraph => {
+    subtaskParagraphs.forEach((paragraph, index) => {
         // Remove the leading '-' and trim any extra spaces
         let text = paragraph.textContent.replace(/^- /, '').trim();
-        let subtaskComplete = {description: text, isDone: false}
+        let isDone = existingSubtasks[index] ? existingSubtasks[index].isDone : false;
+        let subtaskComplete = {description: text, isDone: isDone}
         subtaskTexts.push(subtaskComplete);
     });
     return subtaskTexts;
+}
+
+async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
+    // Daten des aktuellen Tasks abrufen
+    const taskData = allTasks[iTask][1];
+    
+    // Subtask aus dem Datenmodell entfernen
+    taskData.subtask.splice(iSubtask, 1);
+    
+    // Indizes der verbleibenden Subtasks im Datenmodell aktualisieren
+    for (let i = iSubtask; i < taskData.subtask.length; i++) {
+        taskData.subtask[i].index = i; // Indizes aktualisieren
+    }
+    
+    // Firebase aktualisieren
+    await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
+    
+    // HTML-Element des Subtasks entfernen
+    removeSubtask(subtaskId);
+    await loadTasks();
 }
 
 /**
@@ -616,10 +638,18 @@ function renderSubtasks(index) {
 
     for (let i = 0; i < existingSubTasks.length; i++) {
         const subTask = existingSubTasks[i];
-        subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${i}`, subTask.description);
+        subtaskAreaEdit.innerHTML += generateEditSubtaskInnerHTML(`subtask_${i}`, subTask.description, i, index);
     }
 }
 
+function updateSubtaskIndexes() {
+    let subtaskElements = document.querySelectorAll('.subtaskGenerate');
+    
+    subtaskElements.forEach((element, index) => {
+        let newSubtaskId = `subtask_${index}`;
+        element.id = newSubtaskId;
+    });
+}
 
 function addSearchTask() {
 

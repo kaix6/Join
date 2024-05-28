@@ -356,6 +356,27 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
   `;
 }
 
+function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) {
+  return /* HTML */ `
+    <div id="${subtaskId}" class="subtaskGenerate">
+      <p class="fontSubtask">- ${subtaskValue}</p>
+      <div class="subtask_container_edit">
+        <img
+          onclick="editSubtask('${subtaskId}')"
+          class="iconSubtask"
+          src="assets/img/add_task/edit.svg"
+        />
+        |
+        <img
+          onclick="deleteSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
+          class="iconSubtask"
+          src="assets/img/add_task/delete.svg"
+        />
+      </div>
+    </div>
+  `;
+}
+
 function generateAssignedToFirst() {
   return /* HTML */ `
     "<option disabled selected>Select contacts to assign</option>"

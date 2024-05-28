@@ -17,6 +17,9 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
  */
 async function loadContacts() {
     contacts = Object.entries(await loadData('contacts'));
+    console.log(contacts);
+    console.log(contacts[0][0]);
+    console.log(contacts[0][1]);
     renderContacts();
 }
 
