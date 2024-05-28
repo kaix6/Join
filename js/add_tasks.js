@@ -509,7 +509,7 @@ function showTooltip(event, id) {
   // Verfeinerung der Position, um den Tooltip genauer zu platzieren
   tooltip.style.position = 'absolute';
   tooltip.style.left = `${left}px - 30px`;
-  tooltip.style.top = `${top}px`;
+  tooltip.style.top = `${top}px - 30px`;
   tooltip.classList.add('show');
 }
 
