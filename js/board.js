@@ -26,7 +26,7 @@ function allowDrop(ev) {
  */
 async function moveTo(newStatus) {
     allTasks[currentDraggedTask][1]['status'] = newStatus;
-    await editData(`tasks/${allTasks[currentDraggedTask][0]}`, {status: newStatus});
+    await editData(`tasks/${allTasks[currentDraggedTask][0]}`, { status: newStatus });
     updateTasksHTML(allTasks);
 }
 
@@ -194,7 +194,7 @@ function getAllSubtasksBigTask(currentTask) {
  * @param {Object} subtask - The subtask object containing information about the subtask.
  * @param {number} i - The index of the subtask in the list of subtasks.
  */
-function setSubtaskStatus(subtask, i){
+function setSubtaskStatus(subtask, i) {
 
     let subtaskStatus = subtask['isDone'];
     let subtaskClass = document.getElementById(`subtask-checkbox${i}`)
@@ -214,12 +214,12 @@ async function checkUncheckBox(i, currentTaskId) {
     let subtaskContainer = document.getElementById(`subtask-checkbox${i}`);
     if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == false) {
         subtaskContainer.classList.add('subtask-checkbox-checked');
-        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: true});
+        await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, { isDone: true });
         renderSubtask();
     } else {
         if (allTasks[currentTaskId][1]['subtask'][i]['isDone'] == true) {
             subtaskContainer.classList.remove('subtask-checkbox-checked')
-            await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, {isDone: false});
+            await editData(`tasks/${allTasks[currentTaskId][0]}/subtask/${i}`, { isDone: false });
             renderSubtask();
         }
     }
@@ -228,7 +228,7 @@ async function checkUncheckBox(i, currentTaskId) {
 /**
  * Renders and updates subtasks for all tasks.
  */
-async function renderSubtask(){
+async function renderSubtask() {
     allTasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
         const task = allTasks[i];
@@ -295,7 +295,7 @@ async function getTasksJson() {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateOpenTasks(tasks) {
-    open = tasks.filter(t => t[1]['status'] == 'open');
+    open = tasks.filter(t => t[1] && t[1]['status'] == 'open');
     let boardOpenTasks = document.getElementById('openTasks');
     if (boardOpenTasks) {
         if (open.length > 0) {
@@ -322,7 +322,7 @@ function updateOpenTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateInProgressTasks(tasks) {
-    inProgress = tasks.filter(t => t[1]['status'] == 'in progress');
+    inProgress = tasks.filter(t => t[1] && t[1]['status'] == 'in progress');
     let boardInProgressTasks = document.getElementById('inProgressTasks');
     /*     boardInProgressTasks.innerHTML = ''; */
     if (boardInProgressTasks) {
@@ -350,7 +350,7 @@ function updateInProgressTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateAwaitFeedbackTasks(tasks) {
-    awaitFeedback = tasks.filter(t => t[1]['status'] == 'await feedback');
+    awaitFeedback = tasks.filter(t => t[1] && t[1]['status'] == 'await feedback');
     let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
     /*     boardAwaitFeedbackTasks.innerHTML = ''; */
     if (boardAwaitFeedbackTasks) {
@@ -378,7 +378,7 @@ function updateAwaitFeedbackTasks(tasks) {
  * @param {string} tasks - This is the JSON array with all tasks
  */
 function updateDoneTasks(tasks) {
-    done = tasks.filter(t => t[1]['status'] == 'done');
+    done = tasks.filter(t => t[1] && t[1]['status'] == 'done');
     let boardDoneTasks = document.getElementById('doneTasks');
     /*     boardDoneTasks.innerHTML = ''; */
     if (boardDoneTasks) {
@@ -475,12 +475,12 @@ function getAllSubtasks(task) {
  * @param {Array} subtasks - The array containing all subtasks for the task.
  * @param {Object} task - The task object for which subtask progress is calculated.
  */
-function calcSubtasksProgress(subtasks, task){
+function calcSubtasksProgress(subtasks, task) {
     let subtasksSection = document.getElementById(`task${task['id']}`);
     allDoneSubtasks = subtasks.filter(t => t['isDone'] == true);
     let numberSubtasks = subtasks.length;
     let numberDoneSubtasks = allDoneSubtasks.length;
-    let progress = ((numberDoneSubtasks/numberSubtasks)*100).toFixed(0);
+    let progress = ((numberDoneSubtasks / numberSubtasks) * 100).toFixed(0);
     subtasksSection.innerHTML += generateSubtasksSection(numberSubtasks, numberDoneSubtasks, progress);
 }
 
@@ -551,7 +551,7 @@ async function saveNewDataTasks(index) {
     let newPrio = selectedPrio;
     await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
     for (let i = 0; i < selectUsers.length; i++) {
-        let memberArray = {name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i],id: i};
+        let memberArray = { name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i], id: i };
         assignedArrayEdit.push(memberArray);
     }
     await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit});
@@ -562,6 +562,7 @@ async function saveNewDataTasks(index) {
 }
 
 /**
+
  * This function deletes a subtask from a task and updates the task data in Firebase.
  * @param {string} subtaskId - The ID of the subtask element in the DOM.
  * @param {number} iSubtask - The index of the subtask in the task's subtask array.
@@ -636,32 +637,26 @@ function renderSubtasks(index) {
     }
 }
 
+let filteredTasks = [];
 
 function addSearchTask() {
 
     let search = document.getElementById('searchField').value.toLowerCase();
 
-    emptyTasks();
-    document.getElementById('inProgressTasks').innerHTML = '';
-    document.getElementById('awaitFeedbackTasks').innerHTML = '';
-    document.getElementById('doneTasks').innerHTML = '';
-
-    for (let i = 0; i < allTasks.length; i++) {
-        let tasks = allTasks[i];
-        if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
-            updateTasksHTML(tasks)
-        }
-
+    if (search === '') {
+        loadTasks();
+        return;
     }
 
-}
 
-
-function emptyTasks() {
-    let boardOpenTasks = document.getElementById('openTasks');
-    let noTaskSentence = 'No tasks To do'
-    boardOpenTasks.innerHTML = '';
-    boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
+    for (let i = 0; i < allTasks.length; i++) {
+        let tasks = allTasks[i][1];
+        if (tasks['description'].toLowerCase().includes(search) || tasks['title'].toLowerCase().includes(search)) {
+            filteredTasks.push(tasks);
+            updateTasksHTML(filteredTasks);
+        }
+    }
+    console.log(filteredTasks);
 }
 
 
