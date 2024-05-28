@@ -242,7 +242,7 @@ async function renderSubtask() {
 function closeDialogTask() {
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
-    subtaskIdCounter = 0;
+/*     subtaskIdCounter = 0; */
     loadTasks();
 }
 
@@ -498,7 +498,7 @@ function truncateText(task) {
  * This function initializes the subtask ID counter by finding the highest existing subtask ID n the specified task and setting the counter to this value plus one.
  * @param {number} index - The index of the task in the `allTasks` array.
  */
-function initializeSubtaskIdCounter(index) {
+/* function initializeSubtaskIdCounter(index) {
     let maxId = 0;
     let subtasks = allTasks[index][1].subtask;
 
@@ -508,8 +508,8 @@ function initializeSubtaskIdCounter(index) {
             maxId = subtaskIdNum;
         }
     }
-    subtaskIdCounter = maxId + 1; // Set counter to the highest value + 1
-}
+    subtaskIdCounter = maxId + 1; 
+} */
 
 /**
  * This function edits a task by updating the task box with the edit form, rendering contacts and displaying the current task data.
@@ -527,9 +527,8 @@ function editTask(index, event) {
 }
 
 /**
- * This function displays saved task data in the edit form.
+ * This function displays the saved task data in the edit form.
  * @param {number} index - The index of the task in the `allTasks` array.
- * @param {string} formattedDate - The formatted due date for the task.
  */
 function showSavedTasksData(index) {
     document.querySelector('.title_tasks').value = `${allTasks[index][1].title}`;
@@ -555,30 +554,49 @@ async function saveNewDataTasks(index) {
         let memberArray = { name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i], id: i };
         assignedArrayEdit.push(memberArray);
     }
-    await deleteData(`tasks/${allTasks[index][0]["subtask"]}`);
-    let newSubtasks = getCurrentSubtasks();
-    await editData(`tasks/${allTasks[index][0]}`, { title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: newSubtasks });
+    await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit});
     await loadTasks();
-    closeDialogTask();
-    assignedArrayEdit.length = 0;
+    animationDialogTask();
+    showDialogTask(index);
+    assignedArrayEdit = [];
 }
 
 /**
- * This function retrieves the current subtasks from the DOM and returns them as an array of objects.
- * Each subtask object contains a description and a completion status.
- * @returns {Array<{description: string, isDone: boolean}>} - An array of subtask objects with description and completion status.
- */
-function getCurrentSubtasks() {
-    let subtaskParagraphs = document.querySelectorAll('#subtaskArea .subtaskGenerate .fontSubtask');
-    let subtaskTexts = [];
 
-    subtaskParagraphs.forEach(paragraph => {
-        // Remove the leading '-' and trim any extra spaces
-        let text = paragraph.textContent.replace(/^- /, '').trim();
-        let subtaskComplete = { description: text, isDone: false }
-        subtaskTexts.push(subtaskComplete);
-    });
-    return subtaskTexts;
+ * This function deletes a subtask from a task and updates the task data in Firebase.
+ * @param {string} subtaskId - The ID of the subtask element in the DOM.
+ * @param {number} iSubtask - The index of the subtask in the task's subtask array.
+ * @param {number} iTask - The index of the task in the `allTasks` array.
+ */
+async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
+    let taskData = allTasks[iTask][1];
+    taskData.subtask.splice(iSubtask, 1);
+    
+    // Indizes neu aktualisieren
+    for (let i = iSubtask; i < taskData.subtask.length; i++) {
+        taskData.subtask[i].index = i;
+    }
+    await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
+    removeSubtask(subtaskId);
+    await loadTasks();
+}
+
+/**
+ * This function adds a new subtask to an existing task and updates the task data in Firebase.
+ * @param {number} index - The index of the task in the `allTasks` array.
+ */
+async function addNewSubtaskPush(index) {
+    let newTask = document.getElementById("subtask").value;
+/*     if (newTask === "") {
+        document.getElementById("textSubtask").classList.add("unset-display");
+        return;
+    } */
+    let existingSubtasks = allTasks[index][1].subtask || [];
+    let newSubtask = { description: newTask, isDone: false };
+    existingSubtasks.push(newSubtask);
+    await editData(`tasks/${allTasks[index][0]}`, {subtask: existingSubtasks});
+    allTasks[index][1].subtask = existingSubtasks;
+    addNewSubtask();
 }
 
 /**
@@ -609,13 +627,13 @@ function renderExistingMembersEditTask(index) {
  * @param {number} index - The index of the task in the allTasks array.
  */
 function renderSubtasks(index) {
-    initializeSubtaskIdCounter(index);
+/*     initializeSubtaskIdCounter(index); */
     let subtaskAreaEdit = document.querySelector('#subtaskArea');
     let existingSubTasks = allTasks[index][1].subtask;
 
     for (let i = 0; i < existingSubTasks.length; i++) {
         const subTask = existingSubTasks[i];
-        subtaskAreaEdit.innerHTML += generateSubtaskInnerHTML(`subtask_${subTask.id}`, subTask.description);
+        subtaskAreaEdit.innerHTML += generateEditSubtaskInnerHTML(`subtask_${i}`, subTask.description, i, index);
     }
 }
 

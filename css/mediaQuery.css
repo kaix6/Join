@@ -106,12 +106,17 @@
   
   ::-webkit-scrollbar {
       width: 4px;
+      height: 4px;
     }
   
   ::-webkit-scrollbar-thumb {
       border-radius: 4px;
     }
   
+    ::-webkit-scrollbar-thumb:horizontal {
+      display: none;
+    }
+
   #main_container {
       height: calc(100vh - 80px - 83px);
   }
@@ -428,6 +433,7 @@
 
   #contact_view {
     height: calc(100vh - 80px - 83px);
+    overflow: hidden;
   }
 
   .text_add_contact {
@@ -1116,6 +1122,7 @@
 
 /* Board - start     */
 
+
 @media(max-width: 1136px){
 
   .small-add-button{
@@ -1183,13 +1190,7 @@
 
   .board-column{
       width: 100%;
-      overflow-y: inherit;
       margin-bottom: 0;
-  }
-
-  .tasks-container{
-      display: flex;
-      overflow-x: scroll;
   }
 
   .dialog_addTask_bg {
@@ -1197,8 +1198,10 @@
   } 
 
   .tasks-container{
-    overflow-y: inherit;
+    overflow-y: hidden;
     width: 100%;
+    display: flex;
+    overflow-x: auto;
   }
 }
 
@@ -1297,17 +1300,27 @@
   .subtask-checkbox{
       padding-right: 16px;
   }
+  
+  .prio_edit_buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
 
-  @media(max-width: 400px){
-
-      .task-box-big{
-          width: 300px;
-      }
-
-      .board-column{
-          width: 100%;
-      }
+  .buttonPrio_edit {
+    width: 100% !important;
   }
 }
+
+@media(max-width: 400px){
+
+  /*       .task-box-big{
+            width: 300px;
+        } */
+  
+        .board-column{
+            width: 100%;
+        }
+    }
 
 /* Board - End     */

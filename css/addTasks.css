@@ -274,10 +274,6 @@ select,
   border-radius: 5px;
   z-index: 1000;
   pointer-events: none;
-
-  /* Relative Positionierung zum übergeordneten Element */
-  top: -80px; /* Abstand nach oben anpassen */
-  transform: translateX(-80%);
 }
 
 .tooltip.show {
