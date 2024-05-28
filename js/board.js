@@ -560,7 +560,8 @@ async function saveNewDataTasks(index) {
 
     await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: updatedSubtasks});
     await loadTasks();
-    closeDialogTask();
+    animationDialogTask()
+    showDialogTask(index);
     assignedArrayEdit = [];
 }
 
