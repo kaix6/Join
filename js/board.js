@@ -557,8 +557,7 @@ async function saveNewDataTasks(index) {
     }
     let existingSubtasks = allTasks[index][1]['subtask'];
     let updatedSubtasks = getCurrentSubtasks(existingSubtasks);
-/*     await deleteData(`tasks/${allTasks[index][0]["subtask"]}`); */
-/*     let newSubtasks = getCurrentSubtasks(index); */
+
     await editData(`tasks/${allTasks[index][0]}`, {title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit, subtask: updatedSubtasks});
     await loadTasks();
     closeDialogTask();
@@ -585,21 +584,14 @@ function getCurrentSubtasks(existingSubtasks) {
 }
 
 async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
-    // Daten des aktuellen Tasks abrufen
-    const taskData = allTasks[iTask][1];
-    
-    // Subtask aus dem Datenmodell entfernen
+    let taskData = allTasks[iTask][1];
     taskData.subtask.splice(iSubtask, 1);
     
-    // Indizes der verbleibenden Subtasks im Datenmodell aktualisieren
+    // Indizes neu aktualisieren
     for (let i = iSubtask; i < taskData.subtask.length; i++) {
-        taskData.subtask[i].index = i; // Indizes aktualisieren
+        taskData.subtask[i].index = i;
     }
-    
-    // Firebase aktualisieren
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
-    
-    // HTML-Element des Subtasks entfernen
     removeSubtask(subtaskId);
     await loadTasks();
 }
