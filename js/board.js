@@ -1,6 +1,34 @@
 let currentDraggedTask;
 let allTasks;
 let assignedArrayEdit = [];
+let task=document.querySelectorAll(".task-box");
+let toDo=document.getElementById("column-open");
+let inProgress=document.getElementById("column-inProgress");
+let awaitFeedback=document.getElementById("column-awaitFeedback");
+let done=document.getElementById("column-done");
+let toDoPos=toDo.getBoundingClientRect();
+let inProgressPos=inProgress.getBoundingClientRect();
+let awaitFeedbackPos=awaitFeedback.getBoundingClientRect();
+let donePos=done.getBoundingClientRect();
+
+task.forEach(addStart);
+
+function addStart(elem){
+    elem.addEventListener("touchstart",e=>{
+        
+        let startX=e.changedTouches[0].clientX;
+        let startY=e.changedTouches[0].clientY;
+
+        elem.addEventListener("touchmove",eve=>{
+
+            let nextX=eve.changedTouches[0].clientX;
+            let nextY=eve.changedTouches[0].clientY;
+
+            elem.style.left=nextX-startX+"px";
+            elem.style.top=nextY-startY+"px";
+        });
+    });
+}
 
 // * Drag & Drop Start * //
 
