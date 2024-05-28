@@ -102,7 +102,7 @@ function generateMemberTaskBox(member, memberId) {
 function generateFurtherMemberNumber(furtherMember){
   return`
     <div class="further-member">
-      &emsp;+${furtherMember}
+    &emsp;&emsp;&emsp;+${furtherMember}
     </div>
     `;
 }
