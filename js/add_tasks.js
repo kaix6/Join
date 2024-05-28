@@ -386,6 +386,8 @@ function editSubtask(subtaskId) {
     let subtaskTextElement = subtaskElement.querySelector(".fontSubtask");
     let subtaskText = subtaskTextElement.innerText;
     let editInput = document.createElement("input");
+
+/*     editInput.value = subtaskText; */ // Set initial value of the input field to the subtask text
     renderEditInputField(subtaskText, subtaskTextElement, editInput); // Erzeuge ein Eingabefeld für die Bearbeitung
     acceptEnter(editInput, subtaskTextElement); // Funktion, um mit Enter zu bestätigen
 

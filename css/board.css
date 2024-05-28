@@ -16,11 +16,12 @@
     flex-direction: column;
     justify-content: space-between;
     width: 85%;
-/*     height: 70%; */
     max-width: 1211px;
     max-height: 835px;
     border-radius: 30px;
     background-color: var(--white);
+    overflow-x: hidden;
+    overflow-y: auto;
     /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
     transform: translateX(120%);
     transition: all 100ms ease-in-out;
@@ -62,7 +63,6 @@
         margin-bottom: 24px;
         height: 90%;
         padding: 8px;
-        /* overflow-y: scroll; */
     }
     
     .d-flex-start{
@@ -593,6 +593,10 @@
         margin-top: 8px;
         outline: none;
       }
+
+    .subtask_container_edit {
+        min-width: fit-content;
+    }
     
     .focus_editTask_description:focus,
     .focus_editTask:focus {
@@ -610,6 +614,12 @@
         font-weight: bold;
     }
     
+    .prio_edit_buttons {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+    }
+
     .edit_task_btn {
         display: flex;
         gap: 4px;

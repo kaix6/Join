@@ -58,9 +58,10 @@ h1{
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
   }
 
-::-webkit-scrollbar-thumb:vertical {
+::-webkit-scrollbar-thumb {
     background: var(--grey);
     border-radius: 8px;
   }
@@ -84,18 +85,16 @@ h1{
     background-image: url("../assets/img/general/arrow_down_grey.png");
 }
 
-.task-box-big::-webkit-scrollbar-button:vertical:start:decrement {
-    height: 48px;
-    background-position: center -1px;
+.task-box-big::-webkit-scrollbar-track,
+.dialog_addTask::-webkit-scrollbar-track {
+    margin-top: 48px;
+    margin-bottom: 48px;
 }
 
-.task-box-big::-webkit-scrollbar-button:vertical:end:increment {
-    height: 48px;
-    background-position: center -7px;
-}
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 a:visited {
@@ -109,7 +108,6 @@ body {
 }
 
 .wrapped_maxWidth {
-/*     max-width: 1440px; */
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
