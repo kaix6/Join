@@ -545,7 +545,10 @@ function editTask(index, event) {
     renderContactsInAddTasks();
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
+
     addPrioButtonColor(currentPrio, event);
+    let currentTask = allTasks.filter(t => t[1]['id'] == index);
+    getDivHeight(currentTask);
 }
 
 /**

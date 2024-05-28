@@ -444,3 +444,4 @@ function stringIsLongEnough(string) {
 function currentElementWidth(number) {
     return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
+
