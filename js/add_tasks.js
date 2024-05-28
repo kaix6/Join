@@ -1,7 +1,7 @@
 let selectUsers = [];
 let selectUsersColor = [];
 let selectUsersLetters = [];
-let selectedPrio;
+let selectedPrio = "low";
 let assignedArray = [];
 let memberIdCounter = 0;
 
@@ -10,7 +10,14 @@ let subtaskArray = [];
 
 let allTasksJson = [];
 
-let subtaskStatus = JSON.parse(localStorage.getItem('subtaskStatus')) || [];
+let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
+
+
+function standardPrioButton() {
+  let buttonLow = document.getElementById("buttonLow");
+  let imgLow = document.getElementById("buttonImg3");
+  selectedButtonColor(buttonLow, imgLow, "backgroundColorGreen", "low");
+}
 
 /**
  * Changes the highlighting color and appearance of the priority button based on the provided priority.
@@ -64,6 +71,7 @@ function initAddTasks() {
   includeHTML();
   renderContactsInAddTasks();
   initJSONaddTasks();
+  standardPrioButton();
   localStorage.removeItem('subtaskStatus');
   console.log(subtaskStatus);
 }
@@ -247,12 +255,13 @@ async function saveTaskToJson(title, description, date, prio, category) {
     const color = selectUsersColor[i];
     const letters = selectUsersLetters[i];
     const id = memberIdCounter++;
-    let memberArray = {name: assignedUsers, color: color, letters: letters,id: id};
+    let memberArray = {name: assignedUsers, color: color, letters: letters, id: id};
     assignedArray.push(memberArray);
-  } if (subtaskStatus.length === 0) {
-    subtaskStatus.push('open');
   }
-  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
+  if (subtaskStatus.length === 0) {
+    subtaskStatus = 'open'; // Setzen Sie den subtaskStatus als String 'open'
+  }
+  localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
   showAddToBoardDialog();
@@ -277,16 +286,16 @@ function renderNewTask(title, description, date, prio, category) {
 
 function addSubtaskStatus(status) {
   if (status === 'todo') {
-      subtaskStatus.push('open');
+      subtaskStatus = 'open';
   } else if (status === 'in_progress') {
-      subtaskStatus.push('in progress');
+      subtaskStatus = 'in progress';
   } else if (status === 'feedback') {
-      subtaskStatus.push('await feedback');
+      subtaskStatus = 'await feedback';
   } else {
       console.error('Unrecognized status:', status);
       return;
   }
-  localStorage.setItem('subtaskStatus', JSON.stringify(subtaskStatus));
+  localStorage.setItem('subtaskStatus', subtaskStatus);
 }
 
 /**
@@ -490,19 +499,42 @@ function showTooltip(event, id) {
   let tooltip = document.getElementById('tooltip');
   tooltip.innerHTML = id;
 
-  let targetElement = event.target;
+  let targetElement = event.currentTarget;
   let targetRect = targetElement.getBoundingClientRect();
+  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  let scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
 
-  // Positionierung über dem Element
-  let left = targetRect.left + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
-  let top = targetRect.top - tooltip.offsetHeight - 30; // 10px Abstand zum Element
+  // Berechnung der Tooltip-Position relativ zum Dokument
+  let left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  let top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
 
-  tooltip.style.left = left + 'px';
-  tooltip.style.top = top + 'px';
+  // Verfeinerung der Position, um den Tooltip genauer zu platzieren
+  tooltip.style.position = 'absolute';
+  tooltip.style.left = `${left}px - 30px`;
+  tooltip.style.top = `${top}px - 30px`;
   tooltip.classList.add('show');
 }
 
 function hideTooltip() {
   let tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
+}
+
+function hideTooltip() {
+  let tooltip = document.getElementById('tooltip');
+  tooltip.classList.remove('show');
+}
+
+function clearDialogAddTask() {
+  document.getElementById("title").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("date").value = "";
+  document.getElementById("category").innerHTML = `
+  <option disabled selected>Select task category</option>
+  <option value="User Story">User Story</option>
+  <option value="Technical Task">Technical Task</option>
+  `;
+  document.getElementById("subtaskArea").innerHTML = "";
+  document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
+  document.getElementById("selectedMembers").innerHTML = "";
 }
