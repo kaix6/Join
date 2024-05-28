@@ -118,13 +118,17 @@ function changeTaskBoxHeight(gapHeight, height) {
  * @param {Array} currentTask - The current task for which members are to be displayed.
  */
 function getAllMembersBigTask(currentTask) {
+    if (typeof currentTask[0][1]['assigned member'] === "undefined") 
+    {document.getElementById('member-headline').innerHTML = ''} 
+    else {
     let memberContainer = document.getElementById('container-member-big-task');
     let taskAllMembers = currentTask[0][1]['assigned member'];
     for (let i = 0; i < taskAllMembers.length; i++) {
         const currentTaskMember = taskAllMembers[i];
         memberContainer.innerHTML += generateMemberBigTaskBox(currentTaskMember);
         setColorMemberBigTask(currentTaskMember);
-    };
+        };
+    }
 }
 
 /**
@@ -406,13 +410,34 @@ function updateDoneTasks(tasks) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllMembers(task) {
+    if (typeof task['assigned member'] === "undefined") {} 
+    else {
     for (let j = 0; j < task['assigned member'].length; j++) {
         const member = task['assigned member'][j]['letters'];
         let taskId = task['id'];
         let memberId = taskId + task['assigned member'][j]['name'];
         document.getElementById(`task-all-member${task['id']}`).innerHTML += generateMemberTaskBox(member, memberId);
         setColorMember(task, j, memberId);
+        };
+        if (task['assigned member'].length > 9) {
+            let memberArray = task['assigned member'];
+            truncateMember(memberArray, task);
+        };
     };
+}
+
+function truncateMember(memberArray, task){
+    let memberContainer = document.getElementById(`task-all-member${task['id']}`);
+    memberContainer.innerHTML = '';
+    for (let i = 0; i < 7; i++) {
+        let member = memberArray[i]['letters'];
+        let taskId = task['id'];
+        let memberId = taskId + task['assigned member'][i]['name'];
+        memberContainer.innerHTML += generateMemberTaskBox(member, memberId);
+        setColorMember(task, i, memberId);
+    };
+    let furtherMember = memberArray.length -7;
+    memberContainer.innerHTML += generateFurtherMemberNumber(furtherMember);
 }
 
 /**
@@ -612,6 +637,8 @@ function renderExistingMembersEditTask(index) {
     selectUsersColor = [];
     selectUsersLetters = [];
 
+    if (typeof allTasks[index][1]['assigned member'] === "undefined"){} 
+    else {
     for (let i = 0; i < existingMembers.length; i++) {
         const member = existingMembers[i];
         selectUsers.push(member.name);
@@ -619,7 +646,8 @@ function renderExistingMembersEditTask(index) {
         selectUsersColor.push(member.color);
         existingMembersContainer.innerHTML += `<div onclick="deleteSelectMember('${member.name}', '${member.color}', '${member.letters}')" id="${member.id}" class="profilbild">${member.letters}</div>`;
         document.getElementById(`${member.id}`).style.backgroundColor = `${member.color}`;
-    }
+        };
+    };
 }
 
 /**
