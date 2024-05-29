@@ -72,6 +72,7 @@ async function showDialogTask(i) {
     setTaskCategoryBigTask(currentTask);
     getAllSubtasksBigTask(currentTask);
     getDivHeight(currentTask);
+    bigTaskBox.classList.remove('editBox_height');
 }
 
 /**
@@ -539,16 +540,17 @@ function truncateText(task) {
  * @param {event} event - The event object, used to update the priority button color.
  */
 function editTask(index, event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
+    bigTaskBox.classList.add('editBox_height');
     renderContactsInAddTasks();
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
-
+    
     addPrioButtonColor(currentPrio, event);
-    let currentTask = allTasks.filter(t => t[1]['id'] == index);
-    getDivHeight(currentTask);
 }
 
 /**
@@ -695,6 +697,8 @@ function addSearchTask() {
  * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
  */
 async function deleteTask(event, index) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
     await deleteData(`tasks/${allTasks[index][0]}`);
     await loadTasks();
     closeDialogTask();

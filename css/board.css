@@ -538,7 +538,8 @@
         padding-left: 4px;
     }
 
-    .delete-edit-icon{
+    .delete-icon,
+    .edit-icon{
         height: 18px;
         padding-left: 4px
     }
@@ -637,4 +638,9 @@
         display: flex;
         justify-content: flex-end;
         padding-bottom: 48px;
+    }
+
+    .editBox_height {
+        height: calc(100vh - 30%);
+        max-height: inherit;
     }
