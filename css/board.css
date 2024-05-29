@@ -642,5 +642,5 @@
 
     .editBox_height {
         height: calc(100vh - 30%);
-        max-height: inherit;
+        max-height: 750px;
     }
