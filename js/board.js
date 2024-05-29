@@ -518,23 +518,6 @@ function truncateText(task) {
 }
 
 /**
- * This function initializes the subtask ID counter by finding the highest existing subtask ID n the specified task and setting the counter to this value plus one.
- * @param {number} index - The index of the task in the `allTasks` array.
- */
-/* function initializeSubtaskIdCounter(index) {
-    let maxId = 0;
-    let subtasks = allTasks[index][1].subtask;
-
-    for (let i = 0; i < subtasks.length; i++) {
-        let subtaskIdNum = parseInt(subtasks[i].id);
-        if (subtaskIdNum > maxId) {
-            maxId = subtaskIdNum;
-        }
-    }
-    subtaskIdCounter = maxId + 1; 
-} */
-
-/**
  * This function edits a task by updating the task box with the edit form, rendering contacts and displaying the current task data.
  * @param {number} index - The index of the task to be edited in the `allTasks` array.
  * @param {event} event - The event object, used to update the priority button color.
@@ -549,7 +532,6 @@ function editTask(index, event) {
     renderContactsInAddTasks();
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
-    
     addPrioButtonColor(currentPrio, event);
 }
 
@@ -588,8 +570,51 @@ async function saveNewDataTasks(index) {
     assignedArrayEdit = [];
 }
 
-/**
+/* let isEditing = false; */ // Flag variable to track if editing is in progress
 
+async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
+        // Check if editing is already in progress
+        /* if (isEditing) { */
+            /* return; */ // Return immediately if editing is already in progress
+        /* } */
+    
+        /* isEditing = true; */ // Set editing flag to true
+    editSubtask(subtaskId);
+
+    setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
+        let editInput = document.querySelector(`#${subtaskId} .editInput`);
+        if (editInput) {
+          editInput.addEventListener("blur", async () => {
+            let editedSubtask = editInput.value.trim();
+            if (editedSubtask !== "") {
+              await updateSubtask(editedSubtask, iSubtask, iTask);
+            }
+          });
+    
+          editInput.addEventListener("keyup", async (event) => {
+            if (event.key === "Enter") {
+              let editedSubtask = editInput.value.trim();
+              if (editedSubtask !== "") {
+                await updateSubtask(editedSubtask, iSubtask, iTask);
+              }
+            }
+          });
+        }
+      }, 0);
+/*   await loadTasks(); */
+}
+
+async function updateSubtask(editedSubtask, iSubtask, iTask) {
+    let newEditedSubtask = editedSubtask.replace("- ", "");
+    allTasks[iTask][1].subtask[iSubtask].description = newEditedSubtask;
+  
+    let updatedSubtasks = allTasks[iTask][1].subtask;
+  
+    await editData(`tasks/${allTasks[iTask][0]}`, { subtask: updatedSubtasks });
+  }
+
+
+/**
  * This function deletes a subtask from a task and updates the task data in Firebase.
  * @param {string} subtaskId - The ID of the subtask element in the DOM.
  * @param {number} iSubtask - The index of the subtask in the task's subtask array.
@@ -598,13 +623,9 @@ async function saveNewDataTasks(index) {
 async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
     let taskData = allTasks[iTask][1];
     taskData.subtask.splice(iSubtask, 1);
-
-    // Indizes neu aktualisieren
-    for (let i = iSubtask; i < taskData.subtask.length; i++) {
-        taskData.subtask[i].index = i;
-    }
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
     removeSubtask(subtaskId);
+    renderSubtasks(iTask);
     await loadTasks();
 }
 
@@ -614,16 +635,17 @@ async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
  */
 async function addNewSubtaskPush(index) {
     let newTask = document.getElementById("subtask").value;
-    /*     if (newTask === "") {
+        if (newTask === "") {
             document.getElementById("textSubtask").classList.add("unset-display");
             return;
-        } */
+        }
     let existingSubtasks = allTasks[index][1].subtask || [];
     let newSubtask = { description: newTask, isDone: false };
     existingSubtasks.push(newSubtask);
     await editData(`tasks/${allTasks[index][0]}`, { subtask: existingSubtasks });
     allTasks[index][1].subtask = existingSubtasks;
     addNewSubtask();
+    renderSubtasks(index);
 }
 
 /**
@@ -639,7 +661,7 @@ function renderExistingMembersEditTask(index) {
     selectUsersColor = [];
     selectUsersLetters = [];
 
-    if (typeof allTasks[index][1]['assigned member'] === "undefined") {} else {
+    if (typeof allTasks[index][1]['assigned member'] !== "undefined") {
         for (let i = 0; i < existingMembers.length; i++) {
             const member = existingMembers[i];
             selectUsers.push(member.name);
@@ -656,9 +678,9 @@ function renderExistingMembersEditTask(index) {
  * @param {number} index - The index of the task in the allTasks array.
  */
 function renderSubtasks(index) {
-    /*     initializeSubtaskIdCounter(index); */
     let subtaskAreaEdit = document.querySelector('#subtaskArea');
     let existingSubTasks = allTasks[index][1].subtask;
+    subtaskAreaEdit.innerHTML = '';
 
     for (let i = 0; i < existingSubTasks.length; i++) {
         const subTask = existingSubTasks[i];

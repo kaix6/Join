@@ -373,7 +373,7 @@ function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) 
       <p class="fontSubtask">- ${subtaskValue}</p>
       <div class="subtask_container_edit">
         <img
-          onclick="editSubtask('${subtaskId}')"
+          onclick="editSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
