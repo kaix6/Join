@@ -116,6 +116,15 @@ a {
     }
 }
 
+#successMessage {
+    bottom: -50px;
+    left: 50%;
+}
+
+.cover-button {
+    visibility: hidden;
+}
+
 .gap {
     gap: 32px;
 }

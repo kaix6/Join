@@ -9,9 +9,6 @@ async function addUser() {
     matchPassword();
     await postData('users', { name: name.value, mail: email.value, password: password.value });
 
-
-    window.location.href = './index.html';
-
 }
 
 function matchPassword() {
@@ -20,6 +17,21 @@ function matchPassword() {
     if (password != confirmPassword) {
         alert("Passwords did not match");
     } else {
-        alert("Password created successfully");
+        successful()
     }
+}
+
+function successful() {
+    let signupButton = document.getElementById('signupButton');
+    let successMessage = document.getElementById('successMessage');
+
+
+    signupButton.classList.add('cover-button');
+    successMessage.classList.remove('hidden');
+    successMessage.classList.add('show');
+
+
+    setTimeout(() => {
+        window.location.href = './index.html';
+    }, 1500);
 }
