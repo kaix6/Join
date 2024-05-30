@@ -15,7 +15,7 @@ a {
 
 .link_visited:visited {
     color: var(--grey);
-  }
+}
 
 .gray {
     color: var(--grey);
@@ -93,6 +93,7 @@ a {
     width: 274px;
     background: url(../assets/img/logIn_SignUp/Capa1.svg);
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .animated-image {
@@ -113,6 +114,15 @@ a {
         top: 0;
         left: 0;
     }
+}
+
+#successMessage {
+    bottom: -50px;
+    left: 50%;
+}
+
+.cover-button {
+    visibility: hidden;
 }
 
 .gap {
@@ -264,6 +274,10 @@ a {
 }
 
 input:hover {
+    cursor: pointer;
+}
+
+.hover {
     cursor: pointer;
 }
 

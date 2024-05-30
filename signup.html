@@ -35,7 +35,7 @@
                         <div class="vector_login"></div>
                     </div>
                 </div>
-                <!-- <div> -->
+
                 <form onsubmit="addUser(); return false;" class="display-fccc gap">
                     <input id="name" placeholder="Name" type="text" class="input-with-image b-img-person" required>
                     <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email" required>
@@ -45,17 +45,17 @@
                         <input type="checkbox" id="" class="style_checkbox" required> <span class="gray"> I accept the </span><a href="../../privacy.html" class="link-checkbox" target="_blank">Privacy policy</a>
                     </div>
 
-                    <!-- </div> -->
                     <div>
 
 
-                        <button class="button-login-blue button-p text_login_btn mobile_login_btn">Sign up</button>
+                        <button id="signupButton" class="button-login-blue button-p text_login_btn mobile_login_btn hover">Sign up</button>
 
                     </div>
                 </form>
+                <span id="successMessage" class="button-login-blue hidden">You Signed Up successfully</span>
             </div>
         </div>
-        <span class="button-login-blue hidden">You Signed Up successfully</span>
+
 
         <footer class="display-fcc gap gray">
             <a href="../../privacy.html" class="pointer-coler link_visited" target="_blank">Privacy policy</a>
