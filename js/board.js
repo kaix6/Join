@@ -1,34 +1,6 @@
 let currentDraggedTask;
 let allTasks;
 let assignedArrayEdit = [];
-let task=document.querySelectorAll(".task-box");
-let toDo=document.getElementById("column-open");
-let inProgress=document.getElementById("column-inProgress");
-let awaitFeedback=document.getElementById("column-awaitFeedback");
-let done=document.getElementById("column-done");
-let toDoPos=toDo.getBoundingClientRect();
-let inProgressPos=inProgress.getBoundingClientRect();
-let awaitFeedbackPos=awaitFeedback.getBoundingClientRect();
-let donePos=done.getBoundingClientRect();
-
-task.forEach(addStart);
-
-function addStart(elem){
-    elem.addEventListener("touchstart",e=>{
-        
-        let startX=e.changedTouches[0].clientX;
-        let startY=e.changedTouches[0].clientY;
-
-        elem.addEventListener("touchmove",eve=>{
-
-            let nextX=eve.changedTouches[0].clientX;
-            let nextY=eve.changedTouches[0].clientY;
-
-            elem.style.left=nextX-startX+"px";
-            elem.style.top=nextY-startY+"px";
-        });
-    });
-}
 
 // * Drag & Drop Start * //
 
@@ -687,6 +659,24 @@ function renderSubtasks(index) {
         const subTask = existingSubTasks[i];
         subtaskAreaEdit.innerHTML += generateEditSubtaskInnerHTML(`subtask_${i}`, subTask.description, i, index);
     }
+}
+
+async function deleteContactInTasks(currentIndex, contacts){
+    let contactName = contacts[currentIndex][1]['name'];
+    allTasks = Object.entries(await loadData('tasks'));
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i][1]['assigned member'];
+        if (typeof task !== 'undefined') {
+            for (let j = 0; j < task.length; j++) {
+            const member = task[j];
+            if (member['name'] == contactName) {
+                console.log('Name gefunden');
+                console.log(allTasks[i]);
+                deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+                };
+            };
+        };
+    };
 }
 
 let filteredTasks = [];
