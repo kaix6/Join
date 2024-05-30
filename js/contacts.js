@@ -326,6 +326,7 @@ async function saveNewData(index) {
  */
 async function deleteContact(event, index) {
     let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
+    deleteContactInTasks(currentIndex, contacts);
     await deleteData(`contacts/${contacts[currentIndex][0]}`);
     await updateArrayContacts();
     if (currentElementWidth(1110)) {
@@ -339,7 +340,6 @@ async function deleteContact(event, index) {
         closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 0);
     }
 }
-
 
 /**
  * This function toggles the visibility of the contact view for mobile devices.

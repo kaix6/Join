@@ -661,6 +661,24 @@ function renderSubtasks(index) {
     }
 }
 
+async function deleteContactInTasks(currentIndex, contacts){
+    let contactName = contacts[currentIndex][1]['name'];
+    allTasks = Object.entries(await loadData('tasks'));
+    for (let i = 0; i < allTasks.length; i++) {
+        const task = allTasks[i][1]['assigned member'];
+        if (typeof task !== 'undefined') {
+            for (let j = 0; j < task.length; j++) {
+            const member = task[j];
+            if (member['name'] == contactName) {
+                console.log('Name gefunden');
+                console.log(allTasks[i]);
+                deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+                };
+            };
+        };
+    };
+}
+
 let filteredTasks = [];
 
 function addSearchTask() {

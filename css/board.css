@@ -233,6 +233,7 @@
         min-width: 252px;
         height: fit-content;
         margin: 8px;
+        cursor: pointer;
     }
 
     .task-type{
@@ -381,6 +382,7 @@
         display: flex;
         justify-content: center;
         padding: 8px;
+        cursor: pointer;
     }
 
     .close-icon img{
@@ -530,6 +532,7 @@
         display: flex;
         align-items: center;
         border-left: 0.1px solid var(--backgroundSpacer);
+        cursor: pointer;
     }
 
     .edit:hover{
@@ -541,6 +544,10 @@
     .delete-edit-icon{
         height: 18px;
         padding-left: 4px
+    }
+
+    .delete-edit-icon2{
+        display: flex;
     }
 
     .d-none{
