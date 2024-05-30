@@ -239,16 +239,23 @@ function generateLettersInnerHTML(i, letter) {
 
 function generateFloatingContactInnerHTML(i) {
   return /* HTML */ ` 
-      <div
-        onclick="showContactOptions(${i})"
-        class="add_change_btn_mobile hide_desktop pointer"
-      >
-        <img
-          class="add_person_more_icon"
-          src="assets/img/contacts/more_vert.svg"
-          alt="add person icon"
-        />
-    </div>
+      <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
+        <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon"/>
+      </div>
+      <div class="head_overview">
+        <div class="left_part_overview">
+            <h2 class="headline_contacts">Contacts</h2>
+            <div class="left_part_overview_second">
+                <p class="text_contacts">Better with a team</p>
+                <div class="seperator_line_content">
+                </div>
+            </div>
+        </div>
+        <div onclick="toggleContactView()" class="right_part_overview pointer hide_desktop">
+            <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
+        </div>
+      </div>
+                    <div class="floating_contact flex_dir_c d_none">
     <div class="head_floating_content">
       <div id="short_name_overview${i}" class="short_name_overview round_div">
         <p class="short_name_text_overview">${sortedContacts[i][1].letters}</p>
@@ -285,6 +292,7 @@ function generateFloatingContactInnerHTML(i) {
         <h4>Phone</h4>
         <p>${sortedContacts[i][1].phone}</p>
       </div>
+    </div>
     </div>`;
 }
 

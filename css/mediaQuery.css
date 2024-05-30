@@ -448,6 +448,7 @@
 
   .hide_desktop {
     display: flex;
+    z-index: 1;
   }
 
   .left_part_overview {
