@@ -1,16 +1,15 @@
 /**
  * This function is for the input to password and save the password
  */
-let users = [];
 
 async function addUser() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     matchPassword();
-    users.push({ email: email.value, password: password.value, name: name.value });
+    await postData('users', { name: name.value, mail: email.value, password: password.value });
 
-    // await initialLoadUsersFirebase();
+
     window.location.href = './index.html';
 
 }
@@ -23,24 +22,4 @@ function matchPassword() {
     } else {
         alert("Password created successfully");
     }
-}
-
-async function initialLoadUsersFirebase() {
-    let response = await fetch('#newUsers');
-    users = await response.json();
-
-    await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
-
-
-    for (let i = 0; i < users.length; i++) {
-        const user = users[i];
-        await postData('users', { name: user.name, mail: user.mail, password: user.password })
-
-
-    }
-    await loadData('users');
-    await editData(`users/`, { name: newName.value, mail: newMaile.value, password: newPassword.value });
-
-
-    // await editData(`users/${ name: user.name, mail: user.mail, password: user.password}`);
 }
