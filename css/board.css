@@ -269,7 +269,7 @@
 
     .tasks-container{
         overflow-y: scroll;
-/*         height: 90%; */ /* Test für die scorllbar auf der x-Achse */
+        height: 90%;
         width: 280px;
     }
 

@@ -1152,6 +1152,10 @@
     height: unset;
   }
 
+  .tasks-container{
+    height: unset;
+}
+
 }
 
 @media(max-width: 500px){

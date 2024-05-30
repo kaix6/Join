@@ -697,9 +697,8 @@ async function deleteContactInTasks(currentIndex, contacts){
             for (let j = 0; j < task.length; j++) {
             const member = task[j];
             if (member['name'] == contactName) {
-                console.log('Name gefunden');
-                console.log(allTasks[i]);
-                deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+                await deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+                loadTasks();
                 };
             };
         };
