@@ -73,7 +73,6 @@ function initAddTasks() {
   initJSONaddTasks();
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
-  console.log(subtaskStatus);
 }
 
 function initRemoveItemTasks() {
@@ -376,7 +375,6 @@ function removeSubtask(subtaskId) {
   let subtaskToRemove = document.getElementById(subtaskId);
   if (subtaskToRemove) {
     subtaskToRemove.remove();
-    console.log("subtask entfernt");
   } else {
     return;
   }
