@@ -73,7 +73,6 @@ function initAddTasks() {
   initJSONaddTasks();
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
-  console.log(subtaskStatus);
 }
 
 function initRemoveItemTasks() {
@@ -376,7 +375,6 @@ function removeSubtask(subtaskId) {
   let subtaskToRemove = document.getElementById(subtaskId);
   if (subtaskToRemove) {
     subtaskToRemove.remove();
-    console.log("subtask entfernt");
   } else {
     return;
   }
@@ -538,3 +536,7 @@ function clearDialogAddTask() {
   document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
   document.getElementById("selectedMembers").innerHTML = "";
 }
+
+// Funktion Datum nicht in der Vergangenheit anklickbar
+let today = new Date().toISOString().split('T')[0];
+        document.getElementById("date").setAttribute('min', today);
