@@ -1149,7 +1149,7 @@
   }
 
   .board-column{
-    height: 100%;
+    height: unset;
   }
 
 }
