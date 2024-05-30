@@ -269,7 +269,7 @@
 
     .tasks-container{
         overflow-y: scroll;
-        height: 90%;
+/*         height: 90%; */ /* Test für die scorllbar auf der x-Achse */
         width: 280px;
     }
 
@@ -541,7 +541,8 @@
         padding-left: 4px;
     }
 
-    .delete-edit-icon{
+    .delete-icon,
+    .edit-icon{
         height: 18px;
         padding-left: 4px
     }
@@ -644,4 +645,9 @@
         display: flex;
         justify-content: flex-end;
         padding-bottom: 48px;
+    }
+
+    .editBox_height {
+        height: calc(100vh - 30%);
+        max-height: 750px;
     }

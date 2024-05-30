@@ -433,7 +433,7 @@
 
   #contact_view {
     height: calc(100vh - 80px - 83px);
-    overflow: hidden;
+/*     overflow: hidden; */
   }
 
   .text_add_contact {
@@ -448,6 +448,7 @@
 
   .hide_desktop {
     display: flex;
+    z-index: 1;
   }
 
   .left_part_overview {

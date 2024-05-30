@@ -17,9 +17,6 @@ let colors = ['var(--tagOrange)', 'var(--tagPink)', 'var(--tagPurple)',
  */
 async function loadContacts() {
     contacts = Object.entries(await loadData('contacts'));
-    console.log(contacts);
-    console.log(contacts[0][0]);
-    console.log(contacts[0][1]);
     renderContacts();
 }
 
@@ -139,8 +136,8 @@ function showActiveContact() {
  * @param {number} i - The index of the contact to render in the floating contact view.
  */
 function renderFloatingContact(i) {
-    let floatingContact = document.querySelector('.floating_contact');
-    floatingContact.innerHTML = generateFloatingContactInnerHTML(i);
+    let contactView = document.querySelector('#contact_view');
+    contactView.innerHTML = generateFloatingContactInnerHTML(i);
 }
 
 
@@ -444,3 +441,4 @@ function stringIsLongEnough(string) {
 function currentElementWidth(number) {
     return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
+

@@ -48,16 +48,18 @@ function generateBigTaskBox(task) {
         </div>
         </div>
         <div class="container-delete-edit">
-            <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})">
+            <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})" >
                 <img
-                class="delete-edit-icon" 
+                class="delete-icon" 
                 src="./assets/img/board/icon+delete_black.svg"
+                alt="Delete Task"
                 />
             </div>
             <div class="edit" onclick="editTask(${task[0][1]["id"]}, event)">
-                <img
-                class="delete-edit-icon" 
+                <img 
+                class="edit-icon" 
                 src="./assets/img/board/icon+edit_black.svg"
+                alt="Edit Task"
                 />
             </div>
         </div>
@@ -236,16 +238,24 @@ function generateLettersInnerHTML(i, letter) {
 }
 
 function generateFloatingContactInnerHTML(i) {
-  return /* HTML */ ` <div
-      onclick="showContactOptions(${i})"
-      class="add_change_btn_mobile hide_desktop pointer"
-    >
-      <img
-        class="add_person_more_icon"
-        src="assets/img/contacts/more_vert.svg"
-        alt="add person icon"
-      />
-    </div>
+  return /* HTML */ ` 
+      <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
+        <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon"/>
+      </div>
+      <div class="head_overview">
+        <div class="left_part_overview">
+            <h2 class="headline_contacts">Contacts</h2>
+            <div class="left_part_overview_second">
+                <p class="text_contacts">Better with a team</p>
+                <div class="seperator_line_content">
+                </div>
+            </div>
+        </div>
+        <div onclick="toggleContactView()" class="right_part_overview pointer hide_desktop">
+            <img class="arrow_overview_back" src="./assets/img/general/arrow_left_line.svg" alt="arrow left">
+        </div>
+      </div>
+                    <div class="floating_contact flex_dir_c d_none">
     <div class="head_floating_content">
       <div id="short_name_overview${i}" class="short_name_overview round_div">
         <p class="short_name_text_overview">${sortedContacts[i][1].letters}</p>
@@ -282,6 +292,7 @@ function generateFloatingContactInnerHTML(i) {
         <h4>Phone</h4>
         <p>${sortedContacts[i][1].phone}</p>
       </div>
+    </div>
     </div>`;
 }
 
@@ -370,7 +381,7 @@ function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) 
       <p class="fontSubtask">- ${subtaskValue}</p>
       <div class="subtask_container_edit">
         <img
-          onclick="editSubtask('${subtaskId}')"
+          onclick="editSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />

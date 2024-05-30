@@ -8,7 +8,7 @@
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2);
     inset: 0;
-    z-index: 1;
+    z-index: 3;
 }
 
 
@@ -210,7 +210,7 @@
 /* Contact options */
 
 .contact_options_mobile {
-    z-index: 1;
+    z-index: 2;
     border-radius: 20px 20px 0px 20px;
     background-color: var(--white);
     box-shadow: 0px 4px 4px 0px #00000040;
