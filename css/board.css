@@ -546,6 +546,10 @@
         padding-left: 4px
     }
 
+    .delete-edit-icon2{
+        display: flex;
+    }
+
     .d-none{
         display: none;
     }
