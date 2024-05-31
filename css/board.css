@@ -324,6 +324,7 @@
     .further-member{
         color: var(--grey);
         font-size: 12px;
+        margin-left: 8px;
     }
 
     .member{
