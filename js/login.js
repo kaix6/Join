@@ -26,15 +26,19 @@ async function login() {
     users = Object.entries(await loadData('users'));
 
     console.log(users);
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let user = users.find(u => u.mail == email.value && u.password == password.value);
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let user = users.find(u => u[1].mail == email && u[1].password == password);
     console.log(user);
     if (user) {
-        console.log('user gefunden')
+        console.log('user gefunden');
+        window.location.href = './summary.html';
+    } else {
+        loginError.classList.remove('hidden');
+        document.getElementById('password').classList.add('input-border');
     }
-    window.location.href = './summary.html';
 }
+
 
 function setLastVisitedPage(Id) {
     localStorage.setItem('lastVisitedPage', window.location.href);

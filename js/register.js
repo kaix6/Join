@@ -15,7 +15,8 @@ function matchPassword() {
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
     if (password != confirmPassword) {
-        alert("Passwords did not match");
+        singupError.classList.remove('hidden');
+        document.getElementById('confirmPassword').classList.add('input-border');
     } else {
         successful()
     }
