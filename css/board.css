@@ -221,6 +221,7 @@
 /*         width: 100vw;
         height: 100vh; */
         background-color: rgba(0,0,0,0.1);
+        z-index: 1;
     }
 
     .task-box{
@@ -366,7 +367,6 @@
         transition: all 300ms ease-out;
         height: var(--height);
         overflow-y: scroll;
-        z-index: 1;
     }
 
     .show-task-box-big {
