@@ -521,31 +521,28 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-    }
-
-    .delete:hover{
-        content: url(/assets/img/board/icon+delete_blue.svg);
-        height: 18px;
+        gap: 8px;
     }
 
     .edit{
         display: flex;
         align-items: center;
-        border-left: 0.1px solid var(--backgroundSpacer);
         cursor: pointer;
+        padding-left: 6px;
+        gap: 8px
     }
 
-    .edit:hover{
-        content: url(/assets/img/board/icon+edit_blue.svg);
-        height: 18px;
-        padding-left: 4px;
+    .border-left{
+        border-left: 0.1px solid var(--backgroundSpacer);
     }
 
-    .delete-icon,
-    .edit-icon{
-        height: 18px;
-        padding-left: 4px
-    }
+    .delete:hover,
+    .delete:hover p,
+    .edit:hover,
+    .edit:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+}
 
     .delete-edit-icon2{
         display: flex;

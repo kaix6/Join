@@ -722,10 +722,9 @@ function addSearchTask() {
         let tasks = allTasks[i];
         if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
-            updateTasksHTML(filteredTasks);
         }
+        updateTasksHTML(filteredTasks);
     }
-    console.log(filteredTasks);
 }
 
 
