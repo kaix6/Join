@@ -608,42 +608,41 @@ async function saveNewDataTasks(index) {
     assignedArrayEdit = [];
 }
 
-/* let isEditing = false; */ // Flag variable to track if editing is in progress
-
 async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
+
     editSubtask(subtaskId);
 
     setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
         let editInput = document.querySelector(`#${subtaskId} .editInput`);
         if (editInput) {
-          editInput.addEventListener("blur", async () => {
-            let editedSubtask = editInput.value.trim();
-            if (editedSubtask !== "") {
-              await updateSubtask(editedSubtask, iSubtask, iTask);
-            }
-          });
-    
-          editInput.addEventListener("keyup", async (event) => {
-            if (event.key === "Enter") {
-              let editedSubtask = editInput.value.trim();
-              if (editedSubtask !== "") {
-                await updateSubtask(editedSubtask, iSubtask, iTask);
-              }
-            }
-          });
+            editInput.addEventListener("blur", async() => {
+                let editedSubtask = editInput.value.trim();
+                if (editedSubtask !== "") {
+                    await updateSubtask(editedSubtask, iSubtask, iTask);
+                }
+            });
+
+            editInput.addEventListener("keyup", async(event) => {
+                if (event.key === "Enter") {
+                    let editedSubtask = editInput.value.trim();
+                    if (editedSubtask !== "") {
+                        await updateSubtask(editedSubtask, iSubtask, iTask);
+                    }
+                }
+            });
         }
-      }, 0);
-/*   await loadTasks(); */
+    }, 0);
+    /*   await loadTasks(); */
 }
 
 async function updateSubtask(editedSubtask, iSubtask, iTask) {
     let newEditedSubtask = editedSubtask.replace("- ", "");
     allTasks[iTask][1].subtask[iSubtask].description = newEditedSubtask;
-  
+
     let updatedSubtasks = allTasks[iTask][1].subtask;
-  
+
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: updatedSubtasks });
-  }
+}
 
 /**
  * This function deletes a subtask from a task and updates the task data in Firebase.
@@ -666,10 +665,10 @@ async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
  */
 async function addNewSubtaskPush(index) {
     let newTask = document.getElementById("subtask").value;
-        if (newTask === "") {
-            document.getElementById("textSubtask").classList.add("unset-display");
-            return;
-        }
+    if (newTask === "") {
+        document.getElementById("textSubtask").classList.add("unset-display");
+        return;
+    }
     let existingSubtasks = allTasks[index][1].subtask || [];
     let newSubtask = { description: newTask, isDone: false };
     existingSubtasks.push(newSubtask);
@@ -719,7 +718,7 @@ function renderSubtasks(index) {
     }
 }
 
-async function deleteContactInTasks(currentIndex, contacts){
+async function deleteContactInTasks(currentIndex, contacts) {
     let contactName = contacts[currentIndex][1]['name'];
     allTasks = Object.entries(await loadData('tasks'));
     for (let i = 0; i < allTasks.length; i++) {
