@@ -148,7 +148,7 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
     setTimeout(function() {
         document.querySelector(`${classDialogBg}`).classList.add(`${classD_none}`);
     }, time);
-    if(window.location.pathname == '/add_tasks.html') {
+    if(window.location.pathname == '/board.html') {
         clearDialogAddTask();
     }
 
