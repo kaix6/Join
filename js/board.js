@@ -727,8 +727,9 @@ async function deleteContactInTasks(currentIndex, contacts) {
             for (let j = 0; j < task.length; j++) {
             const member = task[j];
             if (member['name'] == contactName) {
-                await deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
-                loadTasks();
+                allTasks[i][1]['assigned member'].splice(j, 1);
+                let member = allTasks[i][1]['assigned member'];
+                await editData(`tasks/${allTasks[i][0]}`, { "assigned member": member });
                 };
             };
         };
