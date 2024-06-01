@@ -777,18 +777,21 @@
       brightness(500%);
   }
 
-  select,
-  #date {
+  select {
     appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
     background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
     background-repeat: no-repeat;
     background-position: right 16px top 50%; /* Positionierung des Pfeils */
     background-size: 10px auto; /* Größe des Pfeils */
   }
-
+  
+  /* #date {
+    background-image: url(../assets/img/add_task/event.svg);
+    background-size: 26px auto;
+  } */
+  
   #date {
-    background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
-    background-size: 26px auto; /* Größe des Pfeils */
+    appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   }
 }
 
