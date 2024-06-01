@@ -1248,11 +1248,13 @@
       padding-right: 16px;
   }
   
-  .prio_edit_buttons {
+  .prio_edit_buttons,
+  .status_edit_buttons {
     flex-direction: column;
     align-items: center;
     gap: 8px;
   }
+
 
   .buttonPrio_edit {
     width: 100% !important;
