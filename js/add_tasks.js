@@ -264,6 +264,7 @@ async function saveTaskToJson(title, description, date, prio, category) {
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
   showAddToBoardDialog();
+  showDialogAddTask();
   initRemoveItemTasks();
   openBoardPage();
 }
@@ -540,3 +541,12 @@ function clearDialogAddTask() {
 // Funktion Datum nicht in der Vergangenheit anklickbar
 let today = new Date().toISOString().split('T')[0];
         document.getElementById("date").setAttribute('min', today);
+
+        function showDialogAddTask() {
+          const dialog = document.getElementById('dialogboxTask');
+          dialog.classList.add('display'); // Macht das Dialogfeld sichtbar
+          setTimeout(() => {
+            dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
+          }, 3000); // Verweildauer in Millisekunden
+        }
+        
