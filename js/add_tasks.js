@@ -379,7 +379,7 @@ function addSubtaskStatus(status) {
 function openBoardPage() {
   setTimeout(function () {
     window.location.href = 'board.html';
-  }, 2000);
+  }, 1500);
 }
 
 /**
@@ -390,10 +390,12 @@ function openBoardPage() {
 function showAddToBoardDialog() {
   let dialogbox = document.getElementById("dialogboxTask");
   dialogbox.classList.remove("none-display");
+  dialogbox.classList.remove("dialogboxAddedToBoardTransform");
   dialogbox.classList.add("show_dialog_addTask");
   setTimeout(function () {
     dialogbox.classList.remove("show_dialog_addTask");
     dialogbox.classList.add("none-display");
+    dialogbox.classList.add("dialogboxAddedToBoardTransform");
   }, 1500);
 }
 

@@ -390,6 +390,7 @@ select {
   pointer-events: auto; /* Hebt die Klick-through-Eigenschaft für das Dialogfeld selbst auf */
   transition: all 100ms ease-in-out;
   opacity: 0; /* Anfangs unsichtbar */
+  transform: translateY(1000px);
 }
 
 /* Klasse für die Anzeige des Dialogfelds */
@@ -399,7 +400,7 @@ select {
 }
 
 .show_dialog_addTask {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .profilbild:hover {
@@ -412,4 +413,8 @@ select {
 
 .subtaskGenerate:hover img {
   display: inline; 
+}
+
+.dialogboxAddedToBoardTransform {
+  transform: translateY(1000px);
 }
