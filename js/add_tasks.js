@@ -14,11 +14,19 @@ let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
 let selectedStatus = [];
 
+/**
+ * Sets the minimum selectable date in an input field with the id "date" to today's date.
+ * This ensures that dates in the past are not selectable.
+ */
 function dateValidation() {
 let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
     document.getElementById("date").setAttribute('min', today);
 }
 
+/**
+ * Adds an event listener to allow the creation of a new subtask when the Enter key is pressed
+ * in an input field with the id "subtask". This prevents the default form submission behavior.
+ */
 function enterSubtasksAllow() {
   document.addEventListener("DOMContentLoaded", function() {
     let input = document.getElementById('subtask');
@@ -27,7 +35,6 @@ function enterSubtasksAllow() {
          if (event.keyCode === 13) {
              // Verhindere das Standardverhalten des Formulars (falls zutreffend)
               event.preventDefault();
-             // Rufe die Funktion addNewSubtask auf
              addNewSubtask();
          }
      });
