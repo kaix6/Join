@@ -199,7 +199,7 @@ function getAllSubtasksBigTask(currentTask) {
     let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
     let taskAllSubtasks = currentTask[0][1]['subtask'];
     let currentTaskId = currentTask[0][1]['id'];
-    if (typeof taskAllSubtasks === "undefined") {} else {
+    if (typeof taskAllSubtasks !== "undefined") {
         subtaskHeadline.innerHTML = generateSubtasksHeadline();
         for (let i = 0; i < taskAllSubtasks.length; i++) {
             const subtask = taskAllSubtasks[i];
@@ -428,7 +428,7 @@ function updateDoneTasks(tasks) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllMembers(task) {
-    if (typeof task['assigned member'] === "undefined") {} else {
+    if (typeof task['assigned member'] !== "undefined") {
         for (let j = 0; j < task['assigned member'].length; j++) {
             const member = task['assigned member'][j]['letters'];
             let taskId = task['id'];
@@ -506,7 +506,7 @@ function setTaskCategory(task) {
  */
 function getAllSubtasks(task) {
     let subtasks = task['subtask'];
-    if (typeof subtasks === "undefined") {} else {
+    if (typeof subtasks !== "undefined") {
         calcSubtasksProgress(subtasks, task);
     };
 }
