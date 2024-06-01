@@ -32,6 +32,13 @@
     transform: translateX(0);
 }
 
+.status_edit_buttons{
+    gap: 8px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Board */
 
 :root {
@@ -218,9 +225,8 @@
         justify-content: center;
         align-items: center;
         inset: 0;
-/*         width: 100vw;
-        height: 100vh; */
         background-color: rgba(0,0,0,0.1);
+        z-index: 1;
     }
 
     .task-box{
@@ -269,7 +275,7 @@
 
     .tasks-container{
         overflow-y: scroll;
-/*         height: 90%; */ /* Test für die scorllbar auf der x-Achse */
+        height: 90%;
         width: 280px;
     }
 
@@ -324,6 +330,7 @@
     .further-member{
         color: var(--grey);
         font-size: 12px;
+        margin-left: 8px;
     }
 
     .member{
@@ -521,31 +528,28 @@
         display: flex;
         align-items: center;
         cursor: pointer;
-    }
-
-    .delete:hover{
-        content: url(/assets/img/board/icon+delete_blue.svg);
-        height: 18px;
+        gap: 8px;
     }
 
     .edit{
         display: flex;
         align-items: center;
-        border-left: 0.1px solid var(--backgroundSpacer);
         cursor: pointer;
+        padding-left: 6px;
+        gap: 8px
     }
 
-    .edit:hover{
-        content: url(/assets/img/board/icon+edit_blue.svg);
-        height: 18px;
-        padding-left: 4px;
+    .border-left{
+        border-left: 0.1px solid var(--backgroundSpacer);
     }
 
-    .delete-icon,
-    .edit-icon{
-        height: 18px;
-        padding-left: 4px
-    }
+    .delete:hover,
+    .delete:hover p,
+    .edit:hover,
+    .edit:hover p {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg) brightness(96%) contrast(84%);
+    color: var(--lightblue);
+}
 
     .delete-edit-icon2{
         display: flex;
@@ -615,6 +619,14 @@
     .focus_editTask_description:focus,
     .focus_editTask:focus {
         border: 1px solid var(--lightblue);
+    }
+
+    .status_edit{
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        display: none;
     }
     
     .prio_edit {

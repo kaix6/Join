@@ -12,7 +12,17 @@ let allTasksJson = [];
 
 let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
+let selectedStatus = [];
 
+
+let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
+    document.getElementById("date").setAttribute('min', today);
+
+/**
+ * Sets the default priority button to "low" by highlighting the corresponding button and image.
+ * This function is used to apply the default styling for the "low" priority button on page load or reset.
+ * @returns {void}
+ */
 function standardPrioButton() {
   let buttonLow = document.getElementById("buttonLow");
   let imgLow = document.getElementById("buttonImg3");
@@ -61,6 +71,11 @@ function selectedButtonColor(button, img, backgroundColorClass, prio) {
   selectedPrio = prio;
 }
 
+function selectedStatusColor(button, backgroundColorClass, status) {
+  button.classList.add(backgroundColorClass, "fontWeightAndColor");
+  selectedStatus = status;
+}
+
 /**
  * Initializes the process of adding tasks.
  * This function sets up the necessary components for the task addition process by including HTML content,
@@ -75,6 +90,11 @@ function initAddTasks() {
   localStorage.removeItem('subtaskStatus');
 }
 
+/**
+ * Initializes the process of removing items from tasks.
+ * This function removes the stored subtask status from local storage.
+ * @returns {void}
+ */
 function initRemoveItemTasks() {
   localStorage.removeItem('subtaskStatus');
 }
@@ -104,6 +124,19 @@ function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedi
   }
 }
 
+function removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone) {
+  const classesToRemove = ["backgroundColorBlue", "fontWeightAndColor",];
+  const elements = [buttonToDo, buttonProgress, buttonFeedback, buttonDone];
+
+  for (let i = 0; i < elements.length; i++) {
+    let element = elements[i];
+    for (let j = 0; j < classesToRemove.length; j++) {
+      let className = classesToRemove[j];
+      element.classList.remove(className);
+    }
+  }
+}
+
 /**
  * Reloads the page to clear the content.
  * @returns {void}
@@ -114,8 +147,7 @@ function reloadPage() {
 
 /**
  * Renders contacts into the "Assigned To" field.
- * This function loads contacts, populates the "Assigned To" dropdown, and sets up an event listener
- * for changes in the dropdown.
+ * Loads contacts, populates the "Assigned To" dropdown, and sets up an event listener.
  * @returns {Promise<void>}
  */
 async function renderContactsInAddTasks() {
@@ -135,8 +167,7 @@ async function renderContactsInAddTasks() {
 
 /**
  * Handles the change event for the "Assigned To" selection.
- * This function updates the selected members area based on the selected contact
- * and adds the selected contact to the members list.
+ * Updates the selected members area based on the selected contact and adds the selected contact to the members list.
  * @param {Array} contacts - The list of contacts.
  * @param {HTMLSelectElement} assignedTo - The "Assigned To" dropdown element.
  * @param {HTMLElement} MembersArea - The area where selected members are displayed.
@@ -158,7 +189,7 @@ function handleAssignedToChange(contacts, assignedTo, MembersArea) {
 
 /**
  * Adds the selected user to the "Assigned To" list and displays their profile image.
- * This function checks if the user is already selected, shows an appropriate message,
+ * Checks if the user is already selected, shows an appropriate message,
  * and if not, adds the user's details to the selected users list and updates the display.
  * @param {Object} contact - The contact object containing user details.
  * @param {string} contact.name - The name of the contact.
@@ -183,8 +214,7 @@ function pushMembers(contact) {
 
 /**
  * Displays a message indicating that a user has been selected.
- * This function updates the visibility of the provided message element
- * to indicate that a user has been successfully selected.
+ * Updates the visibility of the provided message element to indicate that a user has been successfully selected.
  * @param {HTMLElement} messageSelected - The message element to update.
  * @returns {void}
  */
@@ -193,6 +223,12 @@ function messageIsSelected(messageSelected) {
   messageSelected.classList.add("none-display");
 }
 
+/**
+ * Displays a message indicating that the member is already added.
+ * Updates the visibility of the provided message element to indicate that the member is already added.
+ * @param {HTMLElement} messageSelected - The message element to update.
+ * @returns {void}
+ */
 function messageMemberIsAdded(messageSelected) {
   messageSelected.classList.add("unset-display");
   messageSelected.classList.remove("none-display");
@@ -200,8 +236,7 @@ function messageMemberIsAdded(messageSelected) {
 
 /**
  * Renders the selected users below the "Assigned To" section.
- * This function clears the existing content in the selected members area
- * and then iterates over the selected users list to display their profile images.
+ * Clears the existing content in the selected members area and then iterates over the selected users list to display their profile images.
  * @returns {void}
  */
 function renderPushedMembers() {
@@ -220,7 +255,12 @@ function renderPushedMembers() {
   }
 }
 
-// Funktion zum Löschen eines Mitglieds
+/**
+ * Deletes a selected member from the list of assigned members.
+ * Removes the specified member from the arrays holding information about selected users and updates the display accordingly.
+ * @param {string} element - The name of the member to be deleted.
+ * @returns {void}
+ */
 function deleteSelectMember(element) {
   // Element-Index finden
   const index = selectUsers.indexOf(element);
@@ -229,7 +269,6 @@ function deleteSelectMember(element) {
     selectUsers.splice(index, 1);
     selectUsersColor.splice(index, 1);
     selectUsersLetters.splice(index, 1);
-
     // Mitglieder neu rendern
     renderPushedMembers();
   }
@@ -237,8 +276,7 @@ function deleteSelectMember(element) {
 
 /**
  * Renders the task details into the addTasks.json file.
- * This function creates a new task object with the provided details,
- * adds it to the tasks data, and then logs a success message.
+ * Creates a new task object with the provided details, adds it to the tasks data, and then logs a success message.
  * Finally, it displays the dialog for adding the task to the board.
  * @param {string} title - The title of the task.
  * @param {string} description - The description of the task.
@@ -264,10 +302,22 @@ async function saveTaskToJson(title, description, date, prio, category) {
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
   showAddToBoardDialog();
+  showDialogAddTask();
   initRemoveItemTasks();
   openBoardPage();
 }
 
+/**
+ * Creates a new task object with the provided details.
+ * Creates a new task object using the provided title, description, due date, priority, category, assigned members, subtasks, and status.
+ * The task object is then assigned to the global variable `newTask`.
+ * @param {string} title - The title of the task.
+ * @param {string} description - The description of the task.
+ * @param {string} date - The due date of the task.
+ * @param {string} prio - The priority of the task ("urgent", "medium", or "low").
+ * @param {string} category - The category of the task.
+ * @returns {void}
+ */
 function renderNewTask(title, description, date, prio, category) {
         // Neuen Task erstellen
         newTask = {
@@ -283,6 +333,12 @@ function renderNewTask(title, description, date, prio, category) {
         };
 }
 
+/**
+ * Adds the subtask status based on the provided status string.
+ * Maps the provided status string to the corresponding subtask status and saves it to local storage.
+ * @param {string} status - The status of the subtask ("todo", "in_progress", or "feedback").
+ * @returns {void}
+ */
 function addSubtaskStatus(status) {
   if (status === 'todo') {
       subtaskStatus = 'open';
@@ -298,8 +354,8 @@ function addSubtaskStatus(status) {
 }
 
 /**
- * open board after create a task
- * @function openBoardPage
+ * Opens the board page after creating a task.
+ * Redirects the user to the board.html page after a delay of 2000 milliseconds.
  * @returns {void}
  */
 function openBoardPage() {
@@ -310,8 +366,7 @@ function openBoardPage() {
 
 /**
  * Displays the add to board dialog box.
- * This function shows the dialog box for adding a task to the board
- * the "none-display" class after 1500 milliseconds.
+ * Shows the dialog box for adding a task to the board and hides it after a delay of 1500 milliseconds.
  * @returns {void}
  */
 function showAddToBoardDialog() {
@@ -326,7 +381,7 @@ function showAddToBoardDialog() {
 
 /**
  * Adds a new subtask.
- * This function retrieves the value of the subtask input field, validates it,
+ * Retrieves the value of the subtask input field, validates it,
  * generates a unique ID for the new subtask, and then calls another function to generate
  * the HTML for the subtask and append it to the subtask area.
  * @returns {void}
@@ -366,8 +421,7 @@ function generateSubtaskArea(subtaskText, subtaskArea, subtaskValue, subtaskId) 
 
 /**
  * Removes a subtask element.
- * This function removes the subtask element with the specified ID from the DOM,
- * logging a success message if the element is found.
+ * Removes the subtask element with the specified ID from the DOM.
  * @param {string} subtaskId - The ID of the subtask element to remove.
  * @returns {void}
  */
@@ -382,7 +436,7 @@ function removeSubtask(subtaskId) {
 
 /**
  * Edits a specific subtask.
- * This function retrieves the subtask element with the specified ID from the DOM,
+ * Retrieves the subtask element with the specified ID from the DOM,
  * creates an input field for editing, and sets up event listeners for editing and saving.
  * @param {string} subtaskId - The ID of the subtask element to edit.
  * @returns {void}
@@ -406,7 +460,7 @@ function editSubtask(subtaskId) {
 
 /**
  * Sets up event listener to confirm changes with Enter key.
- * This function adds an event listener to the edit input field to detect when
+ * Adds an event listener to the edit input field to detect when
  * the Enter key is pressed. If Enter is pressed and the input is not empty,
  * it updates the subtask text element with the edited value.
  * @param {HTMLInputElement} editInput - The input field for editing.
@@ -447,7 +501,7 @@ function renderEditInputField(subtaskText, subtaskTextElement, editInput) {
 
 /**
  * Saves the edited changes to a subtask.
- * This function retrieves the edited subtask value from the input field,
+ * Retrieves the edited subtask value from the input field,
  * trims it, and updates the subtask text element if the value is not empty.
  * @param {HTMLElement} subtaskTextElement - The element displaying the subtask text.
  * @param {HTMLInputElement} editInput - The input field containing the edited subtask value.
@@ -492,51 +546,66 @@ async function initJSONaddTasks() {
   allTasksJson.push(tasks);
 }
 
-/* feature - hover name*/
+/**
+ * Displays the tooltip with member name.
+ * This function positions the tooltip relative to the target element,
+ * retrieves the member name and displays it in the tooltip.
+ * @param {MouseEvent} event - The mouse event triggering the tooltip display.
+ * @param {string} id - The ID of the target element.
+ * @returns {void}
+ */
 function showTooltip(event, id) {
   let tooltip = document.getElementById('tooltip');
-  tooltip.innerHTML = id;
-
   let targetElement = event.currentTarget;
   let targetRect = targetElement.getBoundingClientRect();
   let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   let scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-
-  // Berechnung der Tooltip-Position relativ zum Dokument
-  let left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);
+  tooltip.innerHTML = id;
+  let left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);   // Berechnung der Tooltip-Position relativ zum Dokument
   let top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
-
-  // Verfeinerung der Position, um den Tooltip genauer zu platzieren
-  tooltip.style.position = 'absolute';
+  tooltip.style.position = 'absolute'; // Verfeinerung der Position, um den Tooltip genauer zu platzieren
   tooltip.style.left = `${left}px - 30px`;
   tooltip.style.top = `${top}px - 30px`;
   tooltip.classList.add('show');
 }
 
+/**
+ * Hides the tooltip.
+ * Removes the "show" class from the tooltip element to hide it.
+ * @returns {void}
+ */
 function hideTooltip() {
   let tooltip = document.getElementById('tooltip');
   tooltip.classList.remove('show');
 }
 
-function hideTooltip() {
-  let tooltip = document.getElementById('tooltip');
-  tooltip.classList.remove('show');
-}
-
+/**
+ * Clears the input fields and selected members in the add task dialog.
+ * Resets the input fields for title, description, date, category,
+ * subtasks area, assigned to dropdown, and selected members area.
+ * @returns {void}
+ */
 function clearDialogAddTask() {
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
   document.getElementById("date").value = "";
-  document.getElementById("category").innerHTML = `
-  <option disabled selected>Select task category</option>
-  <option value="User Story">User Story</option>
-  <option value="Technical Task">Technical Task</option>
-  `;
+  document.getElementById("category").innerHTML = generateCategoryAfterClearDialogAddTask();
   document.getElementById("subtaskArea").innerHTML = "";
   document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
   document.getElementById("selectedMembers").innerHTML = "";
 }
 
-// Funktion Datum nicht in der Vergangenheit anklickbar
-let today = new Date().toISOString().split('T')[0];
-        document.getElementById("date").setAttribute('min', today);
+/**
+ * Displays the add task dialog box.
+ * Adds the "display" class to the dialog box element to make it visible
+ * and removes it after a certain duration to hide the dialog box.
+ * @returns {void}
+ */    
+function showDialogAddTask() {
+  const dialog = document.getElementById('dialogboxTask');
+  dialog.classList.add('display'); // Macht das Dialogfeld sichtbar
+  setTimeout(() => {
+  dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
+  }, 3000); // Verweildauer in Millisekunden
+}
+        

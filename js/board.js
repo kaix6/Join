@@ -64,7 +64,7 @@ function removeHighlightEnd(id) {
 async function showDialogTask(i) {
     let bigTaskBox = document.getElementById('task-box-big');
     let currentTask = allTasks.filter(t => t[1]['id'] == i);
-    await animationDialogTask();
+    animationDialogTask();
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateBigTaskBox(currentTask);
     getAllMembersBigTask(currentTask);
@@ -73,6 +73,12 @@ async function showDialogTask(i) {
     getAllSubtasksBigTask(currentTask);
     getDivHeight(currentTask);
     bigTaskBox.classList.remove('editBox_height');
+}
+
+async function changeStatusTo(newStatus, index) {
+    allTasks[index][1]['status'] = newStatus;
+    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
+    loadTasks();
 }
 
 /**
@@ -103,16 +109,29 @@ function getDivHeight() {
  * @param {number} height - The current height of the task box.
  */
 function changeTaskBoxHeight(gapHeight, height) {
+    let r = document.querySelector(':root');
     if (gapHeight < -1) {
-        var r = document.querySelector(':root');
         let newHeight = 'calc(100% - 80px - 83px)';
         r.style.setProperty('--height', newHeight);
     } else {
-        var r = document.querySelector(':root');
         let newHeight = height;
         r.style.setProperty('--height', newHeight);
     }
 };
+
+/**
+ * Adjusts the height of the task box to fit within the viewport.
+ * @param {HTMLElement} taskBox - The task box element to be adjusted.
+ */
+function adjustTaskBoxHeight(taskBox) {
+    let viewportHeight = window.innerHeight - 83;
+    let boxHeight = taskBox.scrollHeight;
+    if (boxHeight > viewportHeight) {
+        taskBox.style.height = `calc(100% - 80px - 83px)`;
+    } else {
+        taskBox.style.height = 'fit-content';
+    }
+}
 
 /**
  * Retrieves and displays all members assigned to a given task in a detailed view.
@@ -523,8 +542,7 @@ function truncateText(task) {
  * @param {event} event - The event object, used to update the priority button color.
  */
 function editTask(index, event) {
-    event.stopImmediatePropagation();
-    event.preventDefault();
+    getDivHeight();
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
@@ -533,7 +551,27 @@ function editTask(index, event) {
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
+    let currentStatus = (allTasks[index][1].status);
+    addStatusButtonColor(currentStatus, event);
 }
+
+function addStatusButtonColor(status, event) {
+    event.preventDefault(); // Prevents the default behavior of the button
+    let buttonToDo = document.getElementById("buttonToDo");
+    let buttonProgress = document.getElementById("buttonProgress");
+    let buttonFeedback = document.getElementById("buttonFeedback");
+    let buttonDone= document.getElementById("buttonDone");
+    removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone); // Remove existing classes to clear previous highlights
+    if (status === "open") {
+      selectedStatusColor(buttonToDo, "backgroundColorBlue", "open");
+    } else if (status === "in progress") {
+      selectedStatusColor(buttonProgress, "backgroundColorBlue", "in progress");
+    } else if (status === "await feedback") {
+      selectedStatusColor(buttonFeedback, "backgroundColorBlue", "await feedback");
+    } else if (status === "done") {
+    selectedStatusColor(buttonDone, "backgroundColorBlue", "done");
+    }
+  }
 
 /**
  * This function displays the saved task data in the edit form.
@@ -570,15 +608,8 @@ async function saveNewDataTasks(index) {
     assignedArrayEdit = [];
 }
 
-/* let isEditing = false; */ // Flag variable to track if editing is in progress
-
 async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
-    // Check if editing is already in progress
-    /* if (isEditing) { */
-    /* return; */ // Return immediately if editing is already in progress
-    /* } */
 
-    /* isEditing = true; */ // Set editing flag to true
     editSubtask(subtaskId);
 
     setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
@@ -613,7 +644,6 @@ async function updateSubtask(editedSubtask, iSubtask, iTask) {
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: updatedSubtasks });
 }
 
-
 /**
  * This function deletes a subtask from a task and updates the task data in Firebase.
  * @param {string} subtaskId - The ID of the subtask element in the DOM.
@@ -626,7 +656,7 @@ async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
     removeSubtask(subtaskId);
     renderSubtasks(iTask);
-    await loadTasks();
+/*     await loadTasks(); */
 }
 
 /**
@@ -695,11 +725,10 @@ async function deleteContactInTasks(currentIndex, contacts) {
         const task = allTasks[i][1]['assigned member'];
         if (typeof task !== 'undefined') {
             for (let j = 0; j < task.length; j++) {
-                const member = task[j];
-                if (member['name'] == contactName) {
-                    console.log('Name gefunden');
-                    console.log(allTasks[i]);
-                    deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+            const member = task[j];
+            if (member['name'] == contactName) {
+                await deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
+                loadTasks();
                 };
             };
         };
@@ -708,26 +737,20 @@ async function deleteContactInTasks(currentIndex, contacts) {
 
 let filteredTasks = [];
 
-function addSearchTask() {
+ function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
-
     if (search === '') {
-
         loadTasks();
         return;
     }
-
-
     for (let i = 0; i < allTasks.length; i++) {
         let tasks = allTasks[i];
         if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
-
         }
         updateTasksHTML(filteredTasks);
     }
-    console.log(filteredTasks);
 }
 
 
@@ -738,8 +761,6 @@ function addSearchTask() {
  * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
  */
 async function deleteTask(event, index) {
-    event.stopImmediatePropagation();
-    event.preventDefault();
     await deleteData(`tasks/${allTasks[index][0]}`);
     await loadTasks();
     closeDialogTask();

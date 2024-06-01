@@ -200,8 +200,7 @@
     brightness(500%);
 }
 
-select,
-#date {
+select {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
   background-repeat: no-repeat;
@@ -209,9 +208,13 @@ select,
   background-size: 10px auto; /* Größe des Pfeils */
 }
 
+/* #date {
+  background-image: url(../assets/img/add_task/event.svg);
+  background-size: 26px auto;
+} */
+
 #date {
-  background-image: url(../assets/img/add_task/event.svg); /* Pfeil */
-  background-size: 26px auto; /* Größe des Pfeils */
+  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
 }
 
 .mobileAddTask,
@@ -229,6 +232,10 @@ select,
 
 .backgroundColorGreen {
   background-color: rgb(121, 226, 41) !important;
+}
+
+.backgroundColorBlue {
+  background-color: rgb(41, 171, 226) !important;
 }
 
 .fontWeightAndColor {
@@ -355,23 +362,40 @@ select,
   display: none;
 }
 
+.dialogboxContainer {
+  position: fixed; /* Überlagert den gesamten Bildschirm */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Horizontale Zentrierung */
+  align-items: center; /* Vertikale Zentrierung */
+  pointer-events: none; /* Macht den Container klick-through */
+}
+
+/* Stil für das Dialogfeld */
 .dialogboxCreateTask {
   width: 200px;
   height: 60px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: fixed;
-  top: 50vh;
-  left: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
   background-color: var(--menuButtonDarkblue);
   border-radius: 20px;
   color: white;
   font-weight: bold;
-  transform: translateY(1000%);
+  display: flex; /* Flexbox aktivieren */
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center; /* Vertikal zentrieren */
+  text-align: center;
+  pointer-events: auto; /* Hebt die Klick-through-Eigenschaft für das Dialogfeld selbst auf */
   transition: all 100ms ease-in-out;
+  opacity: 0; /* Anfangs unsichtbar */
+}
+
+/* Klasse für die Anzeige des Dialogfelds */
+.display {
+  opacity: 1; /* Sichtbar */
+  transform: translateY(0); /* Zurück zur ursprünglichen Position */
 }
 
 .show_dialog_addTask {
