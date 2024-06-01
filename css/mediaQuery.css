@@ -1127,6 +1127,7 @@
   .board-column{
       width: 100%;
       margin-bottom: 0;
+      height: unset;
   }
 
   .dialog_addTask_bg {
@@ -1138,6 +1139,7 @@
     width: 100%;
     display: flex;
     overflow-x: auto;
+    height: unset;
   }
 }
 
@@ -1150,14 +1152,6 @@
   .right_section{
     width: 100%;
   }
-
-  .board-column{
-    height: unset;
-  }
-
-  .tasks-container{
-    height: unset;
-}
 
 .status_edit{
     margin-top: 24px;
