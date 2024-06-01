@@ -1156,6 +1156,14 @@
     height: unset;
 }
 
+.status_edit{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: block;
+}
+
 }
 
 @media(max-width: 500px){

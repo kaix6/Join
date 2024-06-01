@@ -32,6 +32,13 @@
     transform: translateX(0);
 }
 
+.status_edit_buttons{
+    gap: 8px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Board */
 
 :root {
@@ -613,6 +620,14 @@
     .focus_editTask_description:focus,
     .focus_editTask:focus {
         border: 1px solid var(--lightblue);
+    }
+
+    .status_edit{
+        margin-top: 24px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        display: none;
     }
     
     .prio_edit {

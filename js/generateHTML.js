@@ -39,13 +39,13 @@ function generateBigTaskBox(task) {
         </div>
         <div>
             <div id ="member-headline" class="margin-top-16px">Assigned To:</div>
-        <div id="container-member-big-task" class="container-member-big-task">
-        </div>
+            <div id="container-member-big-task" class="container-member-big-task">
+            </div>
         <div>
             <div id="subtaks-headline${task[0][1]["id"]}">
             </div>
-        <div id="subtasks${task[0][1]["id"]}" class="container-subtasks">
-        </div>
+            <div id="subtasks${task[0][1]["id"]}" class="container-subtasks">
+            </div>
         </div>
         <div class="container-delete-edit">
           <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})" >
@@ -177,6 +177,23 @@ function generateEditTaskBox(index) {
                     <div id="selectedMembers"></div>
                     <div class="none-display" id="isSelected">
                       Has already been selected
+                    </div>
+                    <div class="status_edit fontUnderHeadlinesAddTasks">
+                      <p class="fontUnderHeadlinesAddTasks">Status</p>
+                      <div class="status_edit_buttons">
+                        <button id="buttonToDo" onclick="addStatusButtonColor('open', event)" class="buttonPrio buttonPrio_edit">
+                          To Do
+                        </button>
+                        <button id="buttonProgress" onclick="addStatusButtonColor('in progress', event)" class="buttonPrio buttonPrio_edit">
+                          In Progress
+                        </button>
+                        <button id="buttonFeedback" onclick="addStatusButtonColor('await feedback', event)" class="buttonPrio buttonPrio_edit">
+                          Await Feedback
+                        </button>
+                        <button id="buttonDone" onclick="addStatusButtonColor('done', event)" class="buttonPrio buttonPrio_edit">
+                          Done
+                        </button>
+                      </div>
                     </div>
                     <div style="margin-top: 24px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>

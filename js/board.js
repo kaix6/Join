@@ -75,6 +75,12 @@ async function showDialogTask(i) {
     bigTaskBox.classList.remove('editBox_height');
 }
 
+async function changeStatusTo(newStatus, index) {
+    allTasks[index][1]['status'] = newStatus;
+    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
+    loadTasks();
+}
+
 /**
  * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
  * @param {string} date - The date string in "YYYY-MM-DD" format.
@@ -533,7 +539,27 @@ function editTask(index, event) {
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
+    let currentStatus = (allTasks[index][1].status);
+    addStatusButtonColor(currentStatus, event);
 }
+
+function addStatusButtonColor(status, event) {
+    event.preventDefault(); // Prevents the default behavior of the button
+    let buttonToDo = document.getElementById("buttonToDo");
+    let buttonProgress = document.getElementById("buttonProgress");
+    let buttonFeedback = document.getElementById("buttonFeedback");
+    let buttonDone= document.getElementById("buttonDone");
+    removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone); // Remove existing classes to clear previous highlights
+    if (status === "open") {
+      selectedStatusColor(buttonToDo, "backgroundColorBlue", "open");
+    } else if (status === "in progress") {
+      selectedStatusColor(buttonProgress, "backgroundColorBlue", "in progress");
+    } else if (status === "await feedback") {
+      selectedStatusColor(buttonFeedback, "backgroundColorBlue", "await feedback");
+    } else if (status === "done") {
+    selectedStatusColor(buttonDone, "backgroundColorBlue", "done");
+    }
+  }
 
 /**
  * This function displays the saved task data in the edit form.
