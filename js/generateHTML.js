@@ -409,6 +409,14 @@ function generatePushedMembers(element, color, letters) {
     `;
 }
 
+function generateCategoryAfterClearDialogAddTask() {
+  return /* HTML */ `
+  <option disabled selected>Select task category</option>
+  <option value="User Story">User Story</option>
+  <option value="Technical Task">Technical Task</option>
+  `
+}
+
 // Summary
 function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
