@@ -385,7 +385,6 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
-        |
         <img
           onclick="removeSubtask('${subtaskId}')"
           class="iconSubtask"

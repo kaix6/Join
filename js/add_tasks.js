@@ -1,7 +1,7 @@
 let selectUsers = [];
 let selectUsersColor = [];
 let selectUsersLetters = [];
-let selectedPrio = "low";
+let selectedPrio = "medium";
 let assignedArray = [];
 let memberIdCounter = 0;
 
@@ -14,9 +14,25 @@ let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
 let selectedStatus = [];
 
-
+function dateValidation() {
 let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
     document.getElementById("date").setAttribute('min', today);
+}
+
+function enterSubtasksAllow() {
+  document.addEventListener("DOMContentLoaded", function() {
+    let input = document.getElementById('subtask');
+     input.addEventListener('keydown', function(event) {
+         // Überprüfe, ob die gedrückte Taste die Enter-Taste ist (Keycode 13)
+         if (event.keyCode === 13) {
+             // Verhindere das Standardverhalten des Formulars (falls zutreffend)
+              event.preventDefault();
+             // Rufe die Funktion addNewSubtask auf
+             addNewSubtask();
+         }
+     });
+   });
+}
 
 /**
  * Sets the default priority button to "low" by highlighting the corresponding button and image.
@@ -24,9 +40,9 @@ let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in d
  * @returns {void}
  */
 function standardPrioButton() {
-  let buttonLow = document.getElementById("buttonLow");
-  let imgLow = document.getElementById("buttonImg3");
-  selectedButtonColor(buttonLow, imgLow, "backgroundColorGreen", "low");
+  let buttonMedium = document.getElementById("buttonMedium");
+  let imgMedium = document.getElementById("buttonImg2");
+  selectedButtonColor(buttonMedium, imgMedium, "backgroundColorOrange", "medium");
 }
 
 /**
@@ -88,6 +104,8 @@ function initAddTasks() {
   initJSONaddTasks();
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
+  dateValidation();
+  enterSubtasksAllow();
 }
 
 /**
@@ -608,4 +626,3 @@ function showDialogAddTask() {
   dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
   }, 3000); // Verweildauer in Millisekunden
 }
-        

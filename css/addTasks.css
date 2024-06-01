@@ -399,10 +399,17 @@ select {
 }
 
 .show_dialog_addTask {
-  /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
   transform: translateX(0);
 }
 
 .profilbild:hover {
   cursor: pointer;
+}
+
+.subtaskGenerate img {
+  display: none;
+}
+
+.subtaskGenerate:hover img {
+  display: inline; 
 }
