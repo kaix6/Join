@@ -22,7 +22,6 @@ function animationWindow() {
 
 
 async function login() {
-    // await addUsersJason();
     users = Object.entries(await loadData('users'));
 
     console.log(users);
@@ -34,8 +33,8 @@ async function login() {
         console.log('user gefunden');
         window.location.href = './summary.html';
     } else {
-        loginError.classList.remove('hidden');
-        document.getElementById('password').classList.add('input-border');
+        document.getElementById('loginError').classList.remove('hidden');
+        document.getElementById('passwordButten').classList.add('input-border');
     }
 }
 
@@ -52,3 +51,12 @@ function goBack() {
         alert('Es wurde keine vorherige Seite gefunden.');
     }
 }
+
+// function togglePasswordVisibility(inputID) {
+//     const passwordField = documet.getElementById(inputID);
+//     if (passwordField.type === "password") {
+//         passwordField.type = "text";
+//     } else {
+//         passwordField.type = "password";
+//     }
+// }

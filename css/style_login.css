@@ -255,7 +255,8 @@ a {
     font-weight: bold;
 }
 
-.input-with-image {
+
+/* .input-with-image {
     width: 422px;
     padding: 13px 21px;
     border: 1px solid var(--backgroundSpacer);
@@ -265,32 +266,82 @@ a {
     padding-left: 21px;
     outline: none;
     font-size: 20px;
+} */
+
+.password_container {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--backgroundSpacer);
+    padding: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    width: 422px;
+    background-color: var(--white);
+}
+
+.password_container input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    flex: 1;
+    background-color: var(--white);
+}
+
+.password_container img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.password_container:hover {
+    border: 1px solid var(--lightblue);
+}
+
+.password_lock {
+    width: 20px;
+    height: 20px;
+}
+
+.password_show {
+    width: 20px;
+    height: 20px;
+}
+
+.password_hide {
+    width: 20px;
+    height: 20px;
+    display: none;
 }
 
 .input-border {
     border-color: var(--errorRed);
 }
 
-.input-with-image:focus {
+
+/* .input-with-image:focus {
     border: 1px solid var(--lightblue);
-}
+} */
 
 .input-with-image::placeholder {
     font-size: 20px;
     color: var(--backgroundSpacer);
 }
 
-.b-img-email {
+
+/* .b-img-email {
     background-image: url(../assets/img/logIn_SignUp/mail.svg);
-}
+} */
 
-.b-img-lock {
+
+/* .b-img-lock {
     background-image: url(../assets/img/logIn_SignUp/lock.svg);
-}
+} */
 
-.b-img-person {
+
+/* .b-img-person {
     background-image: url(../assets/img/logIn_SignUp/person.svg);
-}
+} */
 
 .padding {
     padding: 8px;

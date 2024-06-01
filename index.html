@@ -46,24 +46,36 @@
                 </div>
                 <div>
                     <form onsubmit="login(); return false;" class="display-fccc gap">
-                        <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email" required>
-                        <div>
-                            <input id="password" placeholder="Password" type="password" class="input-with-image b-img-lock" required>
-                            <a role="butten"></a>
+                        <div class="password_container">
+                            <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email" required>
+                            <img src="./assets/img/logIn_SignUp/mail.svg" alt="">
                         </div>
-                        <span id="loginError" class="password-error hidden">Wrong oassword Ups! Try again.</span>
-                        <div class="rememberMe_box">
-                            <input type="checkbox" id="rememberMe" class="style_checkbox">
-                            <label for="rememberMe">Remember me</label>
+                        <div id="passwordButten" class="password_container">
+
+                            <input id="password" placeholder="Password" type="password" required>
+                            <img src="./assets/img/logIn_SignUp/lock.svg " alt=" " onclick="togglePasswordVisibility() " class=" password_lock ">
+                            <!-- <input id="password " placeholder="Password " type="password " class="input-with-image b-img-lock " required> -->
+                            <!-- <a role="button " onclick="togglePasswordVisibility( 'password') " class="password_butten ">
+
+                                <img src="./assets/img/logIn_SignUp/lock.svg " alt=" " class="password_lock ">
+                                <img src="./assets/img/logIn_SignUp/visibility.svg " alt=" " class="password_show ">
+                                <img src="./assets/img/logIn_SignUp/visibility_off.svg " alt=" " class="password_hide ">
+
+                            </a> -->
+                        </div>
+                        <span id="loginError" class="password-error hidden ">Wrong oassword Ups! Try again.</span>
+                        <div class="rememberMe_box ">
+                            <input type="checkbox " id="rememberMe " class="style_checkbox ">
+                            <label for="rememberMe ">Remember me</label>
                         </div>
 
 
-                        <div class="d-center-space-betwen gap logIn-btns">
+                        <div class="d-center-space-betwen gap logIn-btns ">
 
 
-                            <button class="button-login-blue button-p text_login_btn mobile_login_btn hover">Log in</button>
-                            <a href="./summary.html">
-                                <p class="button-login-white button-p text_login_btn mobile_login_btn">Guest Log in</p>
+                            <button class="button-login-blue button-p text_login_btn mobile_login_btn hover ">Log in</button>
+                            <a href="./summary.html ">
+                                <p class="button-login-white button-p text_login_btn mobile_login_btn ">Guest Log in</p>
                             </a>
                         </div>
                     </form>
@@ -71,16 +83,16 @@
             </div>
 
         </div>
-        <div class="mobile-login display-fcc gap padding">
+        <div class="mobile-login display-fcc gap padding ">
             <span>Not a join user?</span>
 
-            <a href="./signup.html">
-                <p class="button-login-blue butten-mobile button-p">Sign up</p>
+            <a href="./signup.html ">
+                <p class="button-login-blue butten-mobile button-p ">Sign up</p>
             </a>
         </div>
-        <footer class="display-fjc gap gray">
-            <a href="privacy.html" id="privacyPolic" class="pointer-coler link_visited" target="_blank">Privacy policy</a>
-            <a href="legal_notice.html" onclick="setLastVisitedPage(id)" id="legalNotice" class="pointer-coler link_visited" target="_blank">Legal notice</a>
+        <footer class="display-fjc gap gray ">
+            <a href="privacy.html " id="privacyPolic " class="pointer-coler link_visited " target="_blank ">Privacy policy</a>
+            <a href="legal_notice.html " onclick="setLastVisitedPage(id) " id="legalNotice " class="pointer-coler link_visited " target="_blank ">Legal notice</a>
 
         </footer>
     </div>
