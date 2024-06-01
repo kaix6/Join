@@ -234,6 +234,10 @@ select {
   background-color: rgb(121, 226, 41) !important;
 }
 
+.backgroundColorBlue {
+  background-color: rgb(41, 171, 226) !important;
+}
+
 .fontWeightAndColor {
   color: white;
   font-weight: bold;

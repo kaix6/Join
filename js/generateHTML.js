@@ -39,29 +39,33 @@ function generateBigTaskBox(task) {
         </div>
         <div>
             <div id ="member-headline" class="margin-top-16px">Assigned To:</div>
-        <div id="container-member-big-task" class="container-member-big-task">
-        </div>
+            <div id="container-member-big-task" class="container-member-big-task">
+            </div>
         <div>
             <div id="subtaks-headline${task[0][1]["id"]}">
             </div>
-        <div id="subtasks${task[0][1]["id"]}" class="container-subtasks">
-        </div>
+            <div id="subtasks${task[0][1]["id"]}" class="container-subtasks">
+            </div>
         </div>
         <div class="container-delete-edit">
-            <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})" >
-                <img
-                class="delete-icon" 
-                src="./assets/img/board/icon+delete_black.svg"
-                alt="Delete Task"
-                />
-            </div>
+          <div class="delete" onclick="deleteTask(event, ${task[0][1]["id"]})" >
+            <img
+              class="contact_delete_icon img_width16"
+              src="assets/img/contacts/delete.svg"
+              alt="delete icon"
+            />
+            <p>Delete</p>
+          </div>
+          <div class="border-left">
             <div class="edit" onclick="editTask(${task[0][1]["id"]}, event)">
-                <img 
-                class="edit-icon" 
-                src="./assets/img/board/icon+edit_black.svg"
-                alt="Edit Task"
-                />
+              <img
+                class="contact_edit_icon img_width16"
+                src="assets/img/contacts/edit.svg"
+                alt="edit icon"
+              />
+              <p>Edit</p>
             </div>
+          </div>
         </div>
     </div>
     `;
@@ -104,7 +108,7 @@ function generateMemberTaskBox(member, memberId) {
 function generateFurtherMemberNumber(furtherMember){
   return`
     <div class="further-member">
-    &emsp;&emsp;&emsp;+${furtherMember}
+    +${furtherMember}
     </div>
     `;
 }
@@ -173,6 +177,23 @@ function generateEditTaskBox(index) {
                     <div id="selectedMembers"></div>
                     <div class="none-display" id="isSelected">
                       Has already been selected
+                    </div>
+                    <div class="status_edit fontUnderHeadlinesAddTasks">
+                      <p class="fontUnderHeadlinesAddTasks">Status</p>
+                      <div class="status_edit_buttons">
+                        <button id="buttonToDo" onclick="addStatusButtonColor('open', event)" class="buttonPrio buttonPrio_edit">
+                          To Do
+                        </button>
+                        <button id="buttonProgress" onclick="addStatusButtonColor('in progress', event)" class="buttonPrio buttonPrio_edit">
+                          In Progress
+                        </button>
+                        <button id="buttonFeedback" onclick="addStatusButtonColor('await feedback', event)" class="buttonPrio buttonPrio_edit">
+                          Await Feedback
+                        </button>
+                        <button id="buttonDone" onclick="addStatusButtonColor('done', event)" class="buttonPrio buttonPrio_edit">
+                          Done
+                        </button>
+                      </div>
                     </div>
                     <div style="margin-top: 24px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>

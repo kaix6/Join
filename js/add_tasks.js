@@ -12,6 +12,8 @@ let allTasksJson = [];
 
 let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
+let selectedStatus = [];
+
 
 let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
     document.getElementById("date").setAttribute('min', today);
@@ -69,6 +71,11 @@ function selectedButtonColor(button, img, backgroundColorClass, prio) {
   selectedPrio = prio;
 }
 
+function selectedStatusColor(button, backgroundColorClass, status) {
+  button.classList.add(backgroundColorClass, "fontWeightAndColor");
+  selectedStatus = status;
+}
+
 /**
  * Initializes the process of adding tasks.
  * This function sets up the necessary components for the task addition process by including HTML content,
@@ -107,6 +114,19 @@ function initRemoveItemTasks() {
 function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
   const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor",];
   const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow];
+
+  for (let i = 0; i < elements.length; i++) {
+    let element = elements[i];
+    for (let j = 0; j < classesToRemove.length; j++) {
+      let className = classesToRemove[j];
+      element.classList.remove(className);
+    }
+  }
+}
+
+function removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone) {
+  const classesToRemove = ["backgroundColorBlue", "fontWeightAndColor",];
+  const elements = [buttonToDo, buttonProgress, buttonFeedback, buttonDone];
 
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
