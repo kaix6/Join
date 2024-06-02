@@ -19,7 +19,7 @@ function animationWindow() {
 
 async function login() {
     users = Object.entries(await loadData('users'));
-    let email = document.getElementById('email').value;
+    let email = document.getElementById('email').value.toLowerCase();
     let password = document.getElementById('password').value;
     let user = users.find(u => u[1].mail == email && u[1].password == password);
     if (user) {
