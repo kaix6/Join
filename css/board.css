@@ -663,3 +663,10 @@
         height: calc(100vh - 30%);
         max-height: 750px;
     }
+
+    .no-search-result{
+        color: var(--errorRed);
+        text-align: center;
+        font-size: 24px;
+        margin-top: 8px;
+    }

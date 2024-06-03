@@ -75,12 +75,6 @@ async function showDialogTask(i) {
     bigTaskBox.classList.remove('editBox_height');
 }
 
-async function changeStatusTo(newStatus, index) {
-    allTasks[index][1]['status'] = newStatus;
-    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
-    loadTasks();
-}
-
 /**
  * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
  * @param {string} date - The date string in "YYYY-MM-DD" format.
@@ -573,6 +567,11 @@ function addStatusButtonColor(status, event) {
     }
   }
 
+async function changeStatusTo(newStatus, event, index) {
+    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
+    addStatusButtonColor(newStatus, event);
+}
+
 /**
  * This function displays the saved task data in the edit form.
  * @param {number} index - The index of the task in the `allTasks` array.
@@ -741,6 +740,7 @@ let filteredTasks = [];
  function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
+    let inputSearch = document.getElementById("no-search-result");
     if (search === '') {
         loadTasks();
         return;
@@ -749,9 +749,14 @@ let filteredTasks = [];
         let tasks = allTasks[i];
         if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
-        }
+        };
         updateTasksHTML(filteredTasks);
-    }
+    };
+    if (filteredTasks.length == 0) {
+        inputSearch.classList.remove('d-none');
+    } else {
+        inputSearch.classList.add('d-none');
+    };
 }
 
 
