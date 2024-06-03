@@ -5,16 +5,16 @@
 function setPreviousPageParams() {
     let containsLinks = document.querySelector('.top_side_menu')?.contains(document.querySelector('.links')) || false;
     let links = document.querySelectorAll('a');
-    
+
     links.forEach(link => {
         try {
             let url = new URL(link.href);
             url.searchParams.set('containsLinks', containsLinks);
             link.href = url.toString();
-/*             console.log('URL:', url.toString()); */
+            /*             console.log('URL:', url.toString()); */
         } catch (error) {
-/*             console.error('Error constructing URL:', error);
-            console.warn('Invalid URL:', link.href); */
+            /*             console.error('Error constructing URL:', error);
+                        console.warn('Invalid URL:', link.href); */
         }
     });
 }
@@ -64,7 +64,7 @@ async function includeHTML() {
 function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
-    if(window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
+    if (window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
         removeElements();
     }
     // if(window.location.pathname == '/board.html') {
@@ -148,7 +148,7 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
     setTimeout(function() {
         document.querySelector(`${classDialogBg}`).classList.add(`${classD_none}`);
     }, time);
-    if(window.location.pathname == '/board.html') {
+    if (window.location.pathname == '/board.html') {
         clearDialogAddTask();
     }
 
@@ -181,7 +181,6 @@ function removeElements() {
         });
         document.querySelector('#profileHeader').remove();
         document.querySelector('#side_menu').remove();
-        document.querySelector('#main_container').style.height = "calc(100vh - 80px)";  
+        document.querySelector('#main_container').style.height = "calc(100vh - 80px)";
     }
 }
-

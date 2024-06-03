@@ -1,6 +1,7 @@
 let currentDraggedTask;
 let allTasks;
 let assignedArrayEdit = [];
+let filteredTasks = [];
 
 // * Drag & Drop Start * //
 
@@ -736,7 +737,7 @@ async function deleteContactInTasks(currentIndex, contacts) {
     };
 }
 
-let filteredTasks = [];
+
 
  function addSearchTask() {
     filteredTasks = [];
