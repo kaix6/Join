@@ -198,7 +198,7 @@ function generateEditTaskBox(index) {
                     <div style="margin-top: 24px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>
                       <br />
-                      <input id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
+                      <input onkeydown="handleEnterKey(event)" id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
                       <img onclick="addNewSubtaskPush(${index})" class="addSubtask" src="assets/img/add_task/add.svg" alt="plus icon"/>
                     </div>
                     <div id="subtaskArea">
@@ -386,7 +386,6 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
-        |
         <img
           onclick="removeSubtask('${subtaskId}')"
           class="iconSubtask"
@@ -407,7 +406,6 @@ function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) 
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
-        |
         <img
           onclick="deleteSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
           class="iconSubtask"

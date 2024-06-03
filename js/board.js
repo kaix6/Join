@@ -530,7 +530,8 @@ function truncateText(task) {
  * @param {number} index - The index of the task to be edited in the `allTasks` array.
  * @param {event} event - The event object, used to update the priority button color.
  */
-async function editTask(index, event) {
+
+function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.classList.add('edit-mode');
     bigTaskBox.innerHTML = '';

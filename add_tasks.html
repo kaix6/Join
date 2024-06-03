@@ -167,9 +167,11 @@
                       <span id="textSubtask">Please enter a text</span></label
                     ><br />
                     <input
+                    onkeydown="handleEnterKey(event)"
                       id="subtask"
                       type="text"
                       placeholder="Add new subtask"
+                      maxlength="40"
                     />
                     <img
                       onclick="addNewSubtask()"
@@ -205,7 +207,7 @@
 
       <!--      Dialogbox Create Task   -->
       <div class="dialogboxContainer">
-        <div id="dialogboxTask" class="dialogboxCreateTask">Task added to Board</div>
+        <div id="dialogboxTask" class="dialogboxCreateTask dialogboxAddedToBoardTransform">Task added to Board</div>
       </div>
       <!--      Dialogbox Create Task   -->
       
