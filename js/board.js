@@ -76,12 +76,6 @@ async function showDialogTask(i) {
     // bigTaskBox.classList.remove('editBox_height');
 }
 
-async function changeStatusTo(newStatus, index) {
-    allTasks[index][1]['status'] = newStatus;
-    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
-    loadTasks();
-}
-
 /**
  * This function converts a date string from "YYYY-MM-DD" format to "DD/MM/YYYY" format.
  * @param {string} date - The date string in "YYYY-MM-DD" format.
@@ -575,6 +569,11 @@ function addStatusButtonColor(status, event) {
     }
   }
 
+async function changeStatusTo(newStatus, event, index) {
+    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
+    addStatusButtonColor(newStatus, event);
+}
+
 /**
  * This function displays the saved task data in the edit form.
  * @param {number} index - The index of the task in the `allTasks` array.
@@ -729,8 +728,9 @@ async function deleteContactInTasks(currentIndex, contacts) {
             for (let j = 0; j < task.length; j++) {
             const member = task[j];
             if (member['name'] == contactName) {
-                await deleteData(`tasks/${allTasks[i][0]}/assigned member/${j}`);
-                loadTasks();
+                allTasks[i][1]['assigned member'].splice(j, 1);
+                let member = allTasks[i][1]['assigned member'];
+                await editData(`tasks/${allTasks[i][0]}`, { "assigned member": member });
                 };
             };
         };
@@ -742,6 +742,7 @@ async function deleteContactInTasks(currentIndex, contacts) {
  function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
+    let inputSearch = document.getElementById("no-search-result");
     if (search === '') {
         loadTasks();
         return;
@@ -750,9 +751,14 @@ async function deleteContactInTasks(currentIndex, contacts) {
         let tasks = allTasks[i];
         if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
-        }
+        };
         updateTasksHTML(filteredTasks);
-    }
+    };
+    if (filteredTasks.length == 0) {
+        inputSearch.classList.remove('d-none');
+    } else {
+        inputSearch.classList.add('d-none');
+    };
 }
 
 
