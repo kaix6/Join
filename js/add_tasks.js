@@ -1,7 +1,7 @@
 let selectUsers = [];
 let selectUsersColor = [];
 let selectUsersLetters = [];
-let selectedPrio = "low";
+let selectedPrio = "medium";
 let assignedArray = [];
 let memberIdCounter = 0;
 
@@ -14,9 +14,26 @@ let subtaskStatus = localStorage.getItem('subtaskStatus') || '';
 
 let selectedStatus = [];
 
-
+/**
+ * Sets the minimum selectable date in an input field with the id "date" to today's date.
+ * This ensures that dates in the past are not selectable.
+ */
+function dateValidation() {
 let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
     document.getElementById("date").setAttribute('min', today);
+}
+
+/**
+ * Adds an event listener to allow the creation of a new subtask when the Enter key is pressed
+ * in an input field with the id "subtask". This prevents the default form submission behavior.
+ */
+function handleEnterKey(event) {
+  // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
+  if (event.keyCode === 13) {
+      event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
+      addNewSubtask(); // Die Funktion, die ausgeführt werden soll
+  }
+}
 
 /**
  * Sets the default priority button to "low" by highlighting the corresponding button and image.
@@ -24,9 +41,9 @@ let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in d
  * @returns {void}
  */
 function standardPrioButton() {
-  let buttonLow = document.getElementById("buttonLow");
-  let imgLow = document.getElementById("buttonImg3");
-  selectedButtonColor(buttonLow, imgLow, "backgroundColorGreen", "low");
+  let buttonMedium = document.getElementById("buttonMedium");
+  let imgMedium = document.getElementById("buttonImg2");
+  selectedButtonColor(buttonMedium, imgMedium, "backgroundColorOrange", "medium");
 }
 
 /**
@@ -88,6 +105,7 @@ function initAddTasks() {
   initJSONaddTasks();
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
+  dateValidation();
 }
 
 /**
@@ -361,7 +379,7 @@ function addSubtaskStatus(status) {
 function openBoardPage() {
   setTimeout(function () {
     window.location.href = 'board.html';
-  }, 2000);
+  }, 1500);
 }
 
 /**
@@ -372,10 +390,12 @@ function openBoardPage() {
 function showAddToBoardDialog() {
   let dialogbox = document.getElementById("dialogboxTask");
   dialogbox.classList.remove("none-display");
+  dialogbox.classList.remove("dialogboxAddedToBoardTransform");
   dialogbox.classList.add("show_dialog_addTask");
   setTimeout(function () {
     dialogbox.classList.remove("show_dialog_addTask");
     dialogbox.classList.add("none-display");
+    dialogbox.classList.add("dialogboxAddedToBoardTransform");
   }, 1500);
 }
 
@@ -608,4 +628,3 @@ function showDialogAddTask() {
   dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
   }, 3000); // Verweildauer in Millisekunden
 }
-        
