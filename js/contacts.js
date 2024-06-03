@@ -145,22 +145,24 @@ function renderFloatingContact(i) {
  * This function generates and displays the contact options for a specific contact.
  * @param {number} i - The index of the contact for which to display the options.
  */
-function showContactOptions(i) {
+function showContactOptions(event, i) {
+    event.stopPropagation(); 
     let contactOptionsMobile = document.querySelector('.contact_options_mobile');
     contactOptionsMobile.innerHTML = generateContactOptionsInnerHTML(i);
-    document.querySelector('.contact_options_mobile').classList.add('show_contact_options_mobile');
+    contactOptionsMobile.classList.add('show_contact_options_mobile');
 }
 
 
 /**
  * This function closes the contact options menu.
- * If the event target does not have the class 'add_person_more_icon', it removes the class 'show_contact_options_mobile' from the element with the class 'contact_options_mobile' to hide the menu.
+ * If the event target is not within the specified elements, it removes the class 'show_contact_options_mobile' from the element with the class 'contact_options_mobile' to hide the menu.
  * @param {*} event - The event object representing the event where the function is triggered.
  */
 function closeContactOptions(event) {
-    if (classIsNotAddPersonMoreIcon(event))
-        document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
-}
+    if (classIsNotContactsOptionsMobile(event)) {
+      document.querySelector('.contact_options_mobile').classList.remove('show_contact_options_mobile');
+    }
+  }
 
 
 /**
@@ -248,6 +250,7 @@ function clearDataContactValues() {
     document.querySelector('#telNumber').value = '';
 }
 
+
 /**
  * This function displays a short confirmation message after successfully adding a contact.
  * It adds the class 'show_create_contact_done' to the element with the class 'create_contact_done' to show the message and removes it after a short delay.
@@ -266,7 +269,13 @@ function showCreateContactDoneShort() {
  * @returns {string} - Returns the modified string with the first letter of each word capitalized.
  */
 function capitalizeFirstLetters(name) {
-    return name.split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+    return name.split(' ').map(word => {
+        if (word.trim().length > 0) {
+            return word[0].toUpperCase() + word.slice(1);
+        } else {
+            return '';
+        }
+    }).join(' ');
 }
 
 
@@ -306,11 +315,12 @@ function showSavedData(index) {
  */
 async function saveNewData(index) {
     let newName = document.querySelector('#fullName_edit');
+    let firstLetters = getContactsInitials(newName.value);
     let newMail = document.querySelector('#mail_edit');
     let newTelNumber = document.querySelector('#telNumber_edit');
     let currentIndex = contacts.findIndex(contact => contact === sortedContacts[index]);
 
-    await editData(`contacts/${contacts[currentIndex][0]}`, {name: newName.value, mail: newMail.value, phone: newTelNumber.value, letters: getContactsInitials(newName.value)});
+    await editData(`contacts/${contacts[currentIndex][0]}`, {name: capitalizeFirstLetters(newName.value), mail: newMail.value, phone: newTelNumber.value, letters: firstLetters});
     await updateArrayContacts();
     closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 100);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[currentIndex]));
@@ -337,6 +347,7 @@ async function deleteContact(event, index) {
         closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 0);
     }
 }
+
 
 /**
  * This function toggles the visibility of the contact view for mobile devices.
@@ -414,12 +425,12 @@ function elementContainsActiveContact(contactName, activeContactName, contactMai
 
 
 /**
- * This function checks if the target element of the specified event does not have the class 'add_person_more_icon'.
+ * This function checks if the target element of the specified event does not have the class 'hide_desktop'.
  * @param {*} event - The event object representing the event where the function is triggered.
- * @returns {boolean} - Returns true if the target element of the event does not have the class 'add_person_more_icon', otherwise false.
+ * @returns {boolean} - Returns true if the target element of the event does not have the class 'hide_desktop', otherwise false.
  */
-function classIsNotAddPersonMoreIcon(event) {
-    return event.target.className != 'add_person_more_icon';
+function classIsNotContactsOptionsMobile(event) {
+    return event.target.className != 'hide_desktop';
 }
 
 
@@ -441,4 +452,3 @@ function stringIsLongEnough(string) {
 function currentElementWidth(number) {
     return proveElementWidth(document.querySelector('.wrapped_maxWidth')) <= number;
 }
-

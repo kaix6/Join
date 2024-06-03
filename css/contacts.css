@@ -157,15 +157,18 @@
     border: 1px solid var(--lightblue);
 }
 
-#fullName {
+#fullName,
+#fullName_edit {
     background-image: url(../assets/img/contacts/person.svg);
 }
 
-#mail {
+#mail,
+#mail_edit {
     background-image: url(../assets/img/contacts/mail.svg);
 }
 
-#telNumber {
+#telNumber,
+#telNumber_edit {
     background-image: url(../assets/img/contacts/call.svg);
 }
 

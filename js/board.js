@@ -64,6 +64,7 @@ function removeHighlightEnd(id) {
  */
 async function showDialogTask(i) {
     let bigTaskBox = document.getElementById('task-box-big');
+    bigTaskBox.classList.remove('edit-mode');
     let currentTask = allTasks.filter(t => t[1]['id'] == i);
     animationDialogTask();
     bigTaskBox.innerHTML = '';
@@ -73,7 +74,6 @@ async function showDialogTask(i) {
     setTaskCategoryBigTask(currentTask);
     getAllSubtasksBigTask(currentTask);
     getDivHeight(currentTask);
-    // bigTaskBox.classList.remove('editBox_height');
 }
 
 /**
@@ -105,28 +105,14 @@ function getDivHeight() {
  */
 function changeTaskBoxHeight(gapHeight, height) {
     let r = document.querySelector(':root');
+    let newHeight;
     if (gapHeight < -1) {
-        let newHeight = 'calc(100% - 80px - 83px)';
-        r.style.setProperty('--height', newHeight);
+        newHeight = 'calc(100% - 80px - 83px)';
     } else {
-        let newHeight = height;
-        r.style.setProperty('--height', newHeight);
+        newHeight = height;
     }
+    r.style.setProperty('--height', newHeight);
 };
-
-/**
- * Adjusts the height of the task box to fit within the viewport.
- * @param {HTMLElement} taskBox - The task box element to be adjusted.
- */
-function adjustTaskBoxHeight(taskBox) {
-    let viewportHeight = window.innerHeight - 83;
-    let boxHeight = taskBox.scrollHeight;
-    if (boxHeight > viewportHeight) {
-        taskBox.style.height = `calc(100% - 80px - 83px)`;
-    } else {
-        taskBox.style.height = 'fit-content';
-    }
-}
 
 /**
  * Retrieves and displays all members assigned to a given task in a detailed view.
@@ -194,7 +180,7 @@ function getAllSubtasksBigTask(currentTask) {
     let subtaskHeadline = document.getElementById(`subtaks-headline${currentTask[0][1]['id']}`);
     let taskAllSubtasks = currentTask[0][1]['subtask'];
     let currentTaskId = currentTask[0][1]['id'];
-    if (typeof taskAllSubtasks === "undefined") {} else {
+    if (typeof taskAllSubtasks !== "undefined") {
         subtaskHeadline.innerHTML = generateSubtasksHeadline();
         for (let i = 0; i < taskAllSubtasks.length; i++) {
             const subtask = taskAllSubtasks[i];
@@ -259,7 +245,6 @@ async function renderSubtask() {
 function closeDialogTask() {
     document.querySelector('.background-big-task').classList.add('d-none');
     document.querySelector('.task-box-big').classList.remove('show-task-box-big');
-    /*     subtaskIdCounter = 0; */
     loadTasks();
 }
 
@@ -294,6 +279,10 @@ function updateTasksHTML(tasks) {
     updateInProgressTasks(tasks);
     updateAwaitFeedbackTasks(tasks);
     updateDoneTasks(tasks);
+    resetHeight();
+}
+
+function resetHeight() {
     document.querySelector(':root').style.setProperty('--height', 'fit-content');
 }
 
@@ -423,7 +412,7 @@ function updateDoneTasks(tasks) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function getAllMembers(task) {
-    if (typeof task['assigned member'] === "undefined") {} else {
+    if (typeof task['assigned member'] !== "undefined") {
         for (let j = 0; j < task['assigned member'].length; j++) {
             const member = task['assigned member'][j]['letters'];
             let taskId = task['id'];
@@ -501,7 +490,7 @@ function setTaskCategory(task) {
  */
 function getAllSubtasks(task) {
     let subtasks = task['subtask'];
-    if (typeof subtasks === "undefined") {} else {
+    if (typeof subtasks !== "undefined") {
         calcSubtasksProgress(subtasks, task);
     };
 }
@@ -536,18 +525,19 @@ function truncateText(task) {
  * @param {number} index - The index of the task to be edited in the `allTasks` array.
  * @param {event} event - The event object, used to update the priority button color.
  */
+
 function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
+    bigTaskBox.classList.add('edit-mode');
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
-    // bigTaskBox.classList.add('editBox_height');
     renderContactsInAddTasks();
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
     let currentStatus = (allTasks[index][1].status);
     addStatusButtonColor(currentStatus, event);
-    document.querySelector(':root').style.setProperty('--height', 'fit-content');
+    resetHeight();
     getDivHeight();
 }
 
