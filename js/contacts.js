@@ -250,6 +250,7 @@ function clearDataContactValues() {
     document.querySelector('#telNumber').value = '';
 }
 
+
 /**
  * This function displays a short confirmation message after successfully adding a contact.
  * It adds the class 'show_create_contact_done' to the element with the class 'create_contact_done' to show the message and removes it after a short delay.
@@ -346,6 +347,7 @@ async function deleteContact(event, index) {
         closeDialog('.dialog_edit_contact', 'show_dialog_edit_contact', '.dialog_edit_contact_bg', 'd_none', 0);
     }
 }
+
 
 /**
  * This function toggles the visibility of the contact view for mobile devices.
