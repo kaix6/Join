@@ -27,18 +27,12 @@ let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in d
  * Adds an event listener to allow the creation of a new subtask when the Enter key is pressed
  * in an input field with the id "subtask". This prevents the default form submission behavior.
  */
-function enterSubtasksAllow() {
-  document.addEventListener("DOMContentLoaded", function() {
-    let input = document.getElementById('subtask');
-     input.addEventListener('keydown', function(event) {
-         // Überprüfe, ob die gedrückte Taste die Enter-Taste ist (Keycode 13)
-         if (event.keyCode === 13) {
-             // Verhindere das Standardverhalten des Formulars (falls zutreffend)
-              event.preventDefault();
-             addNewSubtask();
-         }
-     });
-   });
+function handleEnterKey(event) {
+  // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
+  if (event.keyCode === 13) {
+      event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
+      addNewSubtask(); // Die Funktion, die ausgeführt werden soll
+  }
 }
 
 /**
@@ -112,7 +106,6 @@ function initAddTasks() {
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
   dateValidation();
-  enterSubtasksAllow();
 }
 
 /**

@@ -72,7 +72,7 @@ async function showDialogTask(i) {
     setTaskCategoryBigTask(currentTask);
     getAllSubtasksBigTask(currentTask);
     getDivHeight(currentTask);
-    bigTaskBox.classList.remove('editBox_height');
+    // bigTaskBox.classList.remove('editBox_height');
 }
 
 async function changeStatusTo(newStatus, index) {
@@ -542,17 +542,18 @@ function truncateText(task) {
  * @param {event} event - The event object, used to update the priority button color.
  */
 function editTask(index, event) {
-    getDivHeight();
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.innerHTML = '';
     bigTaskBox.innerHTML += generateEditTaskBox(index);
-    bigTaskBox.classList.add('editBox_height');
+    // bigTaskBox.classList.add('editBox_height');
     renderContactsInAddTasks();
     showSavedTasksData(index);
     let currentPrio = (allTasks[index][1].prio);
     addPrioButtonColor(currentPrio, event);
     let currentStatus = (allTasks[index][1].status);
     addStatusButtonColor(currentStatus, event);
+    document.querySelector(':root').style.setProperty('--height', 'fit-content');
+    getDivHeight();
 }
 
 function addStatusButtonColor(status, event) {
