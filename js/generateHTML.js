@@ -132,14 +132,14 @@ function generateMemberBigTaskBox(member) {
 
 function generateEditTaskBox(index) {
   return /* HTML */ `
-            <section class="edit_box_big">
+            <section class="edit_box_big mainEditTasks dialogMainTasks">
 
-              <div class="mainEditTasks dialogMainTasks">
               <div onclick="closeDialogTask()" class="wrapper_close_edit_task round_div pointer">
                     <img class="close_edit_tasks" src="./assets/img/general/close.svg" alt="close icon">
                 </div>
-              <div class="scroll_EditTasks">
                 <form onsubmit="event.preventDefault(); saveNewDataTasks(${index})">
+                <div class="scroll_EditTasks">
+                  <div class="test">
                     <label class="fontUnderHeadlinesAddTasks" for="title">Title</label>
                     <input type="text" id="title" class="focus_editTask title_tasks" name="title" placeholder="Enter a title" required/>
                     <div style="margin-top: 24px">
@@ -208,16 +208,17 @@ function generateEditTaskBox(index) {
                       <div>
                       </div>
                     </div>
+                    </div>
+                    </div>
                     <div class="footer_edit_task">
                       <button class="edit_task_btn blue_btn pointer" type="submit">
                           <p class="text_edit_task_btn">Ok</p>
                           <img class="img_white_btn img_width16" src="./assets/img/contacts/check.svg" alt="checked icon">
                       </button>
                     </div>
-                    </div>
                 </form>
                 
-              </div>
+
           </section>`
 }
 

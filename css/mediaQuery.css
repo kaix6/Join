@@ -1221,6 +1221,14 @@
       margin: 16px;
   }
 
+  .wrapper_close_edit_task {
+     background-color: var(--white);
+  }
+
+  .scroll_EditTasks {
+     max-height: 300px;
+  }
+
   .d-flex p{
       font-size: 16px;
   }
@@ -1270,6 +1278,12 @@
         .board-column{
             width: 100%;
         }
+    }
+
+    @media (max-height: 620px) {
+      .scroll_EditTasks {
+        max-height: 175px;
+      }
     }
 
 /* Board - End     */

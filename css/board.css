@@ -559,11 +559,17 @@
         display: none;
     }
 
-    .edit_box_big {
-        height: 750px; 
+
+    .task-box-big.edit-mode {
+        overflow-y: hidden; 
     }
+
+/*     .edit_box_big {
+        height: 750px; 
+    } */
     
     .scroll_EditTasks {
+        max-height: 650px; 
         overflow-y: auto;
     }
     
@@ -582,6 +588,7 @@
         top: 48px;
         width: 32px;
         height: 32px;
+        z-index: 1;
     }
     
     .wrapper_close_edit_task:hover {
@@ -656,10 +663,9 @@
     .footer_edit_task {
         display: flex;
         justify-content: flex-end;
-        padding-bottom: 48px;
+/*         padding-bottom: 48px; */
     }
 
-    .editBox_height {
-        height: calc(100vh - 30%);
-        max-height: 750px;
+    .test {
+        padding-right: 10px;
     }
