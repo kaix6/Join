@@ -261,7 +261,7 @@ function generateLettersInnerHTML(i, letter) {
 
 function generateFloatingContactInnerHTML(i) {
   return /* HTML */ ` 
-      <div onclick="showContactOptions(${i})" class="add_change_btn_mobile hide_desktop pointer">
+      <div onclick="showContactOptions(event, ${i})" class="add_change_btn_mobile hide_desktop pointer">
         <img class="add_person_more_icon" src="assets/img/contacts/more_vert.svg" alt="add person icon"/>
       </div>
       <div class="head_overview">

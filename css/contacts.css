@@ -213,7 +213,7 @@
 /* Contact options */
 
 .contact_options_mobile {
-/*     z-index: 2; */
+    z-index: 2;
     border-radius: 20px 20px 0px 20px;
     background-color: var(--white);
     box-shadow: 0px 4px 4px 0px #00000040;
