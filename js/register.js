@@ -9,7 +9,7 @@ async function addUser() {
 }
 
 async function existingPassword() {
-    // try {
+
         users = Object.entries(await loadData('users'));
         let email = document.getElementById('email').value.toLowerCase();
         user = users.find(u => u[1].mail == email);            
@@ -18,9 +18,7 @@ async function existingPassword() {
         }else {
             document.getElementById('mailError').classList.remove('hidden');  
         }
-    // }catch (error) {
-    //     document.getElementById('mailError').classList.remove('hidden');      
-    // } 
+
 
 }
 

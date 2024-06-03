@@ -39,11 +39,3 @@ function saveUser(email) {
 }
 
 
-// function togglePasswordVisibility(inputID) {
-//     const passwordField = documet.getElementById(inputID);
-//     if (passwordField.type === "password") {
-//         passwordField.type = "text";
-//     } else {
-//         passwordField.type = "password";
-//     }
-// }

@@ -255,43 +255,37 @@ a {
     font-weight: bold;
 }
 
-
-/* .input-with-image {
-    width: 422px;
-    padding: 13px 21px;
-    border: 1px solid var(--backgroundSpacer);
-    border-radius: 10px;
-    background-repeat: no-repeat;
-    background-position: center right 21px;
-    padding-left: 21px;
-    outline: none;
-    font-size: 20px;
-} */
-
 .password_container {
     display: flex;
     align-items: center;
     border: 1px solid var(--backgroundSpacer);
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: fit-content;
     width: 422px;
     background-color: var(--white);
+    
 }
-
+.password_container_border{
+    border: var(--lightblue);
+}
+/* input.typing {
+    background-color: var(--lightblue);
+} */
 .password_container input {
     border: none;
     outline: none;
     padding: 5px;
     flex: 1;
     background-color: var(--white);
+    font-size: 20px;
 }
 
 .password_container img {
     cursor: pointer;
     width: 20px;
     height: 20px;
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .password_container:hover {
@@ -318,30 +312,10 @@ a {
     border-color: var(--errorRed);
 }
 
-
-/* .input-with-image:focus {
-    border: 1px solid var(--lightblue);
-} */
-
-.input-with-image::placeholder {
+.password_container input::placeholder {
     font-size: 20px;
     color: var(--backgroundSpacer);
 }
-
-
-/* .b-img-email {
-    background-image: url(../assets/img/logIn_SignUp/mail.svg);
-} */
-
-
-/* .b-img-lock {
-    background-image: url(../assets/img/logIn_SignUp/lock.svg);
-} */
-
-
-/* .b-img-person {
-    background-image: url(../assets/img/logIn_SignUp/person.svg);
-} */
 
 .padding {
     padding: 8px;
@@ -417,7 +391,7 @@ footer {
 }
 
 @media (max-width: 800px) {
-    input-with-image {
+    .password_container {
         width: 364px;
     }
     .frame153 {
@@ -451,13 +425,13 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .input-with-image {
+     .password_container {
         width: 364px;
     }
 }
 
 @media (max-width: 500px) {
-    .input-with-image {
+    .password_container {
         width: 340px;
     }
     .frame153-singup {
@@ -465,8 +439,11 @@ footer {
     }
 }
 
-@media (max-width: 450px) {
-    .input-with-image {
+@media (max-width: 460px) {
+    .password_container {
+        width: 90%;
+    }
+    .password_container input {
         width: 90%;
     }
     .arrow_signUp {
@@ -474,8 +451,8 @@ footer {
     }
 }
 
-@media (max-width: 350px) {
-    .imglogo {
+@media (max-width: 380px) {
+     .imglogo {
         padding: 24px;
         height: 40px;
     }
