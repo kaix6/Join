@@ -3,17 +3,10 @@
  */
 
 async function addUser() {
-    let name = document.getElementById('name');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let colorAllocation = getRandomItem(colors);
-    let firstLetters = getContactsInitials(name.value);
+    existingPassword();
     matchPassword();
-    await postData('users', { name: name.value, mail: email.value, password: password.value });
-    await postData(`contacts`, { name: capitalizeFirstLetters(name.value), mail: email.value, phone: '', color: colorAllocation, letters: firstLetters });
     document.getElementById('mailError').classList.add('hidden');
     document.getElementById('singupError').classList.add('hidden');
-    existingPassword();
 }
 
 async function existingPassword() {
@@ -39,7 +32,10 @@ async function matchPassword() {
     let name = document.getElementById('name');
     let email = document.getElementById('email');
     let password = document.getElementById('password');
+    let colorAllocation = getRandomItem(colors);
+    let firstLetters = getContactsInitials(name.value);
         await postData('users', { name: name.value, mail: email.value, password: password.value });
+        await postData(`contacts`, { name: capitalizeFirstLetters(name.value), mail: email.value, phone: '', color: colorAllocation, letters: firstLetters });
         successful()
     }
 }
