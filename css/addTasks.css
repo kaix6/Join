@@ -202,16 +202,11 @@
 
 select {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
-  background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
+  background-image: url(../assets/img/add_task/arrow_drop_down_down.svg);
   background-repeat: no-repeat;
-  background-position: right 16px top 50%; /* Positionierung des Pfeils */
-  background-size: 10px auto; /* Größe des Pfeils */
+  background-position: right 16px top 50%;
+  background-size: 10px auto;
 }
-
-/* #date {
-  background-image: url(../assets/img/add_task/event.svg);
-  background-size: 26px auto;
-} */
 
 #date {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
@@ -369,8 +364,8 @@ select {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; /* Horizontale Zentrierung */
-  align-items: center; /* Vertikale Zentrierung */
+  justify-content: center;
+  align-items: center;
   pointer-events: none; /* Macht den Container klick-through */
 }
 
@@ -383,20 +378,21 @@ select {
   border-radius: 20px;
   color: white;
   font-weight: bold;
-  display: flex; /* Flexbox aktivieren */
-  justify-content: center; /* Horizontal zentrieren */
-  align-items: center; /* Vertikal zentrieren */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   pointer-events: auto; /* Hebt die Klick-through-Eigenschaft für das Dialogfeld selbst auf */
   transition: all 100ms ease-in-out;
-  opacity: 0; /* Anfangs unsichtbar */
+  opacity: 0;
   transform: translateY(1000px);
+  position: absolute;
 }
 
 /* Klasse für die Anzeige des Dialogfelds */
 .display {
-  opacity: 1; /* Sichtbar */
-  transform: translateY(0); /* Zurück zur ursprünglichen Position */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .show_dialog_addTask {
