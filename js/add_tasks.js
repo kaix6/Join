@@ -88,9 +88,9 @@ function selectedButtonColor(button, img, backgroundColorClass, prio) {
   selectedPrio = prio;
 }
 
-function selectedStatusColor(button, backgroundColorClass, status) {
+function selectedStatusColor(button, backgroundColorClass, statusTask) {
   button.classList.add(backgroundColorClass, "fontWeightAndColor");
-  selectedStatus = status;
+  selectedStatus = statusTask;
 }
 
 /**

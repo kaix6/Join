@@ -559,11 +559,6 @@ function addStatusButtonColor(status, event) {
     }
   }
 
-async function changeStatusTo(newStatus, event, index) {
-    await editData(`tasks/${allTasks[index][0]}`, { status: newStatus });
-    addStatusButtonColor(newStatus, event);
-}
-
 /**
  * This function displays the saved task data in the edit form.
  * @param {number} index - The index of the task in the `allTasks` array.
@@ -587,12 +582,14 @@ async function saveNewDataTasks(index) {
     let newDescription = document.getElementById("description");
     let newDueDate = document.getElementById("date");
     let newPrio = selectedPrio;
+    let newStatus = selectedStatus;
+    console.log(newStatus);
     await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
     for (let i = 0; i < selectUsers.length; i++) {
         let memberArray = { name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i], id: i };
         assignedArrayEdit.push(memberArray);
     }
-    await editData(`tasks/${allTasks[index][0]}`, { title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, "assigned member": assignedArrayEdit });
+    await editData(`tasks/${allTasks[index][0]}`, { title: newTitle.value, description: newDescription.value, "due date": newDueDate.value, prio: newPrio, status: newStatus, "assigned member": assignedArrayEdit });
     await loadTasks();
     animationDialogTask();
     showDialogTask(index);
