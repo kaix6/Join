@@ -267,6 +267,7 @@ async function loadTasks() {
         const task = allTasks[i];
         task[1]['id'] = i;
     }
+    categorizeTasks(allTasks);
     updateTasksHTML(allTasks);
 }
 
@@ -275,13 +276,16 @@ async function loadTasks() {
  * @param {Array} tasks - The array containing all tasks to be displayed.
  */
 function updateTasksHTML(tasks) {
-    updateOpenTasks(tasks);
-    updateInProgressTasks(tasks);
-    updateAwaitFeedbackTasks(tasks);
-    updateDoneTasks(tasks);
+    updateTasksByStatus(tasks, 'open', 'openTasks', 'No tasks To do');
+    updateTasksByStatus(tasks, 'in progress', 'inProgressTasks', 'No tasks in progress');
+    updateTasksByStatus(tasks, 'await feedback', 'awaitFeedbackTasks', 'No tasks await feedback');
+    updateTasksByStatus(tasks, 'done', 'doneTasks', 'No tasks done');
     resetHeight();
 }
 
+/**
+ * This function resets the CSS custom property '--height' to 'fit-content'.
+ */
 function resetHeight() {
     document.querySelector(':root').style.setProperty('--height', 'fit-content');
 }
@@ -297,113 +301,42 @@ async function getTasksJson() {
 }
 
 /**
- * This function renders the tasks with the status “open”
- * @param {string} tasks - This is the JSON array with all tasks
+ * This function categorizes tasks based on their status.
+ * @param {Array} tasks - An array of tasks, each represented as an array with an index and task data.
  */
-function updateOpenTasks(tasks) {
-    open = tasks.filter(t => t[1] && t[1]['status'] == 'open');
-    let boardOpenTasks = document.getElementById('openTasks');
-    if (boardOpenTasks) {
-        if (open.length > 0) {
-            boardOpenTasks.innerHTML = '';
-            for (let i = 0; i < open.length; i++) {
-                const openTask = open[i][1];
-                boardOpenTasks.innerHTML += generateSmallTaskBox(openTask);
-                getAllMembers(openTask);
-                setPriority(openTask);
-                setTaskCategory(openTask);
-                getAllSubtasks(openTask);
-                truncateText(openTask);
-            };
-        } else {
-            let noTaskSentence = 'No tasks To do'
-            boardOpenTasks.innerHTML = '';
-            boardOpenTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-        };
-    }
+function categorizeTasks(tasks) {
+    open = tasks.filter(t => t[1] && t[1]['status'] === 'open');
+    inProgress = tasks.filter(t => t[1] && t[1]['status'] === 'in progress');
+    awaitFeedback = tasks.filter(t => t[1] && t[1]['status'] === 'await feedback');
+    done = tasks.filter(t => t[1] && t[1]['status'] === 'done');
 }
 
 /**
- * This function renders the tasks with the status "in Progress"
- * @param {string} tasks - This is the JSON array with all tasks
+ * This function updates the tasks displayed on the task board based on their status and filters the tasks by the specified status and renders them in the HTML element with the given ID.
+ * @param {Array} tasks - An array of tasks, each represented as an array with an index and task data.
+ * @param {string} status - The status used to filter tasks.
+ * @param {string} elementId - The ID of the HTML element where the filtered tasks will be rendered.
+ * @param {string} noTaskMessage - The message displayed when no tasks match the specified status.
  */
-function updateInProgressTasks(tasks) {
-    inProgress = tasks.filter(t => t[1] && t[1]['status'] == 'in progress');
-    let boardInProgressTasks = document.getElementById('inProgressTasks');
-    /*     boardInProgressTasks.innerHTML = ''; */
-    if (boardInProgressTasks) {
-        if (inProgress.length > 0) {
-            boardInProgressTasks.innerHTML = '';
-            for (let i = 0; i < inProgress.length; i++) {
-                const inProgressTask = inProgress[i][1];
-                boardInProgressTasks.innerHTML += generateSmallTaskBox(inProgressTask);
-                getAllMembers(inProgressTask);
-                setPriority(inProgressTask);
-                setTaskCategory(inProgressTask);
-                getAllSubtasks(inProgressTask);
-                truncateText(inProgressTask);
-            };
-        } else {
-            let noTaskSentence = 'No tasks in progress'
-            boardInProgressTasks.innerHTML = '';
-            boardInProgressTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-        };
-    }
-}
+function updateTasksByStatus(tasks, status, elementId, noTaskMessage) {
+    let filteredTasks = tasks.filter(t => t[1] && t[1]['status'] === status);
+    let taskBoard = document.getElementById(elementId);
 
-/**
- * This function renders the tasks with the status "await Feedback"
- * @param {string} tasks - This is the JSON array with all tasks
- */
-function updateAwaitFeedbackTasks(tasks) {
-    awaitFeedback = tasks.filter(t => t[1] && t[1]['status'] == 'await feedback');
-    let boardAwaitFeedbackTasks = document.getElementById('awaitFeedbackTasks');
-    /*     boardAwaitFeedbackTasks.innerHTML = ''; */
-    if (boardAwaitFeedbackTasks) {
-        if (awaitFeedback.length > 0) {
-            boardAwaitFeedbackTasks.innerHTML = '';
-            for (let i = 0; i < awaitFeedback.length; i++) {
-                const awaitFeedbackTask = awaitFeedback[i][1];
-                boardAwaitFeedbackTasks.innerHTML += generateSmallTaskBox(awaitFeedbackTask);
-                getAllMembers(awaitFeedbackTask);
-                setPriority(awaitFeedbackTask);
-                setTaskCategory(awaitFeedbackTask);
-                getAllSubtasks(awaitFeedbackTask);
-                truncateText(awaitFeedbackTask);
-            };
+    if (taskBoard) {
+        taskBoard.innerHTML = '';
+        if (filteredTasks.length > 0) {
+            for (let i = 0; i < filteredTasks.length; i++) {
+                const taskData = filteredTasks[i][1];
+                taskBoard.innerHTML += generateSmallTaskBox(taskData);
+                getAllMembers(taskData);
+                setPriority(taskData);
+                setTaskCategory(taskData);
+                getAllSubtasks(taskData);
+                truncateText(taskData);
+            }
         } else {
-            let noTaskSentence = 'No tasks await feedback'
-            boardAwaitFeedbackTasks.innerHTML = '';
-            boardAwaitFeedbackTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-        };
-    }
-}
-
-/**
- * This function renders the tasks with the status "done"
- * @param {string} tasks - This is the JSON array with all tasks
- */
-function updateDoneTasks(tasks) {
-    done = tasks.filter(t => t[1] && t[1]['status'] == 'done');
-    let boardDoneTasks = document.getElementById('doneTasks');
-    /*     boardDoneTasks.innerHTML = ''; */
-    if (boardDoneTasks) {
-        if (done.length > 0) {
-            boardDoneTasks.innerHTML = '';
-            for (let i = 0; i < done.length; i++) {
-                const doneTask = done[i][1];
-                boardDoneTasks.innerHTML += generateSmallTaskBox(doneTask);
-                getAllMembers(doneTask);
-                setPriority(doneTask);
-                setTaskCategory(doneTask);
-                getAllSubtasks(doneTask);
-                truncateText(doneTask);
-            };
-        } else {
-            let noTaskSentence = 'No tasks Done'
-            boardDoneTasks.innerHTML = '';
-            boardDoneTasks.innerHTML = generateNoTaskBox(noTaskSentence);
-        };
+            taskBoard.innerHTML = generateNoTaskBox(noTaskMessage);
+        }
     }
 }
 
@@ -515,8 +448,8 @@ function calcSubtasksProgress(subtasks, task) {
  * @param {string} task - This is the JSON array with all tasks
  */
 function truncateText(task) {
-    var description = document.getElementById(`task-description${task['id']}`).innerHTML;
-    var truncated = description.substring(0, 50) + "...";
+    let description = document.getElementById(`task-description${task['id']}`).innerHTML;
+    let truncated = description.substring(0, 50) + "...";
     document.getElementById(`task-description${task['id']}`).innerHTML = truncated;
 }
 
@@ -529,14 +462,12 @@ function truncateText(task) {
 function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.classList.add('edit-mode');
-    bigTaskBox.innerHTML = '';
-    bigTaskBox.innerHTML += generateEditTaskBox(index);
+    bigTaskBox.innerHTML = generateEditTaskBox(index);
     renderContactsInAddTasks();
     showSavedTasksData(index);
-    let currentPrio = (allTasks[index][1].prio);
-    addPrioButtonColor(currentPrio, event);
-    let currentStatus = (allTasks[index][1].status);
-    addStatusButtonColor(currentStatus, event);
+    let taskData = allTasks[index][1];
+    addPrioButtonColor(taskData.prio, event);
+    addStatusButtonColor(taskData.status, event);
     resetHeight();
     getDivHeight();
 }
@@ -596,9 +527,7 @@ async function saveNewDataTasks(index) {
 }
 
 async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
-
     editSubtask(subtaskId);
-
     setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
         let editInput = document.querySelector(`#${subtaskId} .editInput`);
         if (editInput) {
@@ -608,7 +537,6 @@ async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
                     await updateSubtask(editedSubtask, iSubtask, iTask);
                 }
             });
-
             editInput.addEventListener("keyup", async(event) => {
                 if (event.key === 'Enter') {
                     let editedSubtask = editInput.value.trim();
@@ -619,15 +547,19 @@ async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
             });
         }
     }, 0);
-    /*   await loadTasks(); */
 }
 
+/**
+ * This function updates a specific subtask's description in a task.
+ *
+ * @param {string} editedSubtask - The edited subtask description.
+ * @param {number} iSubtask - The index of the subtask within the task.
+ * @param {number} iTask - The index of the task within the tasks array.
+ */
 async function updateSubtask(editedSubtask, iSubtask, iTask) {
     let newEditedSubtask = editedSubtask.replace("- ", "");
     allTasks[iTask][1].subtask[iSubtask].description = newEditedSubtask;
-
     let updatedSubtasks = allTasks[iTask][1].subtask;
-
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: updatedSubtasks });
 }
 
@@ -636,9 +568,8 @@ async function updateSubtask(editedSubtask, iSubtask, iTask) {
  * in an input field with the id "subtask". This prevents the default form submission behavior.
  */
 function handleEnterKeyPushNewTask(event, index) {
-    // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
     if (event.keyCode === 13) {
-        event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
+        event.preventDefault(); 
         addNewSubtaskPush(index);
     }
   }
@@ -685,11 +616,9 @@ function renderExistingMembersEditTask(index) {
     let existingMembersContainer = document.querySelector('#selectedMembers');
     existingMembersContainer.innerHTML = '';
     let existingMembers = allTasks[index][1]['assigned member'];
-
     selectUsers = [];
     selectUsersColor = [];
     selectUsersLetters = [];
-
     if (typeof allTasks[index][1]['assigned member'] !== "undefined") {
         for (let i = 0; i < existingMembers.length; i++) {
             const member = existingMembers[i];
@@ -710,7 +639,6 @@ function renderSubtasks(index) {
     let subtaskAreaEdit = document.querySelector('#subtaskArea');
     let existingSubTasks = allTasks[index][1].subtask;
     subtaskAreaEdit.innerHTML = '';
-
     for (let i = 0; i < existingSubTasks.length; i++) {
         const subTask = existingSubTasks[i];
         subtaskAreaEdit.innerHTML += generateEditSubtaskInnerHTML(`subtask_${i}`, subTask.description, i, index);
@@ -734,7 +662,6 @@ async function deleteContactInTasks(currentIndex, contacts) {
         };
     };
 }
-
 
 
  function addSearchTask() {
@@ -761,8 +688,7 @@ async function deleteContactInTasks(currentIndex, contacts) {
 
 
 /**
- * This function deletes a task the specified index from the 'allTasks' array.
- * Finally it reloads the task, and closes the task dialog.
+ * This function deletes a task the specified index from the 'allTasks' array. Finally it reloads the task, and closes the task dialog.
  * @param {Event} event - The event object associated with the delete action.
  * @param {number} index - The index of the task to be deleted in the 'allTasks' array.
  */
