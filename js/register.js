@@ -3,14 +3,13 @@
  */
 
 async function addUser() {
-    existingPassword();
-    matchPassword();
     document.getElementById('mailError').classList.add('hidden');
     document.getElementById('singupError').classList.add('hidden');
+    existingMail();
 }
 
-async function existingPassword() {
 
+async function existingMail() {
         users = Object.entries(await loadData('users'));
         let email = document.getElementById('email').value.toLowerCase();
         user = users.find(u => u[1].mail == email);            
@@ -19,7 +18,6 @@ async function existingPassword() {
         }else {
             document.getElementById('mailError').classList.remove('hidden');  
         }
-
 }
 
 async function matchPassword() {
@@ -50,3 +48,80 @@ function successful() {
         window.location.href = './index.html';
     }, 1500);
 }
+
+
+function changeName() {
+    document.getElementById('nameContainer').classList.add('password_container_border');
+    document.getElementById('emailContainer').classList.remove('password_container_border');
+    document.getElementById('passwordButten').classList.remove('password_container_border');
+    document.getElementById('confirmPasswordButten').classList.remove('password_container_border');
+}
+
+
+function changeEmail() {
+    document.getElementById('nameContainer').classList.remove('password_container_border');
+    document.getElementById('emailContainer').classList.add('password_container_border');
+    document.getElementById('passwordButten').classList.remove('password_container_border');
+    document.getElementById('confirmPasswordButten').classList.remove('password_container_border');
+}
+
+function changePassword() {
+    document.getElementById('nameContainer').classList.remove('password_container_border');
+    document.getElementById('emailContainer').classList.remove('password_container_border');
+    document.getElementById('passwordButten').classList.add('password_container_border');
+    document.getElementById('confirmPasswordButten').classList.remove('password_container_border');
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        document.getElementById('passwordLock').classList.add('hidden');
+        document.getElementById('notSee').classList.remove('hidden');
+    } else {
+        document.getElementById('passwordLock').classList.add('hidden');
+        document.getElementById('notSee').classList.add('hidden');
+    }
+}
+
+
+function changeConfirmPassword() {
+    document.getElementById('nameContainer').classList.remove('password_container_border');
+    document.getElementById('emailContainer').classList.remove('password_container_border');
+    document.getElementById('passwordButten').classList.remove('password_container_border');
+    document.getElementById('confirmPasswordButten').classList.add('password_container_border');
+    var x = document.getElementById("confirmPassword");
+    if (x.type === "password") {
+        document.getElementById('confirmpPasswordLock').classList.add('hidden');
+        document.getElementById('notSeeConfirm').classList.remove('hidden');
+    } else {
+        document.getElementById('passwordLock').classList.add('hidden');
+        document.getElementById('notSeeConfirm').classList.add('hidden');
+    }
+}
+
+
+
+function togglePasswordVisibility() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+      document.getElementById('lock').classList.remove('hidden');
+      document.getElementById('notSee').classList.add('hidden');
+      
+    } else {
+      x.type = "password";
+      document.getElementById('lock').classList.add('hidden');
+      document.getElementById('notSee').classList.remove('hidden');
+    }
+  }
+
+  function toggleConfirmPasswordVisibility() {
+    var x = document.getElementById("confirmPassword");
+    if (x.type === "password") {
+      x.type = "text";
+      document.getElementById('seeConfirm').classList.remove('hidden');
+      document.getElementById('notSeeConfirm').classList.add('hidden');
+      
+    } else {
+      x.type = "password";
+      document.getElementById('seeConfirm').classList.add('hidden');
+      document.getElementById('notSeeConfirm').classList.remove('hidden');
+    }
+  }

@@ -267,7 +267,7 @@ a {
     
 }
 .password_container_border{
-    border: var(--lightblue);
+    border: 1px solid var(--lightblue);
 }
 /* input.typing {
     background-color: var(--lightblue);
@@ -349,10 +349,12 @@ input:hover {
 }
 
 .password-error {
+    flex: 1;
     color: var(--errorPink);
 }
 
 footer {
+    /* height: 60px; */
     padding: 16px;
     bottom: 40px;
 }
@@ -365,7 +367,7 @@ footer {
 @media (min-width: 900px) {
     .mobile-login {
         display: none;
-        height: 20vh;
+        height: 80px;
     }
     .butten-mobile {
         display: none;
