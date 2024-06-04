@@ -198,7 +198,7 @@ function generateEditTaskBox(index) {
                     <div style="margin-top: 24px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>
                       <br />
-                      <input onkeydown="handleEnterKey(event)" id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
+                      <input onkeydown="handleEnterKeyPushNewTask(event, ${index})" id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
                       <img onclick="addNewSubtaskPush(${index})" class="addSubtask" src="assets/img/add_task/add.svg" alt="plus icon"/>
                     </div>
                     <div id="subtaskArea">

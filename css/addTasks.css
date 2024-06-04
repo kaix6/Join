@@ -340,7 +340,7 @@ select {
 
 .subtaskGenerate:hover {
   cursor: pointer;
-  background-color: var(--backgroundSpacer);
+  background-color: var(--backgroundHoverArrow);
   border-radius: 10px;
 }
 
@@ -423,4 +423,10 @@ select {
 
 .dialogboxAddedToBoardTransform {
   transform: translateY(1000px);
+}
+
+.editInput {
+  outline: none;
+  border: unset;
+  border-bottom: 1px solid var(--lightblue);
 }

@@ -583,7 +583,6 @@ async function saveNewDataTasks(index) {
     let newDueDate = document.getElementById("date");
     let newPrio = selectedPrio;
     let newStatus = selectedStatus;
-    console.log(newStatus);
     await deleteData(`tasks/${allTasks[index][0]["assigned member"]}`);
     for (let i = 0; i < selectUsers.length; i++) {
         let memberArray = { name: selectUsers[i], color: selectUsersColor[i], letters: selectUsersLetters[i], id: i };
@@ -611,7 +610,7 @@ async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
             });
 
             editInput.addEventListener("keyup", async(event) => {
-                if (event.key === "Enter") {
+                if (event.key === 'Enter') {
                     let editedSubtask = editInput.value.trim();
                     if (editedSubtask !== "") {
                         await updateSubtask(editedSubtask, iSubtask, iTask);
@@ -631,6 +630,18 @@ async function updateSubtask(editedSubtask, iSubtask, iTask) {
 
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: updatedSubtasks });
 }
+
+/**
+ * Adds an event listener to allow the creation of a new subtask when the Enter key is pressed
+ * in an input field with the id "subtask". This prevents the default form submission behavior.
+ */
+function handleEnterKeyPushNewTask(event, index) {
+    // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
+    if (event.keyCode === 13) {
+        event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
+        addNewSubtaskPush(index);
+    }
+  }
 
 /**
  * This function deletes a subtask from a task and updates the task data in Firebase.
