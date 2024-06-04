@@ -386,6 +386,7 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
+        <span class="dividing_bar">|</span>
         <img
           onclick="removeSubtask('${subtaskId}')"
           class="iconSubtask"
@@ -406,6 +407,7 @@ function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) 
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
+        <span class="dividing_bar">|</span>
         <img
           onclick="deleteSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
           class="iconSubtask"
