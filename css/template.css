@@ -49,6 +49,7 @@
     padding: 10px;
     background-color: var(--menuButtonDarkblue);
     transform: translateX(160.97px);
+    z-index: 2;
 }
 
 .submenu_header {
