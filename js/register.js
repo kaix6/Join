@@ -125,3 +125,9 @@ function togglePasswordVisibility() {
       document.getElementById('notSeeConfirm').classList.remove('hidden');
     }
   }
+
+  function showMessage() {
+    const message = document.getElementById('successMessage');
+    message.classList.remove('hidden');
+    message.classList.add('animate');
+  }
