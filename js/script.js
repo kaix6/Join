@@ -11,10 +11,7 @@ function setPreviousPageParams() {
             let url = new URL(link.href);
             url.searchParams.set('containsLinks', containsLinks);
             link.href = url.toString();
-            /*             console.log('URL:', url.toString()); */
         } catch (error) {
-            /*             console.error('Error constructing URL:', error);
-                        console.warn('Invalid URL:', link.href); */
         }
     });
 }
@@ -151,7 +148,6 @@ function closeDialog(classDialog, showClassDialog, classDialogBg, classD_none, t
     if (window.location.pathname == '/board.html') {
         clearDialogAddTask();
     }
-
 }
 
 

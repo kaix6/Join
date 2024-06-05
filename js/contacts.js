@@ -233,9 +233,7 @@ async function addContact() {
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
     toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
     showCreateContactDoneShort();
-    fullName.value = '';
-    mail.value = '';
-    telNumber.value = '';
+    clearDataContactValues();
 }
 
 

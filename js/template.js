@@ -12,6 +12,7 @@ function showSubmenuHeader(event) {
     }
 }
 
+
 /**
  * This function closes the submenu dialog when triggered by an event.
  * It removes the 'show_submenu_header' class from all submenu headers with the class 'submenu_header_style' if the event target does not have the class 'text_profile_header'.
@@ -28,6 +29,7 @@ function closeSubmenuHeader(event) {
     })
 }
 
+
 /**
  * This function hides the help icon <img> with the class 'header_help_icon' if the current page is 'help.html' by adding the class 'd_none'
  */
@@ -39,6 +41,7 @@ function hideHelpIcon() {
     } 
 }
 
+
 /**
  * Checks if the display style of a specified element is 'flex'.
  * @returns {boolean} - Returns true if the display style of the element is 'flex', otherwise false.
@@ -46,6 +49,7 @@ function hideHelpIcon() {
 function currentElementDisplayStyleFlex() {
     return proveElementStyle(document.querySelector('#side_menu')) == "flex";
 }
+
 
 /**
  * The function checks if the specified element contains the class 'show_submenu_header'.
@@ -56,6 +60,7 @@ function classContainsShowSubmenuHeader(element) {
     return element.classList.contains('show_submenu_header');
 }
 
+
 /**
  * The function checks if the target element of the specified event does not have the class 'text_profile_header'.
  * @param {object} event - The event object representing the event where the function is triggered.
@@ -64,6 +69,7 @@ function classContainsShowSubmenuHeader(element) {
 function classIsNotTextProfileHeader(event) { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
     return event.target.className != 'text_profile_header';
 }
+
 
 /**
  * Checks if the specified page is the active page.
