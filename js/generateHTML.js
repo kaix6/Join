@@ -139,7 +139,7 @@ function generateEditTaskBox(index) {
                 </div>
                 <form onsubmit="event.preventDefault(); saveNewDataTasks(${index})">
                 <div class="scroll_EditTasks">
-                  <div class="test">
+                  <div class="scroll_EditTasks_pd">
                     <label class="fontUnderHeadlinesAddTasks" for="title">Title</label>
                     <input type="text" id="title" class="focus_editTask title_tasks" name="title" placeholder="Enter a title" required/>
                     <div style="margin-top: 24px">
