@@ -32,8 +32,8 @@ async function matchPassword() {
     let password = document.getElementById('password');
     let colorAllocation = getRandomItem(colors);
     let firstLetters = getContactsInitials(name.value);
-/*         await postData('users', { name: name.value, mail: email.value, password: password.value });
-        await postData(`contacts`, { name: capitalizeFirstLetters(name.value), mail: email.value, phone: '', color: colorAllocation, letters: firstLetters }); */
+    await postData('users', { name: name.value, mail: email.value, password: password.value });
+    await postData(`contacts`, { name: capitalizeFirstLetters(name.value), mail: email.value, phone: '', color: colorAllocation, letters: firstLetters });
         successful()
     }
 }

@@ -94,7 +94,7 @@ function selectedButtonColor(button, img, backgroundColorClass, prio) {
  * @param {string} backgroundColorClass - The name of the CSS class that sets the background color.
  * @param {string} status - The status that will be selected and set.
  */
-function selectedStatusColor(button, backgroundColorClass, status) {
+function selectedStatusColor(button, backgroundColorClass, statusTask) {
   button.classList.add(backgroundColorClass, "fontWeightAndColor");
   selectedStatus = statusTask;
 }
