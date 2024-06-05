@@ -189,29 +189,22 @@
 
 .clearButtonAddTasks:hover {
   border: 2px solid;
-  filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
-    brightness(94%) contrast(87%);
+  filter: invert(57%) sepia(96%) saturate(1077%) hue-rotate(165deg) brightness(71%) contrast(95%);
   cursor: pointer;
   box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .createButtonAddTasks img {
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
-    brightness(500%);
+  filter: invert(100%) sepia(100%) saturate(22%) hue-rotate(341deg) brightness(104%) contrast(105%);
 }
 
 select {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
-  background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
+  background-image: url(../assets/img/add_task/arrow_drop_down_down.svg);
   background-repeat: no-repeat;
-  background-position: right 16px top 50%; /* Positionierung des Pfeils */
-  background-size: 10px auto; /* Größe des Pfeils */
+  background-position: right 16px top 50%;
+  background-size: 10px auto;
 }
-
-/* #date {
-  background-image: url(../assets/img/add_task/event.svg);
-  background-size: 26px auto;
-} */
 
 #date {
   appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
@@ -244,8 +237,7 @@ select {
 }
 
 .imgColor {
-  filter: invert(99%) sepia(0%) saturate(7500%) hue-rotate(104deg)
-    brightness(507%) contrast(101%);
+  filter: invert(0%) sepia(100%) saturate(22%) hue-rotate(341deg) brightness(204%) contrast(105%);
 }
 
 #selectedMembers_edit,
@@ -369,8 +361,8 @@ select {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; /* Horizontale Zentrierung */
-  align-items: center; /* Vertikale Zentrierung */
+  justify-content: center;
+  align-items: center;
   pointer-events: none; /* Macht den Container klick-through */
 }
 
@@ -383,20 +375,21 @@ select {
   border-radius: 20px;
   color: white;
   font-weight: bold;
-  display: flex; /* Flexbox aktivieren */
-  justify-content: center; /* Horizontal zentrieren */
-  align-items: center; /* Vertikal zentrieren */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   pointer-events: auto; /* Hebt die Klick-through-Eigenschaft für das Dialogfeld selbst auf */
   transition: all 100ms ease-in-out;
-  opacity: 0; /* Anfangs unsichtbar */
+  opacity: 0;
   transform: translateY(1000px);
+  position: absolute;
 }
 
 /* Klasse für die Anzeige des Dialogfelds */
 .display {
-  opacity: 1; /* Sichtbar */
-  transform: translateY(0); /* Zurück zur ursprünglichen Position */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .show_dialog_addTask {
