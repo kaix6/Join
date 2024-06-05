@@ -262,7 +262,12 @@
               </div>
               <div class="board-search-add">
                 <div class="search-field">
-                  <input oninput="addSearchTask()" id="searchField" type="text" placeholder="Find Task" />
+                  <div class="search-container">
+                    <input oninput="addSearchTask()" id="searchField" type="text" placeholder="Find Task" />
+                    <div id="delete-search" class="delete-search d-none" onclick="deleteSearch()">
+                      <img class="delete-search-img" src="./assets/img/add_task/close.svg">
+                    </div>
+                  </div>
                   <div class="container-search-icon">
                     <img class="search-icon" src="./assets/img/board/search.svg" />
                   </div>
