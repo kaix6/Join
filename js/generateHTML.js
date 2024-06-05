@@ -181,16 +181,16 @@ function generateEditTaskBox(index) {
                     <div class="status_edit fontUnderHeadlinesAddTasks">
                       <p class="fontUnderHeadlinesAddTasks">Status</p>
                       <div class="status_edit_buttons">
-                        <button id="buttonToDo" onclick="changeStatusTo('open', event, ${index})" class="buttonPrio buttonPrio_edit">
+                        <button id="buttonToDo" onclick="addStatusButtonColor('open', event)" class="buttonPrio buttonPrio_edit">
                           To Do
                         </button>
-                        <button id="buttonProgress" onclick="changeStatusTo('in progress', event, ${index})" class="buttonPrio buttonPrio_edit">
+                        <button id="buttonProgress" onclick="addStatusButtonColor('in progress', event)" class="buttonPrio buttonPrio_edit">
                           In Progress
                         </button>
-                        <button id="buttonFeedback" onclick="changeStatusTo('await feedback', event, ${index})" class="buttonPrio buttonPrio_edit">
+                        <button id="buttonFeedback" onclick="addStatusButtonColor('await feedback', event)" class="buttonPrio buttonPrio_edit">
                           Await Feedback
                         </button>
-                        <button id="buttonDone" onclick="changeStatusTo('done', event, ${index})" class="buttonPrio buttonPrio_edit">
+                        <button id="buttonDone" onclick="addStatusButtonColor('done', event)" class="buttonPrio buttonPrio_edit">
                           Done
                         </button>
                       </div>
@@ -198,7 +198,7 @@ function generateEditTaskBox(index) {
                     <div style="margin-top: 24px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask">Subtasks <span id="textSubtask">Please enter a text</span></label>
                       <br />
-                      <input onkeydown="handleEnterKey(event)" id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
+                      <input onkeydown="handleEnterKeyPushNewTask(event, ${index})" id="subtask" class="focus_editTask" type="text" placeholder="Add new subtask"/>
                       <img onclick="addNewSubtaskPush(${index})" class="addSubtask" src="assets/img/add_task/add.svg" alt="plus icon"/>
                     </div>
                     <div id="subtaskArea">
@@ -386,6 +386,7 @@ function generateSubtaskInnerHTML(subtaskId, subtaskValue) {
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
+        <span class="dividing_bar">|</span>
         <img
           onclick="removeSubtask('${subtaskId}')"
           class="iconSubtask"
@@ -406,6 +407,7 @@ function generateEditSubtaskInnerHTML(subtaskId, subtaskValue, iSubtask, iTask) 
           class="iconSubtask"
           src="assets/img/add_task/edit.svg"
         />
+        <span class="dividing_bar">|</span>
         <img
           onclick="deleteSubtaskEdit('${subtaskId}', ${iSubtask}, ${iTask})"
           class="iconSubtask"

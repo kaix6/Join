@@ -332,7 +332,7 @@ select {
 
 .subtaskGenerate:hover {
   cursor: pointer;
-  background-color: var(--backgroundSpacer);
+  background-color: var(--backgroundHoverArrow);
   border-radius: 10px;
 }
 
@@ -400,14 +400,26 @@ select {
   cursor: pointer;
 }
 
-.subtaskGenerate img {
+.dividing_bar {
+  font-weight: 100;
+}
+
+.subtaskGenerate img,
+.subtaskGenerate span {
   display: none;
 }
 
-.subtaskGenerate:hover img {
+.subtaskGenerate:hover img,
+.subtaskGenerate:hover span {
   display: inline; 
 }
 
 .dialogboxAddedToBoardTransform {
   transform: translateY(1000px);
+}
+
+.editInput {
+  outline: none;
+  border: unset;
+  border-bottom: 1px solid var(--lightblue);
 }
