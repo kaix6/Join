@@ -189,15 +189,13 @@
 
 .clearButtonAddTasks:hover {
   border: 2px solid;
-  filter: invert(70%) sepia(56%) saturate(4001%) hue-rotate(165deg)
-    brightness(94%) contrast(87%);
+  filter: invert(57%) sepia(96%) saturate(1077%) hue-rotate(165deg) brightness(71%) contrast(95%);
   cursor: pointer;
   box-shadow: -1px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .createButtonAddTasks img {
-  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
-    brightness(500%);
+  filter: invert(100%) sepia(100%) saturate(22%) hue-rotate(341deg) brightness(104%) contrast(105%);
 }
 
 select {
@@ -239,8 +237,7 @@ select {
 }
 
 .imgColor {
-  filter: invert(99%) sepia(0%) saturate(7500%) hue-rotate(104deg)
-    brightness(507%) contrast(101%);
+  filter: invert(0%) sepia(100%) saturate(22%) hue-rotate(341deg) brightness(204%) contrast(105%);
 }
 
 #selectedMembers_edit,
