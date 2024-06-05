@@ -116,29 +116,53 @@ a {
     }
 }
 
-#successMessage {
+/* #successMessage {
     bottom: -50px;
     left: 50%;
     /* transform: translateX(-50%); */
     /* transition: bottom 0.5s ease-in-out; */
-}
 
+.login_successful {
+    position: absolute;
+    bottom: -100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-weight: 700;
+    background-color: var(--menuButtonDarkblue);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 15px 24px;
+    border: none;
+  }
+  @keyframes moveSpan {
+    0% {
+      bottom: -100px;
+    }
+    100% {
+      bottom: 30%;
+    }
+  }
+  .animate {
+    display: block;
+    animation: moveSpan 2s linear forwards;
+  }
 
-/* .show {
+ .show {
     display: block;
     bottom: 100px;
     animation: slideIn 0.5s forwards;
-} */
+}
 
 
-/* @keyframes slideIn {
+ @keyframes slideIn {
     from {
         bottom: -100px;
     }
     to {
         bottom: 50%;
-    }
-} */
+    } 
+} 
 
 .cover-button {
     visibility: hidden;
@@ -267,11 +291,9 @@ a {
     
 }
 .password_container_border{
-    border: var(--lightblue);
+    border: 1px solid var(--lightblue);
 }
-/* input.typing {
-    background-color: var(--lightblue);
-} */
+
 .password_container input {
     border: none;
     outline: none;
@@ -349,10 +371,12 @@ input:hover {
 }
 
 .password-error {
+    flex: 1;
     color: var(--errorPink);
 }
 
 footer {
+    /* height: 60px; */
     padding: 16px;
     bottom: 40px;
 }
@@ -365,7 +389,7 @@ footer {
 @media (min-width: 900px) {
     .mobile-login {
         display: none;
-        height: 20vh;
+        height: 80px;
     }
     .butten-mobile {
         display: none;

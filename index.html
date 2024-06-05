@@ -24,35 +24,35 @@
             </div>
         </div>
         <header class="d-center-space-betwen">
-
             <img src="./assets/img/logIn_SignUp/Capa1.svg" alt="" class="imglogo">
             <div class="destop-login display-ac">
                 <div class=" display-ac gap">
                     <span>Not a join user?</span>
-
                     <a href="./signup.html">
                         <p class="button-login-blue button-p">Sign up</p>
                     </a>
                 </div>
             </div>
         </header>
-
         <div class="display-fcc">
             <div class="frame153 display-fccc">
                 <div class="header_LogIn">
                     <h1 class="headline_logIn">Log in</h1>
-
                     <div class="vector_login"></div>
                 </div>
                 <div>
-                    <form onsubmit="login(); return false;" class="display-fccc gap">
-                        <div class="password_container">
-                            <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email" required>
+                    <form onsubmit="login(); return false;" class="display-fccc gap">                        
+                        <div id="emailContainer" class="password_container">
+                            <input id="email" placeholder="Email" type="email" class="input-with-image b-img-email" onclick="changeEmail()" required>
                             <img src="./assets/img/logIn_SignUp/mail.svg" alt="">
                         </div>
                         <div id="passwordButten" class="password_container">
-                            <input id="password" placeholder="Password" type="password" required>
-                            <img src="./assets/img/logIn_SignUp/lock.svg " alt=" " id="lockUnlock"  onclick="togglePasswordVisibility() " class=" password_lock ">
+                                   <input id="password" placeholder="Password" type="password" onclick="changePassword()" required >
+                            <img src="./assets/img/logIn_SignUp/lock.svg " alt="" id="passwordLock" class="password_lock">
+                            <a role="button" class="password_butten" onclick="togglePasswordVisibility()">
+                                <img src="./assets/img/logIn_SignUp/visibility_off.svg" alt="" id="unlock"   class="hidden"  >
+                                <img src="./assets/img/logIn_SignUp/visibility.svg" alt="" id="lock" class="hidden">
+                            </a>
                         </div>
                         <span id="loginError" class="password-error hidden ">Wrong password Ups! Try again.</span>
                             <div class="accept_box">
@@ -69,8 +69,6 @@
                     </form>
                 </div>
             </div>
-
-        </div>
         <div class="mobile-login display-fcc gap padding ">
             <span>Not a join user?</span>
 
