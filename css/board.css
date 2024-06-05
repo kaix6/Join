@@ -584,14 +584,9 @@
         display: none;
     }
 
-
     .task-box-big.edit-mode {
         overflow-y: hidden; 
     }
-
-/*     .edit_box_big {
-        height: 750px; 
-    } */
     
     .scroll_EditTasks {
         max-height: 650px; 
@@ -688,7 +683,6 @@
     .footer_edit_task {
         display: flex;
         justify-content: flex-end;
-/*         padding-bottom: 48px; */
     }
 
     .test {

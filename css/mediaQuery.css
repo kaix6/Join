@@ -1284,3 +1284,135 @@
 }
 
 /* Board - End     */
+/* formal-content - Start     */
+@media(max-width: 1100px) {
+
+  .content {
+      margin-left: 80px;
+      margin-right: 80px;
+  }
+}
+
+@media(max-width: 800px) {
+
+  .container-navi-content{
+      flex-direction: column-reverse;
+  }
+}
+
+@media(max-width: 500px){
+  h1{
+      font-size: 40px;
+  }
+
+  .content{
+      margin-left: 16px;
+      margin-right: 16px;
+      margin-top: 40px;
+  }
+}
+/* formal-content - End     */
+/* style_login - Start     */
+@media (min-width: 900px) {
+  .mobile-login {
+      display: none;
+      height: 80px;
+  }
+  .butten-mobile {
+      display: none;
+      width: 150px;
+  }
+}
+
+@media (max-width: 900px) {
+  .destop-login {
+      display: none;
+  }
+  .join-logo {
+      background-color: #2A3647;
+  }
+  .img-animaschen {
+      height: 121.97px;
+      width: 100.03px;
+      background: url(../assets/img/logIn_SignUp/Capa2.svg);
+  }
+  .limitation {
+      width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .password_container {
+      width: 364px;
+  }
+  .frame153 {
+      padding: 32px 24px;
+  }
+  .imglogo {
+      width: 64px;
+      padding: 37px 38px;
+  }
+  .frame153-singup {
+      width: 80%;
+      padding: 32px 24px;
+  }
+  .headline_logIn {
+      font-size: 47px;
+  }
+  .logIn-btns {
+      display: flex;
+      flex-direction: column;
+  }
+  .mobile_login_btn {
+      width: 180px;
+      padding: 16px 0px;
+  }
+  .text_login_btn {
+      font-size: 16px;
+  }
+  .arrow_signUp {
+      margin-left: -100px;
+  }
+}
+
+@media (max-width: 600px) {
+   .password_container {
+      width: 364px;
+  }
+}
+
+@media (max-width: 500px) {
+  .password_container {
+      width: 340px;
+  }
+  .frame153-singup {
+      padding: 32px 24px;
+  }
+}
+
+@media (max-width: 460px) {
+  .password_container {
+      width: 90%;
+  }
+  .password_container input {
+      width: 90%;
+  }
+  .arrow_signUp {
+      margin-left: -60px;
+  }
+}
+
+@media (max-width: 380px) {
+   .imglogo {
+      padding: 24px;
+      height: 40px;
+  }
+  .imglogo {
+      width: 56px;
+      padding: 30px;
+  }
+  .frame153-singup {
+      padding: 24px;
+  }
+}
+/* style_login - End     */
