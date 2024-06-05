@@ -1,6 +1,5 @@
 let users = [];
 
-
 /**
  * This function is to animat the start page
  */
