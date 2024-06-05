@@ -667,9 +667,11 @@ async function deleteContactInTasks(currentIndex, contacts) {
  function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
+    let deleteButton = document.getElementById('delete-search');
     let inputSearch = document.getElementById("no-search-result");
     if (search === '') {
         loadTasks();
+        deleteButton.classList.add('d-none');
         return;
     }
     for (let i = 0; i < allTasks.length; i++) {
@@ -677,6 +679,7 @@ async function deleteContactInTasks(currentIndex, contacts) {
         if (tasks[1]['description'].toLowerCase().includes(search) || tasks[1]['title'].toLowerCase().includes(search)) {
             filteredTasks.push(tasks);
         };
+        deleteButton.classList.remove('d-none');
         updateTasksHTML(filteredTasks);
     };
     if (filteredTasks.length == 0) {
@@ -684,6 +687,13 @@ async function deleteContactInTasks(currentIndex, contacts) {
     } else {
         inputSearch.classList.add('d-none');
     };
+}
+
+function deleteSearch() {
+    let deleteButton = document.getElementById('delete-search');
+    document.getElementById('searchField').value = '';
+    deleteButton.classList.add('d-none');
+    loadTasks();
 }
 
 

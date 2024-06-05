@@ -28,8 +28,7 @@ let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in d
  * in an input field with the id "subtask". This prevents the default form submission behavior.
  */
 function handleEnterKey(event) {
-  // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
-  if (event.keyCode === 13) {
+  if (event.keyCode === 13) { // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
       event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
       addNewSubtask(); // Die Funktion, die ausgeführt werden soll
   }
@@ -88,7 +87,14 @@ function selectedButtonColor(button, img, backgroundColorClass, prio) {
   selectedPrio = prio;
 }
 
-function selectedStatusColor(button, backgroundColorClass, statusTask) {
+/**
+ * Adds background color and text formatting classes to the button and sets the selected status.
+ * 
+ * @param {HTMLElement} button - The button element to which the classes will be added.
+ * @param {string} backgroundColorClass - The name of the CSS class that sets the background color.
+ * @param {string} status - The status that will be selected and set.
+ */
+function selectedStatusColor(button, backgroundColorClass, status) {
   button.classList.add(backgroundColorClass, "fontWeightAndColor");
   selectedStatus = statusTask;
 }
@@ -106,6 +112,7 @@ function initAddTasks() {
   standardPrioButton();
   localStorage.removeItem('subtaskStatus');
   dateValidation();
+  abledButton();
 }
 
 /**
@@ -142,6 +149,14 @@ function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedi
   }
 }
 
+/**
+ * Removes specified classes from the given buttons.
+ * 
+ * @param {HTMLElement} buttonToDo - The button element representing the "To Do" status.
+ * @param {HTMLElement} buttonProgress - The button element representing the "In Progress" status.
+ * @param {HTMLElement} buttonFeedback - The button element representing the "Feedback" status.
+ * @param {HTMLElement} buttonDone - The button element representing the "Done" status.
+ */
 function removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone) {
   const classesToRemove = ["backgroundColorBlue", "fontWeightAndColor",];
   const elements = [buttonToDo, buttonProgress, buttonFeedback, buttonDone];
@@ -319,6 +334,7 @@ async function saveTaskToJson(title, description, date, prio, category) {
   localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
+  disabledButton();
   showAddToBoardDialog();
   showDialogAddTask();
   initRemoveItemTasks();
@@ -627,4 +643,18 @@ function showDialogAddTask() {
   setTimeout(() => {
   dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
   }, 3000); // Verweildauer in Millisekunden
+}
+
+/**
+ * Disables the submit button by setting its disabled property to true.
+ */
+function disabledButton() {
+  document.getElementById('submitButton').disabled = true;
+}
+
+/**
+ * Enables the submit button by setting its disabled property to false.
+ */
+function abledButton() {
+  document.getElementById('submitButton').disabled = false;
 }
