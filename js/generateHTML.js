@@ -520,3 +520,8 @@ function generateSummaryTextInnerHTML(name, currentGreeting) {
 }
 
 
+function generateLettersHeaerInnerHTML(letters) {
+  return /* HTML */ `
+      <p class="text_profile_header">${letters}</p>`;
+}
+

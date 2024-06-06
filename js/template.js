@@ -81,6 +81,13 @@ function specificPageIsActive(page) {
 }
 
 
+async function showLetters() {
+    let userInfo = await getUserInfos();
+    let borderProfile = document.querySelector('.border_profile');
+    borderProfile.innerHTML = generateLettersHeaerInnerHTML(userInfo.letters);
+}
+
+
 
 
 

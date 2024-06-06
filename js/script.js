@@ -1,3 +1,5 @@
+let userMail;
+
 /**
  * This funciton adds a 'containsLinks' query parameter to all anchor tags' href attributes.
  *  * The 'containsLinks' parameter indicates whether the '.top_side_menu' element contains the '.links' element.
@@ -52,6 +54,8 @@ async function includeHTML() {
     }
     loadTemplateFunctions();
     setPreviousPageParams();
+    loadUser();
+    showLetters();
 }
 
 
@@ -179,4 +183,23 @@ function removeElements() {
         document.querySelector('#side_menu').remove();
         document.querySelector('#main_container').style.height = "calc(100vh - 80px)";
     }
+}
+
+
+function loadUser() {
+    userMail = localStorage.getItem('userMail');
+}
+
+
+async function getUserInfos() {
+    let name = 'Guest';
+    let letters = 'G';
+    if (userMail) {
+        contacts = Object.entries(await loadData('contacts'));
+        let formattedUserMail = userMail.replace(/"/g, '');
+        let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
+            name = contacts[currentIndex][1].name;
+            letters = contacts[currentIndex][1].letters;
+    }
+    return { name, letters };
 }

@@ -17,7 +17,6 @@ function animationWindow() {
  */
 
 
-
 async function login() {
     users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
@@ -34,15 +33,16 @@ async function login() {
 }
 
 
+function guestLogin() {
+    localStorage.removeItem('userMail'); 
+    window.location.href = './summary.html';
+}
+
+
 function saveUser(email) {
     userMail = JSON.stringify(email);
     localStorage.setItem("userMail", userMail);
 }
-
-function loadUser() {
-    userMail = localStorage.getItem('userMail');
-}
-
 
 
 function changePassword() {
@@ -77,3 +77,6 @@ function togglePasswordVisibility() {
       document.getElementById('unlock').classList.remove('hidden');
     }
   }
+
+
+
