@@ -72,7 +72,7 @@ function classIsNotTextProfileHeader(event) { //event.target.className gibt die 
 
 
 /**
- * Checks if the specified page is the active page.
+ * This function checks if the specified page is the active page.
  * @param {string} page - The URL of the page to check if it's active.
  * @returns {boolean} - Returns true if the specified page has the URL 'help.html', otherwise false.
  */
@@ -81,6 +81,9 @@ function specificPageIsActive(page) {
 }
 
 
+/**
+ * This function fetches user information and updates the inner HTML of the element with the class 'border_profile' to display the user's letters.
+ */
 async function showLetters() {
     let userInfo = await getUserInfos();
     let borderProfile = document.querySelector('.border_profile');

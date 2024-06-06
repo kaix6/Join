@@ -185,12 +185,18 @@ function removeElements() {
     }
 }
 
-
+/**
+ * This function loads the user's email from the local storage and stores it in the global variable 'userMail'.
+ */
 function loadUser() {
     userMail = localStorage.getItem('userMail');
 }
 
 
+/**
+ * This function retrieves the user information including name and initials.
+ * @returns {name: string, letters: string}- A promise that resolves to an object containing the user's name and initials.
+ */
 async function getUserInfos() {
     let name = 'Guest';
     let letters = 'G';

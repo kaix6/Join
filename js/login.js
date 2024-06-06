@@ -33,6 +33,9 @@ async function login() {
 }
 
 
+/**
+ * This function logs in as a guest user by removing the userMail from localStorage and redirecting to the summary page.
+ */
 function guestLogin() {
     localStorage.removeItem('userMail'); 
     window.location.href = './summary.html';

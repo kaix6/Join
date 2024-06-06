@@ -78,16 +78,9 @@ function showGreeting() {
 }
 
 
-/* async function getUserInfos() {
-    contacts = Object.entries(await loadData('contacts'));
-    let formattedUserMail = userMail.replace(/"/g, '');
-    let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
-    let name = contacts[currentIndex][1].name;
-    let letters = contacts[currentIndex][1].letters;
-    return { name, letters };
-} */
-
-
+/**
+ * This function updates the summary text with the user's name retrieved from the user's information.
+ */
 async function showName() {
     let userInfo = await getUserInfos();
     let currentGreeting = showGreeting();
