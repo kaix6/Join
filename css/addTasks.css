@@ -12,10 +12,8 @@
 }
 
 .mainAddTasks {
-  margin-left: 96px;
+  margin: 50px 96px 0 96px;
   display: flex;
-  margin-top: 50px;
-  margin-right: 96px;
   justify-content: space-between;
 }
 
@@ -39,8 +37,7 @@
   width: 1px;
   height: 380px;
   border: 1px solid var(--backgroundSpacer);
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 0 40px;
 }
 
 .fontUnderHeadlinesAddTasks {
@@ -294,8 +291,7 @@ select {
 #subtaskArea {
   height: 78px;
   width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -343,8 +339,7 @@ select {
 
 .iconSubtask:hover {
   cursor: pointer;
-  filter: invert(53%) sepia(90%) saturate(655%) hue-rotate(165deg)
-    brightness(94%) contrast(88%);
+  filter: invert(53%) sepia(90%) saturate(655%) hue-rotate(165deg) brightness(94%) contrast(88%);
 }
 
 #textSubtask {

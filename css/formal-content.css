@@ -1,9 +1,6 @@
 
 .content{
-    margin-top: 100px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-bottom: 100px;
+    margin: 100px;
 }
 
 .h1-container{
@@ -27,16 +24,13 @@
     box-sizing: border-box;
 }
 
-.list h2{
+.list h2, 
+.list-textbox p {
     margin-top: 0;
 }
 
 .list-textbox{
     margin-left: 45px;
-}
-
-.list-textbox p{
-    margin-top: 0;
 }
 
 .a-join{
@@ -76,4 +70,3 @@
 #main_container {
    overflow-y: auto;
 }
-

@@ -1164,13 +1164,6 @@
   }
 }
 
-@media (max-height: 620px) {
-
-  .scroll_EditTasks {
-      max-height: 175px;
-  }
-}
-
 @media(max-width: 500px){
 
   h1{
@@ -1231,10 +1224,6 @@
 
   .wrapper_close_edit_task {
      background-color: var(--white);
-  }
-
-  .scroll_EditTasks {
-     max-height: 300px;
   }
 
   .d-flex p{
