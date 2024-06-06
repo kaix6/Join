@@ -35,9 +35,12 @@ async function login() {
 
 
 function saveUser(email) {
-    let  userMail = JSON.stringify(email);
+    userMail = JSON.stringify(email);
     localStorage.setItem("userMail", userMail);
+}
 
+function loadUser() {
+    userMail = localStorage.getItem('userMail');
 }
 
 

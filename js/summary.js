@@ -3,6 +3,7 @@ let inProgress;
 let awaitFeedback;
 let done;
 let urgentDate = [];
+let userMail;
 
 
 /**
@@ -11,6 +12,9 @@ let urgentDate = [];
 async function initializeSummary() {
     await loadTasks();
     getTasksLength();
+    loadUser();
+    contacts = Object.entries(await loadData('contacts'));
+    showName();
 }
 
 
@@ -21,10 +25,9 @@ async function initializeSummary() {
 function getTasksLength() {
     let urgent = allTasks.filter(t => t[1]['prio'] == 'urgent' && t[1]['status'] !== 'done');
     let upcomingDeadline = formateDateSummary(urgent);
-    let currentGreeting = showGreeting();
     let mainSummary = document.querySelector('.main_summary');
     mainSummary.innerHTML = '';
-    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, currentGreeting, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
+    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
 }
 
 
@@ -73,4 +76,22 @@ function showGreeting() {
     } else {
         return 'Still awake or do you ever sleep?';
     }
+}
+
+
+function getUserInfos() {
+    let formattedUserMail = userMail.replace(/"/g, '');
+    let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
+    let name = contacts[currentIndex][1].name;
+    let letters = contacts[currentIndex][1].letters;
+    return { name, letters };
+}
+
+
+function showName() {
+    let userInfo = getUserInfos();
+    let currentGreeting = showGreeting();
+    let summaryText = document.querySelector('.summaryText');
+    summaryText.innerHTML = generateSummaryTextInnerHTML(userInfo.name, currentGreeting);
+
 }

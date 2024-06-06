@@ -440,7 +440,7 @@ function generateCategoryAfterClearDialogAddTask() {
 }
 
 // Summary
-function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -508,11 +508,15 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
               </div>
             </div>
             <div class="summaryText">
-              <span class="goodMorningSummary">${currentGreeting}</span>
-              <span class="nameSummary">Vorname Nachname </span>
+
             </div>
       </div>`;
 }
 
+function generateSummaryTextInnerHTML(name, currentGreeting) {
+  return /* HTML */ `
+      <span class="goodMorningSummary">${currentGreeting}</span>
+      <span class="nameSummary">${name}</span>`
+}
 
 
