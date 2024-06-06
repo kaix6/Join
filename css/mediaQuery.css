@@ -1,10 +1,8 @@
 @media (min-width: 801px) {
-
   /* Header */
   .border_profile:hover { /* just the hover effect that will only trigger at 801px and up */
     background-color: #0c2e621f;
   }
-
   /* Side Menu */
   .menu_icon_text:not(.activeLink):hover,
   .submenu_header_style a:not(.activeLink):hover {
@@ -13,7 +11,6 @@
 }
 
 @media (max-width: 1110px) {
-
   /* Header */
   #header {
     height: 80px;
@@ -22,275 +19,9 @@
 
   #main_container {
     height: calc(100vh - 80px);
-}
-}
-
-@media (max-width: 800px) {
-
-  /* Header */
-  #header {
-    padding: 20px 16px;
-  }
-
-  .headline {
-    display: none;
-  }
-
-  .logo_header_mobile {
-    display: flex;
-    width: 32px;
-    height: 39.02px;
-  }
-
-  .header_help_icon {
-    display: none;
-  }
-
-  .border_profile {
-    width: 40px;
-    height: 40px;
-  }
-
-  .text_profile_header {
-    font-weight: 400;
-  }
-
-  /* side menu bottom */
-
-  #side_menu_desktop {
-    display: none;
-  }
-
-  #side_menu {
-    background-color: var(--menuButtonDarkblue);
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 16px;
-  }
-
-  .side_menu_sticky {
-    position: sticky;
-    bottom: 0;
-  }
-
-  .menu_icon_text {
-    flex-direction: column;
-    padding: 15px 0px;
-    width: 80px;
-    gap: 10px;
-  }
-
-  .menu_icon_image {
-    width: 24px;
-    height: 24px;
-  }
-
-  .link_style {
-    font-size: 14px;
-    font-family: "Open Sans";
-  }
-
-  .activeLink {
-    border-radius: 16px;
-  }
-
-  .wrapped_maxWidth {
-    flex-direction: column;
-}
-
-  /* Scrollbar */
-  
-  ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-  
-  ::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-    }
-  
-    ::-webkit-scrollbar-thumb:horizontal {
-      display: none;
-    }
-
-  #main_container {
-      height: calc(100vh - 80px - 83px);
-  }
-}
-
-/* Contacts */
-
-@media (min-width: 801px) {
-
-  .add_change_btn_mobile {
-    margin-bottom: 16px;
-  }
-
-  .add_change_btn_mobile:hover {
-    background-color: var(--lightblue);
-  }
-
-  .contact:not(.active_contact):hover {
-    border-radius: 10px;
-    background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
   }
 
   /* Contacts - Dialog add & edit Contact */
-  .cancel_create_contact_edit_btn:hover,
-  .cancel_create_contact_btn:hover {
-    box-shadow: 0px 4px 4px 0px #00000040;
-    border: 1px solid var(--lightblue);
-    color: var(--lightblue);
-  }
-
-  .cancel_create_contact_btn:hover .img_cancel_checked_btn {
-    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg)
-      brightness(96%) contrast(84%);
-  }
-
-  .blue_btn:hover {
-    background-color: var(--lightblue);
-  }
-}
-
-/* Contact Overview*/
-
-@media (min-width: 1111px) {
-
-  #contact_view {
-    display: block; /* div mit id="contact_view" ist nur ab width von 1111px sichtbar, sonst class="d_none" */
-  }
-
-  #content_contacts {
-    min-width: 456px;
-    max-width: 456px;
-  }
-}
-
-@media (max-width: 1280px) {
-
-  /* Contacts - Dialog add & edit Contact */
-  .dialog_content {
-    flex-direction: column;
-  }
-
-  .create_contact_short_name_edit,
-  .create_contact_short_name {
-    z-index: 1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .dialog_add_contact,
-  .dialog_edit_contact {
-    flex-direction: column;
-    width: 450px;
-    max-height: 842px;
-  }
-
-  .top_dialog_add_edit {
-    padding-left: 24px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: unset;
-    min-height: 378px;
-  }
-
-  .img_logo {
-    display: none;
-  }
-
-  .wrapper_close_add_edit_contact {
-    right: 18px;
-    top: 24px;
-  }
-  .close_add_edit_contact {
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg)
-      brightness(105%) contrast(103%);
-  }
-
-  .wrapper_close_add_edit_contact:hover {
-    background-color: initial;
-  }
-
-  .headline_add_edit_contact {
-    font-size: 47px;
-    font-weight: 700;
-    color: var(--white);
-  }
-
-  .text_add_edit_contact_dialog {
-    font-size: 20px;
-  }
-
-  .bottom_dialog_add_edit {
-    min-height: 443px;
-    border-bottom-left-radius: 30px;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0;
-  }
-  .create_contact_form {
-    gap: 10px;
-    align-items: center;
-  }
-
-  .create_contact_input {
-    padding: 10px 21px;
-  }
-
-  .cancel_create_contact_btn {
-    display: none;
-  }
-
-  .create_contact_btn {
-    padding: 18px 10px;
-  }
-
-  .edit_content,
-  .delete_content {
-    gap: 8px;
-    padding: 13px;
-  }
-}
-
-@media (max-width: 1220px) {
-
-  .left_part_overview {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-
-  .left_part_overview_second {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 18px;
-  }
-
-  .seperator_line_content {
-    height: 3px;
-    width: 90px;
-  }
-
-  .short_name_overview {
-    min-width: 80px;
-    min-height: 80px;
-  }
-
-  .name_overview {
-    font-size: 36px;
-  }
-
-  .short_name_text_overview {
-    font-size: 27px;
-    font-weight: 400;
-  }
-}
-
-@media (max-width: 1110px) {
-
   #content_contacts {
     width: 100%;
     height: 100%;
@@ -331,48 +62,94 @@
   }
 }
 
-@media screen and (max-width: 1150px) and (min-width: 1111px) {
-
-  .left_part_overview,
-  .floating_contact {
-    padding-left: 20px;
-  }
-
-  .floating_contact {
-    padding: 32px 20px;
-  }
-  .name_overview {
-    max-width: 240px;
-    word-break: break-all;
-  }
-  /* Contact created */
-
-  .create_contact_done {
-    left: 708px;
-  }
-}
-
-/* when browser's width is between 800 and 1110px, change the width of a <div> element */
-@media screen and (max-width: 1110px) and (min-width: 800px) {
-
-  /* Contacts */
-  .contact {
-    width: 352px;
-  }
-
-  /* Contact created */
-  .create_contact_done {
-    left: 287px;
-  }
-}
-
-@media screen and (max-width: 800px) and (min-width: 460px) { /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
-  .contacts {
-    padding-left: calc((100% - 352px) / 2);
-  }
-}
-
 @media (max-width: 800px) {
+  /* Header */
+  #header {
+    padding: 20px 16px;
+  }
+
+  .headline {
+    display: none;
+  }
+
+  .logo_header_mobile {
+    display: flex;
+    width: 32px;
+    height: 39.02px;
+  }
+
+  .header_help_icon {
+    display: none;
+  }
+
+  .border_profile {
+    width: 40px;
+    height: 40px;
+  }
+
+  .text_profile_header {
+    font-weight: 400;
+  }
+
+  /* side menu bottom */
+  #side_menu_desktop {
+    display: none;
+  }
+
+  #side_menu {
+    background-color: var(--menuButtonDarkblue);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 16px;
+  }
+
+  .side_menu_sticky {
+    position: sticky;
+    bottom: 0;
+  }
+
+  .menu_icon_text {
+    flex-direction: column;
+    padding: 15px 0px;
+    width: 80px;
+    gap: 10px;
+  }
+
+  .menu_icon_image {
+    width: 24px;
+    height: 24px;
+  }
+
+  .link_style {
+    font-size: 14px;
+    font-family: "Open Sans";
+  }
+
+  .activeLink {
+    border-radius: 16px;
+  }
+
+  .wrapped_maxWidth {
+    flex-direction: column;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:horizontal {
+    display: none;
+  }
+
+  #main_container {
+    height: calc(100vh - 80px - 83px);
+  }
 
   /* Contacts - Dialog add & edit Contact */
   .dialog_add_contact,
@@ -469,20 +246,301 @@
   .create_contact_input {
     max-width: 364px;
   }
+
+  /* AddTask */
+  .footer {
+    bottom: 100px;
+  }
+
+  /* Board */
+  .background-big-task {
+    height: calc(100% - 83px);
+  }
+
+  .right_section {
+    width: 100%;
+  }
+
+  .status_edit {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    display: block;
+  }
+
+  /* formal-content */
+  .container-navi-content {
+    flex-direction: column-reverse;
+  }
+
+  /* style-login */
+  .password_container {
+    width: 364px;
+  }
+
+  .frame153 {
+    padding: 32px 24px;
+  }
+
+  .imglogo {
+    width: 64px;
+    padding: 37px 38px;
+  }
+
+  .frame153-singup {
+    width: 80%;
+    padding: 32px 24px;
+  }
+
+  .headline_logIn {
+    font-size: 47px;
+  }
+
+  .logIn-btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile_login_btn {
+    width: 180px;
+    padding: 16px 0px;
+  }
+
+  .text_login_btn {
+    font-size: 16px;
+  }
+
+  .arrow_signUp {
+    margin-left: -100px;
+  }
+}
+
+/* Contacts */
+@media (min-width: 801px) {
+  .add_change_btn_mobile {
+    margin-bottom: 16px;
+  }
+
+  .add_change_btn_mobile:hover {
+    background-color: var(--lightblue);
+  }
+
+  .contact:not(.active_contact):hover {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #f9f9f9 0%, #f0f0f0 100%);
+  }
+
+  /* Contacts - Dialog add & edit Contact */
+  .cancel_create_contact_edit_btn:hover,
+  .cancel_create_contact_btn:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    border: 1px solid var(--lightblue);
+    color: var(--lightblue);
+  }
+
+  .cancel_create_contact_btn:hover .img_cancel_checked_btn {
+    filter: invert(52%) sepia(91%) saturate(455%) hue-rotate(155deg)
+      brightness(96%) contrast(84%);
+  }
+
+  .blue_btn:hover {
+    background-color: var(--lightblue);
+  }
+}
+
+/* Contact Overview*/
+@media (min-width: 1111px) {
+  #contact_view {
+    display: block; /* div mit id="contact_view" ist nur ab width von 1111px sichtbar, sonst class="d_none" */
+  }
+
+  #content_contacts {
+    min-width: 456px;
+    max-width: 456px;
+  }
+}
+
+@media (max-width: 1280px) {
+  /* Contacts - Dialog add & edit Contact */
+  .dialog_content {
+    flex-direction: column;
+  }
+
+  .create_contact_short_name_edit,
+  .create_contact_short_name {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .dialog_add_contact,
+  .dialog_edit_contact {
+    flex-direction: column;
+    width: 450px;
+    max-height: 842px;
+  }
+
+  .top_dialog_add_edit {
+    padding-left: 24px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: unset;
+    min-height: 378px;
+  }
+
+  .img_logo {
+    display: none;
+  }
+
+  .wrapper_close_add_edit_contact {
+    right: 18px;
+    top: 24px;
+  }
+  .close_add_edit_contact {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(61deg) brightness(105%) contrast(103%);
+  }
+
+  .wrapper_close_add_edit_contact:hover {
+    background-color: initial;
+  }
+
+  .headline_add_edit_contact {
+    font-size: 47px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .text_add_edit_contact_dialog {
+    font-size: 20px;
+  }
+
+  .bottom_dialog_add_edit {
+    min-height: 443px;
+    border-bottom-left-radius: 30px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .create_contact_form {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .create_contact_input {
+    padding: 10px 21px;
+  }
+
+  .cancel_create_contact_btn {
+    display: none;
+  }
+
+  .create_contact_btn {
+    padding: 18px 10px;
+  }
+
+  .edit_content,
+  .delete_content {
+    gap: 8px;
+    padding: 13px;
+  }
+}
+
+@media (max-width: 1220px) {
+  .left_part_overview {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .left_part_overview_second {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .seperator_line_content {
+    height: 3px;
+    width: 90px;
+  }
+
+  .short_name_overview {
+    min-width: 80px;
+    min-height: 80px;
+  }
+
+  .name_overview {
+    font-size: 36px;
+  }
+
+  .short_name_text_overview {
+    font-size: 27px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 1150px) and (min-width: 1111px) {
+  .left_part_overview,
+  .floating_contact {
+    padding-left: 20px;
+  }
+
+  .floating_contact {
+    padding: 32px 20px;
+  }
+  .name_overview {
+    max-width: 240px;
+    word-break: break-all;
+  }
+
+  /* Contact created */
+  .create_contact_done {
+    left: 708px;
+  }
+}
+
+/* when browser's width is between 800 and 1110px, change the width of a <div> element */
+@media screen and (max-width: 1110px) and (min-width: 800px) {
+  /* Contacts */
+  .contact {
+    width: 352px;
+  }
+
+  /* Contact created */
+  .create_contact_done {
+    left: 287px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 460px) {
+  /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
+  .contacts {
+    padding-left: calc((100% - 352px) / 2);
+  }
 }
 
 @media (max-width: 460px) {
-
   /* Contacts - Dialog add & edit Contact */
   .dialog_add_contact,
   .dialog_edit_contact {
     width: 93%;
     height: calc(100vh - 90px - 86px);
   }
+
+  /* sign-up */
+  .password_container,
+  .password_container input {
+    width: 90%;
+  }
+
+  .arrow_signUp {
+    margin-left: -60px;
+  }
 }
 
 @media (max-width: 450px) {
-
   /* Contacts */
   #content_contacts {
     padding: 32px 16px;
@@ -494,15 +552,18 @@
 }
 
 @media (max-width: 400px) {
-
   /* Contacts - Dialog add & edit Contact */
   .create_contact_input {
+    width: 100%;
+  }
+
+  /* board */
+  .board-column {
     width: 100%;
   }
 }
 
 @media (max-width: 370px) {
-
   /* Contacts */
   #content_contacts {
     padding: 32px 0px;
@@ -533,31 +594,52 @@
 
 /* AddTasks-start */
 @media (max-width: 1260px) {
-
   .mainAddTasks,
   .headlineAddTasks,
   .footerAddTasks {
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 0 60px;
+  }
+
+  /* summary */
+  .containerHeadline {
+    width: 580px;
+  }
+
+  .marginSummary {
+    margin-left: 70px;
+  }
+
+  .summaryText {
+    margin-right: 0;
   }
 }
 
 @media (max-width: 1200px) {
-
   .buttonPrio {
     font-size: 18px;
     padding: 14px 8px 14px 8px;
     width: 100px;
     gap: 4px;
   }
+
+  /* summary */
+  .summaryText {
+    display: none;
+  }
+
+  .containerHeadline {
+    width: 625px;
+  }
+
+  .containerSummary {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 1100px) {
-
   .mainAddTasks,
   .footerAddTasks {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0 20px;
   }
 
   .buttonPrio {
@@ -578,8 +660,7 @@
   }
 
   .spacerAddTasks {
-    margin-left: 40px;
-    margin-right: 40px;
+    margin: 0 40px;
   }
 
   #title,
@@ -597,8 +678,7 @@
   }
 
   .footerAddTasks {
-    margin-left: 55px;
-    margin-right: 55px;
+    margin: 0 55px;
   }
 
   .createButtonAddTasks {
@@ -620,14 +700,17 @@
     top: 43px;
     right: 10px;
   }
+
+  /* formal-content */
+  .content {
+    margin: 0 80px;
+  }
 }
 
 @media (max-width: 900px) {
-
   .spacerAddTasks,
   .footerAddTasks {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin: 0 30px;
   }
 
   .mainAddTasks {
@@ -638,12 +721,29 @@
   .clearButtonAddTasks {
     margin-right: 6px;
   }
+
+  /* sign-up */
+  .destop-login {
+    display: none;
+  }
+
+  .join-logo {
+    background-color: #2a3647;
+  }
+
+  .img-animaschen {
+    height: 121.97px;
+    width: 100.03px;
+    background: url(../assets/img/logIn_SignUp/Capa2.svg);
+  }
+
+  .limitation {
+    width: 100%;
+  }
 }
 
 /* Mobil */
-
 @media (max-width: 950px) {
-
   .widthHalf {
     width: unset !important;
   }
@@ -653,7 +753,9 @@
     display: none !important;
   }
 
-  .footerNone {
+  .footerNone,
+  .clearButtonAddTasks,
+  .spacerAddTask {
     display: none;
   }
 
@@ -664,10 +766,6 @@
     right: 20px;
   }
 
-  .clearButtonAddTasks {
-    display: none;
-  }
-
   .headlineAddTasks {
     font-size: 47px !important;
     margin-left: 16px !important;
@@ -675,9 +773,8 @@
   }
 
   .mainAddTasks {
-    margin-left: 16px !important;
+    margin: 0 16px !important;
     flex-direction: column;
-    margin-right: 16px !important;
   }
 
   .addTasksLeft {
@@ -692,10 +789,6 @@
     display: flex;
     flex-direction: column;
     width: 100% !important;
-  }
-
-  .spacerAddTasks {
-    display: none;
   }
 
   .fontUnderHeadlinesAddTasks {
@@ -743,7 +836,7 @@
   }
 
   .buttonPrio {
-    width: 160px; /* soll 120px sein*/
+    width: 160px;
     height: 41px;
     gap: 8px;
     font-size: 16px;
@@ -768,37 +861,23 @@
   }
 
   .createButtonAddTasks img {
-    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg)
-      brightness(500%);
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(266deg) brightness(500%);
   }
 
   select {
     appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
-    background-image: url(../assets/img/add_task/arrow_drop_down_down.svg); /* Pfeil */
+    background-image: url(../assets/img/add_task/arrow_drop_down_down.svg);
     background-repeat: no-repeat;
-    background-position: right 16px top 50%; /* Positionierung des Pfeils */
-    background-size: 10px auto; /* Größe des Pfeils */
+    background-position: right 16px top 50%;
+    background-size: 10px auto;
   }
-  
-  /* #date {
-    background-image: url(../assets/img/add_task/event.svg);
-    background-size: 26px auto;
-  } */
-  
+
   #date {
     appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
   }
 }
 
-@media (max-width: 800px) {
-
-  .footer {
-    bottom: 100px;
-  }
-}
-
 @media (max-width: 520px) {
-
   .buttonPrio {
     width: 100px;
     padding: 14px 8px 14px 8px;
@@ -814,7 +893,6 @@
 /* AddTasks-end   */
 
 /* Summary - start   */
-
 @media (max-width: 1360px) {
   .goodMorningSummary {
     font-size: 39px;
@@ -834,38 +912,7 @@
   }
 }
 
-@media (max-width: 1260px) {
-
-  .containerHeadline {
-    width: 580px;
-  }
-
-  .marginSummary {
-    margin-left: 70px;
-  }
-
-  .summaryText {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 1200px) {
-
-  .summaryText {
-    display: none;
-  }
-
-  .containerHeadline {
-    width: 625px;
-  }
-
-  .containerSummary {
-    justify-content: center;
-  }
-}
-
 @media (max-width: 1000px) {
-
   .containerHeadline {
     flex-direction: column;
     justify-content: flex-start;
@@ -887,8 +934,7 @@
   }
 
   .containerSummary {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin: 0 16px;
   }
 
   .marginSummary {
@@ -902,7 +948,6 @@
 }
 
 @media (max-width: 840px) {
-
   .headlineSummary,
   .sizeNumbersSummary {
     font-size: 47px;
@@ -975,7 +1020,6 @@
 }
 
 @media (max-width: 410px) {
-
   .marginSummary {
     width: 100%;
   }
@@ -1039,7 +1083,6 @@
 }
 
 @media (max-width: 375px) {
-
   .toDo,
   .done {
     width: 140px;
@@ -1056,87 +1099,81 @@
     height: 340px;
   }
 }
-
 /* Summary - end     */
 
 /* Board - start     */
-
-@media(max-width: 1136px){
-
-  .small-add-button{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      background-color: var(--activeClickMenuBlue);
-      cursor: pointer;
-      height: 40px;
-      width: 40px;
+@media (max-width: 1136px) {
+  .small-add-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--activeClickMenuBlue);
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
   }
 
-  .small-add-button:hover{
-      background-color: var(--lightblue);
+  .small-add-button:hover {
+    background-color: var(--lightblue);
   }
 
-  .add-task-button{
-      display: none;
+  .add-task-button {
+    display: none;
   }
 
-  .h1-container{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-      width: 100%;
+  .h1-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 100%;
   }
 
   h1 {
     font-size: 47px;
   }
 
-  .headline-container{
-      flex-direction: column;
-      align-items: baseline;
+  .headline-container {
+    flex-direction: column;
+    align-items: baseline;
   }
 
-  .board-search-add{
-      width: 100%;
+  .board-search-add,
+  .search-field  {
+    width: 100%;
   }
 
-  .search-field{
-      width: 100%;
-  }
-
-  .content-board{
-      margin-top: 50px;
+  .content-board {
+    margin-top: 50px;
   }
 
   .text_board_headline {
     font-size: 27px;
- }
-
-  .column-plus-button{
-    width: 30px;
-    height: 30px;
-    background-size: contain
- }
-
-  .d-flex-start{
-      flex-direction: column;
-      flex-wrap: nowrap;
   }
 
-  .board-column{
-      width: 100%;
-      margin-bottom: 0;
-      height: unset;
+  .column-plus-button {
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+  }
+
+  .d-flex-start {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .board-column {
+    width: 100%;
+    margin-bottom: 0;
+    height: unset;
   }
 
   .dialog_addTask_bg {
-    display: none!important;
-  } 
+    display: none !important;
+  }
 
-  .tasks-container{
+  .tasks-container {
     overflow-y: hidden;
     width: 100%;
     display: flex;
@@ -1145,114 +1182,79 @@
   }
 }
 
-@media(max-width: 800px) {
-
-  .background-big-task{
-      height: calc(100% - 83px);
+@media (max-width: 500px) {
+  h1 {
+    margin-bottom: 16px;
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
   }
 
-  .right_section{
+  .board-search-add,
+  .board-headline {
     width: 100%;
   }
 
-  .status_edit{
-      margin-top: 24px;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      display: block;
-  }
-}
-
-@media(max-width: 500px){
-
-  h1{
-      margin-bottom: 16px;
-      font-size: 61px;
-      font-weight: 700;
-      line-height: 73.2px;
+  .search-field {
+    width: 100vw;
   }
 
-  .board-search-add{
-      width: 100%;
+  .d-flex-start {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .search-field{
-      width: 100vw;
+  .plus-button {
+    cursor: pointer;
   }
 
-  .d-flex-start{
-      flex-direction: column;
-      align-items: center;
+  .plus-button:hover {
+    src: url(/assets/img/board/plus_button_blue.svg);
   }
 
-  .board-headline{
-      width: 100%;
+  .content-board {
+    margin: 32px 16px 8px;
   }
 
-  .plus-button{
-      cursor: pointer;
+  .task-description-big {
+    font-size: 16px;
   }
 
-  .plus-button:hover{
-      src: url(/assets/img/board/plus_button_blue.svg);
+  .task-box-big h2 {
+    font-size: 24px;
   }
 
-  .content-board{
-      margin-top: 32px;
-      margin-left: 16px;
-      margin-right: 16px;
-      margin-bottom: 8px;
-  }
-
-  .task-description-big{
-      font-size: 16px;
-  }
-
-  .task-box-big h2{
-      font-size: 24px;        
-  }
-
-  .task-box-big{
-      padding-top: 16px;
-      padding-bottom: 16px;
-      padding-left: 16px;
-      padding-right: 16px;
-      width: calc(100vw - 16px);
-      margin: 16px;
+  .task-box-big {
+    padding: 16px;
+    width: calc(100vw - 16px);
+    margin: 16px;
   }
 
   .wrapper_close_edit_task {
-     background-color: var(--white);
+    background-color: var(--white);
   }
 
-  .d-flex p{
-      font-size: 16px;
+  .d-flex p,
+  .margin-top-16px,
+  .container-member-big-task p {
+    font-size: 16px;
   }
 
-  .margin-top-16px{
-      font-size: 16px;
+  .container-subtasks p {
+    font-size: 12px;
   }
 
-  .container-member-big-task p{
-      font-size: 16px;
+  .subtasks {
+    justify-content: flex-start;
+    padding-left: 0px;
+    padding-right: 0px;
+    gap: 8px;
   }
 
-  .container-subtasks p{
-      font-size: 12px;
+  .subtask-checkbox {
+    padding-right: 16px;
   }
 
-  .subtasks{
-      justify-content: flex-start;
-      padding-left: 0px;
-      padding-right: 0px;
-      gap: 8px;
-  }
-
-  .subtask-checkbox{
-      padding-right: 16px;
-  }
-  
   .prio_edit_buttons,
   .status_edit_buttons {
     flex-direction: column;
@@ -1265,143 +1267,55 @@
   }
 }
 
-@media(max-width: 400px){  
-        
-  .board-column{
-    width: 100%;
-  }
-}
-
 /* Board - End     */
 /* formal-content - Start     */
-@media(max-width: 1100px) {
+@media (max-width: 500px) {
+  h1 {
+    font-size: 40px;
+  }
 
   .content {
-      margin-left: 80px;
-      margin-right: 80px;
-  }
-}
-
-@media(max-width: 800px) {
-
-  .container-navi-content{
-      flex-direction: column-reverse;
-  }
-}
-
-@media(max-width: 500px){
-  h1{
-      font-size: 40px;
+    margin: 40px 16px 0;
   }
 
-  .content{
-      margin-left: 16px;
-      margin-right: 16px;
-      margin-top: 40px;
+  /* style-login */
+  .password_container {
+    width: 340px;
+  }
+  .frame153-singup {
+    padding: 32px 24px;
   }
 }
 /* formal-content - End     */
 /* style_login - Start     */
 @media (min-width: 900px) {
   .mobile-login {
-      display: none;
-      height: 80px;
+    display: none;
+    height: 80px;
   }
   .butten-mobile {
-      display: none;
-      width: 150px;
-  }
-}
-
-@media (max-width: 900px) {
-  .destop-login {
-      display: none;
-  }
-  .join-logo {
-      background-color: #2A3647;
-  }
-  .img-animaschen {
-      height: 121.97px;
-      width: 100.03px;
-      background: url(../assets/img/logIn_SignUp/Capa2.svg);
-  }
-  .limitation {
-      width: 100%;
-  }
-}
-
-@media (max-width: 800px) {
-  .password_container {
-      width: 364px;
-  }
-  .frame153 {
-      padding: 32px 24px;
-  }
-  .imglogo {
-      width: 64px;
-      padding: 37px 38px;
-  }
-  .frame153-singup {
-      width: 80%;
-      padding: 32px 24px;
-  }
-  .headline_logIn {
-      font-size: 47px;
-  }
-  .logIn-btns {
-      display: flex;
-      flex-direction: column;
-  }
-  .mobile_login_btn {
-      width: 180px;
-      padding: 16px 0px;
-  }
-  .text_login_btn {
-      font-size: 16px;
-  }
-  .arrow_signUp {
-      margin-left: -100px;
+    display: none;
+    width: 150px;
   }
 }
 
 @media (max-width: 600px) {
-   .password_container {
-      width: 364px;
-  }
-}
-
-@media (max-width: 500px) {
   .password_container {
-      width: 340px;
-  }
-  .frame153-singup {
-      padding: 32px 24px;
-  }
-}
-
-@media (max-width: 460px) {
-  .password_container {
-      width: 90%;
-  }
-  .password_container input {
-      width: 90%;
-  }
-  .arrow_signUp {
-      margin-left: -60px;
+    width: 364px;
   }
 }
 
 @media (max-width: 380px) {
-   .imglogo {
-      padding: 24px;
-      height: 40px;
+  .imglogo {
+    padding: 24px;
+    height: 40px;
   }
   .imglogo {
-      width: 56px;
-      padding: 30px;
+    width: 56px;
+    padding: 30px;
   }
   .frame153-singup {
-      padding: 24px;
+    padding: 24px;
   }
 }
 /* style_login - End     */
