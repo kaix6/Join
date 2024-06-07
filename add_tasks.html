@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AddTasks</title>
     <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
-    <script defer src="./js/script.js"></script>
-    <script defer src="./js/add_tasks.js"></script>
-    <script defer src="./js/template.js"></script>
-    <script defer src="./js/generateHTML.js"></script>
     <script defer src="./js/remoteStorage.js"></script>
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/template.js"></script>
     <script defer src="./js/login.js"></script>
+    <script defer src="./js/generateHTML.js"></script>
+    <script defer src="./js/add_tasks.js"></script>
     <link rel="stylesheet" href="./css/colors.css" />
     <link rel="stylesheet" href="./css/fonts.css" />
     <link rel="stylesheet" href="./css/style.css" />
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="./css/mediaQuery.css" />
 </head>
 
-<body class="flex_dir_c" onload="initAddTasks(); checkUser()">
+<body class="flex_dir_c" onload="includeHTML(); checkUser(); initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
         <div class="right_section flex_dir_c">
             <!--      Section header    -->

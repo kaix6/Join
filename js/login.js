@@ -53,6 +53,25 @@ async function login() {
 }
 
 /**
+ * This function checks if the user is logged in by verifying the presence of 'userMail' in localStorage.
+ * If the user is on 'privacy.html' or 'legal_notice.html' and arrived from 'login.html' or 'signup.html',or navigates between 'privacy.html' and 'legal_notice.html', they are allowed to stay.
+ * @returns 
+ */
+function checkUser() {
+    let userMail = localStorage.getItem('userMail');
+    let previousPage = document.referrer;
+    let currentPage = window.location.pathname;
+    let dependingPages = ['/privacy.html', '/legal_notice.html'];
+
+    // Check if the user is on privacy.html or legal_notice.html and came from login.html or signup.html
+    if (dependingPages.includes(currentPage) && (previousPage.includes('/index.html') || previousPage.includes('/signup.html') || dependingPages.some(page => previousPage.includes(page)))) {
+        return;
+    }
+    if (userMail === null) {
+        window.location.href = './index.html';
+    }
+
+/**
  *Saves the user's email to the local storage.
  *
  * This function converts the provided email to a JSON string and saves it to the local storage
@@ -73,14 +92,13 @@ function logout(){
 }
 
 /**
- * Checks if the user is logged in by verifying the presence of 'userMail' in local storage.
+ * This function logs in as a guest user by removing the userMail from localStorage and redirecting to the summary page.
  */
-function checkUser(){
-    let userMail = localStorage.getItem('userMail');
-    if (userMail === null) {
-        window.location.href = './index.html';
-    }
+function guestLogin() {
+    saveUser('guest@mail.com');
+    window.location.href = './summary.html';
 }
+
 
 /**
  *Changes the visibility of the password input field and toggles the password visibility icon.
@@ -134,3 +152,6 @@ function togglePasswordVisibility() {
       document.getElementById('unlock').classList.remove('hidden');
     }
   }
+
+
+

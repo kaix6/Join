@@ -130,6 +130,14 @@
         cursor: pointer;
     }
 
+    .search-field:focus-within{
+        border: 1px solid var(--lightblue);
+    }
+
+    .search-field input:focus {
+        outline: none;
+    }
+
     .search-container{
         border-right: 1px solid var(--grey);
         display: flex;
@@ -691,7 +699,7 @@
 /*         padding-bottom: 48px; */
     }
 
-    .test {
+    .scroll_EditTasks_pd {
         padding-right: 10px;
     }
 

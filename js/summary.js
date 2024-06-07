@@ -3,6 +3,7 @@ let inProgress;
 let awaitFeedback;
 let done;
 let urgentDate = [];
+/* let userMail; */
 
 
 /**
@@ -11,6 +12,8 @@ let urgentDate = [];
 async function initializeSummary() {
     await loadTasks();
     getTasksLength();
+    loadUser();
+    showName();
 }
 
 
@@ -21,10 +24,9 @@ async function initializeSummary() {
 function getTasksLength() {
     let urgent = allTasks.filter(t => t[1]['prio'] == 'urgent' && t[1]['status'] !== 'done');
     let upcomingDeadline = formateDateSummary(urgent);
-    let currentGreeting = showGreeting();
     let mainSummary = document.querySelector('.main_summary');
     mainSummary.innerHTML = '';
-    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, currentGreeting, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
+    mainSummary.innerHTML += generateSummaryInnerHTML(upcomingDeadline, urgent.length, open.length, inProgress.length, awaitFeedback.length, done.length, allTasks.length);
 }
 
 
@@ -73,4 +75,15 @@ function showGreeting() {
     } else {
         return 'Still awake or do you ever sleep?';
     }
+}
+
+
+/**
+ * This function updates the summary text with the user's name retrieved from the user's information.
+ */
+async function showName() {
+    let userInfo = await getUserInfos();
+    let currentGreeting = showGreeting();
+    let summaryText = document.querySelector('.summaryText');
+    summaryText.innerHTML = generateSummaryTextInnerHTML(userInfo.name, currentGreeting);
 }

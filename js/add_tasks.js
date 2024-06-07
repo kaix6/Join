@@ -106,7 +106,7 @@ function selectedStatusColor(button, backgroundColorClass, statusTask) {
  * @returns {void}
  */
 function initAddTasks() {
-  includeHTML();
+/*   includeHTML(); */
   renderContactsInAddTasks();
   initJSONaddTasks();
   standardPrioButton();

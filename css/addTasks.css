@@ -421,5 +421,10 @@ select {
 .editInput {
   outline: none;
   border: unset;
+}
+
+.subtaskGenerate:focus-within {
+  border-radius: unset;
   border-bottom: 1px solid var(--lightblue);
+  background-color: var(--white);
 }
