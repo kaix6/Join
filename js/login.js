@@ -70,6 +70,7 @@ function checkUser() {
     if (userMail === null) {
         window.location.href = './index.html';
     }
+}
 
 /**
  *Saves the user's email to the local storage.
