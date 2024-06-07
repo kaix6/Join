@@ -178,6 +178,7 @@ function generateEditTaskBox(index) {
                     <div class="none-display" id="isSelected">
                       Has already been selected
                     </div>
+                    <div class="hoverName" id="hoverNameMembers"></div>
                     <div class="status_edit fontUnderHeadlinesAddTasks">
                       <p class="fontUnderHeadlinesAddTasks">Status</p>
                       <div class="status_edit_buttons">
@@ -426,7 +427,7 @@ function generateAssignedToFirst() {
 
 function generatePushedMembers(element, color, letters) {
   return /* HTML */ `
-    <div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild" onmouseover="showTooltip(event, '${element}')" onmouseout="hideTooltip()">${letters}</div>
+    <div onclick="deleteSelectMember('${element}', '${color}', '${letters}')" id="${element}" class="profilbild" onmouseover="addNameHoverMembers(event, '${element}')" onmouseout="removeNameHoverMembers()">${letters}</div>
     <div id="tooltip" class="tooltip"></div>
     `;
 }
