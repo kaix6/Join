@@ -168,8 +168,7 @@
 }
 
 .summaryCardHover:hover .iconSummary {
-  filter: invert(21%) sepia(32%) saturate(441%) hue-rotate(175deg)
-    brightness(30%) contrast(99%);
+  filter: invert(21%) sepia(32%) saturate(441%) hue-rotate(175deg) brightness(30%) contrast(99%);
 }
 
 .summaryFontColorHover:hover {

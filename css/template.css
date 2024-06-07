@@ -1,43 +1,43 @@
 /* Header */
 
 #header {
-    height: 96px;
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px 20px 116px;
-    box-shadow: 0px 4px 4px 0px #0000001A;
-    align-items: center;
-    background-color: var(--white);
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 20px 116px;
+  box-shadow: 0px 4px 4px 0px #0000001a;
+  align-items: center;
+  background-color: var(--white);
 }
 
 .headline {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .profile_header_mobile {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .header_help_icon {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .header_help_icon:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .border_profile {
-    border: 3px solid var(--menuButtonDarkblue);
-    width: 56px;
-    height: 56px;
+  border: 3px solid var(--menuButtonDarkblue);
+  width: 56px;
+  height: 56px;
 }
 
 .text_profile_header {
-    color: var(--lightblue);
-    font-weight: 700;
+  color: var(--lightblue);
+  font-weight: 700;
 }
 
 /* Submenu Header */
@@ -50,104 +50,98 @@
     background-color: var(--menuButtonDarkblue);
     transform: translateX(160.97px);
     z-index: 2;
+
 }
 
 .submenu_header {
-    top: 96px;
+  top: 96px;
 }
 
 .submenu_header_mobile {
-    top: 60px;
-    transition: all 100ms ease-out;
+  top: 60px;
+  transition: all 100ms ease-out;
 }
 
 .submenu_header a,
 .submenu_header_mobile a {
-    margin: 0;
-    color: var(--fontGrey);
-    padding: 13px;
+  margin: 0;
+  color: var(--fontGrey);
+  padding: 13px;
 }
 
 .show_submenu_header {
-    transform: translateX(0px);
+  transform: translateX(0px);
 }
 
 /* Side Menu */
 
 #side_menu_desktop {
-    background-color: var(--menuButtonDarkblue);
-    padding: 64px 0px;
-    height: 100vh;
-    align-items: center;
-    justify-content: space-between;
-    width: 232px;
+  background-color: var(--menuButtonDarkblue);
+  padding: 64px 0px;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  width: 232px;
 }
 
 .menu_logo {
-    width: 100.03px;
-    height: 121.97px;
-    margin-left: 53px;
+  width: 100.03px;
+  height: 121.97px;
+  margin-left: 53px;
 }
 
 .menu_icon_image {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .links {
-    gap: 15px;
+  gap: 15px;
 }
 
 .menu_icon_text {
-    display: flex;
-    align-items: center;
-    padding: 8px 53px;
-    gap: 8px;
-    transition: background-color 100ms ease-in;
+  display: flex;
+  align-items: center;
+  padding: 8px 53px;
+  gap: 8px;
+  transition: background-color 100ms ease-in;
 }
 
 .activeLink {
-    background-color: var(--activeClickMenuBlue);
+  background-color: var(--activeClickMenuBlue);
 }
 
-.activeLink a{
-    color: var(--white);
+.activeLink a {
+  color: var(--white);
 }
 
-.activeLink img{
-    filter: invert(0%) sepia(40%) saturate(0%) hue-rotate(240deg) brightness(95%) contrast(106%);
+.activeLink img {
+  filter: invert(0%) sepia(40%) saturate(0%) hue-rotate(240deg) brightness(95%) contrast(106%);
 }
 
 .link_style {
-    color: var(--fontGrey);
+  color: var(--fontGrey);
 }
 
 .top_side_menu {
-    width: 100%;
-    gap:136px;
+  width: 100%;
+  gap: 136px;
 }
 
 .bottom_side_menu {
-    width: 100%;
+  width: 100%;
 }
 
 .link_pad {
-    padding: 8px;
+  padding: 8px;
 }
 
 .hover_color {
-    padding-left: 53px;
+  padding-left: 53px;
 }
 
 /* the :not(selector) sets property for all classes with .hover_color that have not the class .activeLink */
 .hover_color:not(.activeLink):hover {
-    color: var(--lightblue);
-    font-weight: 700;
+  color: var(--lightblue);
+  font-weight: 700;
 }
-
-
-
-
-
-
-
