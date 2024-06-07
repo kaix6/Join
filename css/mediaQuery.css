@@ -735,6 +735,7 @@
     height: 121.97px;
     width: 100.03px;
     background: url(../assets/img/logIn_SignUp/Capa2.svg);
+    background-repeat: no-repeat;
 }
 .limitation {
     width: 100%;

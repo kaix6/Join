@@ -101,7 +101,7 @@ a {
     top: 45%;
     left: 45%;
     transform: translate(-50%, -50%);
-    animation: slideToLeftTop 1500ms forwards linear;
+    animation: slideToLeftTop 1200ms forwards linear;
 } 
 
 @keyframes slideToLeftTop {
@@ -111,18 +111,11 @@ a {
         left: 50%;
         height: 480px;
         transform: translate(-50%, -50%);
-    }
-    50% {
-        top: 25%;
-        left: 25%;
-        transform: translate(-50%, -50%);
-        opacity: 0.7; 
-        background-color: none;
-    }
-    
+    } 
     100% {
         top: 0;
         left: 0;
+        padding: 80px 77px;
         transform: translate(0, 0);
     }
 }
