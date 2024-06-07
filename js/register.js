@@ -1,4 +1,4 @@
-password/**
+/**
  *  Adds a new user by checking existing email and displaying potential errors.
  *
  * This asynchronous function starts by hiding any existing error messages related to email and signup.

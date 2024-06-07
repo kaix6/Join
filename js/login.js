@@ -21,7 +21,7 @@ function animationWindow() {
 async function existingMail() {
     users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
-    user = users.find(u => u[1].mail == email);            
+    let user = users.find(u => u[1].mail == email);            
     if(user === undefined){  
         document.getElementById('loginErrorPassword').classList.remove('hidden');
     }else {
