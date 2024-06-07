@@ -3,8 +3,6 @@ let inProgress;
 let awaitFeedback;
 let done;
 let urgentDate = [];
-/* let userMail; */
-
 
 /**
  * This function initializes the summary by loading tasks and getting the tasks length.

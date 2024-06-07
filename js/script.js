@@ -29,14 +29,6 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-
-// Braucht die jemand war hautzächlich für die an imation 
-async function initLogin() {
-    await includeHTML();
-    animationWindow();
-}
-
-
 /**
  * This function includes HTML content into elements with the 'w3-include-html' attribute.
  */
@@ -70,9 +62,6 @@ function loadTemplateFunctions() {
         removeElements();
         }
     }
-    // if(window.location.pathname == '/board.html') {
-    //     updateTasksHTML();
-    // } 
 }
 
 

@@ -106,7 +106,6 @@ function selectedStatusColor(button, backgroundColorClass, statusTask) {
  * @returns {void}
  */
 function initAddTasks() {
-/*   includeHTML(); */
   renderContactsInAddTasks();
   initJSONaddTasks();
   standardPrioButton();
@@ -329,7 +328,7 @@ async function saveTaskToJson(title, description, date, prio, category) {
     assignedArray.push(memberArray);
   }
   if (subtaskStatus.length === 0) {
-    subtaskStatus = 'open'; // Setzen Sie den subtaskStatus als String 'open'
+    subtaskStatus = 'open'; // Setzen von subtaskStatus als String 'open'
   }
   localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
   renderNewTask(title, description, date, prio, category);
