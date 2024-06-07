@@ -101,4 +101,7 @@ function mobileGreeting() {
     setTimeout(() => {
         summaryText.classList.add('fade-out');
     }, 400); // 1 Sekunde warten
+    setTimeout(() => {
+        document.querySelector('.summaryText').classList.add('display-none');
+    }, 2000); // 1 Sekunde warten
 }
