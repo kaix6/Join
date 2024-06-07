@@ -8,6 +8,7 @@
     <script defer src="./js/script.js"></script>
     <script defer src="./js/board.js"></script>
     <script defer src="./js/template.js"></script>
+    <script defer src="./js/login.js"></script>
     <script defer src="./js/add_tasks.js"></script>
     <script defer src="./js/generateHTML.js"></script>
     <script defer src="./js/remoteStorage.js"></script>
@@ -23,7 +24,7 @@
 </head>
 
 
-<body class="flex_dir_c" onload="includeHTML(); loadTasks(); initAddTasks()">
+<body class="flex_dir_c" onload="includeHTML(); checkUser(); loadTasks(); initAddTasks()">
 
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
         <!--      Section Dialog Box Small TodoTask    -->

@@ -8,6 +8,7 @@
     <script defer src="./js/script.js"></script>
     <script defer src="./js/remoteStorage.js"></script>
     <script defer src="./js/generateHTML.js"></script>
+    <script defer src="./js/login.js"></script>
     <script defer src="./js/template.js"></script>
     <script defer src="./js/add_tasks.js"></script>
     <link rel="icon" href="./assets/img/general/logo_favicon.svg">
@@ -21,7 +22,7 @@
 
 <body onload="includeHTML()">
 
-    <body class="flex_dir_c" onload="includeHTML(); initRemoveItemTasks()">
+    <body class="flex_dir_c" onload="includeHTML(); checkUser(); initRemoveItemTasks()">
 
         <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
 

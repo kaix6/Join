@@ -15,13 +15,14 @@
     <script defer src="./js/script.js"></script>
     <script defer src="./js/remoteStorage.js"></script>
     <script defer src="./js/template.js"></script>
+    <script defer src="./js/login.js"></script>
     <script defer src="./js/contacts.js"></script>
     <script defer src="./js/generateHTML.js"></script>
     <script defer src="./js/add_tasks.js"></script>
     <script defer src="./js/board.js"></script>
 </head>
 
-<body class="flex_dir_c" onload="includeHTML(); loadContacts(); initRemoveItemTasks()">
+<body class="flex_dir_c" onload="includeHTML(); checkUser(); loadContacts(); initRemoveItemTasks()">
 
     <div onclick="closeSubmenuHeader(event); closeContactOptions(event)" class="wrapped_maxWidth">
 

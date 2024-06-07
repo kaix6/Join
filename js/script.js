@@ -66,11 +66,22 @@ function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
     if (window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
+        if (!isUserLoggedIn()) {
         removeElements();
+        }
     }
     // if(window.location.pathname == '/board.html') {
     //     updateTasksHTML();
     // } 
+}
+
+
+/**
+ * This function checks if the user is logged in.
+ * @returns {boolean} - True if the user is logged in, false otherwise.
+ */
+function isUserLoggedIn() {
+    return localStorage.getItem('userMail') !== null;
 }
 
 
@@ -198,9 +209,11 @@ function loadUser() {
  * @returns {name: string, letters: string}- A promise that resolves to an object containing the user's name and initials.
  */
 async function getUserInfos() {
+    let guestMail = '"guest@mail.com"';
     let name = 'Guest';
     let letters = 'G';
-    if (userMail) {
+    loadUser();
+    if (userMail !== guestMail) {
         contacts = Object.entries(await loadData('contacts'));
         let formattedUserMail = userMail.replace(/"/g, '');
         let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
