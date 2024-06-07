@@ -664,6 +664,15 @@ async function deleteContactInTasks(currentIndex, contacts) {
 }
 
 
+/**
+ * Filters tasks based on the search input and updates the task list accordingly.
+ *
+ * This function filters tasks based on the search input provided by the user,
+ * updating the task list to display only the tasks that match the search criteria.
+ *
+ * @returns {void}
+ */
+
  function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
