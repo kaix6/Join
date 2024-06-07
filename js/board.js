@@ -360,6 +360,12 @@ function getAllMembers(task) {
     };
 }
 
+/**
+ * Truncates the member array to display only the first 7 members in the UI.
+ * @function truncateMember
+ * @param {Array} memberArray - An array containing member information.
+ * @param {Object} task - The task object containing information about the task.
+ */
 function truncateMember(memberArray, task) {
     let memberContainer = document.getElementById(`task-all-member${task['id']}`);
     memberContainer.innerHTML = '';
@@ -458,7 +464,6 @@ function truncateText(task) {
  * @param {number} index - The index of the task to be edited in the `allTasks` array.
  * @param {event} event - The event object, used to update the priority button color.
  */
-
 function editTask(index, event) {
     let bigTaskBox = document.getElementById('task-box-big');
     bigTaskBox.classList.add('edit-mode');
@@ -472,6 +477,11 @@ function editTask(index, event) {
     getDivHeight();
 }
 
+/**
+ * Adds color highlighting to the status buttons based on the provided status.
+ * @param {string} status - The status value to determine which button to highlight.
+ * @param {Event} event - The event object associated with the action (e.g., button click).
+ */
 function addStatusButtonColor(status, event) {
     event.preventDefault(); // Prevents the default behavior of the button
     let buttonToDo = document.getElementById("buttonToDo");
@@ -526,6 +536,12 @@ async function saveNewDataTasks(index) {
     assignedArrayEdit = [];
 }
 
+/**
+ * Initiates the editing of a subtask and listens for input events to update the subtask
+ * @param {string} subtaskId - The ID of the subtask element to be edited.
+ * @param {number} iSubtask - The index of the subtask within its task.
+ * @param {number} iTask - The index of the task containing the subtask.
+ */
 async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
     editSubtask(subtaskId);
     setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
@@ -645,6 +661,11 @@ function renderSubtasks(index) {
     }
 }
 
+/**
+ * Deletes a contact from all tasks where it is assigned as a member.
+ * @param {number} currentIndex - The index of the contact in the `contacts` array.
+ * @param {Array} contacts - An array containing contact objects.
+ */
 async function deleteContactInTasks(currentIndex, contacts) {
     let contactName = contacts[currentIndex][1]['name'];
     allTasks = Object.entries(await loadData('tasks'));
@@ -663,21 +684,13 @@ async function deleteContactInTasks(currentIndex, contacts) {
     };
 }
 
-
 /**
- * Filters tasks based on the search input and updates the task list accordingly.
- *
- * This function filters tasks based on the search input provided by the user,
- * updating the task list to display only the tasks that match the search criteria.
- *
- * @returns {void}
+ * Filters tasks based on the search query and updates the UI accordingly.
  */
-
  function addSearchTask() {
     filteredTasks = [];
     let search = document.getElementById('searchField').value.toLowerCase();
     let deleteButton = document.getElementById('delete-search');
-    let inputSearch = document.getElementById("no-search-result");
     if (search === '') {
         loadTasks();
         deleteButton.classList.add('d-none');
@@ -691,6 +704,14 @@ async function deleteContactInTasks(currentIndex, contacts) {
         deleteButton.classList.remove('d-none');
         updateTasksHTML(filteredTasks);
     };
+    infoTaskFound(filteredTasks);
+}
+
+/**
+ * Displays or hides the "no search result" message based on the length of the filtered tasks.
+ */
+function infoTaskFound(){
+    let inputSearch = document.getElementById("no-search-result");
     if (filteredTasks.length == 0) {
         inputSearch.classList.remove('d-none');
     } else {
@@ -698,10 +719,16 @@ async function deleteContactInTasks(currentIndex, contacts) {
     };
 }
 
+/**
+ * Clears the search field, hides the delete button and the "no search result" message,
+ * and reloads the tasks.
+ */
 function deleteSearch() {
+    let inputSearch = document.getElementById("no-search-result");
     let deleteButton = document.getElementById('delete-search');
     document.getElementById('searchField').value = '';
     deleteButton.classList.add('d-none');
+    inputSearch.classList.add('d-none');
     loadTasks();
 }
 

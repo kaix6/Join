@@ -6,13 +6,11 @@ let users = [];
  * This function uses `setTimeout` to add a delay of 1000 milliseconds (1 second) before adding 
  * the 'hidden' CSS class to the element with the ID 'joinLogoAnimation'.
  */
-
 function animationWindow() {
     setTimeout(function() {
         document.getElementById('joinLogoAnimation').classList.add('hidden');
     }, 1000)
 }
-
 
 /**
  * Checks if the entered email exists in the list of users and triggers login if found.
@@ -20,8 +18,6 @@ function animationWindow() {
  * This asynchronous function retrieves a list of users, checks if the provided email exists 
  * among these users, and either displays an error or proceeds to log the user in.
  */
-
-
 async function existingMail() {
     users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
@@ -34,7 +30,6 @@ async function existingMail() {
     }
 }
 
-
 /**
  * Performs user login based on provided email and password.
  *
@@ -42,7 +37,6 @@ async function existingMail() {
  * with user data, and performs login if credentials match.
  * If credentials don't match, it displays an error message.
  */
-
 async function login() {
      users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
@@ -58,7 +52,6 @@ async function login() {
     }
 }
 
-
 /**
  *Saves the user's email to the local storage.
  *
@@ -67,11 +60,26 @@ async function login() {
  *
  * @param {string} email 
  */
-
 function saveUser(email) {
-    let  userMail = JSON.stringify(email);
+    let userMail = JSON.stringify(email);
     localStorage.setItem("userMail", userMail);
+}
 
+/**
+ * Logs the user out by removing the 'userMail' item from local storage.
+ */
+function logout(){
+    localStorage.removeItem('userMail');
+}
+
+/**
+ * Checks if the user is logged in by verifying the presence of 'userMail' in local storage.
+ */
+function checkUser(){
+    let userMail = localStorage.getItem('userMail');
+    if (userMail === null) {
+        window.location.href = './index.html';
+    }
 }
 
 /**
@@ -81,7 +89,6 @@ function saveUser(email) {
  * password input field and toggles the visibility icon between locked and unlocked states.
  *
  */
-
 function changePassword() {
     document.getElementById('passwordButten').classList.add('password_container_border');
     document.getElementById('emailContainer').classList.remove('password_container_border');
@@ -95,7 +102,6 @@ function changePassword() {
     }
 }
 
-
 /**
  * Changes the focus to the email input field and updates the styling.
  *
@@ -103,12 +109,10 @@ function changePassword() {
  * and removes a CSS class from the password input field container.
  *
  */
-
 function changeEmail() {
     document.getElementById('emailContainer').classList.add('password_container_border');
     document.getElementById('passwordButten').classList.remove('password_container_border');
 }
-
 
 /**
  * Toggles the visibility of the password input field and updates the visibility icon.
@@ -117,7 +121,6 @@ function changeEmail() {
  * It also updates the visibility icon accordingly.
  *
  */
-
 function togglePasswordVisibility() {
     var x = document.getElementById("password");
     if (x.type === "password") {
