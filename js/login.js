@@ -18,14 +18,13 @@ function animationWindow() {
  * This asynchronous function retrieves a list of users, checks if the provided email exists 
  * among these users, and either displays an error or proceeds to log the user in.
  */
-async function existingMail() {
+async function existingMailLogIn() {
     users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
     let user = users.find(u => u[1].mail == email);            
     if(user === undefined){  
         document.getElementById('loginErrorPassword').classList.remove('hidden');
-    }else {
-          
+    } else {    
         login();
     }
 }
@@ -38,7 +37,7 @@ async function existingMail() {
  * If credentials don't match, it displays an error message.
  */
 async function login() {
-     users = Object.entries(await loadData('users'));
+/*      users = Object.entries(await loadData('users')); */
     let email = document.getElementById('email').value.toLowerCase();
     let password = document.getElementById('password').value;
     let user = users.find(u => u[1].mail == email && u[1].password == password);
