@@ -3,20 +3,15 @@ let users = [];
 /**
  * This function is to animat the start page
  */
-
 function animationWindow() {
     setTimeout(function() {
         document.getElementById('joinLogoAnimation').classList.add('hidden');
     }, 1500)
 }
 
-
 /**
  * This function is to checkt for the rigth password 
  */
-
-
-
 async function login() {
     users = Object.entries(await loadData('users'));
     let email = document.getElementById('email').value.toLowerCase();
@@ -32,14 +27,27 @@ async function login() {
     }
 }
 
-
 function saveUser(email) {
-    let  userMail = JSON.stringify(email);
+    let userMail = JSON.stringify(email);
     localStorage.setItem("userMail", userMail);
-
 }
 
+/**
+ * Logs the user out by removing the 'userMail' item from local storage.
+ */
+function logout(){
+    localStorage.removeItem('userMail');
+}
 
+/**
+ * Checks if the user is logged in by verifying the presence of 'userMail' in local storage.
+ */
+function checkUser(){
+    let userMail = localStorage.getItem('userMail');
+    if (userMail === null) {
+        window.location.href = './index.html';
+    }
+}
 
 function changePassword() {
     document.getElementById('passwordButten').classList.add('password_container_border');
@@ -58,7 +66,6 @@ function changeEmail() {
     document.getElementById('emailContainer').classList.add('password_container_border');
     document.getElementById('passwordButten').classList.remove('password_container_border');
 }
-
 
 function togglePasswordVisibility() {
     var x = document.getElementById("password");
