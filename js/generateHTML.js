@@ -139,7 +139,7 @@ function generateEditTaskBox(index) {
                 </div>
                 <form onsubmit="event.preventDefault(); saveNewDataTasks(${index})">
                 <div class="scroll_EditTasks">
-                  <div class="test">
+                  <div class="scroll_EditTasks_pd">
                     <label class="fontUnderHeadlinesAddTasks" for="title">Title</label>
                     <input type="text" id="title" class="focus_editTask title_tasks" name="title" placeholder="Enter a title" required/>
                     <div style="margin-top: 24px">
@@ -440,7 +440,7 @@ function generateCategoryAfterClearDialogAddTask() {
 }
 
 // Summary
-function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
+function generateSummaryInnerHTML(upcomingDeadline, numberUrgent, numberOpen, numberInProgress, numberAwaitFeedback, numberDone, numberAllTasks) {
   return /* HTML */ `
       <div class="containerSummary">
             <div class="marginSummary">
@@ -508,11 +508,20 @@ function generateSummaryInnerHTML(upcomingDeadline, currentGreeting, numberUrgen
               </div>
             </div>
             <div class="summaryText">
-              <span class="goodMorningSummary">${currentGreeting}</span>
-              <span class="nameSummary">Vorname Nachname </span>
+
             </div>
       </div>`;
 }
 
+function generateSummaryTextInnerHTML(name, currentGreeting) {
+  return /* HTML */ `
+      <span class="goodMorningSummary">${currentGreeting}</span>
+      <span class="nameSummary">${name}</span>`
+}
 
+
+function generateLettersHeaerInnerHTML(letters) {
+  return /* HTML */ `
+      <p class="text_profile_header">${letters}</p>`;
+}
 
