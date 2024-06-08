@@ -5,7 +5,6 @@
  * Then, it calls the existingMail function to check if the provided email already exists.
  *
  */
-
 async function addUser() {
     document.getElementById('mailError').classList.add('hidden');
     document.getElementById('singupError').classList.add('hidden');
@@ -21,6 +20,7 @@ async function addUser() {
  * If the email does not exist, it proceeds to check the password.
  * If the email exists, it displays an error message.
  */
+
 
 async function existingMailSignUp() {
         users = Object.entries(await loadData('users'));
@@ -41,7 +41,6 @@ async function existingMailSignUp() {
  * compares them, and if they match, it adds the user to the database and initiates the signup process.
  * If they don't match, it displays an error message.
  */
-
 async function matchPassword() {
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
@@ -67,7 +66,6 @@ async function matchPassword() {
  * This function modifies the appearance of the signup button and success message to indicate successful signup.
  * It then redirects the user to the index page after a delay.
  */
-
 function successful() {
     let signupButton = document.getElementById('signupButton');
     let successMessage = document.getElementById('successMessage');
@@ -86,7 +84,6 @@ function successful() {
  * This function adds a CSS class to the name input field container to indicate focus,
  * and removes CSS classes from other input field containers.
  */
-
 function changeName() {
     document.getElementById('nameContainer').classList.add('password_container_border');
     document.getElementById('emailContainer').classList.remove('password_container_border');
@@ -101,8 +98,6 @@ function changeName() {
  * This function adds a CSS class to the email input field container to indicate focus,
  * and removes CSS classes from other input field containers.
  */
-
-
 function changeEmail() {
     document.getElementById('nameContainer').classList.remove('password_container_border');
     document.getElementById('emailContainer').classList.add('password_container_border');
@@ -119,7 +114,6 @@ function changeEmail() {
  * It also toggles the visibility of the password based on its current type.
  *
  */
-
 function changePassword() {
     document.getElementById('nameContainer').classList.remove('password_container_border');
     document.getElementById('emailContainer').classList.remove('password_container_border');
@@ -144,7 +138,6 @@ function changePassword() {
  * It also toggles the visibility of the confirm password based on its current type.
  *
  */
-
 function changeConfirmPassword() {
     document.getElementById('nameContainer').classList.remove('password_container_border');
     document.getElementById('emailContainer').classList.remove('password_container_border');
@@ -168,7 +161,6 @@ function changeConfirmPassword() {
  * It also updates the visibility icon accordingly.
  *
  */
-
 function togglePasswordVisibility() {
     var x = document.getElementById("password");
     if (x.type === "password") {
@@ -191,7 +183,6 @@ function togglePasswordVisibility() {
    * It also updates the visibility icon accordingly.
    * 
    */
-
   function toggleConfirmPasswordVisibility() {
     var x = document.getElementById("confirmPassword");
     if (x.type === "password") {
@@ -214,7 +205,6 @@ function togglePasswordVisibility() {
    *  and adds the 'animate' class to apply any animation styles if needed.
    * 
    */
-
   function showMessage() {
     const message = document.getElementById('successMessage');
     message.classList.remove('hidden');

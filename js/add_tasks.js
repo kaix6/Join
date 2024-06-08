@@ -106,7 +106,6 @@ function selectedStatusColor(button, backgroundColorClass, statusTask) {
  * @returns {void}
  */
 function initAddTasks() {
-/*   includeHTML(); */
   renderContactsInAddTasks();
   initJSONaddTasks();
   standardPrioButton();
@@ -329,7 +328,7 @@ async function saveTaskToJson(title, description, date, prio, category) {
     assignedArray.push(memberArray);
   }
   if (subtaskStatus.length === 0) {
-    subtaskStatus = 'open'; // Setzen Sie den subtaskStatus als String 'open'
+    subtaskStatus = 'open'; // Setzen von subtaskStatus als String 'open'
   }
   localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
   renderNewTask(title, description, date, prio, category);
@@ -583,39 +582,6 @@ async function initJSONaddTasks() {
 }
 
 /**
- * Displays the tooltip with member name.
- * This function positions the tooltip relative to the target element,
- * retrieves the member name and displays it in the tooltip.
- * @param {MouseEvent} event - The mouse event triggering the tooltip display.
- * @param {string} id - The ID of the target element.
- * @returns {void}
- */
-function showTooltip(event, id) {
-  let tooltip = document.getElementById('tooltip');
-  let targetElement = event.currentTarget;
-  let targetRect = targetElement.getBoundingClientRect();
-  let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-  let scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
-  tooltip.innerHTML = id;
-  let left = targetRect.left + scrollLeft + (targetRect.width / 2) - (tooltip.offsetWidth / 2);   // Berechnung der Tooltip-Position relativ zum Dokument
-  let top = targetRect.top + scrollTop - tooltip.offsetHeight - 10; // 10px Abstand zum Element
-  tooltip.style.position = 'absolute'; // Verfeinerung der Position, um den Tooltip genauer zu platzieren
-  tooltip.style.left = `${left}px - 30px`;
-  tooltip.style.top = `${top}px - 30px`;
-  tooltip.classList.add('show');
-}
-
-/**
- * Hides the tooltip.
- * Removes the "show" class from the tooltip element to hide it.
- * @returns {void}
- */
-function hideTooltip() {
-  let tooltip = document.getElementById('tooltip');
-  tooltip.classList.remove('show');
-}
-
-/**
  * Clears the input fields and selected members in the add task dialog.
  * Resets the input fields for title, description, date, category,
  * subtasks area, assigned to dropdown, and selected members area.
@@ -657,4 +623,26 @@ function disabledButton() {
  */
 function abledButton() {
   document.getElementById('submitButton').disabled = false;
+}
+
+/**
+ * Displays the member name in the hover area.
+ * This function updates the hover area with the provided member name when the event is triggered.
+ * @param {MouseEvent} event - The mouse event triggering the name display.
+ * @param {string} id - The ID or name of the member to be displayed.
+ * @returns {void}
+ */
+function addNameHoverMembers(event, id) {
+  let hoverArea = document.getElementById('hoverNameMembers');
+hoverArea.innerHTML = `${id}`
+}
+
+/**
+ * Removes the member name from the hover area.
+ * This function clears the hover area, removing any displayed member name.
+ * @returns {void}
+ */
+function removeNameHoverMembers() {
+    let hoverArea = document.getElementById('hoverNameMembers');
+hoverArea.innerHTML = "";
 }

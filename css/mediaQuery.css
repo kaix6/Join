@@ -880,7 +880,7 @@
   }
   
   #date {
-    appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+    appearance: none;
   }
 }
 
