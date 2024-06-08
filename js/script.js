@@ -46,8 +46,6 @@ async function includeHTML() {
     }
     loadTemplateFunctions();
     setPreviousPageParams();
-    loadUser();
-    showLetters();
 }
 
 
@@ -57,6 +55,9 @@ async function includeHTML() {
 function loadTemplateFunctions() {
     changeClassToActive();
     hideHelpIcon();
+    checkUser();
+    loadUser();
+    showLetters();
     if (window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
         if (!isUserLoggedIn()) {
         removeElements();
