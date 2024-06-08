@@ -182,41 +182,43 @@
 
                     <div style="margin-top: 16px">
                       <label class="fontUnderHeadlinesAddTasks" for="category"
-                        >Category<span style="color: red">*</span></label
+                        >Category<span style="color: red">*</span>
+                        <span id="warnTextCategory" class="none-display">Please choose a category</span></label
                       >
                       <br />
-
+  
                       <select name="category" id="category" required>
-                        <option disabled selected>select task category</option>
+                        <option disabled selected>Select task category</option>
                         <option value="User Story">User Story</option>
                         <option value="Technical Task">Technical Task</option>
                       </select>
                     </div>
-
+  
                     <div style="margin-top: 16px; position: relative">
                       <label class="fontUnderHeadlinesAddTasks" for="subtask"
-                        >Subtasks <span id="textSubtask">Please enter a text</span></label
+                        >Subtasks
+                        <span id="textSubtask">Please enter a text</span></label
                       ><br />
                       <input
                       onkeydown="handleEnterKey(event)"
                         id="subtask"
                         type="text"
-                        placeholder="add new subtask"
+                        placeholder="Add new subtask"
+                        maxlength="30"
                       />
                       <img
-                      onclick="addNewSubtask()"
-                      class="addSubtask"
-                      src="assets/img/add_task/add.svg"
-                      alt=""
-                    />
+                        onclick="addNewSubtask()"
+                        class="addSubtask"
+                        src="assets/img/add_task/add.svg"
+                        alt=""
+                      />
                     </div>
-                    
                     <div>
                       <div class="subtaskAreaContainer">
                         <div class="subtaskAreaNone" id="subtaskArea"></div>
                         <div class="footerButton flexEnd">
                           <button
-                            onclick="reloadPage()"
+                            onclick="clearDialogAddTask()"
                             class="clearButtonAddTasks"
                           >
                             Clear

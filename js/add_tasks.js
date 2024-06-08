@@ -583,6 +583,11 @@ function clearDialogAddTask() {
   document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
   document.getElementById("selectedMembers").innerHTML = "";
   addPrioButtonColor('medium', event);
+  document.getElementById('warnTextCategory').classList.add('none-display');
+  selectUsers = [];
+  selectUsersColor = [];
+  selectUsersLetters = [];
+  renderContactsInAddTasks();
 }
 
 /**
