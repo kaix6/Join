@@ -631,6 +631,13 @@
   }
 }
 
+@media (max-width:1200px) and (min-width:800px) {
+  /* summary */
+  .summaryText {
+    display: none;
+  } 
+}
+
 @media (max-width: 1200px) {
   .buttonPrio {
     font-size: 18px;
@@ -638,11 +645,6 @@
     width: 100px;
     gap: 4px;
   }
-
-  /* summary */
-  /* .summaryText {
-    display: none;
-  } */
 
   .containerHeadline {
     width: 625px;
