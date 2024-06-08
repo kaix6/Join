@@ -196,7 +196,7 @@
 }
 
 select {
-  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+  appearance: none;
   background-image: url(../assets/img/add_task/arrow_drop_down_down.svg);
   background-repeat: no-repeat;
   background-position: right 16px top 50%;
@@ -204,7 +204,7 @@ select {
 }
 
 #date {
-  appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+  appearance: none;
 }
 
 .mobileAddTask,
@@ -258,22 +258,6 @@ select {
   color: white;
   margin-left: -10px;
   position: relative;
-}
-
-/* feature - hover name*/
-.tooltip {
-  display: none;
-  position: absolute;
-  background-color: var(--menuButtonDarkblue);
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  z-index: 1000;
-  pointer-events: none;
-}
-
-.tooltip.show {
-  display: block;
 }
 
 .profilbild:hover {
@@ -350,7 +334,7 @@ select {
 }
 
 .dialogboxContainer {
-  position: fixed; /* Überlagert den gesamten Bildschirm */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -358,10 +342,10 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  pointer-events: none; /* Macht den Container klick-through */
+  pointer-events: none;
 }
 
-/* Stil für das Dialogfeld */
+/* stil dialogbox */
 .dialogboxCreateTask {
   width: 200px;
   height: 60px;
@@ -374,14 +358,14 @@ select {
   justify-content: center;
   align-items: center;
   text-align: center;
-  pointer-events: auto; /* Hebt die Klick-through-Eigenschaft für das Dialogfeld selbst auf */
+  pointer-events: auto;
   transition: all 100ms ease-in-out;
   opacity: 0;
   transform: translateY(1000px);
   position: absolute;
 }
 
-/* Klasse für die Anzeige des Dialogfelds */
+/* class to show dialogbox */
 .display {
   opacity: 1;
   transform: translateY(0);
