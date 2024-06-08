@@ -89,6 +89,7 @@ function saveUser(email) {
  */
 function logout(){
     localStorage.removeItem('userMail');
+    localStorage.removeItem('logStatus');
 }
 
 /**

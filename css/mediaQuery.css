@@ -62,6 +62,25 @@
 }
 
 @media (max-width: 800px) {
+  .summaryText {
+    opacity: 1;
+    display: flex;  
+    position: absolute;
+    background-color: #F5F5F5;
+    width: 100% !important;
+    height: calc(100% - 83px);
+    transition: all 1500ms ease-in;
+    margin: 0 !important;
+  }
+
+  .fade-out {
+    opacity: 0;
+  }
+
+  .display-none{
+    display: none;
+  }
+
   /* Header */
   #header {
     padding: 20px 16px;
@@ -342,6 +361,7 @@
   }
 }
 
+
 /* Contact Overview*/
 
 @media (min-width: 1111px) {
@@ -620,9 +640,9 @@
   }
 
   /* summary */
-  .summaryText {
+  /* .summaryText {
     display: none;
-  }
+  } */
 
   .containerHeadline {
     width: 625px;

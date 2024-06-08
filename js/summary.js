@@ -83,5 +83,23 @@ async function showName() {
     let userInfo = await getUserInfos();
     let currentGreeting = showGreeting();
     let summaryText = document.querySelector('.summaryText');
+    let userLogStatus = localStorage.getItem('logStatus');
     summaryText.innerHTML = generateSummaryTextInnerHTML(userInfo.name, currentGreeting);
+    if(userLogStatus === null){
+        mobileGreeting();
+        localStorage.setItem("logStatus", "loggedIn");
+    } else {
+        document.querySelector('.summaryText').classList.add('display-none');
+    }
+}
+
+function mobileGreeting() {
+    let summaryText = document.querySelector('.summaryText');
+    // Warten Sie einen kurzen Moment, bevor die Klasse hinzugefügt wird
+    setTimeout(() => {
+        summaryText.classList.add('fade-out');
+    }, 400); // 1 Sekunde warten
+    setTimeout(() => {
+        document.querySelector('.summaryText').classList.add('display-none');
+    }, 2000); // 1 Sekunde warten
 }
