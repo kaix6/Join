@@ -28,9 +28,9 @@ let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in d
  * in an input field with the id "subtask". This prevents the default form submission behavior.
  */
 function handleEnterKey(event) {
-  if (event.keyCode === 13) { // Prüfen, ob die Enter-Taste (Keycode 13) gedrückt wurde
-      event.preventDefault(); // Verhindert das Absenden des Formulars, falls es sich in einem Formular befindet
-      addNewSubtask(); // Die Funktion, die ausgeführt werden soll
+  if (event.keyCode === 13) {
+      event.preventDefault();
+      addNewSubtask();
   }
 }
 
@@ -54,14 +54,14 @@ function standardPrioButton() {
  * @returns {void}
  */
 function addPrioButtonColor(prio, event) {
-  event.preventDefault(); // Prevents the default behavior of the button
+  event.preventDefault();
   let buttonUrgent = document.getElementById("buttonUrgent");
   let buttonMedium = document.getElementById("buttonMedium");
   let buttonLow = document.getElementById("buttonLow");
   let imgUrgent = document.getElementById("buttonImg1");
   let imgMedium = document.getElementById("buttonImg2");
   let imgLow = document.getElementById("buttonImg3");
-  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow); // Remove existing classes to clear previous highlights
+  removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow);
   if (prio === "urgent") {
     selectedButtonColor(buttonUrgent, imgUrgent, "backgroundColorRed", "urgent");
   } else if (prio === "medium") {
@@ -138,12 +138,11 @@ function initRemoveItemTasks() {
 function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow) {
   const classesToRemove = ["backgroundColorRed", "fontWeightAndColor", "backgroundColorOrange", "backgroundColorGreen", "imgColor",];
   const elements = [buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedium, imgLow];
-
-  for (let i = 0; i < elements.length; i++) {
-    let element = elements[i];
-    for (let j = 0; j < classesToRemove.length; j++) {
-      let className = classesToRemove[j];
-      element.classList.remove(className);
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
+      for (let j = 0; j < classesToRemove.length; j++) {
+        let className = classesToRemove[j];
+        element.classList.remove(className);
     }
   }
 }
@@ -159,12 +158,11 @@ function removeClasses(buttonUrgent, buttonMedium, buttonLow, imgUrgent, imgMedi
 function removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone) {
   const classesToRemove = ["backgroundColorBlue", "fontWeightAndColor",];
   const elements = [buttonToDo, buttonProgress, buttonFeedback, buttonDone];
-
-  for (let i = 0; i < elements.length; i++) {
-    let element = elements[i];
-    for (let j = 0; j < classesToRemove.length; j++) {
-      let className = classesToRemove[j];
-      element.classList.remove(className);
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
+      for (let j = 0; j < classesToRemove.length; j++) {
+        let className = classesToRemove[j];
+        element.classList.remove(className);
     }
   }
 }
@@ -186,13 +184,11 @@ async function renderContactsInAddTasks() {
   const contacts = Object.entries(await loadData("contacts"));
   const assignedTo = document.getElementById("assignedTo");
   const MembersArea = document.getElementById("selectedMembers");
-  assignedTo.innerHTML = generateAssignedToFirst(); // Platzhalter
-
-  contacts.forEach((contact) => {
-    const { name, letters } = contact[1];
-    assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
+  assignedTo.innerHTML = generateAssignedToFirst();
+    contacts.forEach((contact) => {
+      const { name, letters } = contact[1];
+      assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
   });
-
   assignedTo.onchange = () =>
     handleAssignedToChange(contacts, assignedTo, MembersArea);
 }
@@ -210,7 +206,6 @@ function handleAssignedToChange(contacts, assignedTo, MembersArea) {
   const selectedContact = contacts.find(
     (contact) => contact[1].name === selectedName
   );
-
   if (selectedContact) {
     pushMembers(selectedContact[1]);
     MembersArea.classList.remove("selectedMembersNone");
@@ -232,10 +227,9 @@ function handleAssignedToChange(contacts, assignedTo, MembersArea) {
 function pushMembers(contact) {
   const { name, color, letters } = contact;
   const messageSelected = document.getElementById("isSelected");
-
-  if (selectUsers.includes(name)) {
-    messageMemberIsAdded(messageSelected);
-    return;
+    if (selectUsers.includes(name)) {
+      messageMemberIsAdded(messageSelected);
+      return;
   }
   messageIsSelected(messageSelected);
   selectUsers.push(name);
@@ -294,14 +288,11 @@ function renderPushedMembers() {
  * @returns {void}
  */
 function deleteSelectMember(element) {
-  // Element-Index finden
   const index = selectUsers.indexOf(element);
   if (index > -1) {
-    // Elemente aus den Arrays entfernen
     selectUsers.splice(index, 1);
     selectUsersColor.splice(index, 1);
     selectUsersLetters.splice(index, 1);
-    // Mitglieder neu rendern
     renderPushedMembers();
   }
 }
@@ -328,9 +319,9 @@ async function saveTaskToJson(title, description, date, prio, category) {
     assignedArray.push(memberArray);
   }
   if (subtaskStatus.length === 0) {
-    subtaskStatus = 'open'; // Setzen von subtaskStatus als String 'open'
+    subtaskStatus = 'open';
   }
-  localStorage.setItem('subtaskStatus', subtaskStatus); // Speichern des subtaskStatus als normalen String
+  localStorage.setItem('subtaskStatus', subtaskStatus);
   renderNewTask(title, description, date, prio, category);
   await postData("tasks", newTask);
   disabledButton();
@@ -352,7 +343,6 @@ async function saveTaskToJson(title, description, date, prio, category) {
  * @returns {void}
  */
 function renderNewTask(title, description, date, prio, category) {
-        // Neuen Task erstellen
         newTask = {
           title: title,
           description: description,
@@ -425,11 +415,10 @@ function addNewSubtask() {
   let subtaskValue = document.getElementById("subtask").value;
   let subtaskText = document.getElementById("textSubtask");
   let subtaskArea = document.getElementById("subtaskArea");
-  let subtaskId = "subtask_" + subtaskIdCounter++; // Erzeugen einer individuellen ID für generierte Subtask
-
-  if (subtaskValue === "") {
-    subtaskText.classList.add("unset-display");
-    return;
+  let subtaskId = "subtask_" + subtaskIdCounter++;
+    if (subtaskValue === "") {
+      subtaskText.classList.add("unset-display");
+      return;
   }
   generateSubtaskArea(subtaskText, subtaskArea, subtaskValue, subtaskId);
 }
@@ -482,11 +471,8 @@ function editSubtask(subtaskId) {
     let subtaskTextElement = subtaskElement.querySelector(".fontSubtask");
     let subtaskText = subtaskTextElement.innerText;
     let editInput = document.createElement("input");
-
-/*     editInput.value = subtaskText; */ // Set initial value of the input field to the subtask text
-    renderEditInputField(subtaskText, subtaskTextElement, editInput); // Erzeuge ein Eingabefeld für die Bearbeitung
-    acceptEnter(editInput, subtaskTextElement); // Funktion, um mit Enter zu bestätigen
-
+    renderEditInputField(subtaskText, subtaskTextElement, editInput);
+    acceptEnter(editInput, subtaskTextElement);
     editInput.addEventListener("blur", function () {
       saveEditedSubtask(subtaskTextElement, editInput);
     });
@@ -525,13 +511,11 @@ function acceptEnter(editInput, subtaskTextElement) {
  */
 function renderEditInputField(subtaskText, subtaskTextElement, editInput) {
   editInput.type = "text";
-  editInput.value = subtaskText; // Set current text as default value
+  editInput.value = subtaskText;
   editInput.classList.add("editInput");
-   // Replace text with input field
-  subtaskTextElement.innerHTML = ""; // Remove existing text
-  subtaskTextElement.appendChild(editInput); // Append input field
-
-  editInput.focus(); // Set focus to input field
+  subtaskTextElement.innerHTML = "";
+  subtaskTextElement.appendChild(editInput);
+  editInput.focus();
 }
 
 /**
@@ -567,9 +551,8 @@ function validateForm() {
     textNotCategory.classList.remove('none-display');
   }
   if (title === "" || date === "" || category === "Select task category" || category === "") {
-    return false; // Prevents default form behavior
+    return false;
   }
-  
   saveTaskToJson(title, description, date, prio, category);
   return false;
 }
@@ -599,6 +582,7 @@ function clearDialogAddTask() {
   document.getElementById("subtaskArea").innerHTML = "";
   document.getElementById("assignedTo").innerHTML = generateAssignedToFirst();
   document.getElementById("selectedMembers").innerHTML = "";
+  addPrioButtonColor('medium', event);
 }
 
 /**
@@ -609,10 +593,10 @@ function clearDialogAddTask() {
  */    
 function showDialogAddTask() {
   const dialog = document.getElementById('dialogboxTask');
-  dialog.classList.add('display'); // Macht das Dialogfeld sichtbar
+  dialog.classList.add('display');
   setTimeout(() => {
-  dialog.classList.remove('display'); // Versteckt das Dialogfeld nach 3 Sekunden
-  }, 3000); // Verweildauer in Millisekunden
+  dialog.classList.remove('display');
+  }, 3000);
 }
 
 /**
