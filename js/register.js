@@ -9,7 +9,7 @@
 async function addUser() {
     document.getElementById('mailError').classList.add('hidden');
     document.getElementById('singupError').classList.add('hidden');
-    existingMail();
+    existingMailSignUp();
 }
 
 
@@ -22,10 +22,10 @@ async function addUser() {
  * If the email exists, it displays an error message.
  */
 
-async function existingMail() {
+async function existingMailSignUp() {
         users = Object.entries(await loadData('users'));
         let email = document.getElementById('email').value.toLowerCase();
-        user = users.find(u => u[1].mail == email);            
+        let user = users.find(u => u[1].mail == email);            
         if(user === undefined){  
         matchPassword();
         }else {
