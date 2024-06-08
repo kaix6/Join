@@ -423,3 +423,7 @@ select {
   border-bottom: 1px solid var(--lightblue);
   background-color: var(--white);
 }
+
+#warnTextCategory {
+  color: red;
+}

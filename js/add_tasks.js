@@ -562,10 +562,14 @@ function validateForm() {
   let date = document.getElementById("date").value;
   let prio = selectedPrio;
   let category = document.getElementById("category").value;
-
-  if (title === "" || date === "" || category === "") {
+  let textNotCategory = document.getElementById('warnTextCategory');
+  if (category === "Select task category" || category === "") {
+    textNotCategory.classList.remove('none-display');
+  }
+  if (title === "" || date === "" || category === "Select task category" || category === "") {
     return false; // Prevents default form behavior
   }
+  
   saveTaskToJson(title, description, date, prio, category);
   return false;
 }
