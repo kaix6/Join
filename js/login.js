@@ -9,7 +9,7 @@ let users = [];
 function animationWindow() {
     setTimeout(function() {
         document.getElementById('joinLogoAnimation').classList.add('hidden');
-    }, 1000)
+    }, 800)
 }
 
 /**
