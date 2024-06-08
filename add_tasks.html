@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AddTasks</title>
-    <link rel="icon" type="image/svg+xml" href="assets/img/general/logo_favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="assets/img/general/logo_favicon.svg"
+    />
     <script defer src="./js/remoteStorage.js"></script>
     <script defer src="./js/script.js"></script>
     <script defer src="./js/template.js"></script>
@@ -18,27 +21,28 @@
     <link rel="stylesheet" href="./css/template.css" />
     <link rel="stylesheet" href="./css/addTasks.css" />
     <link rel="stylesheet" href="./css/mediaQuery.css" />
-</head>
+  </head>
 
-<body class="flex_dir_c" onload="includeHTML(); initAddTasks()">
+  <body class="flex_dir_c" onload="includeHTML(); initAddTasks()">
     <div onclick="closeSubmenuHeader(event)" class="wrapped_maxWidth">
-        <div class="right_section flex_dir_c">
-            <!--      Section header    -->
+      <div class="right_section flex_dir_c">
+        <!--      Section header    -->
 
-            <div w3-include-html="assets/templates/header.html"></div>
+        <div w3-include-html="assets/templates/header.html"></div>
 
-            <!--      Section header    -->
+        <!--      Section header    -->
 
-            <section id="main_container" class="main_addTasks main_maxWidth">
-                <div class="desktopAddTask">
-                    <div class="d-flex">
-                        <h1 class="headlineAddTasks">Add Tasks</h1>
-                    </div>
+        <section id="main_container" class="main_addTasks main_maxWidth">
+          <div class="desktopAddTask">
+            <div class="d-flex">
+              <h1 class="headlineAddTasks">Add Tasks</h1>
+            </div>
 
-                    <div class="mainAddTasks">
-                        <form class="addTasksLeft" onsubmit="return validateForm()">
-                            <div class="widthHalf">
-                                <label class="fontUnderHeadlinesAddTasks" for="title">Title<span style="color: red">*</span></label
+            <div class="mainAddTasks">
+              <form class="addTasksLeft" onsubmit="return validateForm()">
+                <div class="widthHalf">
+                  <label class="fontUnderHeadlinesAddTasks" for="title"
+                    >Title<span style="color: red">*</span></label
                   >
                   <input
                     type="text"
@@ -153,7 +157,9 @@
                   <div style="margin-top: 16px">
                     <label class="fontUnderHeadlinesAddTasks" for="category"
                       >Category<span style="color: red">*</span>
-                      <span id="warnTextCategory" class="none-display">Please choose a category</span></label
+                      <span id="warnTextCategory" class="none-display"
+                        >Please choose a category</span
+                      ></label
                     >
                     <br />
 
@@ -170,7 +176,7 @@
                       <span id="textSubtask">Please enter a text</span></label
                     ><br />
                     <input
-                    onkeydown="handleEnterKey(event)"
+                      onkeydown="handleEnterKey(event)"
                       id="subtask"
                       type="text"
                       placeholder="Add new subtask"
@@ -210,10 +216,14 @@
 
       <!--      Dialogbox Create Task   -->
       <div class="dialogboxContainer">
-        <div id="dialogboxTask" class="dialogboxCreateTask dialogboxAddedToBoardTransform">Task added to Board</div>
+        <div
+          id="dialogboxTask"
+          class="dialogboxCreateTask dialogboxAddedToBoardTransform"
+        >
+          Task added to Board
+        </div>
       </div>
       <!--      Dialogbox Create Task   -->
-      
 
       <!--      Section Side Menu   -->
 
