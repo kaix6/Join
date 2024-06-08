@@ -78,7 +78,6 @@ function changeColorContact(id, i, color) {
  * @returns {array} - Returns a new sorted array
  */
 function sortArray(array) {
-    // Mit slice() wird eine Kopie von contacts erstellt und auch nicht überschrieben, somit bleibt die Reihenfolge von contacts unberührt
     let sortedArray = array.slice().sort((a, b) => {
         if (nameIsGreaterThan(a, b)) {
             return -1;
@@ -86,7 +85,7 @@ function sortArray(array) {
         if (nameIsLessThan(a, b)) {
             return 1;
         }
-        return 0; // Wenn die Namen gleich sind
+        return 0;
     })
     return sortedArray;
 }
@@ -118,7 +117,7 @@ function toggleContactView(i) {
 function showActiveContact() {
     let activeContactName = document.querySelector('.name_overview').textContent;
     let activeContactMail = document.querySelector('.overview_mail').textContent;
-    let contacts = document.querySelectorAll('.contact'); // Select all contact elements
+    let contacts = document.querySelectorAll('.contact');
     contacts.forEach(contact => {
         let contactName = contact.querySelector('.contact_fullName').textContent;
         let contactMail = contact.querySelector('.contact_mail').textContent;
@@ -231,7 +230,7 @@ async function addContact() {
     await postData(`contacts`, { name: capitalizeFirstLetters(fullName.value), mail: mail.value, phone: telNumber.value, color: colorAllocation, letters: firstLetters });
     await updateArrayContacts();
     closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 0);
-    toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));     // findIndex überprüft hier das Array sortedContacts, ob das aktuelle Element in sortedContacts gleich dem des letzten Elements aus dem Array contacts ist - Falls true, gibt es diesen index an den Parameter i zurück
+    toggleContactView(sortedContacts.findIndex(contact => contact === contacts[contacts.length - 1]));
     showCreateContactDoneShort();
     clearDataContactValues();
 }
@@ -335,7 +334,7 @@ async function deleteContact(event, index) {
     if (currentElementWidth(1110)) {
         showContactMobile();
         closeContactOptions(event);
-    } else { // Desktop
+    } else {
         document.querySelector('.floating_contact').classList.toggle('d_none');
         document.querySelector('.floating_contact').classList.toggle('show_floating_contact_desktop');
     }
@@ -403,7 +402,7 @@ function nameIsLessThan(a, b) {
  * @returns {boolean} - Returns true if the variable is defined, otherwise false.
  */
 function typeIsDefined(i) {
-    return typeof i !== 'undefined'; // Check if i is defined - Code is just executed if i is definded
+    return typeof i !== 'undefined';
 }
 
 
