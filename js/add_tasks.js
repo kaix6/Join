@@ -187,7 +187,9 @@ async function renderContactsInAddTasks() {
   assignedTo.innerHTML = generateAssignedToFirst();
     contacts.forEach((contact) => {
       const { name, letters } = contact[1];
+      if (!selectUsers.includes(name)) {
       assignedTo.innerHTML += `<option value="${name}">${name}</option>`;
+      }
   });
   assignedTo.onchange = () =>
     handleAssignedToChange(contacts, assignedTo, MembersArea);
@@ -209,6 +211,7 @@ function handleAssignedToChange(contacts, assignedTo, MembersArea) {
   if (selectedContact) {
     pushMembers(selectedContact[1]);
     MembersArea.classList.remove("selectedMembersNone");
+    renderContactsInAddTasks();
   } else {
     console.error(`Contact with letters '${selectedName}' not found.`);
   }
@@ -294,6 +297,7 @@ function deleteSelectMember(element) {
     selectUsersColor.splice(index, 1);
     selectUsersLetters.splice(index, 1);
     renderPushedMembers();
+    renderContactsInAddTasks();
   }
 }
 
