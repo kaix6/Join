@@ -58,7 +58,7 @@ function loadTemplateFunctions() {
     checkUser();
     loadUser();
     showLetters();
-    if (window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html') {
+    if (window.location.pathname == '/privacy.html' || window.location.pathname == '/legal_notice.html' || window.location.pathname == '/Join/legal_notice.html' || window.location.pathname == '/Join/privacy.html') {
         if (!isUserLoggedIn()) {
         removeElements();
         }
@@ -199,16 +199,16 @@ function loadUser() {
  * @returns {name: string, letters: string}- A promise that resolves to an object containing the user's name and initials.
  */
 async function getUserInfos() {
-    let guestMail = '"guest@mail.com"';
-    let name = 'Guest';
-    let letters = 'G';
-    loadUser();
-    if (userMail !== guestMail) {
-        contacts = Object.entries(await loadData('contacts'));
-        let formattedUserMail = userMail.replace(/"/g, '');
-        let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
-            name = contacts[currentIndex][1].name;
-            letters = contacts[currentIndex][1].letters;
+        let guestMail = '"guest@mail.com"';
+        let name = 'Guest';
+        let letters = 'G';
+        loadUser();
+        if (userMail !== guestMail && userMail !== null) {
+            contacts = Object.entries(await loadData('contacts'));
+            let formattedUserMail = userMail.replace(/"/g, '');
+            let currentIndex = contacts.findIndex(contact => contact[1].mail === formattedUserMail);
+                name = contacts[currentIndex][1].name;
+                letters = contacts[currentIndex][1].letters;
+        }
+        return { name, letters };
     }
-    return { name, letters };
-}

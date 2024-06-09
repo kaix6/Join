@@ -11,7 +11,7 @@ function generateSmallTaskBox(task) {
             <div class="member-prio-section">
                 <div id="task-all-member${task["id"]}" class="task-all-member">
                 </div>
-                <img id="taskPrio${task["id"]}" src="/assets/img/add_task/prio_low.svg">
+                <img id="taskPrio${task["id"]}" src="assets/img/add_task/prio_low.svg">
             </div>
         </div>
     `;
@@ -35,7 +35,7 @@ function generateBigTaskBox(task) {
         <div class="d-flex">
             <p class="width-30">Priority:</p>
             <p>${task[0][1]["prio"]}</p>
-            <img id="taskPrioBigBox${task[0][1]["id"]}" class="prio-icon" src="./assets/img/add_task/prio_low.svg" />
+            <img id="taskPrioBigBox${task[0][1]["id"]}" class="prio-icon" src="assets/img/add_task/prio_low.svg" />
         </div>
         <div>
             <div id ="member-headline" class="margin-top-16px">Assigned To:</div>
@@ -358,7 +358,7 @@ function generateDialoEditInnerHTML(index) {
                 <label for="mail_edit"></label>
                 <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                 <label for="telNumber_edit"></label>
-                <input class="create_contact_input" type="tel" id="telNumber_edit" pattern="^.+$" placeholder="Phone" required>
+                <input class="create_contact_input" type="tel" id="telNumber_edit" pattern="^(\+[0-9\/ ]+|[0-9\/ ]+)$" placeholder="Phone" required>
                 <div class="container_button">
                     <button onclick="deleteContact(event, ${index})" type="button" class="cancel_create_contact_edit_btn contact_btn pointer">
                         <p class="text_cancel_create_contact_edit_btn">Delete</p>
