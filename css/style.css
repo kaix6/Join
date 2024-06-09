@@ -114,8 +114,8 @@ body {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
-  overflow: hidden; /* versteckt die Scrollbar auch in der mobile Anischt (funktioniert nicht im body) */
-  position: relative; /* overflow: hidden funktioniert nur mit position: relative */
+  overflow: hidden;
+  position: relative;
 }
 
 .right_section {

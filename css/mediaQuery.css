@@ -53,7 +53,7 @@
 }
 
 .floating_contact {
-  transform: translateX(0px); /* Hier soll der Container direkt da sein, in der Desktop Version slided es aber rein */
+  transform: translateX(0px);
 }
 
 .head_floating_content {
@@ -367,7 +367,7 @@
 @media (min-width: 1111px) {
 
   #contact_view {
-    display: block; /* div mit id="contact_view" ist nur ab width von 1111px sichtbar, sonst class="d_none" */
+    display: block;
   }
 
   #content_contacts {
@@ -530,7 +530,7 @@
   }
 }
 
-@media screen and (max-width: 800px) and (min-width: 460px) { /* zentriert den Inhalt mittig, damit display: flex nicht genutzt werden muss, da es sonst zu Problemen mit dem cascade mit d_none kommt */
+@media screen and (max-width: 800px) and (min-width: 460px) {
   .contacts {
     padding-left: calc((100% - 352px) / 2);
   }
@@ -893,7 +893,7 @@
   }
 
   select {
-    appearance: none; /* entfernt Standard-Pfeil in einigen Browsern */
+    appearance: none;
     background-image: url(../assets/img/add_task/arrow_drop_down_down.svg);
     background-repeat: no-repeat;
     background-position: right 16px top 50%;
