@@ -22,13 +22,11 @@
   background-color: var(--white);
   overflow-x: hidden;
   overflow-y: auto;
-  /* "versteckt" die Klasse und gibt an wie das Element verändert wird */
   transform: translateX(120%);
   transition: all 100ms ease-in-out;
 }
 
 .show_dialog_addTask {
-  /* Das Element wird von der Position translateX(100%) zu translateX(0) in 300ms mit ease-out verschoben */
   transform: translateX(0);
 }
 
@@ -286,7 +284,6 @@
 }
 
 .tasks-container {
-  /* overflow-y: scroll; */
   height: 90%;
   width: 280px;
 }
@@ -570,6 +567,10 @@
 .scroll_EditTasks {
     max-height: calc(50vh - 100px);
     overflow-y: auto;
+}
+
+.scroll_EditTasks_pd{
+  margin-right: 10px;
 }
 
 .mainEditTasks {

@@ -517,7 +517,6 @@
   }
 }
 
-/* when browser's width is between 800 and 1110px, change the width of a <div> element */
 @media screen and (max-width: 1110px) and (min-width: 800px) {
   /* Contacts */
   .contact {
@@ -640,9 +639,6 @@
   }
 
   /* summary */
-  /* .summaryText {
-    display: none;
-  } */
 
   .containerHeadline {
     width: 625px;
