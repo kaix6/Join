@@ -972,6 +972,12 @@
   }
 }
 
+@media screen and (max-width: 1200px) and (min-width: 800px){
+  .summaryText {
+    display: none;
+  }
+}
+
 @media (max-width: 840px) {
   .headlineSummary,
   .sizeNumbersSummary {
