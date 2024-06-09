@@ -93,13 +93,18 @@ async function showName() {
     }
 }
 
+/**
+ * Displays a mobile greeting message with a fade-out effect.
+ * 
+ * @function mobileGreeting
+ * @returns {void}
+ */
 function mobileGreeting() {
     let summaryText = document.querySelector('.summaryText');
-    // Warten Sie einen kurzen Moment, bevor die Klasse hinzugefügt wird
     setTimeout(() => {
         summaryText.classList.add('fade-out');
-    }, 400); // 1 Sekunde warten
+    }, 400);
     setTimeout(() => {
         document.querySelector('.summaryText').classList.add('display-none');
-    }, 2000); // 1 Sekunde warten
+    }, 2000);
 }

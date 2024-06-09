@@ -16,6 +16,17 @@ async function initialLoadContactsFirebase() {
     await loadData('contacts');
 }
 
+/**
+ * Asynchronously loads user data from a JSON file and posts it to a database.
+ * 
+ * This function fetches user data from a local JSON file, iterates through the user objects,
+ * and posts each user's data (name, mail, and password) to a specified endpoint. After posting all users,
+ * it loads the updated user data.
+ * 
+ * @async
+ * @function initialLoadUsersFirebase
+ * @returns {Promise<void>} A promise that resolves when the user data is loaded and posted.
+ */
 async function initialLoadUsersFirebase() {
     let response = await fetch('./js/users.json');
     users = await response.json();
@@ -27,6 +38,13 @@ async function initialLoadUsersFirebase() {
     await loadData('users');
 }
 
+/**
+ * Loads task data from a JSON file and posts it to the database.
+ * 
+ * @async
+ * @function initialLoadTasksFirebase
+ * @returns {Promise<void>}
+ */
 async function initialLoadTasksFirebase() {
     let response = await fetch('./js/addTasks.json');
     tasks = await response.json();

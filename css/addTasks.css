@@ -82,6 +82,7 @@
   border: 1px solid var(--backgroundSpacer);
   margin-top: 8px;
   outline: none;
+  resize: none;
 }
 
 #assignedTo,

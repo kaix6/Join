@@ -105,7 +105,7 @@ function doNotClose(event) {
  * @returns {string} - The display style of the specified element.
  */
 function proveElementStyle(element) {
-    return element.currentStyle ? element.currentStyle.display : getComputedStyle(element).display; // Wenn das currentStyle-Attribut definiert ist wird der Wert des Displays über element.currentStyle.display abgerufen und betrifft den IE, ansonsten über getComputedStyle(element).display
+    return element.currentStyle ? element.currentStyle.display : getComputedStyle(element).display;
 }
 
 

@@ -483,12 +483,12 @@ function editTask(index, event) {
  * @param {Event} event - The event object associated with the action (e.g., button click).
  */
 function addStatusButtonColor(status, event) {
-    event.preventDefault(); // Prevents the default behavior of the button
+    event.preventDefault();
     let buttonToDo = document.getElementById("buttonToDo");
     let buttonProgress = document.getElementById("buttonProgress");
     let buttonFeedback = document.getElementById("buttonFeedback");
     let buttonDone= document.getElementById("buttonDone");
-    removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone); // Remove existing classes to clear previous highlights
+    removeClassesStatus(buttonToDo, buttonProgress, buttonFeedback, buttonDone);
     if (status === "open") {
       selectedStatusColor(buttonToDo, "backgroundColorBlue", "open");
     } else if (status === "in progress") {
@@ -544,7 +544,7 @@ async function saveNewDataTasks(index) {
  */
 async function editSubtaskEdit(subtaskId, iSubtask, iTask) {
     editSubtask(subtaskId);
-    setTimeout(() => { // stellt sicher, dass das DOM aktualisiert wird, bevor das Event ausgeführt wird
+    setTimeout(() => {
         let editInput = document.querySelector(`#${subtaskId} .editInput`);
         if (editInput) {
             editInput.addEventListener("blur", async() => {
@@ -602,7 +602,6 @@ async function deleteSubtaskEdit(subtaskId, iSubtask, iTask) {
     await editData(`tasks/${allTasks[iTask][0]}`, { subtask: taskData.subtask });
     removeSubtask(subtaskId);
     renderSubtasks(iTask);
-/*     await loadTasks(); */
 }
 
 /**

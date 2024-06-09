@@ -37,7 +37,6 @@ async function existingMailLogIn() {
  * If credentials don't match, it displays an error message.
  */
 async function login() {
-/*      users = Object.entries(await loadData('users')); */
     let email = document.getElementById('email').value.toLowerCase();
     let password = document.getElementById('password').value;
     let user = users.find(u => u[1].mail == email && u[1].password == password);
@@ -61,8 +60,6 @@ function checkUser() {
     let previousPage = document.referrer;
     let currentPage = window.location.pathname;
     let dependingPages = ['/privacy.html', '/legal_notice.html', '/Join/privacy.html', '/Join/legal_notice.html'];
-
-    // Check if the user is on privacy.html or legal_notice.html and came from login.html or signup.html
     if (dependingPages.includes(currentPage) && (previousPage.includes('/index.html') || previousPage.includes('/signup.html') || dependingPages.some(page => previousPage.includes(page)))) {
         return;
     }

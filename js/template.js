@@ -4,7 +4,7 @@
  * If the display style is not 'flex', it toggles the visibility of the submenu header for desktop view.
  */
 function showSubmenuHeader(event) {
-    event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
+    event.stopPropagation();
     if (currentElementDisplayStyleFlex()) {
         document.querySelector('.submenu_header_mobile').classList.toggle('show_submenu_header');
     } else {
@@ -66,7 +66,7 @@ function classContainsShowSubmenuHeader(element) {
  * @param {object} event - The event object representing the event where the function is triggered.
  * @returns {boolean} -Returns true if target element of the event does not have the class 'text_profile_header', otherwise false.
  */
-function classIsNotTextProfileHeader(event) { //event.target.className gibt die Klasse des Elements zurück, welches angeglickt wurde
+function classIsNotTextProfileHeader(event) {
     return event.target.className != 'text_profile_header';
 }
 
