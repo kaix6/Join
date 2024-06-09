@@ -5,6 +5,17 @@ let done;
 let urgentDate = [];
 
 /**
+ * This function categorizes tasks based on their status.
+ * @param {Array} tasks - An array of tasks, each represented as an array with an index and task data.
+ */
+function categorizeTasks(tasks) {
+    open = tasks.filter(t => t[1] && t[1]['status'] === 'open');
+    inProgress = tasks.filter(t => t[1] && t[1]['status'] === 'in progress');
+    awaitFeedback = tasks.filter(t => t[1] && t[1]['status'] === 'await feedback');
+    done = tasks.filter(t => t[1] && t[1]['status'] === 'done');
+}
+
+/**
  * This function initializes the summary by loading tasks and getting the tasks length.
  */
 async function initializeSummary() {

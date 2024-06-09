@@ -262,7 +262,7 @@
 #content_contacts {
     box-shadow: 4px 0px 6px 0px #00000014;
     background-color: var(--white);
-    padding: 32px 52px; /* zentriert content mittig */
+    padding: 32px 52px;
     width: 456px;
     overflow-y: auto;
     overflow-x: hidden;
