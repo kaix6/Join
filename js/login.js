@@ -60,15 +60,15 @@ function checkUser() {
     let userMail = localStorage.getItem('userMail');
     let previousPage = document.referrer;
     let currentPage = window.location.pathname;
-    let dependingPages = ['/privacy.html', '/legal_notice.html'];
+    let dependingPages = ['/privacy.html', '/legal_notice.html', '/Join/privacy.html', '/Join/legal_notice.html'];
 
     // Check if the user is on privacy.html or legal_notice.html and came from login.html or signup.html
     if (dependingPages.includes(currentPage) && (previousPage.includes('/index.html') || previousPage.includes('/signup.html') || dependingPages.some(page => previousPage.includes(page)))) {
         return;
     }
-    if (userMail === null) {
+    if (userMail === null ) {
         window.location.href = './index.html';
-    }
+    } 
 }
 
 /**
