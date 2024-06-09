@@ -55,7 +55,7 @@
                             <label for="mail"></label>
                             <input class="create_contact_input" type="email" id="mail" placeholder="Email" required>
                             <label for="telNumber"></label>
-                            <input class="create_contact_input" type="tel" id="telNumber" pattern="^.+$" placeholder="Phone" required>
+                            <input class="create_contact_input" type="tel" id="telNumber" pattern="^(\+[0-9\/ ]+|[0-9\/ ]+)$" placeholder="Phone" required>
                             <div class="container_button">
                                 <button onclick="closeDialog('.dialog_add_contact', 'show_dialog_add_contact', '.dialog_add_contact_bg', 'd_none', 250)" class="cancel_create_contact_btn contact_btn pointer">
                             <p class="text_cancel_create_contact_btn">Cancel</p>
