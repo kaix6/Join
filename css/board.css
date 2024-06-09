@@ -64,7 +64,7 @@
 .board-column {
   width: 280px;
   margin-bottom: 24px;
-  height: 90%;
+  /* height: 90%; */
   padding: 8px;
 }
 
@@ -287,7 +287,7 @@
 }
 
 .tasks-container {
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   height: 90%;
   width: 280px;
 }

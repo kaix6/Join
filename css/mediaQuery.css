@@ -631,13 +631,6 @@
   }
 }
 
-@media (max-width:1200px) and (min-width:800px) {
-  /* summary */
-  .summaryText {
-    display: none;
-  } 
-}
-
 @media (max-width: 1200px) {
   .buttonPrio {
     font-size: 18px;
@@ -645,6 +638,11 @@
     width: 100px;
     gap: 4px;
   }
+
+  /* summary */
+  /* .summaryText {
+    display: none;
+  } */
 
   .containerHeadline {
     width: 625px;
@@ -1133,7 +1131,48 @@
 /* Summary - end     */
 
 /* Board - start     */
+
+@media(max-width: 1423px){
+  .tasks-container{
+    overflow-y: hidden;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    height: unset;
+  }
+
+  .d-flex-start{
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .board-column{
+    width: 100%;
+    margin-bottom: 0;
+    height: unset;
+  }
+}
+
 @media(max-width: 1136px){
+  .tasks-container{
+    overflow-y: hidden;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    height: unset;
+  }
+
+  .d-flex-start{
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+
+  .board-column{
+    width: 100%;
+    margin-bottom: 0;
+    height: unset;
+  }
+  
   .small-add-button{
       display: flex;
       align-items: center;
@@ -1192,28 +1231,9 @@
     background-size: contain
  }
 
-  .d-flex-start{
-      flex-direction: column;
-      flex-wrap: nowrap;
-  }
-
-  .board-column{
-      width: 100%;
-      margin-bottom: 0;
-      height: unset;
-  }
-
   .dialog_addTask_bg {
     display: none!important;
   } 
-
-  .tasks-container{
-    overflow-y: hidden;
-    width: 100%;
-    display: flex;
-    overflow-x: auto;
-    height: unset;
-  }
 }
 
 @media(max-width: 500px){
