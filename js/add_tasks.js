@@ -19,7 +19,7 @@ let selectedStatus = [];
  * This ensures that dates in the past are not selectable.
  */
 function dateValidation() {
-let today = new Date().toISOString().split('T')[0]; // Funktion Datum nicht in der Vergangenheit anklickbar
+let today = new Date().toISOString().split('T')[0];
     document.getElementById("date").setAttribute('min', today);
 }
 
