@@ -358,7 +358,7 @@ function generateDialoEditInnerHTML(index) {
                 <label for="mail_edit"></label>
                 <input class="create_contact_input" type="email" id="mail_edit" placeholder="Email" required>
                 <label for="telNumber_edit"></label>
-                <input class="create_contact_input" type="tel" id="telNumber_edit" pattern="^(\+[0-9\/ ]+|[0-9\/ ]+)$" placeholder="Phone" required>
+                <input class="create_contact_input" type="tel" id="telNumber_edit" pattern="^(\\+[0-9\\/ ]+|[0-9\\/ ]+)$" placeholder="Phone" required>
                 <div class="container_button">
                     <button onclick="deleteContact(event, ${index})" type="button" class="cancel_create_contact_edit_btn contact_btn pointer">
                         <p class="text_cancel_create_contact_edit_btn">Delete</p>
